@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Google Apps Login
- * Plugin URI: http://danlester.com/wpgoogleappslogin/
+ * Plugin URI: http://wp-glogin.com/
  * Description: Easy login for your Wordpress users by using their Google accounts (uses OAuth2 and requires a Google Apps domain).
  * Version: 1.0
  * Author: Dan Lester
@@ -282,6 +282,8 @@ class google_apps_login {
 		not very user friendly. You can change this to your company or blog name (and add your logo etc) by clicking
 		<i>Consent screen</i> (which is another sub-menu of <i>APIs &amp; Auth</i>).
 		</p> 
+		
+		<p><b>For support and premium features, please visit: <a href="http://wp-glogin.com/" target="_blank">http://wp-glogin.com/</a></b></p>
 		
 		<?php
 	}
