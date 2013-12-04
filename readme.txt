@@ -71,6 +71,12 @@ the Plugins section of your Wordpress admin
 
 == Upgrade Notice ==
 
+= 1.1 =
+Upgrade recommended
+Increased security - uses an extra authenticity check
+Better support for mal-configured Google credentials
+No longer uses PHP-based sessions - will work on even more WordPress configurations
+
 = 1.0 =
 All existing versions are functionally identical - no need to upgrade.
 

@@ -4,7 +4,7 @@
  * Plugin Name: Google Apps Login
  * Plugin URI: http://wp-glogin.com/
  * Description: Easy login for your Wordpress users by using their Google accounts (uses OAuth2 and requires a Google Apps domain).
- * Version: 1.0
+ * Version: 1.1
  * Author: Dan Lester
  * Author URI: http://danlester.com/
  * License: GPL3
@@ -12,11 +12,26 @@
 
 class google_apps_login {
 	
-	function createGoogleClient() {
+	public function __construct() {
+		$this->add_actions();
+	}
+	
+	protected $newcookievalue = null;
+	protected function get_cookie_value() {
+		if (!$this->newcookievalue) {
+			if (isset($_COOKIE['google_apps_login'])) {
+				$this->newcookievalue = $_COOKIE['google_apps_login'];
+			}
+			else {
+				$this->newcookievalue = md5(rand());
+			}
+		}
+		return $this->newcookievalue;
+	}
+	
+	protected function createGoogleClient($options) {
 		require_once 'googleclient/Google_Client.php';
 		require_once 'googleclient/contrib/Google_Oauth2Service.php';
-		
-		$options = get_option('galogin');
 		
 		$client = new Google_Client();
 		$client->setApplicationName("Wordpress Blog");
@@ -33,7 +48,7 @@ class google_apps_login {
 		return Array($client, $oauthservice);
 	}
 	
-	function ga_login_styles() { ?>
+	public function ga_login_styles() { ?>
 	    <style type="text/css">
 	        form#loginform div.galogin {
 	        	float: right;
@@ -64,23 +79,22 @@ class google_apps_login {
 	    </style>
 	<?php }
 	
-	function ga_login_form() {
-		self::_ga_unset_session();
-		
-		$clients = self::createGoogleClient();
+	public function ga_login_form() {
+		$options = $this->get_option_galogin();
+		$clients = $this->createGoogleClient($options);
 		$client = $clients[0]; 
 		
 		// Generate a CSRF token
-		$state = md5(rand());
-		$_SESSION['galogin_state'] = $state;
-		$client->setState($state);
-		
-		// Store following WP page if any
-		if (array_key_exists('redirect_to', $_REQUEST)) {
-			$_SESSION['galogin_redirect_to'] = $_REQUEST['redirect_to'];
-		}
+		$state = wp_create_nonce('google_apps_login');
+		$client->setState(urlencode($state
+				.'|'.$this->get_cookie_value()
+				.'|'.(array_key_exists('redirect_to', $_REQUEST) ? $_REQUEST['redirect_to'] : '')
+		));
 		
 		$authUrl = $client->createAuthUrl();
+		if ($client->getClientId() == "") {
+			$authUrl = "http://wp-glogin.com/installing-google-apps-login/#main-settings";
+		}
 ?>
 		<div class="galogin"> 
 			<a href="<?php echo $authUrl; ?>">or <b>Login with Google</b></a>
@@ -88,21 +102,40 @@ class google_apps_login {
 <?php 	
 	}
 	
-	function ga_authenticate($user) {
+	public function ga_authenticate($user) {
 		if (isset($_REQUEST['error'])) {
 			$user = new WP_Error('ga_login_error', $_REQUEST['error'] == 'access_denied' ? 'You did not grant access' : $_REQUEST['error']);
-			return self::displayAndReturnError($user);
+			return $this->displayAndReturnError($user);
 		}
 		
-		$clients = self::createGoogleClient();
+		$options = $this->get_option_galogin();
+		$clients = $this->createGoogleClient($options);
 		$client = $clients[0]; 
 		$oauthservice = $clients[1];
 		
 		if (isset($_GET['code'])) {
-			if (session_id() && (!isset($_REQUEST['state']) || !isset($_SESSION['galogin_state']) 
-					|| $_REQUEST['state'] != $_SESSION['galogin_state'])) {
-				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem setting cookies");
-				return self::displayAndReturnError($user);
+			if (!isset($_REQUEST['state'])) {
+				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem setting state");
+				return $this->displayAndReturnError($user);
+			}
+			
+			$statevars = explode('|', urldecode($_REQUEST['state']));
+			if (count($statevars) != 3) {
+				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem computing state");
+				return $this->displayAndReturnError($user);
+			}
+			$retnonce = $statevars[0];
+			$retcookie = $statevars[1];
+			$retredirectto = $statevars[2];
+			
+			if (!wp_verify_nonce($retnonce, 'google_apps_login')) {
+				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem setting nonce");
+				return $this->displayAndReturnError($user);
+			}
+
+			if (!isset($_COOKIE['google_apps_login']) || $retcookie != $_COOKIE['google_apps_login']) {
+				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem setting cookie");
+				return $this->displayAndReturnError($user);
 			}
 
 			try {
@@ -138,9 +171,10 @@ class google_apps_login {
 							$user = new WP_Error('ga_login_error', 'User '.$google_email.' not registered in Wordpress');
 						}
 						else {
-							if (session_id() && array_key_exists('galogin_redirect_to', $_SESSION)) {
-								$_SESSION['galogin_do_redirect_to'] = $_SESSION['galogin_redirect_to'];
-							}
+							// Set redirect for next load - including if "" to force reset to no redirect
+							setcookie('galogin_do_redirect_to', $retredirectto, time()+60, '/');
+							// Reset client-side login cookie so it doesn't expire on us next login time
+							setcookie('google_apps_login', '', time()-3600, '/');
 						}
 					}
 				}
@@ -152,17 +186,14 @@ class google_apps_login {
 			}
 		}
 
-		// Tidy things up for next time
-		self::_ga_unset_session();
-
 		if (is_wp_error($user)) {
-			self::displayAndReturnError($user);
+			$this->displayAndReturnError($user);
 		}
 		
 		return $user;
 	}
 	
-	function displayAndReturnError($user) {
+	protected function displayAndReturnError($user) {
 		if (is_wp_error($user) && get_bloginfo('version') < 3.7) {
 			// Only newer wordpress versions display errors from $user for us
 			global $error;
@@ -171,52 +202,42 @@ class google_apps_login {
 		return $user;
 	}
 	
-	function ga_init() {
-		if(!session_id()) {
-			@session_start();
+	public function ga_init() {
+		if (isset($_COOKIE['galogin_do_redirect_to'])) {
+			$do_redirect = $_COOKIE['galogin_do_redirect_to'];
+			setcookie('galogin_do_redirect_to', '', time()-3600, '/');
+			
+			if ($do_redirect != "") {
+				wp_redirect($do_redirect);
+				exit;
+			}
 		}
-		if (array_key_exists('galogin_do_redirect_to', $_SESSION)) {
-			// Login page originally contained a redirect url, so go there now all auth is finished
-			$url = $_SESSION['galogin_do_redirect_to'];
-			unset($_SESSION['galogin_do_redirect_to']);
-			wp_redirect($url);
-			exit;
+
+		if (!isset($_COOKIE['google_apps_login']) && $GLOBALS['pagenow'] == 'wp-login.php') {
+			setcookie('google_apps_login', $this->get_cookie_value(), time()+1800, '/');
 		}
 	}
 	
-	function _ga_unset_session() {
-		// Reset session state
-		if (session_id()) {
-			if (array_key_exists('galogin_redirect_to', $_SESSION)) {
-				unset($_SESSION['galogin_redirect_to']);
-			}
-			if (array_key_exists('galogin_state', $_SESSION)) {
-				unset($_SESSION['galogin_state']);
-				unset($_SESSION['state']);
-			}
-		}
-	}
-	
-	function ga_admin_init() {
+	public function ga_admin_init() {
 		
-		register_setting( 'galogin_options', 'galogin', Array('google_apps_login', 'ga_options_validate') );
+		register_setting( 'galogin_options', 'galogin', Array($this, 'ga_options_validate') );
 		
 		add_settings_section('galogin_main_section', 'Main Settings', 
-			array('google_apps_login', 'ga_section_text'), 'galogin');
+			array($this, 'ga_section_text'), 'galogin');
 		
 		add_settings_field('ga_clientid', 'Client ID', 
-			array('google_apps_login', 'ga_do_settings_clientid'), 'galogin', 'galogin_main_section');	
+			array($this, 'ga_do_settings_clientid'), 'galogin', 'galogin_main_section');	
 		add_settings_field('ga_clientsecret', 'Client Secret',
-			array('google_apps_login', 'ga_do_settings_clientsecret'), 'galogin', 'galogin_main_section');
+			array($this, 'ga_do_settings_clientsecret'), 'galogin', 'galogin_main_section');
 	}
 	
-	function ga_admin_menu() {
+	public function ga_admin_menu() {
 		add_options_page('Google Apps Login settings', 'Google Apps Login',
 			 'manage_options', 'galogin_list_options',
-			 array('google_apps_login', 'ga_options_do_page'));
+			 array($this, 'ga_options_do_page'));
 	}
 	
-	function ga_options_do_page() {  ?>
+	public function ga_options_do_page() {  ?>
 		<div>
 		<h2>Google Apps Login setup</h2>
 		Set up your blog to enable Google logins.
@@ -228,19 +249,19 @@ class google_apps_login {
 		</form></div>  <?php
 	}
 	
-	function ga_do_settings_clientid() {
-		$options = get_option('galogin');
+	public function ga_do_settings_clientid() {
+		$options = $this->get_option_galogin();
 		echo "<input id='plugin_text_string' name='galogin[ga_clientid]' size='80' type='text' value='{$options['ga_clientid']}' />";
 		echo "<br /><span>Normally something like 1234567890123.apps.googleusercontent.com</span>";
 	}
 
-	function ga_do_settings_clientsecret() {
-		$options = get_option('galogin');
+	public function ga_do_settings_clientsecret() {
+		$options = $this->get_option_galogin();
 		echo "<input id='plugin_text_string' name='galogin[ga_clientsecret]' size='40' type='text' value='{$options['ga_clientsecret']}' />";
 		echo "<br /><span>Normally something like sHSfR4_jf_2jsy-kjPjgf2dT</span>";
 	}
 	
-	function ga_section_text() {
+	public function ga_section_text() {
 		?>
 		<p>The Google Apps domain admin needs to go to
 			 <a href="https://cloud.google.com/console" target="_blank">https://cloud.google.com/console</a>. If you 
@@ -283,12 +304,14 @@ class google_apps_login {
 		<i>Consent screen</i> (which is another sub-menu of <i>APIs &amp; Auth</i>).
 		</p> 
 		
-		<p><b>For support and premium features, please visit: <a href="http://wp-glogin.com/" target="_blank">http://wp-glogin.com/</a></b></p>
+		<p><b>For support and premium features, please visit: 
+			<a href="http://wp-glogin.com/?utm_source=Admin%20Panel&utm_medium=freemium&utm_campaign=Freemium" target="_blank">http://wp-glogin.com/</a></b>
+		</p>
 		
 		<?php
 	}
 	
-	function ga_options_validate($input) {
+	public function ga_options_validate($input) {
 		$newinput = Array();
 		$newinput['ga_clientid'] = trim($input['ga_clientid']);
 		$newinput['ga_clientsecret'] = trim($input['ga_clientsecret']);
@@ -311,28 +334,35 @@ class google_apps_login {
 		return $newinput;
 	}
 	
-	function ga_on_uninstall() {
-		if (!current_user_can('activate_plugins'))
-		return;
-
-		// Important: Check if the file is the one
-		// that was registered during the uninstall hook.
-		if (!defined( 'WP_UNINSTALL_PLUGIN' ) || __FILE__ != WP_UNINSTALL_PLUGIN)
-			return;
-
-		// Remove options for plugin
-		delete_option('galogin');
+	static $default_options = Array( 'ga_clientid' => '', 'ga_clientsecret' => '');
+	private $ga_options = null;
+	protected function get_option_galogin() {
+		if ($this->ga_options != null) {
+			return $this->ga_options;
+		}
+	
+		$option = get_option('galogin');
+	
+		foreach (self::$default_options as $k => $v) {
+			if (!isset($option[$k])) {
+				$option[$k] = $v;
+			}
+		}
+		$this->ga_options = $option;
+		return $this->ga_options;
+	}
+	
+	protected function add_actions() {
+		add_action('login_enqueue_scripts', array($this, 'ga_login_styles'));
+		add_action('login_form', array($this, 'ga_login_form'));
+		add_action('authenticate', array($this, 'ga_authenticate'), 5, 3);
+		add_action('init', array($this, 'ga_init'), 1);
+		
+		add_action('admin_init', array($this, 'ga_admin_init'));
+		add_action('admin_menu', array($this, 'ga_admin_menu'));
 	}
 }
 
-add_action('login_enqueue_scripts', array('google_apps_login', 'ga_login_styles'));
-add_action('login_form', array('google_apps_login', 'ga_login_form'));
-add_action('authenticate', array('google_apps_login', 'ga_authenticate'));
-add_action('init', array('google_apps_login', 'ga_init'), 1);
-
-add_action('admin_init', array('google_apps_login', 'ga_admin_init'));
-add_action('admin_menu', array('google_apps_login', 'ga_admin_menu'));
-
-register_uninstall_hook(__FILE__, array('google_apps_login', 'ga_on_uninstall'));
+$ga_google_apps_login_plugin = new google_apps_login();
 
 ?>
