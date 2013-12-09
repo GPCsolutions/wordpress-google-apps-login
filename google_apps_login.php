@@ -282,7 +282,17 @@ class google_apps_login {
 		</p> 
 		<p>You must input, into your new Google application, the following items:
 		<ul style="margin-left: 10px;">
-			<li>Web Origin: <?php echo site_url(); ?></li>
+			<li>Web Origin: <?php echo (is_ssl() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].'/'; ?></li>
+			<?php 
+			if (is_ssl()) {
+				?>
+				<li>
+					Web Origin (add a 2nd entry): http://<?php echo $_SERVER['HTTP_HOST'].'/'; ?>
+				</li> 
+				<?php
+			}
+			?>
+			
 			<li>Redirect URL: <?php echo wp_login_url(); ?></li>
 			<?php 
 			if (force_ssl_login() && strtolower(substr(wp_login_url(),0,7)) == 'http://') {
