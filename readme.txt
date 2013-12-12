@@ -2,7 +2,7 @@
 Contributors: danlester
 Tags: login, google, authentication, oauth2, oauth, admin, googleapps
 Requires at least: 3.3
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: 1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -41,9 +41,45 @@ has permission to authenticate the user and obtain basic profile data - it can n
 1. User login screen can work as normal or via Google's authentication system
 2. Admin obtains two simple codes from Google to set up - easy instructions to follow 
 
-== Requirements ==
+== Frequently Asked Questions ==
 
-System requirements:
+= Does the plugin work with HTTP or HTTPS login pages? =
+
+The plugin will work whether your site is configured for HTTP or HTTPS.
+
+However, you may have configured your site to run so that the login pages 
+can be accessed by *either* HTTP *or* HTTPS. In that case, you may run into problems. 
+We recommend that you set [FORCE_SSL_ADMIN](http://codex.wordpress.org/Administration_Over_SSL) 
+or at least FORCE_SSL_LOGIN to true. This will ensure that all users are consistently using HTTPS 
+for login.
+
+You may then need to ensure the Redirect URL and Web Origin in the Google Cloud Console are
+set as HTTPS (this will make sense if you follow the installation instructions again).
+
+If for some reason you cannot set FORCE_SSL_ADMIN, then you can add two URLs to the Google
+Cloud Console for each entry, e.g. Redirect URL = http://wpexample.com/wp-login.php, and
+then add another one for https://wpexample.com/wp-login.php. Same idea for Web Origin.
+
+= Does the plugin work on Multisite? =
+
+It is written, tested, and secure for multisite in subdirectories (not subdomains), and *must* be activated
+network-wide for security reasons.
+
+If you do require it used for subdomains, please contact the plugin author who may
+be able to help for your specific installation.
+
+= Is it secure? =
+
+Yes, and depending on your setup, it can be much more secure than just using
+WordPress usernames and passwords.
+
+However, the author does not accept liability or offer any guarantee,
+and it is your responsibility to ensure that your site is secure in the way you require.
+
+In particular, other plugins may conflict with each other, and different WordPress versions and configurations
+may render your site insecure.
+
+= What are the system requirements? =
 
 *  PHP 5.2.x or higher with Curl and JSON extensions
 *  Wordpress 3.3 or above

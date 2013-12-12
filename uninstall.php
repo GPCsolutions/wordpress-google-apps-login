@@ -10,6 +10,6 @@ if (!defined('ABSPATH') && !defined('WP_UNINSTALL_PLUGIN')) {
 if (!current_user_can('activate_plugins'))
 	exit;
 
-delete_option('galogin');
+delete_site_option('galogin');
 
 ?>
