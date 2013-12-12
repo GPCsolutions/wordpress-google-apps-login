@@ -3,7 +3,7 @@ Contributors: danlester
 Tags: login, google, authentication, oauth2, oauth, admin, googleapps
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,10 @@ the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
 == Upgrade Notice ==
+
+= 1.2 =
+Upgrade to match WordPress 3.8
+More extensible code
 
 = 1.1 =
 Upgrade recommended
