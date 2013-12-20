@@ -7,21 +7,29 @@ Stable tag: 1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Easy login for your Wordpress users by using their Google accounts (uses secure OAuth2, including Multi-factor auth if enabled).
+Simple secure login and user management for Wordpress through your Google Apps domain 
+(uses secure OAuth2, and MFA if enabled)
 
 == Description ==
 
-Google Apps Login allows existing Wordpress user accounts to login to the blog by using Google to securely authenticate their
-account. This means that if they are already logged into Gmail for example, they can simply click their way
+Google Apps Login allows existing Wordpress user accounts to login to the website using Google to securely authenticate 
+their account. This means that if they are already logged into Gmail for example, they can simply click their way
 through the Wordpress login screen - no username or password is explicitly required!
 
-Login will work for any Google Apps domains plus personal gmail.com emails.
+One-click login will work for the following domains and user accounts:
+
+1. Google Apps for Business
+1. Google Apps for Education
+1. Google Apps for Non-profits
+1. Personal gmail.com and googlemail.com emails
 
 Plugin setup requires you to have admin access to any Google Apps domain, or a regular Gmail account, to register and
 obtain two simple codes from Google.
 
-**Support and premium features are also available for purchase: eliminate the need for Google Apps domain admins to separately 
-manage WordPress user accounts, and get piece of mind that only authorized employees have access to the company's websites and intranet.**
+**Full support and premium features are also available for purchase:**
+
+**Eliminate the need for Google Apps domain admins to  separately manage WordPress user accounts, and get piece 
+of mind that only authorized employees have access to the organizations's websites and intranet.**
 
 **See [http://wp-glogin.com/](http://wp-glogin.com/)**
 
@@ -29,12 +37,14 @@ Google Apps Login uses the latest secure OAuth2 authentication recommended by Go
 may allow you to use your Google username and password to login, but they do not do this securely:
 
 *  Other plugins: Users' passwords will be handled by your blog's server, potentially unencrypted. If these are compromised,
-hackers would be able to gain access to your Google email accounts! This includes Gmail, Drive, and any other services which
-use your Google account to login.
+hackers would be able to gain access to your Google email accounts! This includes all 
+[Google Apps](http://www.google.com/enterprise/apps/business/products.html) (Gmail, Drive, Calendar 
+etc), and any other services which use your Google account to login.
 
 *  This plugin: Users' passwords are only ever submitted to Google itself, then Google is asked to authenticate the user to
-your blog. This means Multi-factor Authentication can still be used (if set up on your Google account). Your blog only ever
-has permission to authenticate the user and obtain basic profile data - it can never have access to your emails and other data.
+your WordPress site. This means Multi-factor Authentication can still be used (if set up on your Google account). 
+Your website only requires permission to authenticate the user and obtain basic profile data - it can never have access to 
+your emails and other data.
 
 == Screenshots ==
 
@@ -42,6 +52,27 @@ has permission to authenticate the user and obtain basic profile data - it can n
 2. Admin obtains two simple codes from Google to set up - easy instructions to follow 
 
 == Frequently Asked Questions ==
+
+= How can I obtain support for this product? =
+
+Full support is available if you purchase the appropriate license from the author via:
+[http://wp-glogin.com/google-apps-login-premium/](http://wp-glogin.com/google-apps-login-premium/)
+
+Please feel free to email [support@wp-glogin.com](mailto:support@wp-glogin.com) with any questions,
+as we may be able to help, but you may be required to purchase a support license if the problem
+is specific to your installation or requirements.
+
+We may occasionally be able to respond to support queries posted on the 'Support' forum here on the wordpress.org
+plugin page, but we recommend sending us an email instead if possible.
+
+= Is login restricted to the Google Apps domain I use to set up the plugin? =
+
+No, once you set up the plugin, any WordPress accounts whose email address corresponds to *any* Google account, 
+whether on a different Google Apps domain or even a personal gmail.com account, will be able to use 'Login with 
+Google' to easily connect to your WordPress site.
+
+However, our [premium plugin](http://wp-glogin.com/google-apps-login-premium/) has features that greatly simplify 
+your WordPress user management if your WordPress users are mostly on the same Google Apps domain(s).
 
 = Does the plugin work with HTTP or HTTPS login pages? =
 
@@ -56,17 +87,17 @@ for login.
 You may then need to ensure the Redirect URL and Web Origin in the Google Cloud Console are
 set as HTTPS (this will make sense if you follow the installation instructions again).
 
-If for some reason you cannot set FORCE_SSL_ADMIN, then you can add two URLs to the Google
+If for some reason you cannot set FORCE_SSL_ADMIN, then instead you can add two URLs to the Google
 Cloud Console for each entry, e.g. Redirect URL = http://wpexample.com/wp-login.php, and
 then add another one for https://wpexample.com/wp-login.php. Same idea for Web Origin.
 
 = Does the plugin work on Multisite? =
 
-It is written, tested, and secure for multisite in subdirectories (not subdomains), and *must* be activated
+It is written, tested, and secure for multisite WordPress, both for subdirectories and subdomains, and *must* be activated
 network-wide for security reasons.
 
-If you do require it used for subdomains, please contact the plugin author who may
-be able to help for your specific installation.
+There are many different possible configurations of multisite WordPress, however, so you must test carefully if you 
+have any other plugins or special setup.
 
 = Is it secure? =
 
@@ -105,16 +136,20 @@ If you cannot install from the WordPress plugins directory for any reason, and n
 the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
-== Upgrade Notice ==
+== Changelog ==
+
+= 1.3 =
+Much neater support for redirecting users to most appropriate page post-login,
+especially on multisite installations; Better notices guiding admins through 
+configuration
 
 = 1.2 =
-Upgrade to match WordPress 3.8
+Upgrade to match WordPress 3.8; 
 More extensible code
 
 = 1.1 =
-Upgrade recommended
-Increased security - uses an extra authenticity check
-Better support for mal-configured Google credentials
+Increased security - uses an extra authenticity check; 
+Better support for mal-configured Google credentials; 
 No longer uses PHP-based sessions - will work on even more WordPress configurations
 
 = 1.0 =

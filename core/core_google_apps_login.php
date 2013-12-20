@@ -73,22 +73,27 @@ class core_google_apps_login {
 	    </style>
 	<?php }
 	
-	public function ga_login_form() {
+	// public in case widgets want to use it
+	public function ga_start_auth_get_url() {
 		$options = $this->get_option_galogin();
 		$clients = $this->createGoogleClient($options);
-		$client = $clients[0]; 
+		$client = $clients[0];
 		
 		// Generate a CSRF token
-		$state = wp_create_nonce('google_apps_login');
-		$client->setState(urlencode($state
-				.'|'.$this->get_cookie_value()
-				.'|'.(array_key_exists('redirect_to', $_REQUEST) ? $_REQUEST['redirect_to'] : '')
+		$client->setState(urlencode(
+				wp_create_nonce('google_apps_login-'.$this->get_cookie_value())
+				.'|'.$this->get_redirect_url()
 		));
 		
 		$authUrl = $client->createAuthUrl();
-		if ($client->getClientId() == "") {
-			$authUrl = "http://wp-glogin.com/installing-google-apps-login/#main-settings";
+		if ($options['ga_clientid'] == '' || $options['ga_clientsecret'] == '') {
+			$authUrl = "?error=ga_needs_configuring";
 		}
+		return $authUrl;
+	}
+	
+	public function ga_login_form() {
+		$authUrl = $this->ga_start_auth_get_url();
 ?>
 		<div class="galogin"> 
 			<a href="<?php echo $authUrl; ?>">or <b>Login with Google</b></a>
@@ -96,9 +101,34 @@ class core_google_apps_login {
 <?php 	
 	}
 	
+	protected function get_redirect_url() {
+		$options = $this->get_option_galogin();
+		
+		if (array_key_exists('redirect_to', $_REQUEST) && $_REQUEST['redirect_to']) {
+			return $_REQUEST['redirect_to'];
+		} elseif (is_multisite() && !$options['ga_ms_usesubsitecallback']) {
+			return admin_url(); // This is what WordPress would choose as default
+								// but we have to specify explicitly since all callbacks go via root site
+		}
+		return '';
+	}
+	
 	public function ga_authenticate($user, $username=null, $password=null) {
 		if (isset($_REQUEST['error'])) {
-			$user = new WP_Error('ga_login_error', $_REQUEST['error'] == 'access_denied' ? 'You did not grant access' : $_REQUEST['error']);
+			switch ($_REQUEST['error']) {
+				case 'access_denied':
+					$error_message = 'You did not grant access';
+				break;
+				case 'ga_needs_configuring':
+					$error_message = 'The admin needs to configure Google Apps Login plugin - please follow '
+										.'<a href="http://wp-glogin.com/installing-google-apps-login/#main-settings"'
+										.' target="_blank">instructions here</a>';
+				break;
+				default:
+					$error_message = htmlentities2($_REQUEST['error']);
+				break;
+			}
+			$user = new WP_Error('ga_login_error', $error_message);
 			return $this->displayAndReturnError($user);
 		}
 		
@@ -114,21 +144,15 @@ class core_google_apps_login {
 			}
 			
 			$statevars = explode('|', urldecode($_REQUEST['state']));
-			if (count($statevars) != 3) {
-				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem computing state");
+			if (count($statevars) != 2) {
+				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem passing state");
 				return $this->displayAndReturnError($user);
 			}
 			$retnonce = $statevars[0];
-			$retcookie = $statevars[1];
-			$retredirectto = $statevars[2];
+			$retredirectto = $statevars[1];
 			
-			if (!wp_verify_nonce($retnonce, 'google_apps_login')) {
-				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem setting nonce");
-				return $this->displayAndReturnError($user);
-			}
-
-			if (!isset($_COOKIE['google_apps_login']) || $retcookie != $_COOKIE['google_apps_login']) {
-				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem setting cookie");
+			if (!wp_verify_nonce($retnonce, 'google_apps_login-'.$this->get_cookie_value())) {
+				$user = new WP_Error('ga_login_error', "Session mismatch - try again, but there could be a problem setting cookies");
 				return $this->displayAndReturnError($user);
 			}
 
@@ -165,11 +189,10 @@ class core_google_apps_login {
 							$user = $this->createUserOrError($userinfo, $options);
 						}
 						
-						if (!$user) {
-							// Set redirect for next load - including if "" to force reset to no redirect
-							setcookie('galogin_do_redirect_to', $retredirectto, time()+60, '/');
-							// Reset client-side login cookie so it doesn't expire on us next login time
-							setcookie('google_apps_login', '', time()-3600, '/');
+						if ($user && !is_wp_error($user)) {
+							// Set redirect for wp-login to receive via our own login_redirect callback
+							$this->setFinalRedirect($retredirectto);
+							// Would reset client-side login cookie but won't work on redirect
 						}
 					}
 				}
@@ -212,26 +235,37 @@ class core_google_apps_login {
 		return $user;
 	}
 	
-	public function ga_init() {
-		if (isset($_COOKIE['galogin_do_redirect_to'])) {
-			$do_redirect = $_COOKIE['galogin_do_redirect_to'];
-			setcookie('galogin_do_redirect_to', '', time()-3600, '/');
-			
-			if ($do_redirect != "") {
-				wp_redirect($do_redirect);
-				exit;
+	protected $_final_redirect = '';
+	
+	protected function setFinalRedirect($redirect_to) {
+		$this->_final_redirect = $redirect_to;
+	}
+
+	protected function getFinalRedirect() {
+		return $this->_final_redirect;
+	}
+	
+	public function ga_login_redirect($redirect_to, $request_from, $user) {
+		if ($user && !is_wp_error($user)) {
+			$final_redirect = $this->getFinalRedirect();
+			if ($final_redirect !== '') {
+				return $final_redirect;
 			}
 		}
-
+		return $redirect_to;
+	}
+	
+	public function ga_init() {
 		if (!isset($_COOKIE['google_apps_login']) && $GLOBALS['pagenow'] == 'wp-login.php') {
-			setcookie('google_apps_login', $this->get_cookie_value(), time()+1800, '/');
+			setcookie('google_apps_login', $this->get_cookie_value(), time()+600, '/', COOKIE_DOMAIN);
 		}
 	}
 	
 	protected function get_login_url() {
+		$options = $this->get_option_galogin();
 		$login_url = wp_login_url();
 
-		if (is_multisite() && defined('SUBDOMAIN_INSTALL') && SUBDOMAIN_INSTALL === false) { 
+		if (is_multisite() && !$options['ga_ms_usesubsitecallback']) {
 			$login_url = network_site_url('wp-login.php');
 		} 
 
@@ -253,11 +287,42 @@ class core_google_apps_login {
 		return 'galogin_options';
 	}
 	
+	protected function get_settings_url() {
+		return is_multisite()
+			? network_admin_url( 'settings.php?page='.$this->get_options_menuname() )
+			: admin_url( 'options-general.php?page='.$this->get_options_menuname() );
+	}
+	
+	public function ga_admin_auth_message() {
+		?>
+		<div class="error">
+        	<p>You will need to complete Google Apps Login 
+        		<a href="<?php echo $this->get_settings_url(); ?>">Settings</a> 
+        		in order for the plugin to work
+        	</p>
+    	</div> <?php
+	}
+	
 	public function ga_admin_init() {
 		register_setting( $this->get_options_pagename(), $this->get_options_name(), Array($this, 'ga_options_validate') );
 		
 		$this->ga_admin_init_main();
 		$this->ga_admin_init_domain();
+		$this->ga_admin_init_multisite();
+		
+		// Admin notice that configuration is required
+		$options = $this->get_option_galogin();
+		
+		if (current_user_can( is_multisite() ? 'manage_network_options' : 'manage_options' ) 
+				&& ($options['ga_clientid'] == '' || $options['ga_clientsecret'] == '')) {
+
+			if (!array_key_exists('page', $_REQUEST) || $_REQUEST['page'] != $this->get_options_menuname()) {
+				add_action('admin_notices', Array($this, 'ga_admin_auth_message'));
+				if (is_multisite()) {
+					add_action('network_admin_notices', Array($this, 'ga_admin_auth_message'));
+				}
+			}
+		}
 	}
 	
 	protected function ga_admin_init_main() {
@@ -271,6 +336,16 @@ class core_google_apps_login {
 	}
 	
 	protected function ga_admin_init_domain() {
+	}
+	
+	public function ga_admin_init_multisite() {
+		if (is_multisite()) {
+			add_settings_section('galogin_multisite_section', 'Multisite Options',
+			array($this, 'ga_multisitesection_text'), $this->get_options_name());
+			
+			add_settings_field('ga_ms_usesubsitecallback', 'Use sub-site specific callback from Google',
+			array($this, 'ga_do_settings_ms_usesubsitecallback'), $this->get_options_name(), 'galogin_multisite_section');
+		}
 	}
 		
 	public function ga_admin_menu() {
@@ -287,7 +362,7 @@ class core_google_apps_login {
 	}
 	
 	public function ga_options_do_page() {
-		$submit_page = is_multisite() ? 'edit.php?action='.$this->get_options_menuname() : 'options.php'; //settings.php?page=galogin_list_premium
+		$submit_page = is_multisite() ? 'edit.php?action='.$this->get_options_menuname() : 'options.php';
 		
 		if (is_multisite()) {
 			$this->ga_options_do_network_errors();
@@ -388,6 +463,22 @@ class core_google_apps_login {
 	protected function ga_section_text_end() {
 	}
 	
+	public function ga_multisitesection_text() {
+		?>
+			<p>These settings are for multisite admins only. By default, all logins need to be submitted via the root site
+			(since that is the only Redirect URL you were asked to submit to Google Cloud Console above).
+			If you have a reason to register Redirect URLs for each of your sub-sites too, tick the box below to
+			have all logins submitted to the sub-site they were invoked on.
+			 </p>
+		<?php
+	}
+		
+	public function ga_do_settings_ms_usesubsitecallback() {
+		$options = $this->get_option_galogin();
+		echo "<input id='input_ga_ms_usesubsitecallback' name='".$this->get_options_name()."[ga_ms_usesubsitecallback]' type='checkbox' ".($options['ga_ms_usesubsitecallback'] ? 'checked' : '')." />";
+		echo "<div>Leave unchecked in most cases</div>";
+	}
+	
 	public function ga_options_validate($input) {
 		$newinput = Array();
 		$newinput['ga_clientid'] = trim($input['ga_clientid']);
@@ -408,6 +499,8 @@ class core_google_apps_login {
 			'error'
 			);
 		}
+		$newinput['ga_ms_usesubsitecallback'] = isset($input['ga_ms_usesubsitecallback']) ? $input['ga_ms_usesubsitecallback'] : false;
+		$newinput['ga_version'] = $this->PLUGIN_VERSION;
 		return $newinput;
 	}
 	
@@ -427,7 +520,7 @@ class core_google_apps_login {
 	}
 
 	protected function get_default_options() {
-		return Array( 'ga_clientid' => '', 'ga_clientsecret' => '');
+		return Array('ga_version' => $this->PLUGIN_VERSION, 'ga_clientid' => '', 'ga_clientsecret' => '', 'ga_ms_usesubsitecallback' => false);
 	}
 	
 	protected $ga_options = null;
@@ -455,13 +548,7 @@ class core_google_apps_login {
 		if (isset($_POST[$this->get_options_name()]) && is_array($_POST[$this->get_options_name()])) {
 			$inoptions = $_POST[$this->get_options_name()];
 			$outoptions = $this->ga_options_validate($inoptions);
-		
-			$updated = false;
-			if ( !count( get_settings_errors() ) ) {
-				update_site_option($this->get_options_name(), $outoptions);
-				$updated = true;
-			}
-			
+					
 			$error_code = Array();
 			$error_setting = Array();
 			foreach (get_settings_errors() as $e) {
@@ -470,12 +557,14 @@ class core_google_apps_login {
 					$error_setting[] = $e['setting'];
 				}
 			}
-	
+
+			update_site_option($this->get_options_name(), $outoptions);
+			
 			// redirect to settings page in network
 			wp_redirect(
 				add_query_arg(
 					array( 'page' => $this->get_options_menuname(),
-							'updated' => $updated,
+							'updated' => true,
 							'error_setting' => $error_setting,
 							'error_code' => $error_code ),
 						network_admin_url( 'admin.php' )
@@ -485,6 +574,17 @@ class core_google_apps_login {
 		}
 	}
 	
+	// PLUGINS PAGE
+	
+	public function ga_plugin_action_links( $links, $file ) {
+		if ($file == $this->my_plugin_basename()) {
+			$settings_link = '<a href="'.$this->get_settings_url().'">Settings</a>';
+			array_unshift( $links, $settings_link );
+		}
+	
+		return $links;
+	}
+	
 	// HOOKS AND FILTERS
 	// *****************
 	
@@ -492,24 +592,23 @@ class core_google_apps_login {
 		add_action('login_enqueue_scripts', array($this, 'ga_login_styles'));
 		add_action('login_form', array($this, 'ga_login_form'));
 		add_action('authenticate', array($this, 'ga_authenticate'), 5, 3);
+		
+		add_filter('login_redirect', array($this, 'ga_login_redirect'), 5, 3 );
 		add_action('init', array($this, 'ga_init'), 1);
 		
 		add_action('admin_init', array($this, 'ga_admin_init'));
 				
 		add_action(is_multisite() ? 'network_admin_menu' : 'admin_menu', array($this, 'ga_admin_menu'));
-		
+
 		if (is_multisite()) {
+			add_filter('network_admin_plugin_action_links', array($this, 'ga_plugin_action_links'), 10, 2 );
 			add_action('network_admin_edit_'.$this->get_options_menuname(), array($this, 'ga_save_network_options'));
+		}
+		else {
+			add_filter( 'plugin_action_links', array($this, 'ga_plugin_action_links'), 10, 2 );
 		}
 	}
 	
-	public static function my_plugin_basename($file) {
-		$basename = plugin_basename($file);
-		if ('/'.$basename == $file) { // Maybe due to symlink
-			$basename = basename(dirname($file)).'/'.basename($file);
-		}
-		return $basename;
-	}
 }
 
 ?>
