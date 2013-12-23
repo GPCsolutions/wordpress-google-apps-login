@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: danlester
-Tags: login, google, authentication, oauth2, oauth, admin, googleapps, sso
+Tags: login, google, authentication, oauth2, oauth, admin, googleapps, sso, single-sign-on
 Requires at least: 3.3
 Tested up to: 3.8
 Stable tag: 1.3
@@ -18,10 +18,10 @@ through the Wordpress login screen - no username or password is explicitly requi
 
 One-click login will work for the following domains and user accounts:
 
-1. Google Apps for Business
-1. Google Apps for Education
-1. Google Apps for Non-profits
-1. Personal gmail.com and googlemail.com emails
+*  Google Apps for Business
+*  Google Apps for Education
+*  Google Apps for Non-profits
+*  Personal gmail.com and googlemail.com emails
 
 Plugin setup requires you to have admin access to any Google Apps domain, or a regular Gmail account, to register and
 obtain two simple codes from Google.

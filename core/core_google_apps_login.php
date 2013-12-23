@@ -257,7 +257,7 @@ class core_google_apps_login {
 	
 	public function ga_init() {
 		if (!isset($_COOKIE['google_apps_login']) && $GLOBALS['pagenow'] == 'wp-login.php') {
-			setcookie('google_apps_login', $this->get_cookie_value(), time()+600, '/', COOKIE_DOMAIN);
+			setcookie('google_apps_login', $this->get_cookie_value(), time()+600, '/', defined(COOKIE_DOMAIN) ? COOKIE_DOMAIN : '' );
 		}
 	}
 	
@@ -412,7 +412,7 @@ class core_google_apps_login {
 	public function ga_do_settings_clientid() {
 		$options = $this->get_option_galogin();
 		echo "<input id='input_ga_domainname' name='".$this->get_options_name()."[ga_clientid]' size='80' type='text' value='{$options['ga_clientid']}' />";
-		echo "<br /><span>Normally something like 1234567890123.apps.googleusercontent.com</span>";
+		echo "<br /><span>Normally something like 1234567890123-w1dwn5pfgjeo96c73821dfbof6n4kdhw.apps.googleusercontent.com</span>";
 	}
 
 	public function ga_do_settings_clientsecret() {
@@ -431,22 +431,24 @@ class core_google_apps_login {
 		<p>There, create a new project (any name is fine, and just leave Project ID as it is) - you may be required to 
 		accept a verification phone call or SMS from Google.</p>
 		
-		<p>Then create a Web application within the project. To create the application, 
+		<p>Then create a new 'Client ID' within the project, of type 'Web Application'. To create this, 
 		you need to click into the new project, then click <i>APIs &amp; Auth</i> in the left-hand menu. 
-		Click <i>Registered Apps</i> beneath that, then click the red <i>Register App</i> button.
-		You can choose any name you wish, and make sure you select <i>Web Application</i> as the Platform type.
+		Click <i>Credentials</i> beneath that, then click the red <i>Create New Client ID</i> button.
+		Make sure you select <i>Web Application</i> as the Platform type.
 		</p>
-		<p>
-		Once you have created the application, you may need to open up the <i>OAuth 2.0 Client ID</i> section to be able to complete
-		 the following steps.
-		</p> 
-		<p>You must input, into your new Google application, the following items:
+		<p>You must input, into your new Google 'Client ID', the following items:
 		<ul style="margin-left: 10px;">
-			<li>Web Origin: <?php echo (is_ssl() || force_ssl_login() || force_ssl_admin() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].'/'; ?></li>
-			<li>Redirect URL: <?php echo $this->get_login_url(); ?></li>
+			<li>Authorized Javascript origins: <?php echo (is_ssl() || force_ssl_login() || force_ssl_admin() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].'/'; ?></li>
+			<li>Authorized redirect URI: <?php echo $this->get_login_url(); ?></li>
 		</ul>
 		</p>
-		<p>Click Generate. You will see a Client ID and Client Secret which you must copy
+		<p>
+		Once you have created the application (click the blue <i>Create Client ID</i> button), you need to turn to the
+		 <i>Client ID for web application</i> section to be able to complete
+		 the following steps. (<b>Not</b> the <i>Compute Engine and App Engine</i> section at the top.)
+		</p> 
+
+		<p>You will see a Client ID and Client Secret which you must copy
 		and paste into the boxes below on this screen - i.e. back in your Wordpress admin, right here.</p>
 		
 		<p><b>Optional:</b> In the Google Cloud Console, you can configure some things your users will see when they
