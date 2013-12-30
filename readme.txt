@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: danlester
-Tags: login, google, authentication, oauth2, oauth, admin, googleapps, sso, single-sign-on
+Tags: login, google, authentication, oauth2, oauth, admin, google apps, sso, single-sign-on, auth, intranet
 Requires at least: 3.3
 Tested up to: 3.8
 Stable tag: 1.3
