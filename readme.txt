@@ -138,6 +138,13 @@ the Plugins section of your Wordpress admin
 
 == Changelog ==
 
+= 1.4 =
+
+Added clearer instructions, plus new options: automatically redirect users
+to Login via Google; plus force users to fully approve access to their
+Google account every time they login (allowing them to switch accounts if only
+logged into the wrong one, as well as making the process clearer).
+
 = 1.3 =
 Much neater support for redirecting users to most appropriate page post-login,
 especially on multisite installations; Better notices guiding admins through 
