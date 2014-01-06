@@ -35,7 +35,7 @@ class core_google_apps_login {
 		$client->setRedirectUri($this->get_login_url());
 				
 		$client->setScopes(Array('openid', 'email', 'https://www.googleapis.com/auth/userinfo.profile'));
-		$client->setApprovalPrompt('auto');
+		$client->setApprovalPrompt($options['ga_force_permissions'] ? 'force' : 'auto');
 		
 		$oauthservice = new Google_Oauth2Service($client);
 		
@@ -93,7 +93,33 @@ class core_google_apps_login {
 	}
 	
 	public function ga_login_form() {
+		$options = $this->get_option_galogin();
+		
 		$authUrl = $this->ga_start_auth_get_url();
+		
+		$do_autologin = false;
+		
+		if (isset($_GET['gaautologin'])) { // This GET param can always override the option set in admin pabel
+			$do_autologin = $_GET['gaautologin'] == 'true';
+		}
+		elseif (($options['ga_auto_login'] && count($_GET) == 0)) {
+			$do_autologin = true;
+		}
+
+		if ($do_autologin) {
+			if (!headers_sent()) {
+				wp_redirect($authUrl);
+				exit;
+			}
+			else { ?>
+				<p><b>Redirecting to <a href="<?php echo $authUrl; ?>">Login via Google</a>...</b></p>
+				<script type="text/javascript">
+				window.location = "<?php echo $authUrl; ?>";
+				</script>
+			<?php 
+			}
+		}
+		
 ?>
 		<div class="galogin"> 
 			<a href="<?php echo $authUrl; ?>">or <b>Login with Google</b></a>
@@ -308,6 +334,7 @@ class core_google_apps_login {
 		
 		$this->ga_admin_init_main();
 		$this->ga_admin_init_domain();
+		$this->ga_admin_init_advanced();
 		$this->ga_admin_init_multisite();
 		
 		// Admin notice that configuration is required
@@ -347,7 +374,18 @@ class core_google_apps_login {
 			array($this, 'ga_do_settings_ms_usesubsitecallback'), $this->get_options_name(), 'galogin_multisite_section');
 		}
 	}
-		
+
+	public function ga_admin_init_advanced() {
+		add_settings_section('galogin_advanced_section', 'Advanced Options',
+		array($this, 'ga_advancedsection_text'), $this->get_options_name());
+			
+		add_settings_field('ga_force_permissions', 'Force user to confirm Google permissions every time',
+		array($this, 'ga_do_settings_force_permissions'), $this->get_options_name(), 'galogin_advanced_section');
+
+		add_settings_field('ga_auto_login', 'Automatically redirect to Google from login page',
+		array($this, 'ga_do_settings_auto_login'), $this->get_options_name(), 'galogin_advanced_section');		
+	}
+	
 	public function ga_admin_menu() {
 		if (is_multisite()) {
 			add_submenu_page( 'settings.php', 'Google Apps Login settings', 'Google Apps Login',
@@ -371,7 +409,16 @@ class core_google_apps_login {
 		  
 		<div>
 		<h2>Google Apps Login setup</h2>
-		Set up your website to enable Google logins.
+		
+		<p>To set up your website to enable Google logins, you will need to follow instructions specific to your website.</p>
+		
+		<p><a href="<?php echo $this->calculate_instructions_url(); ?>#config" target="gainstr">Click here to open your 
+		personalized instructions in a new window</a></p>
+		
+		<?php 
+		$this->ga_section_text_end();
+		?>
+		
 		<form action="<?php echo $submit_page; ?>" method="post">
 		<?php settings_fields($this->get_options_pagename()); ?>
 		<?php do_settings_sections($this->get_options_name()); ?>
@@ -423,43 +470,10 @@ class core_google_apps_login {
 	
 	public function ga_mainsection_text() {
 		?>
-		<p>The Google Apps domain admin needs to go to
-			 <a href="https://cloud.google.com/console" target="_blank">https://cloud.google.com/console</a>. If you 
-			 are not the domain admin, you may still have permissions to use the console, so just try it. If you are 
-			 not using Google Apps, then just use your regular Gmail account to access the console.
+		<p>The instructions above will guide you to Google's Cloud Console where you will enter two URLs, and also
+		obtain two codes (Client ID and Client Secret) which you will need to enter in the boxes below.
 		</p>
-		<p>There, create a new project (any name is fine, and just leave Project ID as it is) - you may be required to 
-		accept a verification phone call or SMS from Google.</p>
-		
-		<p>Then create a new 'Client ID' within the project, of type 'Web Application'. To create this, 
-		you need to click into the new project, then click <i>APIs &amp; Auth</i> in the left-hand menu. 
-		Click <i>Credentials</i> beneath that, then click the red <i>Create New Client ID</i> button.
-		Make sure you select <i>Web Application</i> as the Platform type.
-		</p>
-		<p>You must input, into your new Google 'Client ID', the following items:
-		<ul style="margin-left: 10px;">
-			<li>Authorized Javascript origins: <?php echo (is_ssl() || force_ssl_login() || force_ssl_admin() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].'/'; ?></li>
-			<li>Authorized redirect URI: <?php echo $this->get_login_url(); ?></li>
-		</ul>
-		</p>
-		<p>
-		Once you have created the application (click the blue <i>Create Client ID</i> button), you need to turn to the
-		 <i>Client ID for web application</i> section to be able to complete
-		 the following steps. (<b>Not</b> the <i>Compute Engine and App Engine</i> section at the top.)
-		</p> 
-
-		<p>You will see a Client ID and Client Secret which you must copy
-		and paste into the boxes below on this screen - i.e. back in your Wordpress admin, right here.</p>
-		
-		<p><b>Optional:</b> In the Google Cloud Console, you can configure some things your users will see when they
-		login. By default, Google will tell them they are authorizing 'Project Default Service Account', which is
-		not very user friendly. You can change this to your company or blog name (and add your logo etc) by clicking
-		<i>Consent screen</i> (which is another sub-menu of <i>APIs &amp; Auth</i>).
-		</p> 
-		
 		<?php
-		
-		$this->ga_section_text_end();
 	}
 	
 	protected function ga_section_text_end() {
@@ -467,18 +481,33 @@ class core_google_apps_login {
 	
 	public function ga_multisitesection_text() {
 		?>
-			<p>These settings are for multisite admins only. By default, all logins need to be submitted via the root site
-			(since that is the only Redirect URL you were asked to submit to Google Cloud Console above).
-			If you have a reason to register Redirect URLs for each of your sub-sites too, tick the box below to
-			have all logins submitted to the sub-site they were invoked on.
+			<p>This setting is for multisite admins only. See <a href="<?php echo $this->calculate_instructions_url('m'); ?>#multisite" target="gainstr">instructions here</a>.
 			 </p>
 		<?php
 	}
-		
+	
 	public function ga_do_settings_ms_usesubsitecallback() {
 		$options = $this->get_option_galogin();
 		echo "<input id='input_ga_ms_usesubsitecallback' name='".$this->get_options_name()."[ga_ms_usesubsitecallback]' type='checkbox' ".($options['ga_ms_usesubsitecallback'] ? 'checked' : '')." />";
-		echo "<div>Leave unchecked in most cases</div>";
+		echo "<div>Leave unchecked if in doubt</div>";
+	}
+	
+	public function ga_advancedsection_text() {
+		?>
+				<p>Once you have the plugin working, you can try these settings to customize the login flow for your users.
+				See <a href="<?php echo $this->calculate_instructions_url('a'); ?>#advanced" target="gainstr">instructions here</a>.
+				 </p>
+			<?php
+		}
+
+	public function ga_do_settings_force_permissions() {
+		$options = $this->get_option_galogin();
+		echo "<input id='input_ga_force_permissions' name='".$this->get_options_name()."[ga_force_permissions]' type='checkbox' ".($options['ga_force_permissions'] ? 'checked' : '')." />";
+	}
+
+	public function ga_do_settings_auto_login() {
+		$options = $this->get_option_galogin();
+		echo "<input id='input_ga_auto_login' name='".$this->get_options_name()."[ga_auto_login]' type='checkbox' ".($options['ga_auto_login'] ? 'checked' : '')." />";
 	}
 	
 	public function ga_options_validate($input) {
@@ -502,6 +531,8 @@ class core_google_apps_login {
 			);
 		}
 		$newinput['ga_ms_usesubsitecallback'] = isset($input['ga_ms_usesubsitecallback']) ? $input['ga_ms_usesubsitecallback'] : false;
+		$newinput['ga_force_permissions'] = isset($input['ga_force_permissions']) ? $input['ga_force_permissions'] : false;
+		$newinput['ga_auto_login'] = isset($input['ga_auto_login']) ? $input['ga_auto_login'] : false;
 		$newinput['ga_version'] = $this->PLUGIN_VERSION;
 		return $newinput;
 	}
@@ -522,7 +553,12 @@ class core_google_apps_login {
 	}
 
 	protected function get_default_options() {
-		return Array('ga_version' => $this->PLUGIN_VERSION, 'ga_clientid' => '', 'ga_clientsecret' => '', 'ga_ms_usesubsitecallback' => false);
+		return Array('ga_version' => $this->PLUGIN_VERSION, 
+						'ga_clientid' => '', 
+						'ga_clientsecret' => '', 
+						'ga_ms_usesubsitecallback' => false,
+						'ga_force_permissions' => false,
+						'ga_auto_login' => false);
 	}
 	
 	protected $ga_options = null;
@@ -574,6 +610,24 @@ class core_google_apps_login {
 			);
 			exit;
 		}
+	}
+	
+	protected function calculate_instructions_url($refresh='n') {
+		return add_query_arg(
+					array( 'garedirect' => urlencode( $this->get_login_url() ),
+							'gaorigin' => urlencode( (is_ssl() || force_ssl_login() || force_ssl_admin() 
+											? 'https://' : 'http://').$_SERVER['HTTP_HOST'].'/' ),
+							'ganotms' => is_multisite() ? 'false' : 'true',
+							'gar' => urlencode( $refresh ),
+							'utm_source' => 'Admin%20Instructions',
+							'utm_medium' => 'freemium',
+							'utm_campaign' => 'Freemium' ),
+						$this->get_wpglogincom_baseurl()
+				);
+	}
+	
+	protected function get_wpglogincom_baseurl() {
+		return 'http://wp-glogin.com/installing-google-apps-login/basic-setup/';
 	}
 	
 	// PLUGINS PAGE
