@@ -3,7 +3,7 @@ Contributors: danlester
 Tags: login, google, authentication, oauth2, oauth, admin, google apps, sso, single-sign-on, auth, intranet
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 1.4
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -99,6 +99,10 @@ network-wide for security reasons.
 There are many different possible configurations of multisite WordPress, however, so you must test carefully if you 
 have any other plugins or special setup.
 
+In a multisite setup, you will see an extra option in Settings -> Google Apps Login, named 'Use sub-site specific callback 
+from Google'. Read details in the configuration instructions (linked from the Settings page). This setting will need to be 
+ON if you are using any domain mapping plugin, and extra Redirect URIs will need to be registered in Google Cloud Console.
+
 = Is it secure? =
 
 Yes, and depending on your setup, it can be much more secure than just using
@@ -137,6 +141,13 @@ the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
 == Changelog ==
+
+= 2.0 =
+
+Our platform provides centralized setup and management of Google-related features in your 
+WordPress site and plugins.
+
+Other developers can easily extend our Google authentication into their own plugins. 
 
 = 1.4 =
 

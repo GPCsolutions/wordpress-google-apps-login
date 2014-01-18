@@ -6,7 +6,7 @@
 
 class core_google_apps_login {
 	
-	public function __construct() {
+	protected function __construct() {
 		$this->add_actions();
 	}
 	
@@ -34,7 +34,9 @@ class core_google_apps_login {
 		$client->setClientSecret($options['ga_clientsecret']);
 		$client->setRedirectUri($this->get_login_url());
 				
-		$client->setScopes(Array('openid', 'email', 'https://www.googleapis.com/auth/userinfo.profile'));
+		$scopes = array_unique(apply_filters('gal_gather_scopes',
+				Array('openid', 'email', 'https://www.googleapis.com/auth/userinfo.profile')));
+		$client->setScopes($scopes);
 		$client->setApprovalPrompt($options['ga_force_permissions'] ? 'force' : 'auto');
 		
 		$oauthservice = new Google_Oauth2Service($client);
@@ -630,6 +632,13 @@ class core_google_apps_login {
 		return 'http://wp-glogin.com/installing-google-apps-login/basic-setup/';
 	}
 	
+	// Google Apps Login platform
+	
+	public function gal_get_clientid() {
+		$options = $this->get_option_galogin();
+		return $options['ga_clientid'];
+	}
+	
 	// PLUGINS PAGE
 	
 	public function ga_plugin_action_links( $links, $file ) {
@@ -655,6 +664,8 @@ class core_google_apps_login {
 		add_action('admin_init', array($this, 'ga_admin_init'));
 				
 		add_action(is_multisite() ? 'network_admin_menu' : 'admin_menu', array($this, 'ga_admin_menu'));
+		
+		add_filter('gal_get_clientid', Array($this, 'gal_get_clientid') );
 
 		if (is_multisite()) {
 			add_filter('network_admin_plugin_action_links', array($this, 'ga_plugin_action_links'), 10, 2 );
