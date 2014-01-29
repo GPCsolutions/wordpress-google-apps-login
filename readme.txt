@@ -12,9 +12,38 @@ Simple secure login and user management for Wordpress through your Google Apps d
 
 == Description ==
 
-Google Apps Login allows existing Wordpress user accounts to login to the website using Google to securely authenticate 
+Google Apps Login allows existing Wordpress user accounts to login to your website using Google to securely authenticate 
 their account. This means that if they are already logged into Gmail for example, they can simply click their way
 through the Wordpress login screen - no username or password is explicitly required!
+
+Google Apps Login uses the latest **secure OAuth2 authentication recommended by Google**, including 2-factor Auth 
+if enabled for your Google Apps accounts.
+
+Plugin setup requires you to have admin access to any Google Apps domain, or a regular Gmail account, to register and
+obtain two simple codes from Google.
+
+= Support and Premium features =
+
+Full support and premium features are also available for purchase:
+
+Eliminate the need for Google Apps domain admins to  separately manage WordPress user accounts, and get piece 
+of mind that only authorized employees have access to the organizations's websites and intranet.
+
+See [http://wp-glogin.com/](http://wp-glogin.com/)
+
+= Extensible Platform =
+
+Google Apps Login allows you to centralize your site's Google functionality and build your own extensions, or use
+third-party extensions, which require no configuration themselves and share the same user authentication and 
+permissions that users already allowed for Google Apps Login itself.
+
+Using our platform, your website appears to Google accounts as one unified 'web application', making it more secure 
+and easier to manage.
+
+[Google Drive Embedder](http://wordpress.org/plugins/google-drive-embedder/) is our free extension plugin allowing 
+users to browse for Google Drive documents to embed directly in their posts or pages.
+
+= Requirements =
 
 One-click login will work for the following domains and user accounts:
 
@@ -23,28 +52,15 @@ One-click login will work for the following domains and user accounts:
 *  Google Apps for Non-profits
 *  Personal gmail.com and googlemail.com emails
 
-Plugin setup requires you to have admin access to any Google Apps domain, or a regular Gmail account, to register and
-obtain two simple codes from Google.
+Google Apps Login uses the latest secure OAuth2 authentication recommended by Google. Other 3rd party authentication 
+plugins may allow you to use your Google username and password to login, but they do not do this securely unless 
+they also use OAuth2. This is discussed further in the [FAQ](http://wordpress.org/plugins/google-apps-login/faq/).
 
-**Full support and premium features are also available for purchase:**
+= Website =
 
-**Eliminate the need for Google Apps domain admins to  separately manage WordPress user accounts, and get piece 
-of mind that only authorized employees have access to the organizations's websites and intranet.**
-
-**See [http://wp-glogin.com/](http://wp-glogin.com/)**
-
-Google Apps Login uses the latest secure OAuth2 authentication recommended by Google. Other 3rd party authentication plugins 
-may allow you to use your Google username and password to login, but they do not do this securely:
-
-*  Other plugins: Users' passwords will be handled by your blog's server, potentially unencrypted. If these are compromised,
-hackers would be able to gain access to your Google email accounts! This includes all 
-[Google Apps](http://www.google.com/enterprise/apps/business/products.html) (Gmail, Drive, Calendar 
-etc), and any other services which use your Google account to login.
-
-*  This plugin: Users' passwords are only ever submitted to Google itself, then Google is asked to authenticate the user to
-your WordPress site. This means Multi-factor Authentication can still be used (if set up on your Google account). 
-Your website only requires permission to authenticate the user and obtain basic profile data - it can never have access to 
-your emails and other data.
+Please see our website [http://wp-glogin.com/](http://wp-glogin.com/) for more information about this free plugin 
+and extra features available in our Premium upgrade, plus support details and useful guides for admins of WordPress 
+sites and Google Apps.
 
 == Screenshots ==
 
@@ -114,6 +130,21 @@ and it is your responsibility to ensure that your site is secure in the way you 
 In particular, other plugins may conflict with each other, and different WordPress versions and configurations
 may render your site insecure.
 
+= How does it compare to other 3rd party auth plugins? =
+
+Google Apps Login uses the latest secure OAuth2 authentication recommended by Google. Other 3rd party authentication plugins 
+may allow you to use your Google username and password to login, but they do not always do this securely:
+
+*  Other plugins: Users' passwords may be handled by your blog's server, potentially unencrypted. If these are compromised,
+hackers would be able to gain access to your Google email accounts! This includes all 
+[Google Apps](http://www.google.com/enterprise/apps/business/products.html) (Gmail, Drive, Calendar 
+etc), and any other services which use your Google account to login.
+
+*  This plugin: Users' passwords are only ever submitted to Google itself, then Google is asked to authenticate the user to
+your WordPress site. This means Multi-factor Authentication can still be used (if set up on your Google account). 
+Your website only requires permission to authenticate the user and obtain basic profile data - it can never have access to 
+your emails and other data.
+
 = What are the system requirements? =
 
 *  PHP 5.2.x or higher with Curl and JSON extensions
@@ -139,6 +170,10 @@ If you cannot install from the WordPress plugins directory for any reason, and n
 1. Upload `googleappslogin` directory and contents to the `/wp-content/plugins/` directory, or upload the ZIP file directly in
 the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
+
+Personalized instructions to configure the plugin by registering your site with Google Apps are linked from 
+the WordPress admin panel once you have activated the plugin. For a (non-personalized) preview of these instructions 
+please [click here](http://wp-glogin.com/installing-google-apps-login/basic-setup/).
 
 == Changelog ==
 
