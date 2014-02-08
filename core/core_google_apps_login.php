@@ -24,8 +24,14 @@ class core_google_apps_login {
 	}
 	
 	protected function createGoogleClient($options) {
-		require_once( plugin_dir_path(__FILE__).'/../googleclient/Google_Client.php' );
-		require_once( plugin_dir_path(__FILE__).'/../googleclient/contrib/Google_Oauth2Service.php' );
+		// Another plugin might have already included these files
+		// Unfortunately we just have to hope they have a similar enough version
+		if (!class_exists('Google_Client')) {
+			require_once( plugin_dir_path(__FILE__).'/../googleclient/Google_Client.php' );
+		}
+		if (!class_exists('Google_Oauth2Service')) {
+			require_once( plugin_dir_path(__FILE__).'/../googleclient/contrib/Google_Oauth2Service.php' );
+		}
 		
 		$client = new Google_Client();
 		$client->setApplicationName("Wordpress Blog");
