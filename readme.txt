@@ -3,7 +3,7 @@ Contributors: danlester
 Tags: login, google, authentication, oauth2, oauth, admin, google apps, sso, single-sign-on, auth, intranet
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 2.0
+Stable tag: 2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -52,6 +52,17 @@ One-click login will work for the following domains and user accounts:
 Google Apps Login uses the latest secure OAuth2 authentication recommended by Google. Other 3rd party authentication 
 plugins may allow you to use your Google username and password to login, but they do not do this securely unless 
 they also use OAuth2. This is discussed further in the [FAQ](http://wordpress.org/plugins/google-apps-login/faq/).
+
+= Translations =
+
+This plugin currently operates in the following languages:
+
+* English - default
+* Serbo-Croatian (sr_RS) - translated by Borisa Djuraskovic of [Web Hosting Hub](http://www.webhostinghub.com/)
+
+We are looking for volunteers to translate into their own language. If you would like to contribute a translation, please 
+use the template POT file in the 'lang' folder, then email PO and MO files to contact@wp-glogin.com. 
+Please ask if you need instructions on how to produce those files.
 
 = Website =
 
@@ -173,6 +184,11 @@ the WordPress admin panel once you have activated the plugin. For a (non-persona
 please [click here](http://wp-glogin.com/installing-google-apps-login/basic-setup/).
 
 == Changelog ==
+
+= 2.1 =
+
+New design to support multiple languages. Includes Serbo-Croatian. Fixed some conflicts 
+with other plugins when used in 'auto redirect to Google' mode.
 
 = 2.0 =
 

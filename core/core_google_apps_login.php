@@ -116,11 +116,16 @@ class core_google_apps_login {
 		
 		$do_autologin = false;
 		
-		if (isset($_GET['gaautologin'])) { // This GET param can always override the option set in admin pabel
+		if (isset($_GET['gaautologin'])) { // This GET param can always override the option set in admin panel
 			$do_autologin = $_GET['gaautologin'] == 'true';
 		}
-		elseif (($options['ga_auto_login'] && count($_GET) == 0)) {
-			$do_autologin = true;
+		elseif ($options['ga_auto_login']) {
+			// Respect the option unless GET params mean we should remain on login page (e.g. ?loggedout=true)
+			if (count($_GET) == (isset($_GET['redirect_to']) ? 1 : 0) 
+									+ (isset($_GET['reauth']) ? 1 : 0) 
+									+ (isset($_GET['action']) && $_GET['action']=='login' ? 1 : 0)) {
+				$do_autologin = true;
+			}
 		}
 
 		if ($do_autologin) {
@@ -347,13 +352,10 @@ class core_google_apps_login {
 	}
 	
 	public function ga_admin_auth_message() {
-		?>
-		<div class="error">
-        	<p>You will need to complete Google Apps Login 
-        		<a href="<?php echo $this->get_settings_url(); ?>">Settings</a> 
-        		in order for the plugin to work
-        	</p>
-    	</div> <?php
+		echo '<div class="error"><p>';
+        echo sprintf( __('You will need to complete Google Apps Login <a href="%s">Settings</a> in order for the plugin to work', 'google-apps-login'), 
+        			esc_url($this->get_settings_url()) ); 
+        echo '</p></div>';
 	}
 	
 	public function ga_admin_init() {
@@ -377,6 +379,12 @@ class core_google_apps_login {
 				}
 			}
 		}
+		else {
+			$this->set_other_admin_notices();
+		}
+	}
+	
+	protected function set_other_admin_notices() {
 	}
 	
 	protected function ga_admin_init_main() {
