@@ -128,7 +128,7 @@ class core_google_apps_login {
 			}
 		}
 
-		if ($do_autologin) {
+		if ($do_autologin && $options['ga_clientid'] != '' && $options['ga_clientsecret'] != '') {
 			if (!headers_sent()) {
 				wp_redirect($authUrl);
 				exit;

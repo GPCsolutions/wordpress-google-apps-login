@@ -40,6 +40,8 @@ and easier to manage.
 [Google Drive Embedder](http://wordpress.org/plugins/google-drive-embedder/) is our free extension plugin allowing 
 users to browse for Google Drive documents to embed directly in their posts or pages.
 
+Google Apps Login works on single or multisite WordPress websites or private intranets.
+
 = Requirements =
 
 One-click login will work for the following domains and user accounts:
