@@ -402,7 +402,7 @@ class core_google_apps_login {
 	
 	public function ga_admin_init_multisite() {
 		if (is_multisite()) {
-			add_settings_section('galogin_multisite_section', _( 'Multisite Options' , 'google-apps-login'),
+			add_settings_section('galogin_multisite_section', __( 'Multisite Options' , 'google-apps-login'),
 			array($this, 'ga_multisitesection_text'), $this->get_options_name());
 			
 			add_settings_field('ga_ms_usesubsitecallback', __( 'Use sub-site specific callback from Google' , 'google-apps-login'),
