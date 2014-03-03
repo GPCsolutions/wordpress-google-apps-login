@@ -3,7 +3,7 @@ Contributors: danlester
 Tags: login, google, authentication, oauth2, oauth, admin, google apps, sso, single-sign-on, auth, intranet
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -61,6 +61,7 @@ This plugin currently operates in the following languages:
 
 * English - default
 * Serbo-Croatian (sr_RS) - translated by Borisa Djuraskovic of [Web Hosting Hub](http://www.webhostinghub.com/)
+* Arabic (ar_SA) - translated by [Jeremy Varnham](http://profiles.wordpress.org/jvarn13)
 
 We are looking for volunteers to translate into their own language. If you would like to contribute a translation, please 
 use the template POT file in the 'lang' folder, then email PO and MO files to contact@wp-glogin.com. 
@@ -186,6 +187,10 @@ the WordPress admin panel once you have activated the plugin. For a (non-persona
 please [click here](http://wp-glogin.com/installing-google-apps-login/basic-setup/).
 
 == Changelog ==
+
+= 2.2 =
+
+Fix for an error seen on multisite admin. Added Arabic translation.
 
 = 2.1 =
 
