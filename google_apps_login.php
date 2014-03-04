@@ -32,7 +32,7 @@ class basic_google_apps_login extends core_google_apps_login {
 	public function ga_section_text_end() {
 	?>
 		<p><b><?php _e( 'For full support, and premium features that greatly simplify WordPress user management for admins, please visit:' , 'google-apps-login'); ?>
-		<a href="http://wp-glogin.com/?utm_source=Admin%20Promo&utm_medium=freemium&utm_campaign=Freemium" target="_blank">http://wp-glogin.com/</a></b>
+		<a href="http://wp-glogin.com/google-apps-login-premium/?utm_source=Admin%20Promo&utm_medium=freemium&utm_campaign=Freemium" target="_blank">http://wp-glogin.com/</a></b>
 		</p>
 	<?php
 	}

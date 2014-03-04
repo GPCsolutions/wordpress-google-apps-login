@@ -26,7 +26,7 @@ Full support and premium features are also available for purchase:
 Eliminate the need for Google Apps domain admins to  separately manage WordPress user accounts, and get piece 
 of mind that only authorized employees have access to the organizations's websites and intranet.
 
-See [http://wp-glogin.com/](http://wp-glogin.com/)
+See [http://wp-glogin.com/](http://wp-glogin.com/?utm_source=Login%20Readme%20Top&utm_medium=freemium&utm_campaign=Freemium)
 
 = Extensible Platform =
 
@@ -37,7 +37,7 @@ permissions that users already allowed for Google Apps Login itself.
 Using our platform, your website appears to Google accounts as one unified 'web application', making it more secure 
 and easier to manage.
 
-[Google Drive Embedder](http://wordpress.org/plugins/google-drive-embedder/) is our free extension plugin allowing 
+[Google Drive Embedder](http://wp-glogin.com/wpgoogledriveembedder) is our free extension plugin allowing 
 users to browse for Google Drive documents to embed directly in their posts or pages.
 
 Google Apps Login works on single or multisite WordPress websites or private intranets.
@@ -69,7 +69,7 @@ Please ask if you need instructions on how to produce those files.
 
 = Website =
 
-Please see our website [http://wp-glogin.com/](http://wp-glogin.com/) for more information about this free plugin 
+Please see our website [http://wp-glogin.com/](http://wp-glogin.com/?utm_source=Login%20Readme%20Website&utm_medium=freemium&utm_campaign=Freemium) for more information about this free plugin 
 and extra features available in our Premium upgrade, plus support details and useful guides for admins of WordPress 
 sites and Google Apps.
 
@@ -83,7 +83,7 @@ sites and Google Apps.
 = How can I obtain support for this product? =
 
 Full support is available if you purchase the appropriate license from the author via:
-[http://wp-glogin.com/google-apps-login-premium/](http://wp-glogin.com/google-apps-login-premium/)
+[http://wp-glogin.com/google-apps-login-premium/](http://wp-glogin.com/google-apps-login-premium/?utm_source=Login%20Readme%20Premium&utm_medium=freemium&utm_campaign=Freemium)
 
 Please feel free to email [support@wp-glogin.com](mailto:support@wp-glogin.com) with any questions,
 as we may be able to help, but you may be required to purchase a support license if the problem
@@ -98,7 +98,7 @@ No, once you set up the plugin, any WordPress accounts whose email address corre
 whether on a different Google Apps domain or even a personal gmail.com account, will be able to use 'Login with 
 Google' to easily connect to your WordPress site.
 
-However, our [premium plugin](http://wp-glogin.com/google-apps-login-premium/) has features that greatly simplify 
+However, our [premium plugin](http://wp-glogin.com/google-apps-login-premium/?utm_source=Login%20Readme%20FAQ&utm_medium=freemium&utm_campaign=Freemium) has features that greatly simplify 
 your WordPress user management if your WordPress users are mostly on the same Google Apps domain(s).
 
 = Does the plugin work with HTTP or HTTPS login pages? =
