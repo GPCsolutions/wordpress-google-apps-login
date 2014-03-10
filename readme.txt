@@ -163,6 +163,16 @@ your emails and other data.
 
 And you will need a Google account to set up the plugin.
 
+= I install the plugin, and my wp-login.php page is just blank =
+
+The only time we've seen users experience a blank screen has been because they don't have CURL enabled on their server. 
+
+Read [this article](https://codex.wordpress.org/Debugging_in_WordPress) describing how you can debug and (hopefully) get 
+an error message to see if that is the problem.
+
+Or, since most often the problem is that CURL needs installing, it may be easier for you to jump straight to finding out 
+whether CURL is installed, and enabling it if not. If that doesn't solve the problem, you may need to debug as above.
+
 == Installation ==
 
 To set up the plugin, you will need access to a Google Apps domain as an administrator, or just a regular Gmail account.
