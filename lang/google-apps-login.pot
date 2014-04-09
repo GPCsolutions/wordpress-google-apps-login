@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/googleappslogin\n"
-"POT-Creation-Date: 2014-02-17 16:39:40+00:00\n"
+"POT-Creation-Date: 2014-04-09 12:45:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,223 +12,231 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: basic_google_apps_login.php:34
+#: basic_google_apps_login.php:47
 msgid "For full support, and premium features that greatly simplify WordPress user management for admins, please visit:"
 msgstr ""
 
-#: basic_google_apps_login.php:67
+#: basic_google_apps_login.php:80
+msgid "The Domain Control section is only applicable to the premium version of this plugin."
+msgstr ""
+
+#: basic_google_apps_login.php:82
+msgid "In this basic version of the plugin, any <i>existing</i> WordPress account corresponding to a Google email address can authenticate via Google."
+msgstr ""
+
+#: basic_google_apps_login.php:132
 msgid "Completely forget about WordPress user management - upgrade to <a href=\"%s\">Google Apps Login premium</a> to automatically sync users from your Google Apps domain"
 msgstr ""
 
-#: basic_google_apps_login.php:69
+#: basic_google_apps_login.php:134
 msgid "Purchase"
 msgstr ""
 
-#: basic_google_apps_login.php:70
+#: basic_google_apps_login.php:135
 msgid "No Thanks"
 msgstr ""
 
-#: core/core_google_apps_login.php:137
+#: core/core_google_apps_login.php:157
 msgid "Redirecting to <a href=\"%s\">Login via Google</a>..."
 msgstr ""
 
-#: core/core_google_apps_login.php:147
+#: core/core_google_apps_login.php:167
 msgid "Login with Google"
 msgstr ""
 
-#: core/core_google_apps_login.php:154
+#: core/core_google_apps_login.php:171
+msgid "Powered by "
+msgstr ""
+
+#: core/core_google_apps_login.php:185
 msgid "or"
 msgstr ""
 
-#: core/core_google_apps_login.php:177
+#: core/core_google_apps_login.php:217
 msgid "You did not grant access"
 msgstr ""
 
-#: core/core_google_apps_login.php:199
+#: core/core_google_apps_login.php:239
 msgid "Session mismatch - try again, but there could be a problem setting state"
 msgstr ""
 
-#: core/core_google_apps_login.php:205
+#: core/core_google_apps_login.php:245
 msgid "Session mismatch - try again, but there could be a problem passing state"
 msgstr ""
 
-#: core/core_google_apps_login.php:212
+#: core/core_google_apps_login.php:252
 msgid "Session mismatch - try again, but there could be a problem setting cookies"
 msgstr ""
 
-#: core/core_google_apps_login.php:240
+#: core/core_google_apps_login.php:281
 msgid "Email needs to be verified on your Google Account"
 msgstr ""
 
-#: core/core_google_apps_login.php:257
+#: core/core_google_apps_login.php:298
 msgid "User authenticated OK, but error fetching user details from Google"
 msgstr ""
 
-#: core/core_google_apps_login.php:276
+#: core/core_google_apps_login.php:317
 msgid "User %s not registered in Wordpress"
 msgstr ""
 
-#: core/core_google_apps_login.php:356
+#: core/core_google_apps_login.php:398
 msgid "You will need to complete Google Apps Login <a href=\"%s\">Settings</a> in order for the plugin to work"
 msgstr ""
 
-#: core/core_google_apps_login.php:391
-msgid "Main Settings"
-msgstr ""
-
-#: core/core_google_apps_login.php:394
-msgid "Client ID"
-msgstr ""
-
-#: core/core_google_apps_login.php:396
-msgid "Client Secret"
-msgstr ""
-
-#: core/core_google_apps_login.php:405
-msgid "Multisite Options"
-msgstr ""
-
-#: core/core_google_apps_login.php:408
-msgid "Use sub-site specific callback from Google"
-msgstr ""
-
-#: core/core_google_apps_login.php:414
-msgid "Advanced Options"
-msgstr ""
-
-#: core/core_google_apps_login.php:417
-msgid "Force user to confirm Google permissions every time"
-msgstr ""
-
-#: core/core_google_apps_login.php:420
-msgid "Automatically redirect to Google from login page"
-msgstr ""
-
-#: core/core_google_apps_login.php:426 core/core_google_apps_login.php:431
+#: core/core_google_apps_login.php:430 core/core_google_apps_login.php:435
 msgid "Google Apps Login settings"
 msgstr ""
 
-#: core/core_google_apps_login.php:426 core/core_google_apps_login.php:431
+#: core/core_google_apps_login.php:430 core/core_google_apps_login.php:435
 msgid "Google Apps Login"
 msgstr ""
 
-#: core/core_google_apps_login.php:446
+#: core/core_google_apps_login.php:455
 msgid "Google Apps Login setup"
 msgstr ""
 
-#: core/core_google_apps_login.php:448
+#: core/core_google_apps_login.php:461
 msgid "To set up your website to enable Google logins, you will need to follow instructions specific to your website."
 msgstr ""
 
-#: core/core_google_apps_login.php:451
+#: core/core_google_apps_login.php:464
 msgid "Click here to open your personalized instructions in a new window"
 msgstr ""
 
-#: core/core_google_apps_login.php:461
+#: core/core_google_apps_login.php:488
 msgid "Save Changes"
 msgstr ""
 
-#: core/core_google_apps_login.php:470
+#: core/core_google_apps_login.php:509
 msgid "Settings saved."
 msgstr ""
 
-#: core/core_google_apps_login.php:498 core/core_google_apps_login.php:506
+#: core/core_google_apps_login.php:536
+msgid "The <a href='%s'>instructions</a> above will guide you to Google's Cloud Console where you will enter two URLs, and also obtain two codes (Client ID and Client Secret) which you will need to enter in the boxes below."
+msgstr ""
+
+#: core/core_google_apps_login.php:541
+msgid "Client ID"
+msgstr ""
+
+#: core/core_google_apps_login.php:544 core/core_google_apps_login.php:550
 msgid "Normally something like %s"
 msgstr ""
 
-#: core/core_google_apps_login.php:512
-msgid "The instructions above will guide you to Google's Cloud Console where you will enter two URLs, and also obtain two codes (Client ID and Client Secret) which you will need to enter in the boxes below."
+#: core/core_google_apps_login.php:547
+msgid "Client Secret"
 msgstr ""
 
-#: core/core_google_apps_login.php:522
-msgid "This setting is for multisite admins only. See <a href=\"%s\" target=\"gainstr\">instructions here</a>."
-msgstr ""
-
-#: core/core_google_apps_login.php:531
-msgid "Leave unchecked if in doubt"
-msgstr ""
-
-#: core/core_google_apps_login.php:537
+#: core/core_google_apps_login.php:567
 msgid "Once you have the plugin working, you can try these settings to customize the login flow for your users."
 msgstr ""
 
-#: core/core_google_apps_login.php:538
+#: core/core_google_apps_login.php:568
 msgid "See <a href=\"%s\" target=\"gainstr\">instructions here</a>."
 msgstr ""
 
-#: core/core_google_apps_login.php:582
+#: core/core_google_apps_login.php:576
+msgid "Force user to confirm Google permissions every time"
+msgstr ""
+
+#: core/core_google_apps_login.php:584
+msgid "Automatically redirect to Google from login page"
+msgstr ""
+
+#: core/core_google_apps_login.php:592
+msgid "Display 'Powered By wp-glogin.com' on Login form"
+msgstr ""
+
+#: core/core_google_apps_login.php:598
+msgid "Multisite Options"
+msgstr ""
+
+#: core/core_google_apps_login.php:599
+msgid "This setting is for multisite admins only. See <a href=\"%s\" target=\"gainstr\">instructions here</a>."
+msgstr ""
+
+#: core/core_google_apps_login.php:604
+msgid "Use sub-site specific callback from Google"
+msgstr ""
+
+#: core/core_google_apps_login.php:608
+msgid "Leave unchecked if in doubt"
+msgstr ""
+
+#: core/core_google_apps_login.php:645
 msgid "The Client ID should be longer than that"
 msgstr ""
 
-#: core/core_google_apps_login.php:583
+#: core/core_google_apps_login.php:646
 msgid "The Client Secret should be longer than that"
 msgstr ""
 
-#: core/core_google_apps_login.php:588
+#: core/core_google_apps_login.php:651
 msgid "Unspecified error"
 msgstr ""
 
-#: core/core_google_apps_login.php:684
+#: core/core_google_apps_login.php:748
 msgid "Settings"
 msgstr ""
 
-#: premium_google_apps_login.php:87
+#: premium_google_apps_login.php:84
 msgid "User with email address %s must use Login with Google"
 msgstr ""
 
-#: premium_google_apps_login.php:115
+#: premium_google_apps_login.php:112
 msgid "User %s does not exist"
 msgstr ""
 
-#: premium_google_apps_login.php:124
+#: premium_google_apps_login.php:121
 msgid "Invalid email address"
 msgstr ""
 
-#: premium_google_apps_login.php:132
+#: premium_google_apps_login.php:129
 msgid "Email address needs to be in %s"
 msgstr ""
 
-#: premium_google_apps_login.php:135
+#: premium_google_apps_login.php:132
 msgid "%s not authorized"
 msgstr ""
 
-#: premium_google_apps_login.php:180
-msgid "Domain Control"
-msgstr ""
-
-#: premium_google_apps_login.php:183
-msgid "My Google Apps domain"
-msgstr ""
-
-#: premium_google_apps_login.php:185
-msgid "Auto-create new users on my domain"
-msgstr ""
-
-#: premium_google_apps_login.php:187
-msgid "Disable WordPress username/password login for my domain"
-msgstr ""
-
-#: premium_google_apps_login.php:189
-msgid "Default role for new Google users"
-msgstr ""
-
-#: premium_google_apps_login.php:195
+#: premium_google_apps_login.php:184
 msgid "By default, any existing account can authenticate either via Google (if a Gmail/Google Apps account), or by WordPress username/password."
 msgstr ""
 
-#: premium_google_apps_login.php:197
+#: premium_google_apps_login.php:186
 msgid "To allow special behaviour on your Google Apps domain (auto-create users who don't yet exist, or disable regular WordPress username/password access for your users), fill in the following section."
 msgstr ""
 
-#: premium_google_apps_login.php:199
+#: premium_google_apps_login.php:188
 msgid "Please read the <a href=\"%s\" target=\"gainstr\">instructions here</a> first."
 msgstr ""
 
-#: premium_google_apps_login.php:217
-msgid "Tick with caution - leave unchecked until you are confident Google Login is working for your own admin account"
+#: premium_google_apps_login.php:193
+msgid "My Google Apps domain"
 msgstr ""
 
-#: premium_google_apps_login.php:252
+#: premium_google_apps_login.php:198
+msgid "Auto-create new users on my domain"
+msgstr ""
+
+#: premium_google_apps_login.php:201
+msgid "Default role for new users"
+msgstr ""
+
+#: premium_google_apps_login.php:209
+msgid "Disable WordPress username/password login for my domain"
+msgstr ""
+
+#: premium_google_apps_login.php:214
+msgid "Completely hide WordPress username and password boxes"
+msgstr ""
+
+#: premium_google_apps_login.php:219
+msgid "Tick the last two with caution - leave unchecked until you are confident Google Login is working for your own admin account"
+msgstr ""
+
+#: premium_google_apps_login.php:253
 msgid "Domain name should be a space-separated list of valid domains, in lowercase letters (or blank)"
 msgstr ""
 
