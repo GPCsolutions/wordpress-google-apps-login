@@ -8,6 +8,11 @@ class core_google_apps_login {
 	
 	protected function __construct() {
 		$this->add_actions();
+		register_activation_hook($this->my_plugin_basename(), array( $this, 'ga_activation_hook' ) );
+	}
+	
+	// May be overridden in basic or premium
+	public function ga_activation_hook($network_wide) {
 	}
 	
 	public function ga_plugins_loaded() {
@@ -27,14 +32,14 @@ class core_google_apps_login {
 		return $this->newcookievalue;
 	}
 	
-	protected function createGoogleClient($options) {
+	protected function createGoogleClient($options, $includeoauth=false) {
 		// Another plugin might have already included these files
 		// Unfortunately we just have to hope they have a similar enough version
+		
+		set_include_path(get_include_path() . PATH_SEPARATOR . plugin_dir_path(__FILE__));
+		
 		if (!class_exists('Google_Client')) {
-			require_once( plugin_dir_path(__FILE__).'/../googleclient/Google_Client.php' );
-		}
-		if (!class_exists('Google_Oauth2Service')) {
-			require_once( plugin_dir_path(__FILE__).'/../googleclient/contrib/Google_Oauth2Service.php' );
+			require_once( 'Google/Client.php' );
 		}
 		
 		$client = new Google_Client();
@@ -49,12 +54,19 @@ class core_google_apps_login {
 		$client->setScopes($scopes);
 		$client->setApprovalPrompt($options['ga_force_permissions'] ? 'force' : 'auto');
 		
-		$oauthservice = new Google_Oauth2Service($client);
+		$oauthservice = null;
+		if ($includeoauth) {
+			if (!class_exists('Google_Service_Oauth2')) {
+				require_once( 'Google/Service/Oauth2.php' );
+			}
+			$oauthservice = new Google_Service_Oauth2($client);
+		}
 		
 		return Array($client, $oauthservice);
 	}
 	
 	public function ga_login_styles() {
+		$options = $this->get_option_galogin();
 		wp_enqueue_script('jquery');
 		 ?>
 	    <style type="text/css">
@@ -70,7 +82,7 @@ class core_google_apps_login {
 			    padding: 4px;
 			    height: 27px;
 			    font-size: 14px;
-			    margin-bottom: 16px;
+			    margin-bottom: <?php echo $options['ga_poweredby'] ? '6' : '16' ?>px;
 	        }
 	        
 	        form#loginform p.galogin a {
@@ -85,9 +97,17 @@ class core_google_apps_login {
 	        
 	        h3.galogin-or {
 	        	text-align: center;
+	        	margin-top: 16px;
 	        	margin-bottom: 16px;
 	        }
-	    </style>
+	        
+	        p.galogin-powered {
+			    font-size: 0.7em;
+			    font-style: italic;
+			    text-align: right;
+	        }
+	        
+	     </style>
 	<?php }
 	
 	// public in case widgets want to use it
@@ -147,15 +167,35 @@ class core_google_apps_login {
 			<a href="<?php echo $authUrl; ?>"><?php _e( 'Login with Google' , 'google-apps-login'); ?></a>
 		</p>
 		
+		<?php if ($options['ga_poweredby']) { ?>
+		<p class='galogin-powered'><?php esc_html_e( 'Powered by ' , 'google-apps-login'); ?><a href='http://wp-glogin.com/?utm_source=Login%20Form&utm_medium=freemium&utm_campaign=LoginForm' target="_blank">wp-glogin.com</a></p>
+		<?php } ?>
+		
 		<script>
 		jQuery(document).ready(function(){
 	        var loginform = jQuery('#loginform,#front-login-form');
 	        var googlelink = jQuery('p.galogin');
-	        loginform.prepend("<h3 class='galogin-or'><?php esc_html_e( 'or' , 'google-apps-login'); ?></h3>");
+	        var poweredby = jQuery('p.galogin-powered');
+
+	        <?php if ($this->should_hidewplogin($options)) { ?>
+				loginform.empty();
+			<?php 
+			} else {
+			?>
+	        	loginform.prepend("<h3 class='galogin-or'><?php esc_html_e( 'or' , 'google-apps-login'); ?></h3>");
+	        <?php } ?>
+	        
+	        if (poweredby) {
+	        	loginform.prepend(poweredby);
+	        }
 	        loginform.prepend(googlelink);
 		});
 		</script>
 <?php 	
+	}
+	
+	protected function should_hidewplogin($options) {
+		return false;
 	}
 	
 	protected function get_redirect_url() {
@@ -190,7 +230,7 @@ class core_google_apps_login {
 		}
 		
 		$options = $this->get_option_galogin();
-		$clients = $this->createGoogleClient($options);
+		$clients = $this->createGoogleClient($options, true);
 		$client = $clients[0]; 
 		$oauthservice = $clients[1];
 		
@@ -230,11 +270,12 @@ class core_google_apps_login {
 				 "hd": "danlester.com"
 				 */
 				$userinfo = $oauthservice->userinfo->get();
-				if ($userinfo && is_array($userinfo) && array_key_exists('email', $userinfo) 
-						&& array_key_exists('verified_email', $userinfo)) {
+				
+				if ($userinfo && is_object($userinfo) && property_exists($userinfo, 'email') 
+						&& property_exists($userinfo, 'verifiedEmail')) {
 					
-					$google_email = $userinfo['email'];
-					$google_verified_email = $userinfo['verified_email'];
+					$google_email = $userinfo->email;
+					$google_verified_email = $userinfo->verifiedEmail;
 					
 					if (!$google_verified_email) {
 						$user = new WP_Error('ga_login_error', __( 'Email needs to be verified on your Google Account' , 'google-apps-login') );
@@ -274,13 +315,14 @@ class core_google_apps_login {
 	
 	protected function createUserOrError($userinfo, $options) {
 		return( new WP_Error('ga_login_error', sprintf( __( 'User %s not registered in Wordpress' , 'google-apps-login'),
-												 $userinfo['email']) ) );
+												 $userinfo->email) ) );
 	}
 
 	protected function checkRegularWPLogin($user, $username, $password, $options) {
 		return $user;
 	}
 	
+	// Has content in Premium
 	protected function checkRegularWPError($user, $username, $password) {
 	}
 		
@@ -315,7 +357,7 @@ class core_google_apps_login {
 	
 	public function ga_init() {
 		if (!isset($_COOKIE['google_apps_login']) && $GLOBALS['pagenow'] == 'wp-login.php') {
-			setcookie('google_apps_login', $this->get_cookie_value(), time()+600, '/', defined(COOKIE_DOMAIN) ? COOKIE_DOMAIN : '' );
+			setcookie('google_apps_login', $this->get_cookie_value(), time()+1800, '/', defined(COOKIE_DOMAIN) ? COOKIE_DOMAIN : '' );
 		}
 	}
 	
@@ -360,12 +402,7 @@ class core_google_apps_login {
 	
 	public function ga_admin_init() {
 		register_setting( $this->get_options_pagename(), $this->get_options_name(), Array($this, 'ga_options_validate') );
-		
-		$this->ga_admin_init_main();
-		$this->ga_admin_init_domain();
-		$this->ga_admin_init_advanced();
-		$this->ga_admin_init_multisite();
-		
+				
 		// Admin notice that configuration is required
 		$options = $this->get_option_galogin();
 		
@@ -384,41 +421,8 @@ class core_google_apps_login {
 		}
 	}
 	
+	// Has content in Basic
 	protected function set_other_admin_notices() {
-	}
-	
-	protected function ga_admin_init_main() {
-		add_settings_section('galogin_main_section', __('Main Settings', 'google-apps-login'),
-		array($this, 'ga_mainsection_text'), $this->get_options_name());
-		
-		add_settings_field('ga_clientid', __('Client ID', 'google-apps-login'),
-		array($this, 'ga_do_settings_clientid'), $this->get_options_name(), 'galogin_main_section');
-		add_settings_field('ga_clientsecret', __('Client Secret', 'google-apps-login'),
-		array($this, 'ga_do_settings_clientsecret'), $this->get_options_name(), 'galogin_main_section');
-	}
-	
-	protected function ga_admin_init_domain() {
-	}
-	
-	public function ga_admin_init_multisite() {
-		if (is_multisite()) {
-			add_settings_section('galogin_multisite_section', __( 'Multisite Options' , 'google-apps-login'),
-			array($this, 'ga_multisitesection_text'), $this->get_options_name());
-			
-			add_settings_field('ga_ms_usesubsitecallback', __( 'Use sub-site specific callback from Google' , 'google-apps-login'),
-			array($this, 'ga_do_settings_ms_usesubsitecallback'), $this->get_options_name(), 'galogin_multisite_section');
-		}
-	}
-
-	public function ga_admin_init_advanced() {
-		add_settings_section('galogin_advanced_section', __( 'Advanced Options' , 'google-apps-login'),
-		array($this, 'ga_advancedsection_text'), $this->get_options_name());
-			
-		add_settings_field('ga_force_permissions', __( 'Force user to confirm Google permissions every time' , 'google-apps-login'),
-		array($this, 'ga_do_settings_force_permissions'), $this->get_options_name(), 'galogin_advanced_section');
-
-		add_settings_field('ga_auto_login', __( 'Automatically redirect to Google from login page' , 'google-apps-login'),
-		array($this, 'ga_do_settings_auto_login'), $this->get_options_name(), 'galogin_advanced_section');		
 	}
 	
 	public function ga_admin_menu() {
@@ -435,6 +439,10 @@ class core_google_apps_login {
 	}
 	
 	public function ga_options_do_page() {
+
+		wp_enqueue_script( 'gal_admin_js', $this->my_plugin_url().'js/gal-admin.js', array('jquery') );
+		wp_enqueue_style( 'gal_admin_css', $this->my_plugin_url().'css/gal-admin.css' );
+
 		$submit_page = is_multisite() ? 'edit.php?action='.$this->get_options_menuname() : 'options.php';
 		
 		if (is_multisite()) {
@@ -443,23 +451,54 @@ class core_google_apps_login {
 		?>
 		  
 		<div>
+		
 		<h2><?php _e('Google Apps Login setup', 'google-apps-login'); ?></h2>
+		
+		<div id="gal-tablewrapper">
+		
+		<div id="gal-tableleft" class="gal-tablecell">
 		
 		<p><?php _e( 'To set up your website to enable Google logins, you will need to follow instructions specific to your website.', 'google-apps-login'); ?></p>
 		
-		<p><a href="<?php echo $this->calculate_instructions_url(); ?>#config" target="gainstr"><?php 
+		<p><a href="<?php echo $this->calculate_instructions_url(); ?>#config" id="gal-personalinstrlink" class="button-secondary" target="gainstr"><?php 
 		_e( 'Click here to open your personalized instructions in a new window' , 'google-apps-login'); ?></a></p>
 		
+	
 		<?php 
 		$this->ga_section_text_end();
 		?>
 		
+		<h2 id="gal-tabs" class="nav-tab-wrapper">
+			<a href="#main" id="main-tab" class="nav-tab nav-tab-active">Main Setup</a>
+			<a href="#domain" id="domain-tab" class="nav-tab">Domain Control</a>
+			<a href="#advanced" id="advanced-tab" class="nav-tab">Advanced Options</a>
+		</h2>
+				
+		
 		<form action="<?php echo $submit_page; ?>" method="post">
-		<?php settings_fields($this->get_options_pagename()); ?>
-		<?php do_settings_sections($this->get_options_name()); ?>
-		 
-		<input name="Submit" type="submit" value="<?php esc_attr_e( 'Save Changes' , 'google-apps-login'); ?>" />
-		</form></div>  <?php
+		
+		<?php 
+		settings_fields($this->get_options_pagename());
+		$this->ga_mainsection_text();
+		$this->ga_domainsection_text();
+		$this->ga_advancedsection_text();
+		?>
+		
+		<p class="submit">
+			<input type="submit" value="<?php esc_attr_e( 'Save Changes' , 'google-apps-login'); ?>" class="button button-primary" id="submit" name="submit">
+		</p>
+		</form>
+		</div>
+
+		<?php $this->ga_options_do_sidebar(); ?>
+
+		</div>
+		
+		</div>  <?php
+	}
+	
+	// Has content in Basic
+	protected function ga_options_do_sidebar() {
 	}
 	
 	protected function ga_options_do_network_errors() {
@@ -491,65 +530,88 @@ class core_google_apps_login {
 		}
 	}
 	
-	public function ga_do_settings_clientid() {
-		$options = $this->get_option_galogin();
-		echo "<input id='input_ga_domainname' name='".$this->get_options_name()."[ga_clientid]' size='80' type='text' value='{$options['ga_clientid']}' />";
-		echo '<br /><span>';
-		printf( __('Normally something like %s', 'google-apps-login'), '1234567890123-w1dwn5pfgjeo96c73821dfbof6n4kdhw.apps.googleusercontent.com' );
-		echo '</span>';
-	}
-
-	public function ga_do_settings_clientsecret() {
-		$options = $this->get_option_galogin();
-		echo "<input id='input_ga_clientsecret' name='".$this->get_options_name()."[ga_clientsecret]' size='40' type='text' value='{$options['ga_clientsecret']}' />";
-		echo '<br /><span>';
-		printf( __('Normally something like %s', 'google-apps-login'), 'sHSfR4_jf_2jsy-kjPjgf2dT' );
-		echo '</span>';
-	}
-	
-	public function ga_mainsection_text() {
+	protected function ga_mainsection_text() {
+		echo '<div id="main-section" class="galtab active">';
 		echo '<p>';
-		_e( "The instructions above will guide you to Google's Cloud Console where you will enter two URLs, and also obtain two codes (Client ID and Client Secret) which you will need to enter in the boxes below.",
-			 'google-apps-login');
+		echo sprintf( __( "The <a href='%s'>instructions</a> above will guide you to Google's Cloud Console where you will enter two URLs, and also obtain two codes (Client ID and Client Secret) which you will need to enter in the boxes below.",
+			 'google-apps-login'), $this->calculate_instructions_url()."#config" );
 		echo '</p>';
+		
+		$options = $this->get_option_galogin();
+		echo '<label for="input_ga_clientid" class="textinput big">'.__('Client ID', 'google-apps-login').'</label>';
+		echo "<input id='input_ga_clientid' class='textinput' name='".$this->get_options_name()."[ga_clientid]' size='68' type='text' value='{$options['ga_clientid']}' />";
+		echo '<br class="clear"/><p class="desc big">';
+		printf( __('Normally something like %s', 'google-apps-login'), '1234567890123-w1dwn5pfgjeo96c73821dfbof6n4kdhw.apps.googleusercontent.com' );
+		echo '</p>';
+		
+		echo '<label for="input_ga_clientsecret" class="textinput big">'.__('Client Secret', 'google-apps-login').'</label>';
+		echo "<input id='input_ga_clientsecret' class='textinput' name='".$this->get_options_name()."[ga_clientsecret]' size='40' type='text' value='{$options['ga_clientsecret']}' />";
+		echo '<br class="clear" /><p class="desc big">';
+		printf( __('Normally something like %s', 'google-apps-login'), 'sHSfR4_jf_2jsy-kjPjgf2dT' );
+		echo '</p>';
+		
+		echo '</div>';
 	}
 	
+	// Has content in Basic
 	protected function ga_section_text_end() {
 	}
 	
-	public function ga_multisitesection_text() {
-		echo '<p>';	
-		printf( __('This setting is for multisite admins only. See <a href="%s" target="gainstr">instructions here</a>.', 'google-apps-login')
-					, $this->calculate_instructions_url('m').'#multisite' );
-		echo '</p>';
+	// Has content in Premium
+	protected function ga_domainsection_text() {
 	}
-	
-	public function ga_do_settings_ms_usesubsitecallback() {
-		$options = $this->get_option_galogin();
-		echo "<input id='input_ga_ms_usesubsitecallback' name='".$this->get_options_name()."[ga_ms_usesubsitecallback]' type='checkbox' ".($options['ga_ms_usesubsitecallback'] ? 'checked' : '')." />";
-		echo "<div>";
-		_e( 'Leave unchecked if in doubt' , 'google-apps-login');
-		echo "</div>";
-	}
-	
-	public function ga_advancedsection_text() {
+		
+	protected function ga_advancedsection_text() {
+		echo '<div id="advanced-section" class="galtab">';
 		echo '<p>';
 		printf( __('Once you have the plugin working, you can try these settings to customize the login flow for your users.', 'google-apps-login')
 				.' '.__('See <a href="%s" target="gainstr">instructions here</a>.', 'google-apps-login'),
 				$this->calculate_instructions_url('a').'#advanced' );
 		echo '</p>';
+
+		$options = $this->get_option_galogin();
+		
+		echo "<input id='input_ga_force_permissions' name='".$this->get_options_name()."[ga_force_permissions]' type='checkbox' ".($options['ga_force_permissions'] ? 'checked' : '')." class='checkbox' />";
+		echo '<label for="input_ga_force_permissions" class="checkbox plain">';
+		_e( 'Force user to confirm Google permissions every time' , 'google-apps-login' );
+		echo '</label>';
+		
+		echo '<br class="clear" />';
+		
+		echo "<input id='input_ga_auto_login' name='".$this->get_options_name()."[ga_auto_login]' type='checkbox' ".($options['ga_auto_login'] ? 'checked' : '')." class='checkbox' />";
+		
+		echo '<label for="input_ga_auto_login" class="checkbox plain">';
+		_e( 'Automatically redirect to Google from login page' , 'google-apps-login' );
+		echo '</label>';
+		
+		echo '<br class="clear" />';
+		
+		echo "<input id='input_ga_poweredby' name='".$this->get_options_name()."[ga_poweredby]' type='checkbox' ".($options['ga_poweredby'] ? 'checked' : '')." class='checkbox' />";
+		
+		echo '<label for="input_ga_poweredby" class="checkbox plain">';
+		_e( 'Display \'Powered By wp-glogin.com\' on Login form' , 'google-apps-login' );
+		echo '</label>';
+		
+		echo '<br class="clear" />';
+		
+		if (is_multisite()) {
+			echo '<h3>'.__( 'Multisite Options' , 'google-apps-login').'</h3><p>';
+			printf( __('This setting is for multisite admins only. See <a href="%s" target="gainstr">instructions here</a>.', 'google-apps-login')
+			, $this->calculate_instructions_url('m').'#multisite' );
+			echo '</p>';
+			echo "<input id='input_ga_ms_usesubsitecallback' name='".$this->get_options_name()."[ga_ms_usesubsitecallback]' type='checkbox' ".($options['ga_ms_usesubsitecallback'] ? 'checked' : '')." class='checkbox'/>";
+				
+			echo '<label for="input_ga_ms_usesubsitecallback" class="checkbox plain">'.__( 'Use sub-site specific callback from Google' , 'google-apps-login').'</label>';
+			echo '<br class="clear" />';
+			
+			echo '<p class="desc">';
+			_e( 'Leave unchecked if in doubt' , 'google-apps-login');
+			echo '</p>';
+		}
+		
+		echo '</div>';
 	}
 
-	public function ga_do_settings_force_permissions() {
-		$options = $this->get_option_galogin();
-		echo "<input id='input_ga_force_permissions' name='".$this->get_options_name()."[ga_force_permissions]' type='checkbox' ".($options['ga_force_permissions'] ? 'checked' : '')." />";
-	}
-
-	public function ga_do_settings_auto_login() {
-		$options = $this->get_option_galogin();
-		echo "<input id='input_ga_auto_login' name='".$this->get_options_name()."[ga_auto_login]' type='checkbox' ".($options['ga_auto_login'] ? 'checked' : '')." />";
-	}
-	
 	public function ga_options_validate($input) {
 		$newinput = Array();
 		$newinput['ga_clientid'] = trim($input['ga_clientid']);
@@ -570,9 +632,10 @@ class core_google_apps_login {
 			'error'
 			);
 		}
-		$newinput['ga_ms_usesubsitecallback'] = isset($input['ga_ms_usesubsitecallback']) ? $input['ga_ms_usesubsitecallback'] : false;
-		$newinput['ga_force_permissions'] = isset($input['ga_force_permissions']) ? $input['ga_force_permissions'] : false;
-		$newinput['ga_auto_login'] = isset($input['ga_auto_login']) ? $input['ga_auto_login'] : false;
+		$newinput['ga_ms_usesubsitecallback'] = isset($input['ga_ms_usesubsitecallback']) ? (boolean)$input['ga_ms_usesubsitecallback'] : false;
+		$newinput['ga_force_permissions'] = isset($input['ga_force_permissions']) ? (boolean)$input['ga_force_permissions'] : false;
+		$newinput['ga_auto_login'] = isset($input['ga_auto_login']) ? (boolean)$input['ga_auto_login'] : false;
+		$newinput['ga_poweredby'] = isset($input['ga_poweredby']) ? (boolean)$input['ga_poweredby'] : false;
 		$newinput['ga_version'] = $this->PLUGIN_VERSION;
 		return $newinput;
 	}
@@ -598,7 +661,8 @@ class core_google_apps_login {
 						'ga_clientsecret' => '', 
 						'ga_ms_usesubsitecallback' => false,
 						'ga_force_permissions' => false,
-						'ga_auto_login' => false);
+						'ga_auto_login' => false,
+						'ga_poweredby' => false);
 	}
 	
 	protected $ga_options = null;
