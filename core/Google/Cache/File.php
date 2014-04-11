@@ -26,13 +26,13 @@ require_once "Google/Cache/Exception.php";
  *
  * @author Chris Chabot <chabotc@google.com>
  */
-class Google_Cache_File extends Google_Cache_Abstract
+class GoogleGAL_Cache_File extends GoogleGAL_Cache_Abstract
 {
   const MAX_LOCK_RETRIES = 10;
   private $path;
   private $fh;
 
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     $this->path = $client->getClassConfig($this, 'directory');
   }
@@ -79,7 +79,7 @@ class Google_Cache_File extends Google_Cache_Abstract
   {
     $file = $this->getCacheFile($key);
     if (file_exists($file) && !unlink($file)) {
-      throw new Google_Cache_Exception("Cache file could not be deleted");
+      throw new GoogleGAL_Cache_Exception("Cache file could not be deleted");
     }
   }
   
@@ -101,7 +101,7 @@ class Google_Cache_File extends Google_Cache_Abstract
     $storageDir = $this->path . '/' . substr(md5($file), 0, 2);
     if ($forWrite && ! is_dir($storageDir)) {
       if (! mkdir($storageDir, 0755, true)) {
-        throw new Google_Cache_Exception("Could not create storage directory: $storageDir");
+        throw new GoogleGAL_Cache_Exception("Could not create storage directory: $storageDir");
       }
     }
     return $storageDir;

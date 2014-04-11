@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Urlshortener extends Google_Service
+class GoogleGAL_Service_Urlshortener extends GoogleGAL_Service
 {
   /** Manage your goo.gl short URLs. */
   const URLSHORTENER = "https://www.googleapis.com/auth/urlshortener";
@@ -40,16 +40,16 @@ class Google_Service_Urlshortener extends Google_Service
   /**
    * Constructs the internal representation of the Urlshortener service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'urlshortener/v1/';
     $this->version = 'v1';
     $this->serviceName = 'urlshortener';
 
-    $this->url = new Google_Service_Urlshortener_Url_Resource(
+    $this->url = new GoogleGAL_Service_Urlshortener_Url_Resource(
         $this,
         $this->serviceName,
         'url',
@@ -98,11 +98,11 @@ class Google_Service_Urlshortener extends Google_Service
  * The "url" collection of methods.
  * Typical usage is:
  *  <code>
- *   $urlshortenerService = new Google_Service_Urlshortener(...);
+ *   $urlshortenerService = new GoogleGAL_Service_Urlshortener(...);
  *   $url = $urlshortenerService->url;
  *  </code>
  */
-class Google_Service_Urlshortener_Url_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Urlshortener_Url_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -114,26 +114,26 @@ class Google_Service_Urlshortener_Url_Resource extends Google_Service_Resource
    *
    * @opt_param string projection
    * Additional information to return.
-   * @return Google_Service_Urlshortener_Url
+   * @return GoogleGAL_Service_Urlshortener_Url
    */
   public function get($shortUrl, $optParams = array())
   {
     $params = array('shortUrl' => $shortUrl);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Urlshortener_Url");
+    return $this->call('get', array($params), "GoogleGAL_Service_Urlshortener_Url");
   }
   /**
    * Creates a new short URL. (url.insert)
    *
-   * @param Google_Url $postBody
+   * @param GoogleGAL_Url $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Urlshortener_Url
+   * @return GoogleGAL_Service_Urlshortener_Url
    */
-  public function insert(Google_Service_Urlshortener_Url $postBody, $optParams = array())
+  public function insert(GoogleGAL_Service_Urlshortener_Url $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Urlshortener_Url");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Urlshortener_Url");
   }
   /**
    * Retrieves a list of URLs shortened by a user. (url.listUrl)
@@ -144,29 +144,29 @@ class Google_Service_Urlshortener_Url_Resource extends Google_Service_Resource
    * Token for requesting successive pages of results.
    * @opt_param string projection
    * Additional information to return.
-   * @return Google_Service_Urlshortener_UrlHistory
+   * @return GoogleGAL_Service_Urlshortener_UrlHistory
    */
   public function listUrl($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Urlshortener_UrlHistory");
+    return $this->call('list', array($params), "GoogleGAL_Service_Urlshortener_UrlHistory");
   }
 }
 
 
 
 
-class Google_Service_Urlshortener_AnalyticsSnapshot extends Google_Collection
+class GoogleGAL_Service_Urlshortener_AnalyticsSnapshot extends GoogleGAL_Collection
 {
-  protected $browsersType = 'Google_Service_Urlshortener_StringCount';
+  protected $browsersType = 'GoogleGAL_Service_Urlshortener_StringCount';
   protected $browsersDataType = 'array';
-  protected $countriesType = 'Google_Service_Urlshortener_StringCount';
+  protected $countriesType = 'GoogleGAL_Service_Urlshortener_StringCount';
   protected $countriesDataType = 'array';
   public $longUrlClicks;
-  protected $platformsType = 'Google_Service_Urlshortener_StringCount';
+  protected $platformsType = 'GoogleGAL_Service_Urlshortener_StringCount';
   protected $platformsDataType = 'array';
-  protected $referrersType = 'Google_Service_Urlshortener_StringCount';
+  protected $referrersType = 'GoogleGAL_Service_Urlshortener_StringCount';
   protected $referrersDataType = 'array';
   public $shortUrlClicks;
 
@@ -231,20 +231,20 @@ class Google_Service_Urlshortener_AnalyticsSnapshot extends Google_Collection
   }
 }
 
-class Google_Service_Urlshortener_AnalyticsSummary extends Google_Model
+class GoogleGAL_Service_Urlshortener_AnalyticsSummary extends GoogleGAL_Model
 {
-  protected $allTimeType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $allTimeType = 'GoogleGAL_Service_Urlshortener_AnalyticsSnapshot';
   protected $allTimeDataType = '';
-  protected $dayType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $dayType = 'GoogleGAL_Service_Urlshortener_AnalyticsSnapshot';
   protected $dayDataType = '';
-  protected $monthType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $monthType = 'GoogleGAL_Service_Urlshortener_AnalyticsSnapshot';
   protected $monthDataType = '';
-  protected $twoHoursType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $twoHoursType = 'GoogleGAL_Service_Urlshortener_AnalyticsSnapshot';
   protected $twoHoursDataType = '';
-  protected $weekType = 'Google_Service_Urlshortener_AnalyticsSnapshot';
+  protected $weekType = 'GoogleGAL_Service_Urlshortener_AnalyticsSnapshot';
   protected $weekDataType = '';
 
-  public function setAllTime(Google_Service_Urlshortener_AnalyticsSnapshot $allTime)
+  public function setAllTime(GoogleGAL_Service_Urlshortener_AnalyticsSnapshot $allTime)
   {
     $this->allTime = $allTime;
   }
@@ -254,7 +254,7 @@ class Google_Service_Urlshortener_AnalyticsSummary extends Google_Model
     return $this->allTime;
   }
 
-  public function setDay(Google_Service_Urlshortener_AnalyticsSnapshot $day)
+  public function setDay(GoogleGAL_Service_Urlshortener_AnalyticsSnapshot $day)
   {
     $this->day = $day;
   }
@@ -264,7 +264,7 @@ class Google_Service_Urlshortener_AnalyticsSummary extends Google_Model
     return $this->day;
   }
 
-  public function setMonth(Google_Service_Urlshortener_AnalyticsSnapshot $month)
+  public function setMonth(GoogleGAL_Service_Urlshortener_AnalyticsSnapshot $month)
   {
     $this->month = $month;
   }
@@ -274,7 +274,7 @@ class Google_Service_Urlshortener_AnalyticsSummary extends Google_Model
     return $this->month;
   }
 
-  public function setTwoHours(Google_Service_Urlshortener_AnalyticsSnapshot $twoHours)
+  public function setTwoHours(GoogleGAL_Service_Urlshortener_AnalyticsSnapshot $twoHours)
   {
     $this->twoHours = $twoHours;
   }
@@ -284,7 +284,7 @@ class Google_Service_Urlshortener_AnalyticsSummary extends Google_Model
     return $this->twoHours;
   }
 
-  public function setWeek(Google_Service_Urlshortener_AnalyticsSnapshot $week)
+  public function setWeek(GoogleGAL_Service_Urlshortener_AnalyticsSnapshot $week)
   {
     $this->week = $week;
   }
@@ -295,7 +295,7 @@ class Google_Service_Urlshortener_AnalyticsSummary extends Google_Model
   }
 }
 
-class Google_Service_Urlshortener_StringCount extends Google_Model
+class GoogleGAL_Service_Urlshortener_StringCount extends GoogleGAL_Model
 {
   public $count;
   public $id;
@@ -321,9 +321,9 @@ class Google_Service_Urlshortener_StringCount extends Google_Model
   }
 }
 
-class Google_Service_Urlshortener_Url extends Google_Model
+class GoogleGAL_Service_Urlshortener_Url extends GoogleGAL_Model
 {
-  protected $analyticsType = 'Google_Service_Urlshortener_AnalyticsSummary';
+  protected $analyticsType = 'GoogleGAL_Service_Urlshortener_AnalyticsSummary';
   protected $analyticsDataType = '';
   public $created;
   public $id;
@@ -331,7 +331,7 @@ class Google_Service_Urlshortener_Url extends Google_Model
   public $longUrl;
   public $status;
 
-  public function setAnalytics(Google_Service_Urlshortener_AnalyticsSummary $analytics)
+  public function setAnalytics(GoogleGAL_Service_Urlshortener_AnalyticsSummary $analytics)
   {
     $this->analytics = $analytics;
   }
@@ -392,9 +392,9 @@ class Google_Service_Urlshortener_Url extends Google_Model
   }
 }
 
-class Google_Service_Urlshortener_UrlHistory extends Google_Collection
+class GoogleGAL_Service_Urlshortener_UrlHistory extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Urlshortener_Url';
+  protected $itemsType = 'GoogleGAL_Service_Urlshortener_Url';
   protected $itemsDataType = 'array';
   public $itemsPerPage;
   public $kind;

@@ -16,6 +16,6 @@
  */
 require_once "Google/Exception.php";
 
-class Google_Cache_Exception extends Google_Exception
+class GoogleGAL_Cache_Exception extends GoogleGAL_Exception
 {
 }

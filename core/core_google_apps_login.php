@@ -38,11 +38,14 @@ class core_google_apps_login {
 		
 		set_include_path(get_include_path() . PATH_SEPARATOR . plugin_dir_path(__FILE__));
 		
-		if (!class_exists('Google_Client')) {
+		// Using modified Google Client to avoid name clashes - rename process:
+		// find . -type f -exec sed -i '' -e 's/Google_/GoogleGAL_/g' {} +
+		
+		if (!class_exists('GoogleGAL_Client')) {
 			require_once( 'Google/Client.php' );
 		}
 		
-		$client = new Google_Client();
+		$client = new GoogleGAL_Client();
 		$client->setApplicationName("Wordpress Blog");
 		
 		$client->setClientId($options['ga_clientid']);
@@ -56,11 +59,13 @@ class core_google_apps_login {
 		
 		$oauthservice = null;
 		if ($includeoauth) {
-			if (!class_exists('Google_Service_Oauth2')) {
+			if (!class_exists('GoogleGAL_Service_Oauth2')) {
 				require_once( 'Google/Service/Oauth2.php' );
 			}
-			$oauthservice = new Google_Service_Oauth2($client);
+			$oauthservice = new GoogleGAL_Service_Oauth2($client);
 		}
+		
+
 		
 		return Array($client, $oauthservice);
 	}
@@ -297,7 +302,7 @@ class core_google_apps_login {
 				else {
 					$user = new WP_Error('ga_login_error', __( "User authenticated OK, but error fetching user details from Google" , 'google-apps-login') );
 				}
-			} catch (Google_Exception $e) {
+			} catch (GoogleGAL_Exception $e) {
 				$user = new WP_Error('ga_login_error', $e->getMessage());
 			}
 		}

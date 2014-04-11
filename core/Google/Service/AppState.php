@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_AppState extends Google_Service
+class GoogleGAL_Service_AppState extends GoogleGAL_Service
 {
   /** View and manage your data for this application. */
   const APPSTATE = "https://www.googleapis.com/auth/appstate";
@@ -40,16 +40,16 @@ class Google_Service_AppState extends Google_Service
   /**
    * Constructs the internal representation of the AppState service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'appstate/v1/';
     $this->version = 'v1';
     $this->serviceName = 'appstate';
 
-    $this->states = new Google_Service_AppState_States_Resource(
+    $this->states = new GoogleGAL_Service_AppState_States_Resource(
         $this,
         $this->serviceName,
         'states',
@@ -124,11 +124,11 @@ class Google_Service_AppState extends Google_Service
  * The "states" collection of methods.
  * Typical usage is:
  *  <code>
- *   $appstateService = new Google_Service_AppState(...);
+ *   $appstateService = new GoogleGAL_Service_AppState(...);
  *   $states = $appstateService->states;
  *  </code>
  */
-class Google_Service_AppState_States_Resource extends Google_Service_Resource
+class GoogleGAL_Service_AppState_States_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -142,13 +142,13 @@ class Google_Service_AppState_States_Resource extends Google_Service_Resource
    *
    * @opt_param string currentDataVersion
    * The version of the data to be cleared. Version strings are returned by the server.
-   * @return Google_Service_AppState_WriteResult
+   * @return GoogleGAL_Service_AppState_WriteResult
    */
   public function clear($stateKey, $optParams = array())
   {
     $params = array('stateKey' => $stateKey);
     $params = array_merge($params, $optParams);
-    return $this->call('clear', array($params), "Google_Service_AppState_WriteResult");
+    return $this->call('clear', array($params), "GoogleGAL_Service_AppState_WriteResult");
   }
   /**
    * Deletes a key and the data associated with it. The key is removed and no
@@ -173,13 +173,13 @@ class Google_Service_AppState_States_Resource extends Google_Service_Resource
    * @param int $stateKey
    * The key for the data to be retrieved.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AppState_GetResponse
+   * @return GoogleGAL_Service_AppState_GetResponse
    */
   public function get($stateKey, $optParams = array())
   {
     $params = array('stateKey' => $stateKey);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_AppState_GetResponse");
+    return $this->call('get', array($params), "GoogleGAL_Service_AppState_GetResponse");
   }
   /**
    * Lists all the states keys, and optionally the state data. (states.listStates)
@@ -188,13 +188,13 @@ class Google_Service_AppState_States_Resource extends Google_Service_Resource
    *
    * @opt_param bool includeData
    * Whether to include the full data in addition to the version number
-   * @return Google_Service_AppState_ListResponse
+   * @return GoogleGAL_Service_AppState_ListResponse
    */
   public function listStates($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_AppState_ListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_AppState_ListResponse");
   }
   /**
    * Update the data associated with the input key if and only if the passed
@@ -203,27 +203,27 @@ class Google_Service_AppState_States_Resource extends Google_Service_Resource
    *
    * @param int $stateKey
    * The key for the data to be retrieved.
-   * @param Google_UpdateRequest $postBody
+   * @param GoogleGAL_UpdateRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string currentStateVersion
    * The version of the app state your application is attempting to update. If this does not match
     * the current version, this method will return a conflict error. If there is no data stored on the
     * server for this key, the update will succeed irrespective of the value of this parameter.
-   * @return Google_Service_AppState_WriteResult
+   * @return GoogleGAL_Service_AppState_WriteResult
    */
-  public function update($stateKey, Google_Service_AppState_UpdateRequest $postBody, $optParams = array())
+  public function update($stateKey, GoogleGAL_Service_AppState_UpdateRequest $postBody, $optParams = array())
   {
     $params = array('stateKey' => $stateKey, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_AppState_WriteResult");
+    return $this->call('update', array($params), "GoogleGAL_Service_AppState_WriteResult");
   }
 }
 
 
 
 
-class Google_Service_AppState_GetResponse extends Google_Model
+class GoogleGAL_Service_AppState_GetResponse extends GoogleGAL_Model
 {
   public $currentStateVersion;
   public $data;
@@ -271,9 +271,9 @@ class Google_Service_AppState_GetResponse extends Google_Model
   }
 }
 
-class Google_Service_AppState_ListResponse extends Google_Collection
+class GoogleGAL_Service_AppState_ListResponse extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_AppState_GetResponse';
+  protected $itemsType = 'GoogleGAL_Service_AppState_GetResponse';
   protected $itemsDataType = 'array';
   public $kind;
   public $maximumKeyCount;
@@ -309,7 +309,7 @@ class Google_Service_AppState_ListResponse extends Google_Collection
   }
 }
 
-class Google_Service_AppState_UpdateRequest extends Google_Model
+class GoogleGAL_Service_AppState_UpdateRequest extends GoogleGAL_Model
 {
   public $data;
   public $kind;
@@ -335,7 +335,7 @@ class Google_Service_AppState_UpdateRequest extends Google_Model
   }
 }
 
-class Google_Service_AppState_WriteResult extends Google_Model
+class GoogleGAL_Service_AppState_WriteResult extends GoogleGAL_Model
 {
   public $currentStateVersion;
   public $kind;

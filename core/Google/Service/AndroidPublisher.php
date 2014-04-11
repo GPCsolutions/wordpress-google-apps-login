@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_AndroidPublisher extends Google_Service
+class GoogleGAL_Service_AndroidPublisher extends GoogleGAL_Service
 {
   /** View and manage your Google Play Android Developer account. */
   const ANDROIDPUBLISHER = "https://www.googleapis.com/auth/androidpublisher";
@@ -41,16 +41,16 @@ class Google_Service_AndroidPublisher extends Google_Service
   /**
    * Constructs the internal representation of the AndroidPublisher service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'androidpublisher/v1.1/applications/';
     $this->version = 'v1.1';
     $this->serviceName = 'androidpublisher';
 
-    $this->inapppurchases = new Google_Service_AndroidPublisher_Inapppurchases_Resource(
+    $this->inapppurchases = new GoogleGAL_Service_AndroidPublisher_Inapppurchases_Resource(
         $this,
         $this->serviceName,
         'inapppurchases',
@@ -80,7 +80,7 @@ class Google_Service_AndroidPublisher extends Google_Service
           )
         )
     );
-    $this->purchases = new Google_Service_AndroidPublisher_Purchases_Resource(
+    $this->purchases = new GoogleGAL_Service_AndroidPublisher_Purchases_Resource(
         $this,
         $this->serviceName,
         'purchases',
@@ -138,11 +138,11 @@ class Google_Service_AndroidPublisher extends Google_Service
  * The "inapppurchases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new GoogleGAL_Service_AndroidPublisher(...);
  *   $inapppurchases = $androidpublisherService->inapppurchases;
  *  </code>
  */
-class Google_Service_AndroidPublisher_Inapppurchases_Resource extends Google_Service_Resource
+class GoogleGAL_Service_AndroidPublisher_Inapppurchases_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -157,13 +157,13 @@ class Google_Service_AndroidPublisher_Inapppurchases_Resource extends Google_Ser
    * @param string $token
    * The token provided to the user's device when the inapp product was purchased.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AndroidPublisher_InappPurchase
+   * @return GoogleGAL_Service_AndroidPublisher_InappPurchase
    */
   public function get($packageName, $productId, $token, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'productId' => $productId, 'token' => $token);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_AndroidPublisher_InappPurchase");
+    return $this->call('get', array($params), "GoogleGAL_Service_AndroidPublisher_InappPurchase");
   }
 }
 
@@ -171,11 +171,11 @@ class Google_Service_AndroidPublisher_Inapppurchases_Resource extends Google_Ser
  * The "purchases" collection of methods.
  * Typical usage is:
  *  <code>
- *   $androidpublisherService = new Google_Service_AndroidPublisher(...);
+ *   $androidpublisherService = new GoogleGAL_Service_AndroidPublisher(...);
  *   $purchases = $androidpublisherService->purchases;
  *  </code>
  */
-class Google_Service_AndroidPublisher_Purchases_Resource extends Google_Service_Resource
+class GoogleGAL_Service_AndroidPublisher_Purchases_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -209,20 +209,20 @@ class Google_Service_AndroidPublisher_Purchases_Resource extends Google_Service_
    * @param string $token
    * The token provided to the user's device when the subscription was purchased.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AndroidPublisher_SubscriptionPurchase
+   * @return GoogleGAL_Service_AndroidPublisher_SubscriptionPurchase
    */
   public function get($packageName, $subscriptionId, $token, $optParams = array())
   {
     $params = array('packageName' => $packageName, 'subscriptionId' => $subscriptionId, 'token' => $token);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_AndroidPublisher_SubscriptionPurchase");
+    return $this->call('get', array($params), "GoogleGAL_Service_AndroidPublisher_SubscriptionPurchase");
   }
 }
 
 
 
 
-class Google_Service_AndroidPublisher_InappPurchase extends Google_Model
+class GoogleGAL_Service_AndroidPublisher_InappPurchase extends GoogleGAL_Model
 {
   public $consumptionState;
   public $developerPayload;
@@ -281,7 +281,7 @@ class Google_Service_AndroidPublisher_InappPurchase extends Google_Model
   }
 }
 
-class Google_Service_AndroidPublisher_SubscriptionPurchase extends Google_Model
+class GoogleGAL_Service_AndroidPublisher_SubscriptionPurchase extends GoogleGAL_Model
 {
   public $autoRenewing;
   public $initiationTimestampMsec;

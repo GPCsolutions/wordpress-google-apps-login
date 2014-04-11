@@ -18,10 +18,10 @@ See the examples/ directory for examples of the key client features.
 <?php
   require_once 'Google/Client.php';
   require_once 'Google/Service/Books.php';
-  $client = new Google_Client();
+  $client = new GoogleGAL_Client();
   $client->setApplicationName("Client_Library_Examples");
   $client->setDeveloperKey("YOUR_APP_KEY");
-  $service = new Google_Service_Books($client);
+  $service = new GoogleGAL_Service_Books($client);
   $optParams = array('filter' => 'free-ebooks');
   $results = $service->volumes->listVolumes('Henry David Thoreau', $optParams);
 
@@ -46,7 +46,7 @@ We accept contributions via Github Pull Requests, but all contributors need to b
 
 When we started working on the 1.0.0 branch we knew there were several fundamental issues to fix with the 0.6 releases of the library. At that time we looked at the usage of the library, and other related projects, and determined that there was still a large and active base of PHP 5.2 installs. You can see this in statistics such as the PHP versions chart in the WordPress stats: http://wordpress.org/about/stats/. We will keep looking at the types of usage we see, and try to take advantage of newer PHP features where possible.
 
-### Why does Google_..._Service have weird names? ###
+### Why does GoogleGAL_..._Service have weird names? ###
 
 The _Service classes are generally automatically generated from the API discovery documents: https://developers.google.com/discovery/. Sometimes new features are added to APIs with unusual names, which can cause some unexpected or non-standard style naming in the PHP classes. 
 

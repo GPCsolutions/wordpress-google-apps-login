@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-class Google_Service
+class GoogleGAL_Service
 {
   public $version;
   public $servicePath;
@@ -23,14 +23,14 @@ class Google_Service
   public $resource;
   private $client;
 
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     $this->client = $client;
   }
 
   /**
-   * Return the associated Google_Client class.
-   * @return Google_Client
+   * Return the associated GoogleGAL_Client class.
+   * @return GoogleGAL_Client
    */
   public function getClient()
   {

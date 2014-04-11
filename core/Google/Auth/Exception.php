@@ -17,6 +17,6 @@
 
 require_once "Google/Exception.php";
 
-class Google_Auth_Exception extends Google_Exception
+class GoogleGAL_Auth_Exception extends GoogleGAL_Exception
 {
 }

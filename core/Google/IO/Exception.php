@@ -17,6 +17,6 @@
 
 require_once 'Google/Exception.php';
 
-class Google_IO_Exception extends Google_Exception
+class GoogleGAL_IO_Exception extends GoogleGAL_Exception
 {
 }

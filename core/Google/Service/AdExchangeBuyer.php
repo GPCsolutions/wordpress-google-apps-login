@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_AdExchangeBuyer extends Google_Service
+class GoogleGAL_Service_AdExchangeBuyer extends GoogleGAL_Service
 {
   /** Manage your Ad Exchange buyer account configuration. */
   const ADEXCHANGE_BUYER = "https://www.googleapis.com/auth/adexchange.buyer";
@@ -43,16 +43,16 @@ class Google_Service_AdExchangeBuyer extends Google_Service
   /**
    * Constructs the internal representation of the AdExchangeBuyer service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'adexchangebuyer/v1.3/';
     $this->version = 'v1.3';
     $this->serviceName = 'adexchangebuyer';
 
-    $this->accounts = new Google_Service_AdExchangeBuyer_Accounts_Resource(
+    $this->accounts = new GoogleGAL_Service_AdExchangeBuyer_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -96,7 +96,7 @@ class Google_Service_AdExchangeBuyer extends Google_Service
           )
         )
     );
-    $this->creatives = new Google_Service_AdExchangeBuyer_Creatives_Resource(
+    $this->creatives = new GoogleGAL_Service_AdExchangeBuyer_Creatives_Resource(
         $this,
         $this->serviceName,
         'creatives',
@@ -142,7 +142,7 @@ class Google_Service_AdExchangeBuyer extends Google_Service
           )
         )
     );
-    $this->directDeals = new Google_Service_AdExchangeBuyer_DirectDeals_Resource(
+    $this->directDeals = new GoogleGAL_Service_AdExchangeBuyer_DirectDeals_Resource(
         $this,
         $this->serviceName,
         'directDeals',
@@ -166,7 +166,7 @@ class Google_Service_AdExchangeBuyer extends Google_Service
           )
         )
     );
-    $this->performanceReport = new Google_Service_AdExchangeBuyer_PerformanceReport_Resource(
+    $this->performanceReport = new GoogleGAL_Service_AdExchangeBuyer_PerformanceReport_Resource(
         $this,
         $this->serviceName,
         'performanceReport',
@@ -212,11 +212,11 @@ class Google_Service_AdExchangeBuyer extends Google_Service
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new GoogleGAL_Service_AdExchangeBuyer(...);
  *   $accounts = $adexchangebuyerService->accounts;
  *  </code>
  */
-class Google_Service_AdExchangeBuyer_Accounts_Resource extends Google_Service_Resource
+class GoogleGAL_Service_AdExchangeBuyer_Accounts_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -225,25 +225,25 @@ class Google_Service_AdExchangeBuyer_Accounts_Resource extends Google_Service_Re
    * @param int $id
    * The account id
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_Account
+   * @return GoogleGAL_Service_AdExchangeBuyer_Account
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Account");
+    return $this->call('get', array($params), "GoogleGAL_Service_AdExchangeBuyer_Account");
   }
   /**
    * Retrieves the authenticated user's list of accounts. (accounts.listAccounts)
    *
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_AccountsList
+   * @return GoogleGAL_Service_AdExchangeBuyer_AccountsList
    */
   public function listAccounts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_AccountsList");
+    return $this->call('list', array($params), "GoogleGAL_Service_AdExchangeBuyer_AccountsList");
   }
   /**
    * Updates an existing account. This method supports patch semantics.
@@ -251,30 +251,30 @@ class Google_Service_AdExchangeBuyer_Accounts_Resource extends Google_Service_Re
    *
    * @param int $id
    * The account id
-   * @param Google_Account $postBody
+   * @param GoogleGAL_Account $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_Account
+   * @return GoogleGAL_Service_AdExchangeBuyer_Account
    */
-  public function patch($id, Google_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
+  public function patch($id, GoogleGAL_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_AdExchangeBuyer_Account");
+    return $this->call('patch', array($params), "GoogleGAL_Service_AdExchangeBuyer_Account");
   }
   /**
    * Updates an existing account. (accounts.update)
    *
    * @param int $id
    * The account id
-   * @param Google_Account $postBody
+   * @param GoogleGAL_Account $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_Account
+   * @return GoogleGAL_Service_AdExchangeBuyer_Account
    */
-  public function update($id, Google_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
+  public function update($id, GoogleGAL_Service_AdExchangeBuyer_Account $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_AdExchangeBuyer_Account");
+    return $this->call('update', array($params), "GoogleGAL_Service_AdExchangeBuyer_Account");
   }
 }
 
@@ -282,11 +282,11 @@ class Google_Service_AdExchangeBuyer_Accounts_Resource extends Google_Service_Re
  * The "creatives" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new GoogleGAL_Service_AdExchangeBuyer(...);
  *   $creatives = $adexchangebuyerService->creatives;
  *  </code>
  */
-class Google_Service_AdExchangeBuyer_Creatives_Resource extends Google_Service_Resource
+class GoogleGAL_Service_AdExchangeBuyer_Creatives_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -298,26 +298,26 @@ class Google_Service_AdExchangeBuyer_Creatives_Resource extends Google_Service_R
    * @param string $buyerCreativeId
    * The buyer-specific id for this creative.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_Creative
+   * @return GoogleGAL_Service_AdExchangeBuyer_Creative
    */
   public function get($accountId, $buyerCreativeId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'buyerCreativeId' => $buyerCreativeId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_Creative");
+    return $this->call('get', array($params), "GoogleGAL_Service_AdExchangeBuyer_Creative");
   }
   /**
    * Submit a new creative. (creatives.insert)
    *
-   * @param Google_Creative $postBody
+   * @param GoogleGAL_Creative $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_Creative
+   * @return GoogleGAL_Service_AdExchangeBuyer_Creative
    */
-  public function insert(Google_Service_AdExchangeBuyer_Creative $postBody, $optParams = array())
+  public function insert(GoogleGAL_Service_AdExchangeBuyer_Creative $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_AdExchangeBuyer_Creative");
+    return $this->call('insert', array($params), "GoogleGAL_Service_AdExchangeBuyer_Creative");
   }
   /**
    * Retrieves a list of the authenticated user's active creatives. A creative
@@ -332,13 +332,13 @@ class Google_Service_AdExchangeBuyer_Creatives_Resource extends Google_Service_R
     * parameter to the value of "nextPageToken" from the previous response. Optional.
    * @opt_param string maxResults
    * Maximum number of entries returned on one result page. If not set, the default is 100. Optional.
-   * @return Google_Service_AdExchangeBuyer_CreativesList
+   * @return GoogleGAL_Service_AdExchangeBuyer_CreativesList
    */
   public function listCreatives($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_CreativesList");
+    return $this->call('list', array($params), "GoogleGAL_Service_AdExchangeBuyer_CreativesList");
   }
 }
 
@@ -346,11 +346,11 @@ class Google_Service_AdExchangeBuyer_Creatives_Resource extends Google_Service_R
  * The "directDeals" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new GoogleGAL_Service_AdExchangeBuyer(...);
  *   $directDeals = $adexchangebuyerService->directDeals;
  *  </code>
  */
-class Google_Service_AdExchangeBuyer_DirectDeals_Resource extends Google_Service_Resource
+class GoogleGAL_Service_AdExchangeBuyer_DirectDeals_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -359,26 +359,26 @@ class Google_Service_AdExchangeBuyer_DirectDeals_Resource extends Google_Service
    * @param string $id
    * The direct deal id
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_DirectDeal
+   * @return GoogleGAL_Service_AdExchangeBuyer_DirectDeal
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_AdExchangeBuyer_DirectDeal");
+    return $this->call('get', array($params), "GoogleGAL_Service_AdExchangeBuyer_DirectDeal");
   }
   /**
    * Retrieves the authenticated user's list of direct deals.
    * (directDeals.listDirectDeals)
    *
    * @param array $optParams Optional parameters.
-   * @return Google_Service_AdExchangeBuyer_DirectDealsList
+   * @return GoogleGAL_Service_AdExchangeBuyer_DirectDealsList
    */
   public function listDirectDeals($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_DirectDealsList");
+    return $this->call('list', array($params), "GoogleGAL_Service_AdExchangeBuyer_DirectDealsList");
   }
 }
 
@@ -386,11 +386,11 @@ class Google_Service_AdExchangeBuyer_DirectDeals_Resource extends Google_Service
  * The "performanceReport" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adexchangebuyerService = new Google_Service_AdExchangeBuyer(...);
+ *   $adexchangebuyerService = new GoogleGAL_Service_AdExchangeBuyer(...);
  *   $performanceReport = $adexchangebuyerService->performanceReport;
  *  </code>
  */
-class Google_Service_AdExchangeBuyer_PerformanceReport_Resource extends Google_Service_Resource
+class GoogleGAL_Service_AdExchangeBuyer_PerformanceReport_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -410,22 +410,22 @@ class Google_Service_AdExchangeBuyer_PerformanceReport_Resource extends Google_S
     * this parameter to the value of "nextPageToken" from the previous response. Optional.
    * @opt_param string maxResults
    * Maximum number of entries returned on one result page. If not set, the default is 100. Optional.
-   * @return Google_Service_AdExchangeBuyer_PerformanceReportList
+   * @return GoogleGAL_Service_AdExchangeBuyer_PerformanceReportList
    */
   public function listPerformanceReport($accountId, $endDateTime, $startDateTime, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'endDateTime' => $endDateTime, 'startDateTime' => $startDateTime);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_AdExchangeBuyer_PerformanceReportList");
+    return $this->call('list', array($params), "GoogleGAL_Service_AdExchangeBuyer_PerformanceReportList");
   }
 }
 
 
 
 
-class Google_Service_AdExchangeBuyer_Account extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_Account extends GoogleGAL_Collection
 {
-  protected $bidderLocationType = 'Google_Service_AdExchangeBuyer_AccountBidderLocation';
+  protected $bidderLocationType = 'GoogleGAL_Service_AdExchangeBuyer_AccountBidderLocation';
   protected $bidderLocationDataType = 'array';
   public $cookieMatchingNid;
   public $cookieMatchingUrl;
@@ -494,7 +494,7 @@ class Google_Service_AdExchangeBuyer_Account extends Google_Collection
   }
 }
 
-class Google_Service_AdExchangeBuyer_AccountBidderLocation extends Google_Model
+class GoogleGAL_Service_AdExchangeBuyer_AccountBidderLocation extends GoogleGAL_Model
 {
   public $maximumQps;
   public $region;
@@ -531,9 +531,9 @@ class Google_Service_AdExchangeBuyer_AccountBidderLocation extends Google_Model
   }
 }
 
-class Google_Service_AdExchangeBuyer_AccountsList extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_AccountsList extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_AdExchangeBuyer_Account';
+  protected $itemsType = 'GoogleGAL_Service_AdExchangeBuyer_Account';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -558,7 +558,7 @@ class Google_Service_AdExchangeBuyer_AccountsList extends Google_Collection
   }
 }
 
-class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_Creative extends GoogleGAL_Collection
 {
   public $hTMLSnippet;
   public $accountId;
@@ -568,11 +568,11 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   public $attribute;
   public $buyerCreativeId;
   public $clickThroughUrl;
-  protected $correctionsType = 'Google_Service_AdExchangeBuyer_CreativeCorrections';
+  protected $correctionsType = 'GoogleGAL_Service_AdExchangeBuyer_CreativeCorrections';
   protected $correctionsDataType = 'array';
-  protected $disapprovalReasonsType = 'Google_Service_AdExchangeBuyer_CreativeDisapprovalReasons';
+  protected $disapprovalReasonsType = 'GoogleGAL_Service_AdExchangeBuyer_CreativeDisapprovalReasons';
   protected $disapprovalReasonsDataType = 'array';
-  protected $filteringReasonsType = 'Google_Service_AdExchangeBuyer_CreativeFilteringReasons';
+  protected $filteringReasonsType = 'GoogleGAL_Service_AdExchangeBuyer_CreativeFilteringReasons';
   protected $filteringReasonsDataType = '';
   public $height;
   public $kind;
@@ -684,7 +684,7 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
     return $this->disapprovalReasons;
   }
 
-  public function setFilteringReasons(Google_Service_AdExchangeBuyer_CreativeFilteringReasons $filteringReasons)
+  public function setFilteringReasons(GoogleGAL_Service_AdExchangeBuyer_CreativeFilteringReasons $filteringReasons)
   {
     $this->filteringReasons = $filteringReasons;
   }
@@ -785,7 +785,7 @@ class Google_Service_AdExchangeBuyer_Creative extends Google_Collection
   }
 }
 
-class Google_Service_AdExchangeBuyer_CreativeCorrections extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_CreativeCorrections extends GoogleGAL_Collection
 {
   public $details;
   public $reason;
@@ -811,7 +811,7 @@ class Google_Service_AdExchangeBuyer_CreativeCorrections extends Google_Collecti
   }
 }
 
-class Google_Service_AdExchangeBuyer_CreativeDisapprovalReasons extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_CreativeDisapprovalReasons extends GoogleGAL_Collection
 {
   public $details;
   public $reason;
@@ -837,10 +837,10 @@ class Google_Service_AdExchangeBuyer_CreativeDisapprovalReasons extends Google_C
   }
 }
 
-class Google_Service_AdExchangeBuyer_CreativeFilteringReasons extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_CreativeFilteringReasons extends GoogleGAL_Collection
 {
   public $date;
-  protected $reasonsType = 'Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons';
+  protected $reasonsType = 'GoogleGAL_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons';
   protected $reasonsDataType = 'array';
 
   public function setDate($date)
@@ -864,7 +864,7 @@ class Google_Service_AdExchangeBuyer_CreativeFilteringReasons extends Google_Col
   }
 }
 
-class Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons extends Google_Model
+class GoogleGAL_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons extends GoogleGAL_Model
 {
   public $filteringCount;
   public $filteringStatus;
@@ -890,9 +890,9 @@ class Google_Service_AdExchangeBuyer_CreativeFilteringReasonsReasons extends Goo
   }
 }
 
-class Google_Service_AdExchangeBuyer_CreativesList extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_CreativesList extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_AdExchangeBuyer_Creative';
+  protected $itemsType = 'GoogleGAL_Service_AdExchangeBuyer_Creative';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -928,7 +928,7 @@ class Google_Service_AdExchangeBuyer_CreativesList extends Google_Collection
   }
 }
 
-class Google_Service_AdExchangeBuyer_DirectDeal extends Google_Model
+class GoogleGAL_Service_AdExchangeBuyer_DirectDeal extends GoogleGAL_Model
 {
   public $accountId;
   public $advertiser;
@@ -1053,9 +1053,9 @@ class Google_Service_AdExchangeBuyer_DirectDeal extends Google_Model
   }
 }
 
-class Google_Service_AdExchangeBuyer_DirectDealsList extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_DirectDealsList extends GoogleGAL_Collection
 {
-  protected $directDealsType = 'Google_Service_AdExchangeBuyer_DirectDeal';
+  protected $directDealsType = 'GoogleGAL_Service_AdExchangeBuyer_DirectDeal';
   protected $directDealsDataType = 'array';
   public $kind;
 
@@ -1080,7 +1080,7 @@ class Google_Service_AdExchangeBuyer_DirectDealsList extends Google_Collection
   }
 }
 
-class Google_Service_AdExchangeBuyer_PerformanceReport extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_PerformanceReport extends GoogleGAL_Collection
 {
   public $calloutStatusRate;
   public $cookieMatcherStatusRate;
@@ -1260,10 +1260,10 @@ class Google_Service_AdExchangeBuyer_PerformanceReport extends Google_Collection
   }
 }
 
-class Google_Service_AdExchangeBuyer_PerformanceReportList extends Google_Collection
+class GoogleGAL_Service_AdExchangeBuyer_PerformanceReportList extends GoogleGAL_Collection
 {
   public $kind;
-  protected $performanceReportType = 'Google_Service_AdExchangeBuyer_PerformanceReport';
+  protected $performanceReportType = 'GoogleGAL_Service_AdExchangeBuyer_PerformanceReport';
   protected $performanceReportDataType = 'array';
 
   public function setKind($kind)

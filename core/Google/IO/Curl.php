@@ -16,14 +16,14 @@
  */
 
 /**
- * Curl based implementation of Google_IO.
+ * Curl based implementation of GoogleGAL_IO.
  *
  * @author Stuart Langley <slangley@google.com>
  */
 
 require_once 'Google/IO/Abstract.php';
 
-class Google_IO_Curl extends Google_IO_Abstract
+class GoogleGAL_IO_Curl extends GoogleGAL_IO_Abstract
 {
   // hex for version 7.31.0
   const NO_QUIRK_VERSION = 0x071F00;
@@ -32,12 +32,12 @@ class Google_IO_Curl extends Google_IO_Abstract
   /**
    * Execute an HTTP Request
    *
-   * @param Google_HttpRequest $request the http request to be executed
-   * @return Google_HttpRequest http request with the response http code,
+   * @param GoogleGAL_HttpRequest $request the http request to be executed
+   * @return GoogleGAL_HttpRequest http request with the response http code,
    * response headers and response body filled in
-   * @throws Google_IO_Exception on curl or IO error
+   * @throws GoogleGAL_IO_Exception on curl or IO error
    */
-  public function executeRequest(Google_Http_Request $request)
+  public function executeRequest(GoogleGAL_Http_Request $request)
   {
     $curl = curl_init();
 
@@ -78,7 +78,7 @@ class Google_IO_Curl extends Google_IO_Abstract
 
     $response = curl_exec($curl);
     if ($response === false) {
-      throw new Google_IO_Exception(curl_error($curl));
+      throw new GoogleGAL_IO_Exception(curl_error($curl));
     }
     $headerSize = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
 
@@ -130,6 +130,6 @@ class Google_IO_Curl extends Google_IO_Abstract
   {
     $ver = curl_version();
     $versionNum = $ver['version_number'];
-    return $versionNum < Google_IO_Curl::NO_QUIRK_VERSION;
+    return $versionNum < GoogleGAL_IO_Curl::NO_QUIRK_VERSION;
   }
 }

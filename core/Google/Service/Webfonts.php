@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Webfonts extends Google_Service
+class GoogleGAL_Service_Webfonts extends GoogleGAL_Service
 {
 
 
@@ -39,16 +39,16 @@ class Google_Service_Webfonts extends Google_Service
   /**
    * Constructs the internal representation of the Webfonts service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'webfonts/v1/';
     $this->version = 'v1';
     $this->serviceName = 'webfonts';
 
-    $this->webfonts = new Google_Service_Webfonts_Webfonts_Resource(
+    $this->webfonts = new GoogleGAL_Service_Webfonts_Webfonts_Resource(
         $this,
         $this->serviceName,
         'webfonts',
@@ -75,11 +75,11 @@ class Google_Service_Webfonts extends Google_Service
  * The "webfonts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $webfontsService = new Google_Service_Webfonts(...);
+ *   $webfontsService = new GoogleGAL_Service_Webfonts(...);
  *   $webfonts = $webfontsService->webfonts;
  *  </code>
  */
-class Google_Service_Webfonts_Webfonts_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Webfonts_Webfonts_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -90,20 +90,20 @@ class Google_Service_Webfonts_Webfonts_Resource extends Google_Service_Resource
    *
    * @opt_param string sort
    * Enables sorting of the list
-   * @return Google_Service_Webfonts_WebfontList
+   * @return GoogleGAL_Service_Webfonts_WebfontList
    */
   public function listWebfonts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Webfonts_WebfontList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Webfonts_WebfontList");
   }
 }
 
 
 
 
-class Google_Service_Webfonts_Webfont extends Google_Collection
+class GoogleGAL_Service_Webfonts_Webfont extends GoogleGAL_Collection
 {
   public $category;
   public $family;
@@ -195,9 +195,9 @@ class Google_Service_Webfonts_Webfont extends Google_Collection
   }
 }
 
-class Google_Service_Webfonts_WebfontList extends Google_Collection
+class GoogleGAL_Service_Webfonts_WebfontList extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Webfonts_Webfont';
+  protected $itemsType = 'GoogleGAL_Service_Webfonts_Webfont';
   protected $itemsDataType = 'array';
   public $kind;
 

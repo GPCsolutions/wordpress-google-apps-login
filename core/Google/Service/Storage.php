@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Storage extends Google_Service
+class GoogleGAL_Service_Storage extends GoogleGAL_Service
 {
   /** Manage your data and permissions in Google Cloud Storage. */
   const DEVSTORAGE_FULL_CONTROL = "https://www.googleapis.com/auth/devstorage.full_control";
@@ -49,16 +49,16 @@ class Google_Service_Storage extends Google_Service
   /**
    * Constructs the internal representation of the Storage service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'storage/v1beta2/';
     $this->version = 'v1beta2';
     $this->serviceName = 'storage';
 
-    $this->bucketAccessControls = new Google_Service_Storage_BucketAccessControls_Resource(
+    $this->bucketAccessControls = new GoogleGAL_Service_Storage_BucketAccessControls_Resource(
         $this,
         $this->serviceName,
         'bucketAccessControls',
@@ -148,7 +148,7 @@ class Google_Service_Storage extends Google_Service
           )
         )
     );
-    $this->buckets = new Google_Service_Storage_Buckets_Resource(
+    $this->buckets = new GoogleGAL_Service_Storage_Buckets_Resource(
         $this,
         $this->serviceName,
         'buckets',
@@ -278,7 +278,7 @@ class Google_Service_Storage extends Google_Service
           )
         )
     );
-    $this->channels = new Google_Service_Storage_Channels_Resource(
+    $this->channels = new GoogleGAL_Service_Storage_Channels_Resource(
         $this,
         $this->serviceName,
         'channels',
@@ -292,7 +292,7 @@ class Google_Service_Storage extends Google_Service
           )
         )
     );
-    $this->defaultObjectAccessControls = new Google_Service_Storage_DefaultObjectAccessControls_Resource(
+    $this->defaultObjectAccessControls = new GoogleGAL_Service_Storage_DefaultObjectAccessControls_Resource(
         $this,
         $this->serviceName,
         'defaultObjectAccessControls',
@@ -390,7 +390,7 @@ class Google_Service_Storage extends Google_Service
           )
         )
     );
-    $this->objectAccessControls = new Google_Service_Storage_ObjectAccessControls_Resource(
+    $this->objectAccessControls = new GoogleGAL_Service_Storage_ObjectAccessControls_Resource(
         $this,
         $this->serviceName,
         'objectAccessControls',
@@ -534,7 +534,7 @@ class Google_Service_Storage extends Google_Service
           )
         )
     );
-    $this->objects = new Google_Service_Storage_Objects_Resource(
+    $this->objects = new GoogleGAL_Service_Storage_Objects_Resource(
         $this,
         $this->serviceName,
         'objects',
@@ -894,11 +894,11 @@ class Google_Service_Storage extends Google_Service
  * The "bucketAccessControls" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Google_Service_Storage(...);
+ *   $storageService = new GoogleGAL_Service_Storage(...);
  *   $bucketAccessControls = $storageService->bucketAccessControls;
  *  </code>
  */
-class Google_Service_Storage_BucketAccessControls_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Storage_BucketAccessControls_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -928,13 +928,13 @@ class Google_Service_Storage_BucketAccessControls_Resource extends Google_Servic
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_BucketAccessControl
+   * @return GoogleGAL_Service_Storage_BucketAccessControl
    */
   public function get($bucket, $entity, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Storage_BucketAccessControl");
+    return $this->call('get', array($params), "GoogleGAL_Service_Storage_BucketAccessControl");
   }
   /**
    * Creates a new ACL entry on the specified bucket.
@@ -942,15 +942,15 @@ class Google_Service_Storage_BucketAccessControls_Resource extends Google_Servic
    *
    * @param string $bucket
    * Name of a bucket.
-   * @param Google_BucketAccessControl $postBody
+   * @param GoogleGAL_BucketAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_BucketAccessControl
+   * @return GoogleGAL_Service_Storage_BucketAccessControl
    */
-  public function insert($bucket, Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
+  public function insert($bucket, GoogleGAL_Service_Storage_BucketAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Storage_BucketAccessControl");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Storage_BucketAccessControl");
   }
   /**
    * Retrieves ACL entries on the specified bucket.
@@ -959,13 +959,13 @@ class Google_Service_Storage_BucketAccessControls_Resource extends Google_Servic
    * @param string $bucket
    * Name of a bucket.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_BucketAccessControls
+   * @return GoogleGAL_Service_Storage_BucketAccessControls
    */
   public function listBucketAccessControls($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Storage_BucketAccessControls");
+    return $this->call('list', array($params), "GoogleGAL_Service_Storage_BucketAccessControls");
   }
   /**
    * Updates an ACL entry on the specified bucket. This method supports patch
@@ -976,15 +976,15 @@ class Google_Service_Storage_BucketAccessControls_Resource extends Google_Servic
    * @param string $entity
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
-   * @param Google_BucketAccessControl $postBody
+   * @param GoogleGAL_BucketAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_BucketAccessControl
+   * @return GoogleGAL_Service_Storage_BucketAccessControl
    */
-  public function patch($bucket, $entity, Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
+  public function patch($bucket, $entity, GoogleGAL_Service_Storage_BucketAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Storage_BucketAccessControl");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Storage_BucketAccessControl");
   }
   /**
    * Updates an ACL entry on the specified bucket. (bucketAccessControls.update)
@@ -994,15 +994,15 @@ class Google_Service_Storage_BucketAccessControls_Resource extends Google_Servic
    * @param string $entity
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
-   * @param Google_BucketAccessControl $postBody
+   * @param GoogleGAL_BucketAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_BucketAccessControl
+   * @return GoogleGAL_Service_Storage_BucketAccessControl
    */
-  public function update($bucket, $entity, Google_Service_Storage_BucketAccessControl $postBody, $optParams = array())
+  public function update($bucket, $entity, GoogleGAL_Service_Storage_BucketAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Storage_BucketAccessControl");
+    return $this->call('update', array($params), "GoogleGAL_Service_Storage_BucketAccessControl");
   }
 }
 
@@ -1010,11 +1010,11 @@ class Google_Service_Storage_BucketAccessControls_Resource extends Google_Servic
  * The "buckets" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Google_Service_Storage(...);
+ *   $storageService = new GoogleGAL_Service_Storage(...);
  *   $buckets = $storageService->buckets;
  *  </code>
  */
-class Google_Service_Storage_Buckets_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Storage_Buckets_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -1052,32 +1052,32 @@ class Google_Service_Storage_Buckets_Resource extends Google_Service_Resource
     * metageneration does not match the given value.
    * @opt_param string projection
    * Set of properties to return. Defaults to noAcl.
-   * @return Google_Service_Storage_Bucket
+   * @return GoogleGAL_Service_Storage_Bucket
    */
   public function get($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Storage_Bucket");
+    return $this->call('get', array($params), "GoogleGAL_Service_Storage_Bucket");
   }
   /**
    * Creates a new bucket. (buckets.insert)
    *
    * @param string $project
    * A valid API project identifier.
-   * @param Google_Bucket $postBody
+   * @param GoogleGAL_Bucket $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string projection
    * Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or
     * defaultObjectAcl properties, when it defaults to full.
-   * @return Google_Service_Storage_Bucket
+   * @return GoogleGAL_Service_Storage_Bucket
    */
-  public function insert($project, Google_Service_Storage_Bucket $postBody, $optParams = array())
+  public function insert($project, GoogleGAL_Service_Storage_Bucket $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Storage_Bucket");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Storage_Bucket");
   }
   /**
    * Retrieves a list of buckets for a given project. (buckets.listBuckets)
@@ -1092,20 +1092,20 @@ class Google_Service_Storage_Buckets_Resource extends Google_Service_Resource
    * Set of properties to return. Defaults to noAcl.
    * @opt_param string maxResults
    * Maximum number of buckets to return.
-   * @return Google_Service_Storage_Buckets
+   * @return GoogleGAL_Service_Storage_Buckets
    */
   public function listBuckets($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Storage_Buckets");
+    return $this->call('list', array($params), "GoogleGAL_Service_Storage_Buckets");
   }
   /**
    * Updates a bucket. This method supports patch semantics. (buckets.patch)
    *
    * @param string $bucket
    * Name of a bucket.
-   * @param Google_Bucket $postBody
+   * @param GoogleGAL_Bucket $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifMetagenerationMatch
@@ -1116,20 +1116,20 @@ class Google_Service_Storage_Buckets_Resource extends Google_Service_Resource
     * metageneration does not match the given value.
    * @opt_param string projection
    * Set of properties to return. Defaults to full.
-   * @return Google_Service_Storage_Bucket
+   * @return GoogleGAL_Service_Storage_Bucket
    */
-  public function patch($bucket, Google_Service_Storage_Bucket $postBody, $optParams = array())
+  public function patch($bucket, GoogleGAL_Service_Storage_Bucket $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Storage_Bucket");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Storage_Bucket");
   }
   /**
    * Updates a bucket. (buckets.update)
    *
    * @param string $bucket
    * Name of a bucket.
-   * @param Google_Bucket $postBody
+   * @param GoogleGAL_Bucket $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifMetagenerationMatch
@@ -1140,13 +1140,13 @@ class Google_Service_Storage_Buckets_Resource extends Google_Service_Resource
     * metageneration does not match the given value.
    * @opt_param string projection
    * Set of properties to return. Defaults to full.
-   * @return Google_Service_Storage_Bucket
+   * @return GoogleGAL_Service_Storage_Bucket
    */
-  public function update($bucket, Google_Service_Storage_Bucket $postBody, $optParams = array())
+  public function update($bucket, GoogleGAL_Service_Storage_Bucket $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Storage_Bucket");
+    return $this->call('update', array($params), "GoogleGAL_Service_Storage_Bucket");
   }
 }
 
@@ -1154,20 +1154,20 @@ class Google_Service_Storage_Buckets_Resource extends Google_Service_Resource
  * The "channels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Google_Service_Storage(...);
+ *   $storageService = new GoogleGAL_Service_Storage(...);
  *   $channels = $storageService->channels;
  *  </code>
  */
-class Google_Service_Storage_Channels_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Storage_Channels_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
    * Stop watching resources through this channel (channels.stop)
    *
-   * @param Google_Channel $postBody
+   * @param GoogleGAL_Channel $postBody
    * @param array $optParams Optional parameters.
    */
-  public function stop(Google_Service_Storage_Channel $postBody, $optParams = array())
+  public function stop(GoogleGAL_Service_Storage_Channel $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -1179,11 +1179,11 @@ class Google_Service_Storage_Channels_Resource extends Google_Service_Resource
  * The "defaultObjectAccessControls" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Google_Service_Storage(...);
+ *   $storageService = new GoogleGAL_Service_Storage(...);
  *   $defaultObjectAccessControls = $storageService->defaultObjectAccessControls;
  *  </code>
  */
-class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Storage_DefaultObjectAccessControls_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -1213,13 +1213,13 @@ class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
   public function get($bucket, $entity, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('get', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
   /**
    * Creates a new default object ACL entry on the specified bucket.
@@ -1227,15 +1227,15 @@ class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google
    *
    * @param string $bucket
    * Name of a bucket.
-   * @param Google_ObjectAccessControl $postBody
+   * @param GoogleGAL_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
-  public function insert($bucket, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function insert($bucket, GoogleGAL_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
   /**
    * Retrieves default object ACL entries on the specified bucket.
@@ -1251,13 +1251,13 @@ class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google
    * @opt_param string ifMetagenerationNotMatch
    * Makes the operation conditional on whether the destination object's current metageneration does
     * not match the given value.
-   * @return Google_Service_Storage_ObjectAccessControls
+   * @return GoogleGAL_Service_Storage_ObjectAccessControls
    */
   public function listDefaultObjectAccessControls($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Storage_ObjectAccessControls");
+    return $this->call('list', array($params), "GoogleGAL_Service_Storage_ObjectAccessControls");
   }
   /**
    * Updates a default object ACL entry on the specified bucket. This method
@@ -1268,15 +1268,15 @@ class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google
    * @param string $entity
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
-   * @param Google_ObjectAccessControl $postBody
+   * @param GoogleGAL_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
-  public function patch($bucket, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function patch($bucket, $entity, GoogleGAL_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
   /**
    * Updates a default object ACL entry on the specified bucket.
@@ -1287,15 +1287,15 @@ class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google
    * @param string $entity
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
-   * @param Google_ObjectAccessControl $postBody
+   * @param GoogleGAL_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
-  public function update($bucket, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function update($bucket, $entity, GoogleGAL_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('update', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
 }
 
@@ -1303,11 +1303,11 @@ class Google_Service_Storage_DefaultObjectAccessControls_Resource extends Google
  * The "objectAccessControls" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Google_Service_Storage(...);
+ *   $storageService = new GoogleGAL_Service_Storage(...);
  *   $objectAccessControls = $storageService->objectAccessControls;
  *  </code>
  */
-class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Storage_ObjectAccessControls_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -1349,13 +1349,13 @@ class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Servic
    * @opt_param string generation
    * If present, selects a specific revision of this object (as opposed to the latest version, the
     * default).
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
   public function get($bucket, $object, $entity, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'entity' => $entity);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('get', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
   /**
    * Creates a new ACL entry on the specified object.
@@ -1365,19 +1365,19 @@ class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Servic
    * Name of a bucket.
    * @param string $object
    * Name of the object.
-   * @param Google_ObjectAccessControl $postBody
+   * @param GoogleGAL_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation
    * If present, selects a specific revision of this object (as opposed to the latest version, the
     * default).
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
-  public function insert($bucket, $object, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function insert($bucket, $object, GoogleGAL_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
   /**
    * Retrieves ACL entries on the specified object.
@@ -1392,13 +1392,13 @@ class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Servic
    * @opt_param string generation
    * If present, selects a specific revision of this object (as opposed to the latest version, the
     * default).
-   * @return Google_Service_Storage_ObjectAccessControls
+   * @return GoogleGAL_Service_Storage_ObjectAccessControls
    */
   public function listObjectAccessControls($bucket, $object, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Storage_ObjectAccessControls");
+    return $this->call('list', array($params), "GoogleGAL_Service_Storage_ObjectAccessControls");
   }
   /**
    * Updates an ACL entry on the specified object. This method supports patch
@@ -1411,19 +1411,19 @@ class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Servic
    * @param string $entity
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
-   * @param Google_ObjectAccessControl $postBody
+   * @param GoogleGAL_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation
    * If present, selects a specific revision of this object (as opposed to the latest version, the
     * default).
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
-  public function patch($bucket, $object, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function patch($bucket, $object, $entity, GoogleGAL_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
   /**
    * Updates an ACL entry on the specified object. (objectAccessControls.update)
@@ -1435,19 +1435,19 @@ class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Servic
    * @param string $entity
    * The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-
     * emailAddress, allUsers, or allAuthenticatedUsers.
-   * @param Google_ObjectAccessControl $postBody
+   * @param GoogleGAL_ObjectAccessControl $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string generation
    * If present, selects a specific revision of this object (as opposed to the latest version, the
     * default).
-   * @return Google_Service_Storage_ObjectAccessControl
+   * @return GoogleGAL_Service_Storage_ObjectAccessControl
    */
-  public function update($bucket, $object, $entity, Google_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
+  public function update($bucket, $object, $entity, GoogleGAL_Service_Storage_ObjectAccessControl $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'entity' => $entity, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Storage_ObjectAccessControl");
+    return $this->call('update', array($params), "GoogleGAL_Service_Storage_ObjectAccessControl");
   }
 }
 
@@ -1455,11 +1455,11 @@ class Google_Service_Storage_ObjectAccessControls_Resource extends Google_Servic
  * The "objects" collection of methods.
  * Typical usage is:
  *  <code>
- *   $storageService = new Google_Service_Storage(...);
+ *   $storageService = new GoogleGAL_Service_Storage(...);
  *   $objects = $storageService->objects;
  *  </code>
  */
-class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Storage_Objects_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -1470,7 +1470,7 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * Name of the bucket in which to store the new object.
    * @param string $destinationObject
    * Name of the new object.
-   * @param Google_ComposeRequest $postBody
+   * @param GoogleGAL_ComposeRequest $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifMetagenerationMatch
@@ -1479,13 +1479,13 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * @opt_param string ifGenerationMatch
    * Makes the operation conditional on whether the object's current generation matches the given
     * value.
-   * @return Google_Service_Storage_StorageObject
+   * @return GoogleGAL_Service_Storage_StorageObject
    */
-  public function compose($destinationBucket, $destinationObject, Google_Service_Storage_ComposeRequest $postBody, $optParams = array())
+  public function compose($destinationBucket, $destinationObject, GoogleGAL_Service_Storage_ComposeRequest $postBody, $optParams = array())
   {
     $params = array('destinationBucket' => $destinationBucket, 'destinationObject' => $destinationObject, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('compose', array($params), "Google_Service_Storage_StorageObject");
+    return $this->call('compose', array($params), "GoogleGAL_Service_Storage_StorageObject");
   }
   /**
    * Copies an object to a destination in the same location. Optionally overrides
@@ -1501,7 +1501,7 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * @param string $destinationObject
    * Name of the new object. Required when the object metadata is not otherwise provided. Overrides
     * the object metadata's name value, if any.
-   * @param Google_StorageObject $postBody
+   * @param GoogleGAL_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifSourceGenerationNotMatch
@@ -1534,13 +1534,13 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * @opt_param string projection
    * Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl
     * property, when it defaults to full.
-   * @return Google_Service_Storage_StorageObject
+   * @return GoogleGAL_Service_Storage_StorageObject
    */
-  public function copy($sourceBucket, $sourceObject, $destinationBucket, $destinationObject, Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function copy($sourceBucket, $sourceObject, $destinationBucket, $destinationObject, GoogleGAL_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('sourceBucket' => $sourceBucket, 'sourceObject' => $sourceObject, 'destinationBucket' => $destinationBucket, 'destinationObject' => $destinationObject, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('copy', array($params), "Google_Service_Storage_StorageObject");
+    return $this->call('copy', array($params), "GoogleGAL_Service_Storage_StorageObject");
   }
   /**
    * Deletes data blobs and associated metadata. Deletions are permanent if
@@ -1600,13 +1600,13 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
     * the given value.
    * @opt_param string projection
    * Set of properties to return. Defaults to noAcl.
-   * @return Google_Service_Storage_StorageObject
+   * @return GoogleGAL_Service_Storage_StorageObject
    */
   public function get($bucket, $object, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Storage_StorageObject");
+    return $this->call('get', array($params), "GoogleGAL_Service_Storage_StorageObject");
   }
   /**
    * Stores new data blobs and associated metadata. (objects.insert)
@@ -1614,7 +1614,7 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * @param string $bucket
    * Name of the bucket in which to store the new object. Overrides the provided object metadata's
     * bucket value, if any.
-   * @param Google_StorageObject $postBody
+   * @param GoogleGAL_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string projection
@@ -1635,13 +1635,13 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * @opt_param string name
    * Name of the object. Required when the object metadata is not otherwise provided. Overrides the
     * object metadata's name value, if any.
-   * @return Google_Service_Storage_StorageObject
+   * @return GoogleGAL_Service_Storage_StorageObject
    */
-  public function insert($bucket, Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function insert($bucket, GoogleGAL_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Storage_StorageObject");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Storage_StorageObject");
   }
   /**
    * Retrieves a list of objects matching the criteria. (objects.listObjects)
@@ -1666,13 +1666,13 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
     * from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain
     * delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate
     * prefixes are omitted.
-   * @return Google_Service_Storage_Objects
+   * @return GoogleGAL_Service_Storage_Objects
    */
   public function listObjects($bucket, $optParams = array())
   {
     $params = array('bucket' => $bucket);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Storage_Objects");
+    return $this->call('list', array($params), "GoogleGAL_Service_Storage_Objects");
   }
   /**
    * Updates a data blob's associated metadata. This method supports patch
@@ -1682,7 +1682,7 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * Name of the bucket in which the object resides.
    * @param string $object
    * Name of the object.
-   * @param Google_StorageObject $postBody
+   * @param GoogleGAL_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifGenerationNotMatch
@@ -1702,13 +1702,13 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
     * the given value.
    * @opt_param string projection
    * Set of properties to return. Defaults to full.
-   * @return Google_Service_Storage_StorageObject
+   * @return GoogleGAL_Service_Storage_StorageObject
    */
-  public function patch($bucket, $object, Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function patch($bucket, $object, GoogleGAL_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Storage_StorageObject");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Storage_StorageObject");
   }
   /**
    * Updates a data blob's associated metadata. (objects.update)
@@ -1717,7 +1717,7 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
    * Name of the bucket in which the object resides.
    * @param string $object
    * Name of the object.
-   * @param Google_StorageObject $postBody
+   * @param GoogleGAL_StorageObject $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string ifGenerationNotMatch
@@ -1737,20 +1737,20 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
     * the given value.
    * @opt_param string projection
    * Set of properties to return. Defaults to full.
-   * @return Google_Service_Storage_StorageObject
+   * @return GoogleGAL_Service_Storage_StorageObject
    */
-  public function update($bucket, $object, Google_Service_Storage_StorageObject $postBody, $optParams = array())
+  public function update($bucket, $object, GoogleGAL_Service_Storage_StorageObject $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'object' => $object, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Storage_StorageObject");
+    return $this->call('update', array($params), "GoogleGAL_Service_Storage_StorageObject");
   }
   /**
    * Watch for changes on all objects in a bucket. (objects.watchAll)
    *
    * @param string $bucket
    * Name of the bucket in which to look for objects.
-   * @param Google_Channel $postBody
+   * @param GoogleGAL_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string projection
@@ -1769,45 +1769,45 @@ class Google_Service_Storage_Objects_Resource extends Google_Service_Resource
     * from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain
     * delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate
     * prefixes are omitted.
-   * @return Google_Service_Storage_Channel
+   * @return GoogleGAL_Service_Storage_Channel
    */
-  public function watchAll($bucket, Google_Service_Storage_Channel $postBody, $optParams = array())
+  public function watchAll($bucket, GoogleGAL_Service_Storage_Channel $postBody, $optParams = array())
   {
     $params = array('bucket' => $bucket, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watchAll', array($params), "Google_Service_Storage_Channel");
+    return $this->call('watchAll', array($params), "GoogleGAL_Service_Storage_Channel");
   }
 }
 
 
 
 
-class Google_Service_Storage_Bucket extends Google_Collection
+class GoogleGAL_Service_Storage_Bucket extends GoogleGAL_Collection
 {
-  protected $aclType = 'Google_Service_Storage_BucketAccessControl';
+  protected $aclType = 'GoogleGAL_Service_Storage_BucketAccessControl';
   protected $aclDataType = 'array';
-  protected $corsType = 'Google_Service_Storage_BucketCors';
+  protected $corsType = 'GoogleGAL_Service_Storage_BucketCors';
   protected $corsDataType = 'array';
-  protected $defaultObjectAclType = 'Google_Service_Storage_ObjectAccessControl';
+  protected $defaultObjectAclType = 'GoogleGAL_Service_Storage_ObjectAccessControl';
   protected $defaultObjectAclDataType = 'array';
   public $etag;
   public $id;
   public $kind;
-  protected $lifecycleType = 'Google_Service_Storage_BucketLifecycle';
+  protected $lifecycleType = 'GoogleGAL_Service_Storage_BucketLifecycle';
   protected $lifecycleDataType = '';
   public $location;
-  protected $loggingType = 'Google_Service_Storage_BucketLogging';
+  protected $loggingType = 'GoogleGAL_Service_Storage_BucketLogging';
   protected $loggingDataType = '';
   public $metageneration;
   public $name;
-  protected $ownerType = 'Google_Service_Storage_BucketOwner';
+  protected $ownerType = 'GoogleGAL_Service_Storage_BucketOwner';
   protected $ownerDataType = '';
   public $selfLink;
   public $storageClass;
   public $timeCreated;
-  protected $versioningType = 'Google_Service_Storage_BucketVersioning';
+  protected $versioningType = 'GoogleGAL_Service_Storage_BucketVersioning';
   protected $versioningDataType = '';
-  protected $websiteType = 'Google_Service_Storage_BucketWebsite';
+  protected $websiteType = 'GoogleGAL_Service_Storage_BucketWebsite';
   protected $websiteDataType = '';
 
   public function setAcl($acl)
@@ -1870,7 +1870,7 @@ class Google_Service_Storage_Bucket extends Google_Collection
     return $this->kind;
   }
 
-  public function setLifecycle(Google_Service_Storage_BucketLifecycle $lifecycle)
+  public function setLifecycle(GoogleGAL_Service_Storage_BucketLifecycle $lifecycle)
   {
     $this->lifecycle = $lifecycle;
   }
@@ -1890,7 +1890,7 @@ class Google_Service_Storage_Bucket extends Google_Collection
     return $this->location;
   }
 
-  public function setLogging(Google_Service_Storage_BucketLogging $logging)
+  public function setLogging(GoogleGAL_Service_Storage_BucketLogging $logging)
   {
     $this->logging = $logging;
   }
@@ -1920,7 +1920,7 @@ class Google_Service_Storage_Bucket extends Google_Collection
     return $this->name;
   }
 
-  public function setOwner(Google_Service_Storage_BucketOwner $owner)
+  public function setOwner(GoogleGAL_Service_Storage_BucketOwner $owner)
   {
     $this->owner = $owner;
   }
@@ -1960,7 +1960,7 @@ class Google_Service_Storage_Bucket extends Google_Collection
     return $this->timeCreated;
   }
 
-  public function setVersioning(Google_Service_Storage_BucketVersioning $versioning)
+  public function setVersioning(GoogleGAL_Service_Storage_BucketVersioning $versioning)
   {
     $this->versioning = $versioning;
   }
@@ -1970,7 +1970,7 @@ class Google_Service_Storage_Bucket extends Google_Collection
     return $this->versioning;
   }
 
-  public function setWebsite(Google_Service_Storage_BucketWebsite $website)
+  public function setWebsite(GoogleGAL_Service_Storage_BucketWebsite $website)
   {
     $this->website = $website;
   }
@@ -1981,7 +1981,7 @@ class Google_Service_Storage_Bucket extends Google_Collection
   }
 }
 
-class Google_Service_Storage_BucketAccessControl extends Google_Model
+class GoogleGAL_Service_Storage_BucketAccessControl extends GoogleGAL_Model
 {
   public $bucket;
   public $domain;
@@ -2095,9 +2095,9 @@ class Google_Service_Storage_BucketAccessControl extends Google_Model
   }
 }
 
-class Google_Service_Storage_BucketAccessControls extends Google_Collection
+class GoogleGAL_Service_Storage_BucketAccessControls extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Storage_BucketAccessControl';
+  protected $itemsType = 'GoogleGAL_Service_Storage_BucketAccessControl';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -2122,7 +2122,7 @@ class Google_Service_Storage_BucketAccessControls extends Google_Collection
   }
 }
 
-class Google_Service_Storage_BucketCors extends Google_Collection
+class GoogleGAL_Service_Storage_BucketCors extends GoogleGAL_Collection
 {
   public $maxAgeSeconds;
   public $method;
@@ -2170,9 +2170,9 @@ class Google_Service_Storage_BucketCors extends Google_Collection
   }
 }
 
-class Google_Service_Storage_BucketLifecycle extends Google_Collection
+class GoogleGAL_Service_Storage_BucketLifecycle extends GoogleGAL_Collection
 {
-  protected $ruleType = 'Google_Service_Storage_BucketLifecycleRule';
+  protected $ruleType = 'GoogleGAL_Service_Storage_BucketLifecycleRule';
   protected $ruleDataType = 'array';
 
   public function setRule($rule)
@@ -2186,14 +2186,14 @@ class Google_Service_Storage_BucketLifecycle extends Google_Collection
   }
 }
 
-class Google_Service_Storage_BucketLifecycleRule extends Google_Model
+class GoogleGAL_Service_Storage_BucketLifecycleRule extends GoogleGAL_Model
 {
-  protected $actionType = 'Google_Service_Storage_BucketLifecycleRuleAction';
+  protected $actionType = 'GoogleGAL_Service_Storage_BucketLifecycleRuleAction';
   protected $actionDataType = '';
-  protected $conditionType = 'Google_Service_Storage_BucketLifecycleRuleCondition';
+  protected $conditionType = 'GoogleGAL_Service_Storage_BucketLifecycleRuleCondition';
   protected $conditionDataType = '';
 
-  public function setAction(Google_Service_Storage_BucketLifecycleRuleAction $action)
+  public function setAction(GoogleGAL_Service_Storage_BucketLifecycleRuleAction $action)
   {
     $this->action = $action;
   }
@@ -2203,7 +2203,7 @@ class Google_Service_Storage_BucketLifecycleRule extends Google_Model
     return $this->action;
   }
 
-  public function setCondition(Google_Service_Storage_BucketLifecycleRuleCondition $condition)
+  public function setCondition(GoogleGAL_Service_Storage_BucketLifecycleRuleCondition $condition)
   {
     $this->condition = $condition;
   }
@@ -2214,7 +2214,7 @@ class Google_Service_Storage_BucketLifecycleRule extends Google_Model
   }
 }
 
-class Google_Service_Storage_BucketLifecycleRuleAction extends Google_Model
+class GoogleGAL_Service_Storage_BucketLifecycleRuleAction extends GoogleGAL_Model
 {
   public $type;
 
@@ -2229,7 +2229,7 @@ class Google_Service_Storage_BucketLifecycleRuleAction extends Google_Model
   }
 }
 
-class Google_Service_Storage_BucketLifecycleRuleCondition extends Google_Model
+class GoogleGAL_Service_Storage_BucketLifecycleRuleCondition extends GoogleGAL_Model
 {
   public $age;
   public $createdBefore;
@@ -2277,7 +2277,7 @@ class Google_Service_Storage_BucketLifecycleRuleCondition extends Google_Model
   }
 }
 
-class Google_Service_Storage_BucketLogging extends Google_Model
+class GoogleGAL_Service_Storage_BucketLogging extends GoogleGAL_Model
 {
   public $logBucket;
   public $logObjectPrefix;
@@ -2303,7 +2303,7 @@ class Google_Service_Storage_BucketLogging extends Google_Model
   }
 }
 
-class Google_Service_Storage_BucketOwner extends Google_Model
+class GoogleGAL_Service_Storage_BucketOwner extends GoogleGAL_Model
 {
   public $entity;
   public $entityId;
@@ -2329,7 +2329,7 @@ class Google_Service_Storage_BucketOwner extends Google_Model
   }
 }
 
-class Google_Service_Storage_BucketVersioning extends Google_Model
+class GoogleGAL_Service_Storage_BucketVersioning extends GoogleGAL_Model
 {
   public $enabled;
 
@@ -2344,7 +2344,7 @@ class Google_Service_Storage_BucketVersioning extends Google_Model
   }
 }
 
-class Google_Service_Storage_BucketWebsite extends Google_Model
+class GoogleGAL_Service_Storage_BucketWebsite extends GoogleGAL_Model
 {
   public $mainPageSuffix;
   public $notFoundPage;
@@ -2370,9 +2370,9 @@ class Google_Service_Storage_BucketWebsite extends Google_Model
   }
 }
 
-class Google_Service_Storage_Buckets extends Google_Collection
+class GoogleGAL_Service_Storage_Buckets extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Storage_Bucket';
+  protected $itemsType = 'GoogleGAL_Service_Storage_Bucket';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2408,7 +2408,7 @@ class Google_Service_Storage_Buckets extends Google_Collection
   }
 }
 
-class Google_Service_Storage_Channel extends Google_Model
+class GoogleGAL_Service_Storage_Channel extends GoogleGAL_Model
 {
   public $address;
   public $expiration;
@@ -2522,15 +2522,15 @@ class Google_Service_Storage_Channel extends Google_Model
   }
 }
 
-class Google_Service_Storage_ComposeRequest extends Google_Collection
+class GoogleGAL_Service_Storage_ComposeRequest extends GoogleGAL_Collection
 {
-  protected $destinationType = 'Google_Service_Storage_StorageObject';
+  protected $destinationType = 'GoogleGAL_Service_Storage_StorageObject';
   protected $destinationDataType = '';
   public $kind;
-  protected $sourceObjectsType = 'Google_Service_Storage_ComposeRequestSourceObjects';
+  protected $sourceObjectsType = 'GoogleGAL_Service_Storage_ComposeRequestSourceObjects';
   protected $sourceObjectsDataType = 'array';
 
-  public function setDestination(Google_Service_Storage_StorageObject $destination)
+  public function setDestination(GoogleGAL_Service_Storage_StorageObject $destination)
   {
     $this->destination = $destination;
   }
@@ -2561,11 +2561,11 @@ class Google_Service_Storage_ComposeRequest extends Google_Collection
   }
 }
 
-class Google_Service_Storage_ComposeRequestSourceObjects extends Google_Model
+class GoogleGAL_Service_Storage_ComposeRequestSourceObjects extends GoogleGAL_Model
 {
   public $generation;
   public $name;
-  protected $objectPreconditionsType = 'Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions';
+  protected $objectPreconditionsType = 'GoogleGAL_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions';
   protected $objectPreconditionsDataType = '';
 
   public function setGeneration($generation)
@@ -2588,7 +2588,7 @@ class Google_Service_Storage_ComposeRequestSourceObjects extends Google_Model
     return $this->name;
   }
 
-  public function setObjectPreconditions(Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions $objectPreconditions)
+  public function setObjectPreconditions(GoogleGAL_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions $objectPreconditions)
   {
     $this->objectPreconditions = $objectPreconditions;
   }
@@ -2599,7 +2599,7 @@ class Google_Service_Storage_ComposeRequestSourceObjects extends Google_Model
   }
 }
 
-class Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions extends Google_Model
+class GoogleGAL_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions extends GoogleGAL_Model
 {
   public $ifGenerationMatch;
 
@@ -2614,7 +2614,7 @@ class Google_Service_Storage_ComposeRequestSourceObjectsObjectPreconditions exte
   }
 }
 
-class Google_Service_Storage_ObjectAccessControl extends Google_Model
+class GoogleGAL_Service_Storage_ObjectAccessControl extends GoogleGAL_Model
 {
   public $bucket;
   public $domain;
@@ -2750,7 +2750,7 @@ class Google_Service_Storage_ObjectAccessControl extends Google_Model
   }
 }
 
-class Google_Service_Storage_ObjectAccessControls extends Google_Collection
+class GoogleGAL_Service_Storage_ObjectAccessControls extends GoogleGAL_Collection
 {
   public $items;
   public $kind;
@@ -2776,9 +2776,9 @@ class Google_Service_Storage_ObjectAccessControls extends Google_Collection
   }
 }
 
-class Google_Service_Storage_Objects extends Google_Collection
+class GoogleGAL_Service_Storage_Objects extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Storage_StorageObject';
+  protected $itemsType = 'GoogleGAL_Service_Storage_StorageObject';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2825,9 +2825,9 @@ class Google_Service_Storage_Objects extends Google_Collection
   }
 }
 
-class Google_Service_Storage_StorageObject extends Google_Collection
+class GoogleGAL_Service_Storage_StorageObject extends GoogleGAL_Collection
 {
-  protected $aclType = 'Google_Service_Storage_ObjectAccessControl';
+  protected $aclType = 'GoogleGAL_Service_Storage_ObjectAccessControl';
   protected $aclDataType = 'array';
   public $bucket;
   public $cacheControl;
@@ -2846,7 +2846,7 @@ class Google_Service_Storage_StorageObject extends Google_Collection
   public $metadata;
   public $metageneration;
   public $name;
-  protected $ownerType = 'Google_Service_Storage_StorageObjectOwner';
+  protected $ownerType = 'GoogleGAL_Service_Storage_StorageObjectOwner';
   protected $ownerDataType = '';
   public $selfLink;
   public $size;
@@ -3034,7 +3034,7 @@ class Google_Service_Storage_StorageObject extends Google_Collection
     return $this->name;
   }
 
-  public function setOwner(Google_Service_Storage_StorageObjectOwner $owner)
+  public function setOwner(GoogleGAL_Service_Storage_StorageObjectOwner $owner)
   {
     $this->owner = $owner;
   }
@@ -3095,7 +3095,7 @@ class Google_Service_Storage_StorageObject extends Google_Collection
   }
 }
 
-class Google_Service_Storage_StorageObjectOwner extends Google_Model
+class GoogleGAL_Service_Storage_StorageObjectOwner extends GoogleGAL_Model
 {
   public $entity;
   public $entityId;

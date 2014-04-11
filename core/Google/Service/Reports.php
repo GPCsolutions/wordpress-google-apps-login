@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Reports extends Google_Service
+class GoogleGAL_Service_Reports extends GoogleGAL_Service
 {
   /** View audit reports of Google Apps for your domain. */
   const ADMIN_REPORTS_AUDIT_READONLY = "https://www.googleapis.com/auth/admin.reports.audit.readonly";
@@ -45,16 +45,16 @@ class Google_Service_Reports extends Google_Service
   /**
    * Constructs the internal representation of the Reports service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'admin/reports/v1/';
     $this->version = 'reports_v1';
     $this->serviceName = 'admin';
 
-    $this->activities = new Google_Service_Reports_Activities_Resource(
+    $this->activities = new GoogleGAL_Service_Reports_Activities_Resource(
         $this,
         $this->serviceName,
         'activities',
@@ -158,7 +158,7 @@ class Google_Service_Reports extends Google_Service
           )
         )
     );
-    $this->channels = new Google_Service_Reports_Channels_Resource(
+    $this->channels = new GoogleGAL_Service_Reports_Channels_Resource(
         $this,
         $this->serviceName,
         'channels',
@@ -172,7 +172,7 @@ class Google_Service_Reports extends Google_Service
           )
         )
     );
-    $this->customerUsageReports = new Google_Service_Reports_CustomerUsageReports_Resource(
+    $this->customerUsageReports = new GoogleGAL_Service_Reports_CustomerUsageReports_Resource(
         $this,
         $this->serviceName,
         'customerUsageReports',
@@ -204,7 +204,7 @@ class Google_Service_Reports extends Google_Service
           )
         )
     );
-    $this->userUsageReport = new Google_Service_Reports_UserUsageReport_Resource(
+    $this->userUsageReport = new GoogleGAL_Service_Reports_UserUsageReport_Resource(
         $this,
         $this->serviceName,
         'userUsageReport',
@@ -257,11 +257,11 @@ class Google_Service_Reports extends Google_Service
  * The "activities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Google_Service_Reports(...);
+ *   $adminService = new GoogleGAL_Service_Reports(...);
  *   $activities = $adminService->activities;
  *  </code>
  */
-class Google_Service_Reports_Activities_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Reports_Activities_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -292,13 +292,13 @@ class Google_Service_Reports_Activities_Resource extends Google_Service_Resource
    * Return events which occured at or before this time.
    * @opt_param string customerId
    * Represents the customer for which the data is to be fetched.
-   * @return Google_Service_Reports_Activities
+   * @return GoogleGAL_Service_Reports_Activities
    */
   public function listActivities($userKey, $applicationName, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'applicationName' => $applicationName);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Reports_Activities");
+    return $this->call('list', array($params), "GoogleGAL_Service_Reports_Activities");
   }
   /**
    * Push changes to activities (activities.watch)
@@ -308,7 +308,7 @@ class Google_Service_Reports_Activities_Resource extends Google_Service_Resource
     * specified as the userKey, it returns usageReports for all users.
    * @param string $applicationName
    * Application name for which the events are to be retrieved.
-   * @param Google_Channel $postBody
+   * @param GoogleGAL_Channel $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string startTime
@@ -328,13 +328,13 @@ class Google_Service_Reports_Activities_Resource extends Google_Service_Resource
    * Return events which occured at or before this time.
    * @opt_param string customerId
    * Represents the customer for which the data is to be fetched.
-   * @return Google_Service_Reports_Channel
+   * @return GoogleGAL_Service_Reports_Channel
    */
-  public function watch($userKey, $applicationName, Google_Service_Reports_Channel $postBody, $optParams = array())
+  public function watch($userKey, $applicationName, GoogleGAL_Service_Reports_Channel $postBody, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'applicationName' => $applicationName, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('watch', array($params), "Google_Service_Reports_Channel");
+    return $this->call('watch', array($params), "GoogleGAL_Service_Reports_Channel");
   }
 }
 
@@ -342,20 +342,20 @@ class Google_Service_Reports_Activities_Resource extends Google_Service_Resource
  * The "channels" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Google_Service_Reports(...);
+ *   $adminService = new GoogleGAL_Service_Reports(...);
  *   $channels = $adminService->channels;
  *  </code>
  */
-class Google_Service_Reports_Channels_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Reports_Channels_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
    * Stop watching resources through this channel (channels.stop)
    *
-   * @param Google_Channel $postBody
+   * @param GoogleGAL_Channel $postBody
    * @param array $optParams Optional parameters.
    */
-  public function stop(Google_Service_Reports_Channel $postBody, $optParams = array())
+  public function stop(GoogleGAL_Service_Reports_Channel $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
@@ -367,11 +367,11 @@ class Google_Service_Reports_Channels_Resource extends Google_Service_Resource
  * The "customerUsageReports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Google_Service_Reports(...);
+ *   $adminService = new GoogleGAL_Service_Reports(...);
  *   $customerUsageReports = $adminService->customerUsageReports;
  *  </code>
  */
-class Google_Service_Reports_CustomerUsageReports_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Reports_CustomerUsageReports_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -389,13 +389,13 @@ class Google_Service_Reports_CustomerUsageReports_Resource extends Google_Servic
    * @opt_param string parameters
    * Represents the application name, parameter name pairs to fetch in csv as app_name1:param_name1,
     * app_name2:param_name2.
-   * @return Google_Service_Reports_UsageReports
+   * @return GoogleGAL_Service_Reports_UsageReports
    */
   public function get($date, $optParams = array())
   {
     $params = array('date' => $date);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Reports_UsageReports");
+    return $this->call('get', array($params), "GoogleGAL_Service_Reports_UsageReports");
   }
 }
 
@@ -403,11 +403,11 @@ class Google_Service_Reports_CustomerUsageReports_Resource extends Google_Servic
  * The "userUsageReport" collection of methods.
  * Typical usage is:
  *  <code>
- *   $adminService = new Google_Service_Reports(...);
+ *   $adminService = new GoogleGAL_Service_Reports(...);
  *   $userUsageReport = $adminService->userUsageReport;
  *  </code>
  */
-class Google_Service_Reports_UserUsageReport_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Reports_UserUsageReport_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -431,23 +431,23 @@ class Google_Service_Reports_UserUsageReport_Resource extends Google_Service_Res
    * Represents the set of filters including parameter operator value.
    * @opt_param string customerId
    * Represents the customer for which the data is to be fetched.
-   * @return Google_Service_Reports_UsageReports
+   * @return GoogleGAL_Service_Reports_UsageReports
    */
   public function get($userKey, $date, $optParams = array())
   {
     $params = array('userKey' => $userKey, 'date' => $date);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Reports_UsageReports");
+    return $this->call('get', array($params), "GoogleGAL_Service_Reports_UsageReports");
   }
 }
 
 
 
 
-class Google_Service_Reports_Activities extends Google_Collection
+class GoogleGAL_Service_Reports_Activities extends GoogleGAL_Collection
 {
   public $etag;
-  protected $itemsType = 'Google_Service_Reports_Activity';
+  protected $itemsType = 'GoogleGAL_Service_Reports_Activity';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -493,20 +493,20 @@ class Google_Service_Reports_Activities extends Google_Collection
   }
 }
 
-class Google_Service_Reports_Activity extends Google_Collection
+class GoogleGAL_Service_Reports_Activity extends GoogleGAL_Collection
 {
-  protected $actorType = 'Google_Service_Reports_ActivityActor';
+  protected $actorType = 'GoogleGAL_Service_Reports_ActivityActor';
   protected $actorDataType = '';
   public $etag;
-  protected $eventsType = 'Google_Service_Reports_ActivityEvents';
+  protected $eventsType = 'GoogleGAL_Service_Reports_ActivityEvents';
   protected $eventsDataType = 'array';
-  protected $idType = 'Google_Service_Reports_ActivityId';
+  protected $idType = 'GoogleGAL_Service_Reports_ActivityId';
   protected $idDataType = '';
   public $ipAddress;
   public $kind;
   public $ownerDomain;
 
-  public function setActor(Google_Service_Reports_ActivityActor $actor)
+  public function setActor(GoogleGAL_Service_Reports_ActivityActor $actor)
   {
     $this->actor = $actor;
   }
@@ -536,7 +536,7 @@ class Google_Service_Reports_Activity extends Google_Collection
     return $this->events;
   }
 
-  public function setId(Google_Service_Reports_ActivityId $id)
+  public function setId(GoogleGAL_Service_Reports_ActivityId $id)
   {
     $this->id = $id;
   }
@@ -577,7 +577,7 @@ class Google_Service_Reports_Activity extends Google_Collection
   }
 }
 
-class Google_Service_Reports_ActivityActor extends Google_Model
+class GoogleGAL_Service_Reports_ActivityActor extends GoogleGAL_Model
 {
   public $callerType;
   public $email;
@@ -625,10 +625,10 @@ class Google_Service_Reports_ActivityActor extends Google_Model
   }
 }
 
-class Google_Service_Reports_ActivityEvents extends Google_Collection
+class GoogleGAL_Service_Reports_ActivityEvents extends GoogleGAL_Collection
 {
   public $name;
-  protected $parametersType = 'Google_Service_Reports_ActivityEventsParameters';
+  protected $parametersType = 'GoogleGAL_Service_Reports_ActivityEventsParameters';
   protected $parametersDataType = 'array';
   public $type;
 
@@ -663,7 +663,7 @@ class Google_Service_Reports_ActivityEvents extends Google_Collection
   }
 }
 
-class Google_Service_Reports_ActivityEventsParameters extends Google_Model
+class GoogleGAL_Service_Reports_ActivityEventsParameters extends GoogleGAL_Model
 {
   public $boolValue;
   public $intValue;
@@ -711,7 +711,7 @@ class Google_Service_Reports_ActivityEventsParameters extends Google_Model
   }
 }
 
-class Google_Service_Reports_ActivityId extends Google_Model
+class GoogleGAL_Service_Reports_ActivityId extends GoogleGAL_Model
 {
   public $applicationName;
   public $customerId;
@@ -759,7 +759,7 @@ class Google_Service_Reports_ActivityId extends Google_Model
   }
 }
 
-class Google_Service_Reports_Channel extends Google_Model
+class GoogleGAL_Service_Reports_Channel extends GoogleGAL_Model
 {
   public $address;
   public $expiration;
@@ -873,14 +873,14 @@ class Google_Service_Reports_Channel extends Google_Model
   }
 }
 
-class Google_Service_Reports_UsageReport extends Google_Collection
+class GoogleGAL_Service_Reports_UsageReport extends GoogleGAL_Collection
 {
   public $date;
-  protected $entityType = 'Google_Service_Reports_UsageReportEntity';
+  protected $entityType = 'GoogleGAL_Service_Reports_UsageReportEntity';
   protected $entityDataType = '';
   public $etag;
   public $kind;
-  protected $parametersType = 'Google_Service_Reports_UsageReportParameters';
+  protected $parametersType = 'GoogleGAL_Service_Reports_UsageReportParameters';
   protected $parametersDataType = 'array';
 
   public function setDate($date)
@@ -893,7 +893,7 @@ class Google_Service_Reports_UsageReport extends Google_Collection
     return $this->date;
   }
 
-  public function setEntity(Google_Service_Reports_UsageReportEntity $entity)
+  public function setEntity(GoogleGAL_Service_Reports_UsageReportEntity $entity)
   {
     $this->entity = $entity;
   }
@@ -934,7 +934,7 @@ class Google_Service_Reports_UsageReport extends Google_Collection
   }
 }
 
-class Google_Service_Reports_UsageReportEntity extends Google_Model
+class GoogleGAL_Service_Reports_UsageReportEntity extends GoogleGAL_Model
 {
   public $customerId;
   public $profileId;
@@ -982,7 +982,7 @@ class Google_Service_Reports_UsageReportEntity extends Google_Model
   }
 }
 
-class Google_Service_Reports_UsageReportParameters extends Google_Collection
+class GoogleGAL_Service_Reports_UsageReportParameters extends GoogleGAL_Collection
 {
   public $boolValue;
   public $datetimeValue;
@@ -1052,14 +1052,14 @@ class Google_Service_Reports_UsageReportParameters extends Google_Collection
   }
 }
 
-class Google_Service_Reports_UsageReports extends Google_Collection
+class GoogleGAL_Service_Reports_UsageReports extends GoogleGAL_Collection
 {
   public $etag;
   public $kind;
   public $nextPageToken;
-  protected $usageReportsType = 'Google_Service_Reports_UsageReport';
+  protected $usageReportsType = 'GoogleGAL_Service_Reports_UsageReport';
   protected $usageReportsDataType = 'array';
-  protected $warningsType = 'Google_Service_Reports_UsageReportsWarnings';
+  protected $warningsType = 'GoogleGAL_Service_Reports_UsageReportsWarnings';
   protected $warningsDataType = 'array';
 
   public function setEtag($etag)
@@ -1113,10 +1113,10 @@ class Google_Service_Reports_UsageReports extends Google_Collection
   }
 }
 
-class Google_Service_Reports_UsageReportsWarnings extends Google_Collection
+class GoogleGAL_Service_Reports_UsageReportsWarnings extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Reports_UsageReportsWarningsData';
+  protected $dataType = 'GoogleGAL_Service_Reports_UsageReportsWarningsData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -1151,7 +1151,7 @@ class Google_Service_Reports_UsageReportsWarnings extends Google_Collection
   }
 }
 
-class Google_Service_Reports_UsageReportsWarningsData extends Google_Model
+class GoogleGAL_Service_Reports_UsageReportsWarningsData extends GoogleGAL_Model
 {
   public $key;
   public $value;

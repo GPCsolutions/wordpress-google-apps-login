@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_YouTubeAnalytics extends Google_Service
+class GoogleGAL_Service_YouTubeAnalytics extends GoogleGAL_Service
 {
   /** View YouTube Analytics monetary reports for your YouTube content. */
   const YT_ANALYTICS_MONETARY_READONLY = "https://www.googleapis.com/auth/yt-analytics-monetary.readonly";
@@ -44,16 +44,16 @@ class Google_Service_YouTubeAnalytics extends Google_Service
   /**
    * Constructs the internal representation of the YouTubeAnalytics service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'youtube/analytics/v1/';
     $this->version = 'v1';
     $this->serviceName = 'youtubeAnalytics';
 
-    $this->batchReportDefinitions = new Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource(
+    $this->batchReportDefinitions = new GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitions_Resource(
         $this,
         $this->serviceName,
         'batchReportDefinitions',
@@ -73,7 +73,7 @@ class Google_Service_YouTubeAnalytics extends Google_Service
           )
         )
     );
-    $this->batchReports = new Google_Service_YouTubeAnalytics_BatchReports_Resource(
+    $this->batchReports = new GoogleGAL_Service_YouTubeAnalytics_BatchReports_Resource(
         $this,
         $this->serviceName,
         'batchReports',
@@ -98,7 +98,7 @@ class Google_Service_YouTubeAnalytics extends Google_Service
           )
         )
     );
-    $this->reports = new Google_Service_YouTubeAnalytics_Reports_Resource(
+    $this->reports = new GoogleGAL_Service_YouTubeAnalytics_Reports_Resource(
         $this,
         $this->serviceName,
         'reports',
@@ -161,11 +161,11 @@ class Google_Service_YouTubeAnalytics extends Google_Service
  * The "batchReportDefinitions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new GoogleGAL_Service_YouTubeAnalytics(...);
  *   $batchReportDefinitions = $youtubeAnalyticsService->batchReportDefinitions;
  *  </code>
  */
-class Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource extends Google_Service_Resource
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitions_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -176,13 +176,13 @@ class Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource extends Go
    * The onBehalfOfContentOwner parameter identifies the content owner that the user is acting on
     * behalf of.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_YouTubeAnalytics_BatchReportDefinitionList
+   * @return GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitionList
    */
   public function listBatchReportDefinitions($onBehalfOfContentOwner, $optParams = array())
   {
     $params = array('onBehalfOfContentOwner' => $onBehalfOfContentOwner);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_YouTubeAnalytics_BatchReportDefinitionList");
+    return $this->call('list', array($params), "GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitionList");
   }
 }
 
@@ -190,11 +190,11 @@ class Google_Service_YouTubeAnalytics_BatchReportDefinitions_Resource extends Go
  * The "batchReports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new GoogleGAL_Service_YouTubeAnalytics(...);
  *   $batchReports = $youtubeAnalyticsService->batchReports;
  *  </code>
  */
-class Google_Service_YouTubeAnalytics_BatchReports_Resource extends Google_Service_Resource
+class GoogleGAL_Service_YouTubeAnalytics_BatchReports_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -207,13 +207,13 @@ class Google_Service_YouTubeAnalytics_BatchReports_Resource extends Google_Servi
    * The onBehalfOfContentOwner parameter identifies the content owner that the user is acting on
     * behalf of.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_YouTubeAnalytics_BatchReportList
+   * @return GoogleGAL_Service_YouTubeAnalytics_BatchReportList
    */
   public function listBatchReports($batchReportDefinitionId, $onBehalfOfContentOwner, $optParams = array())
   {
     $params = array('batchReportDefinitionId' => $batchReportDefinitionId, 'onBehalfOfContentOwner' => $onBehalfOfContentOwner);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_YouTubeAnalytics_BatchReportList");
+    return $this->call('list', array($params), "GoogleGAL_Service_YouTubeAnalytics_BatchReportList");
   }
 }
 
@@ -221,11 +221,11 @@ class Google_Service_YouTubeAnalytics_BatchReports_Resource extends Google_Servi
  * The "reports" collection of methods.
  * Typical usage is:
  *  <code>
- *   $youtubeAnalyticsService = new Google_Service_YouTubeAnalytics(...);
+ *   $youtubeAnalyticsService = new GoogleGAL_Service_YouTubeAnalytics(...);
  *   $reports = $youtubeAnalyticsService->reports;
  *  </code>
  */
-class Google_Service_YouTubeAnalytics_Reports_Resource extends Google_Service_Resource
+class GoogleGAL_Service_YouTubeAnalytics_Reports_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -270,22 +270,22 @@ class Google_Service_YouTubeAnalytics_Reports_Resource extends Google_Service_Re
     * together with a semicolon (;), and the returned result table will satisfy both filters. For
     * example, a filters parameter value of video==dMH0bHeiRNg;country==IT restricts the result set to
     * include data for the given video in Italy.
-   * @return Google_Service_YouTubeAnalytics_ResultTable
+   * @return GoogleGAL_Service_YouTubeAnalytics_ResultTable
    */
   public function query($ids, $startDate, $endDate, $metrics, $optParams = array())
   {
     $params = array('ids' => $ids, 'start-date' => $startDate, 'end-date' => $endDate, 'metrics' => $metrics);
     $params = array_merge($params, $optParams);
-    return $this->call('query', array($params), "Google_Service_YouTubeAnalytics_ResultTable");
+    return $this->call('query', array($params), "GoogleGAL_Service_YouTubeAnalytics_ResultTable");
   }
 }
 
 
 
 
-class Google_Service_YouTubeAnalytics_BatchReportDefinitionList extends Google_Collection
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitionList extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_YouTubeAnalytics_BatchReportDefinitionTemplate';
+  protected $itemsType = 'GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitionTemplate';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -310,9 +310,9 @@ class Google_Service_YouTubeAnalytics_BatchReportDefinitionList extends Google_C
   }
 }
 
-class Google_Service_YouTubeAnalytics_BatchReportDefinitionTemplate extends Google_Collection
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitionTemplate extends GoogleGAL_Collection
 {
-  protected $defaultOutputType = 'Google_Service_YouTubeAnalytics_BatchReportDefinitionTemplateDefaultOutput';
+  protected $defaultOutputType = 'GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitionTemplateDefaultOutput';
   protected $defaultOutputDataType = 'array';
   public $id;
   public $name;
@@ -370,7 +370,7 @@ class Google_Service_YouTubeAnalytics_BatchReportDefinitionTemplate extends Goog
   }
 }
 
-class Google_Service_YouTubeAnalytics_BatchReportDefinitionTemplateDefaultOutput extends Google_Model
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportDefinitionTemplateDefaultOutput extends GoogleGAL_Model
 {
   public $format;
   public $type;
@@ -396,9 +396,9 @@ class Google_Service_YouTubeAnalytics_BatchReportDefinitionTemplateDefaultOutput
   }
 }
 
-class Google_Service_YouTubeAnalytics_BatchReportList extends Google_Collection
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportList extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_YouTubeAnalytics_BatchReportTemplate';
+  protected $itemsType = 'GoogleGAL_Service_YouTubeAnalytics_BatchReportTemplate';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -423,13 +423,13 @@ class Google_Service_YouTubeAnalytics_BatchReportList extends Google_Collection
   }
 }
 
-class Google_Service_YouTubeAnalytics_BatchReportTemplate extends Google_Collection
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportTemplate extends GoogleGAL_Collection
 {
   public $id;
-  protected $outputsType = 'Google_Service_YouTubeAnalytics_BatchReportTemplateOutputs';
+  protected $outputsType = 'GoogleGAL_Service_YouTubeAnalytics_BatchReportTemplateOutputs';
   protected $outputsDataType = 'array';
   public $reportId;
-  protected $timeSpanType = 'Google_Service_YouTubeAnalytics_BatchReportTemplateTimeSpan';
+  protected $timeSpanType = 'GoogleGAL_Service_YouTubeAnalytics_BatchReportTemplateTimeSpan';
   protected $timeSpanDataType = '';
   public $timeUpdated;
 
@@ -463,7 +463,7 @@ class Google_Service_YouTubeAnalytics_BatchReportTemplate extends Google_Collect
     return $this->reportId;
   }
 
-  public function setTimeSpan(Google_Service_YouTubeAnalytics_BatchReportTemplateTimeSpan $timeSpan)
+  public function setTimeSpan(GoogleGAL_Service_YouTubeAnalytics_BatchReportTemplateTimeSpan $timeSpan)
   {
     $this->timeSpan = $timeSpan;
   }
@@ -484,7 +484,7 @@ class Google_Service_YouTubeAnalytics_BatchReportTemplate extends Google_Collect
   }
 }
 
-class Google_Service_YouTubeAnalytics_BatchReportTemplateOutputs extends Google_Model
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportTemplateOutputs extends GoogleGAL_Model
 {
   public $downloadUrl;
   public $format;
@@ -521,7 +521,7 @@ class Google_Service_YouTubeAnalytics_BatchReportTemplateOutputs extends Google_
   }
 }
 
-class Google_Service_YouTubeAnalytics_BatchReportTemplateTimeSpan extends Google_Model
+class GoogleGAL_Service_YouTubeAnalytics_BatchReportTemplateTimeSpan extends GoogleGAL_Model
 {
   public $endTime;
   public $startTime;
@@ -547,9 +547,9 @@ class Google_Service_YouTubeAnalytics_BatchReportTemplateTimeSpan extends Google
   }
 }
 
-class Google_Service_YouTubeAnalytics_ResultTable extends Google_Collection
+class GoogleGAL_Service_YouTubeAnalytics_ResultTable extends GoogleGAL_Collection
 {
-  protected $columnHeadersType = 'Google_Service_YouTubeAnalytics_ResultTableColumnHeaders';
+  protected $columnHeadersType = 'GoogleGAL_Service_YouTubeAnalytics_ResultTableColumnHeaders';
   protected $columnHeadersDataType = 'array';
   public $kind;
   public $rows;
@@ -585,7 +585,7 @@ class Google_Service_YouTubeAnalytics_ResultTable extends Google_Collection
   }
 }
 
-class Google_Service_YouTubeAnalytics_ResultTableColumnHeaders extends Google_Model
+class GoogleGAL_Service_YouTubeAnalytics_ResultTableColumnHeaders extends GoogleGAL_Model
 {
   public $columnType;
   public $dataType;

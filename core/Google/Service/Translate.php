@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Translate extends Google_Service
+class GoogleGAL_Service_Translate extends GoogleGAL_Service
 {
 
 
@@ -41,16 +41,16 @@ class Google_Service_Translate extends Google_Service
   /**
    * Constructs the internal representation of the Translate service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'language/translate/';
     $this->version = 'v2';
     $this->serviceName = 'translate';
 
-    $this->detections = new Google_Service_Translate_Detections_Resource(
+    $this->detections = new GoogleGAL_Service_Translate_Detections_Resource(
         $this,
         $this->serviceName,
         'detections',
@@ -71,7 +71,7 @@ class Google_Service_Translate extends Google_Service
           )
         )
     );
-    $this->languages = new Google_Service_Translate_Languages_Resource(
+    $this->languages = new GoogleGAL_Service_Translate_Languages_Resource(
         $this,
         $this->serviceName,
         'languages',
@@ -90,7 +90,7 @@ class Google_Service_Translate extends Google_Service
           )
         )
     );
-    $this->translations = new Google_Service_Translate_Translations_Resource(
+    $this->translations = new GoogleGAL_Service_Translate_Translations_Resource(
         $this,
         $this->serviceName,
         'translations',
@@ -137,11 +137,11 @@ class Google_Service_Translate extends Google_Service
  * The "detections" collection of methods.
  * Typical usage is:
  *  <code>
- *   $translateService = new Google_Service_Translate(...);
+ *   $translateService = new GoogleGAL_Service_Translate(...);
  *   $detections = $translateService->detections;
  *  </code>
  */
-class Google_Service_Translate_Detections_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Translate_Detections_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -150,13 +150,13 @@ class Google_Service_Translate_Detections_Resource extends Google_Service_Resour
    * @param string $q
    * The text to detect
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Translate_DetectionsListResponse
+   * @return GoogleGAL_Service_Translate_DetectionsListResponse
    */
   public function listDetections($q, $optParams = array())
   {
     $params = array('q' => $q);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Translate_DetectionsListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Translate_DetectionsListResponse");
   }
 }
 
@@ -164,11 +164,11 @@ class Google_Service_Translate_Detections_Resource extends Google_Service_Resour
  * The "languages" collection of methods.
  * Typical usage is:
  *  <code>
- *   $translateService = new Google_Service_Translate(...);
+ *   $translateService = new GoogleGAL_Service_Translate(...);
  *   $languages = $translateService->languages;
  *  </code>
  */
-class Google_Service_Translate_Languages_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Translate_Languages_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -179,13 +179,13 @@ class Google_Service_Translate_Languages_Resource extends Google_Service_Resourc
    *
    * @opt_param string target
    * the language and collation in which the localized results should be returned
-   * @return Google_Service_Translate_LanguagesListResponse
+   * @return GoogleGAL_Service_Translate_LanguagesListResponse
    */
   public function listLanguages($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Translate_LanguagesListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Translate_LanguagesListResponse");
   }
 }
 
@@ -193,11 +193,11 @@ class Google_Service_Translate_Languages_Resource extends Google_Service_Resourc
  * The "translations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $translateService = new Google_Service_Translate(...);
+ *   $translateService = new GoogleGAL_Service_Translate(...);
  *   $translations = $translateService->translations;
  *  </code>
  */
-class Google_Service_Translate_Translations_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Translate_Translations_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -216,22 +216,22 @@ class Google_Service_Translate_Translations_Resource extends Google_Service_Reso
    * The format of the text
    * @opt_param string cid
    * The customization id for translate
-   * @return Google_Service_Translate_TranslationsListResponse
+   * @return GoogleGAL_Service_Translate_TranslationsListResponse
    */
   public function listTranslations($q, $target, $optParams = array())
   {
     $params = array('q' => $q, 'target' => $target);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Translate_TranslationsListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Translate_TranslationsListResponse");
   }
 }
 
 
 
 
-class Google_Service_Translate_DetectionsListResponse extends Google_Collection
+class GoogleGAL_Service_Translate_DetectionsListResponse extends GoogleGAL_Collection
 {
-  protected $detectionsType = 'Google_Service_Translate_DetectionsResourceItems';
+  protected $detectionsType = 'GoogleGAL_Service_Translate_DetectionsResourceItems';
   protected $detectionsDataType = 'array';
 
   public function setDetections($detections)
@@ -245,7 +245,7 @@ class Google_Service_Translate_DetectionsListResponse extends Google_Collection
   }
 }
 
-class Google_Service_Translate_DetectionsResourceItems extends Google_Model
+class GoogleGAL_Service_Translate_DetectionsResourceItems extends GoogleGAL_Model
 {
   public $confidence;
   public $isReliable;
@@ -282,9 +282,9 @@ class Google_Service_Translate_DetectionsResourceItems extends Google_Model
   }
 }
 
-class Google_Service_Translate_LanguagesListResponse extends Google_Collection
+class GoogleGAL_Service_Translate_LanguagesListResponse extends GoogleGAL_Collection
 {
-  protected $languagesType = 'Google_Service_Translate_LanguagesResource';
+  protected $languagesType = 'GoogleGAL_Service_Translate_LanguagesResource';
   protected $languagesDataType = 'array';
 
   public function setLanguages($languages)
@@ -298,7 +298,7 @@ class Google_Service_Translate_LanguagesListResponse extends Google_Collection
   }
 }
 
-class Google_Service_Translate_LanguagesResource extends Google_Model
+class GoogleGAL_Service_Translate_LanguagesResource extends GoogleGAL_Model
 {
   public $language;
   public $name;
@@ -324,9 +324,9 @@ class Google_Service_Translate_LanguagesResource extends Google_Model
   }
 }
 
-class Google_Service_Translate_TranslationsListResponse extends Google_Collection
+class GoogleGAL_Service_Translate_TranslationsListResponse extends GoogleGAL_Collection
 {
-  protected $translationsType = 'Google_Service_Translate_TranslationsResource';
+  protected $translationsType = 'GoogleGAL_Service_Translate_TranslationsResource';
   protected $translationsDataType = 'array';
 
   public function setTranslations($translations)
@@ -340,7 +340,7 @@ class Google_Service_Translate_TranslationsListResponse extends Google_Collectio
   }
 }
 
-class Google_Service_Translate_TranslationsResource extends Google_Model
+class GoogleGAL_Service_Translate_TranslationsResource extends GoogleGAL_Model
 {
   public $detectedSourceLanguage;
   public $translatedText;

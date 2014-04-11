@@ -3,7 +3,7 @@ Contributors: danlester
 Tags: login, google, authentication, oauth2, oauth, admin, google apps, sso, single-sign-on, auth, intranet
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 2.3
+Stable tag: 2.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -158,8 +158,9 @@ your emails and other data.
 
 = What are the system requirements? =
 
-*  PHP 5.2.x or higher with Curl and JSON extensions
+*  PHP 5.2.x or higher with JSON extensions
 *  Wordpress 3.3 or above
+*  Should no longer require CURL extension
 
 And you will need a Google account to set up the plugin.
 
@@ -197,6 +198,10 @@ the WordPress admin panel once you have activated the plugin. For a (non-persona
 please [click here](http://wp-glogin.com/installing-google-apps-login/basic-setup/).
 
 == Changelog ==
+
+= 2.3.1 =
+
+Fixed conflicts with some other plugins such as Google Analyticator which use similar Google client libraries.
 
 = 2.3 =
 

@@ -25,7 +25,7 @@ require_once 'Google/Utils.php';
  * @author Chirag Shah <chirags@google.com>
  *
  */
-class Google_Http_MediaFileUpload
+class GoogleGAL_Http_MediaFileUpload
 {
   const UPLOAD_MEDIA_TYPE = 'media';
   const UPLOAD_MULTIPART_TYPE = 'multipart';
@@ -52,10 +52,10 @@ class Google_Http_MediaFileUpload
   /** @var int $progress */
   private $progress;
 
-  /** @var Google_Client */
+  /** @var GoogleGAL_Client */
   private $client;
 
-  /** @var Google_Http_Request */
+  /** @var GoogleGAL_Http_Request */
   private $request;
 
   /** @var string */
@@ -75,8 +75,8 @@ class Google_Http_MediaFileUpload
    * only used if resumable=True
    */
   public function __construct(
-      Google_Client $client,
-      Google_Http_Request $request,
+      GoogleGAL_Client $client,
+      GoogleGAL_Http_Request $request,
       $mimeType,
       $data,
       $resumable = false,
@@ -150,14 +150,14 @@ class Google_Http_MediaFileUpload
       'expect' => '',
     );
 
-    $httpRequest = new Google_Http_Request(
+    $httpRequest = new GoogleGAL_Http_Request(
         $this->resumeUri,
         'PUT',
         $headers,
         $chunk
     );
 
-    if ($this->client->getClassConfig("Google_Http_Request", "enable_gzip_for_uploads")) {
+    if ($this->client->getClassConfig("GoogleGAL_Http_Request", "enable_gzip_for_uploads")) {
       $httpRequest->enableGzip();
     } else {
       $httpRequest->disableGzip();
@@ -182,7 +182,7 @@ class Google_Http_MediaFileUpload
       // No problems, but upload not complete.
       return false;
     } else {
-      return Google_Http_REST::decodeHttpResponse($response);
+      return GoogleGAL_Http_REST::decodeHttpResponse($response);
     }
   }
 
@@ -272,7 +272,7 @@ class Google_Http_MediaFileUpload
     if ($body) {
       $headers = array(
         'content-type' => 'application/json; charset=UTF-8',
-        'content-length' => Google_Utils::getStrLen($body),
+        'content-length' => GoogleGAL_Utils::getStrLen($body),
         'x-upload-content-type' => $this->mimeType,
         'x-upload-content-length' => $this->size,
         'expect' => '',
@@ -287,6 +287,6 @@ class Google_Http_MediaFileUpload
     if (200 == $code && true == $location) {
       return $location;
     }
-    throw new Google_Exception("Failed to start the resumable upload");
+    throw new GoogleGAL_Exception("Failed to start the resumable upload");
   }
 }

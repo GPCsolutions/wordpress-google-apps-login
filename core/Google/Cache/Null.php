@@ -22,9 +22,9 @@ require_once "Google/Cache/Exception.php";
  * A blank storage class, for cases where caching is not
  * required.
  */
-class Google_Cache_Null extends Google_Cache_Abstract
+class GoogleGAL_Cache_Null extends GoogleGAL_Cache_Abstract
 {
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
 
   }

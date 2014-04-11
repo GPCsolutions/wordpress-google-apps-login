@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_PlusDomains extends Google_Service
+class GoogleGAL_Service_PlusDomains extends GoogleGAL_Service
 {
   /** View your circles and the people and pages in them. */
   const PLUS_CIRCLES_READ = "https://www.googleapis.com/auth/plus.circles.read";
@@ -63,16 +63,16 @@ class Google_Service_PlusDomains extends Google_Service
   /**
    * Constructs the internal representation of the PlusDomains service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'plusDomains/v1/';
     $this->version = 'v1';
     $this->serviceName = 'plusDomains';
 
-    $this->activities = new Google_Service_PlusDomains_Activities_Resource(
+    $this->activities = new GoogleGAL_Service_PlusDomains_Activities_Resource(
         $this,
         $this->serviceName,
         'activities',
@@ -129,7 +129,7 @@ class Google_Service_PlusDomains extends Google_Service
           )
         )
     );
-    $this->audiences = new Google_Service_PlusDomains_Audiences_Resource(
+    $this->audiences = new GoogleGAL_Service_PlusDomains_Audiences_Resource(
         $this,
         $this->serviceName,
         'audiences',
@@ -157,7 +157,7 @@ class Google_Service_PlusDomains extends Google_Service
           )
         )
     );
-    $this->circles = new Google_Service_PlusDomains_Circles_Resource(
+    $this->circles = new GoogleGAL_Service_PlusDomains_Circles_Resource(
         $this,
         $this->serviceName,
         'circles',
@@ -275,7 +275,7 @@ class Google_Service_PlusDomains extends Google_Service
           )
         )
     );
-    $this->comments = new Google_Service_PlusDomains_Comments_Resource(
+    $this->comments = new GoogleGAL_Service_PlusDomains_Comments_Resource(
         $this,
         $this->serviceName,
         'comments',
@@ -327,7 +327,7 @@ class Google_Service_PlusDomains extends Google_Service
           )
         )
     );
-    $this->media = new Google_Service_PlusDomains_Media_Resource(
+    $this->media = new GoogleGAL_Service_PlusDomains_Media_Resource(
         $this,
         $this->serviceName,
         'media',
@@ -352,7 +352,7 @@ class Google_Service_PlusDomains extends Google_Service
           )
         )
     );
-    $this->people = new Google_Service_PlusDomains_People_Resource(
+    $this->people = new GoogleGAL_Service_PlusDomains_People_Resource(
         $this,
         $this->serviceName,
         'people',
@@ -448,11 +448,11 @@ class Google_Service_PlusDomains extends Google_Service
  * The "activities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new GoogleGAL_Service_PlusDomains(...);
  *   $activities = $plusDomainsService->activities;
  *  </code>
  */
-class Google_Service_PlusDomains_Activities_Resource extends Google_Service_Resource
+class GoogleGAL_Service_PlusDomains_Activities_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -461,13 +461,13 @@ class Google_Service_PlusDomains_Activities_Resource extends Google_Service_Reso
    * @param string $activityId
    * The ID of the activity to get.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Activity
+   * @return GoogleGAL_Service_PlusDomains_Activity
    */
   public function get($activityId, $optParams = array())
   {
     $params = array('activityId' => $activityId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_PlusDomains_Activity");
+    return $this->call('get', array($params), "GoogleGAL_Service_PlusDomains_Activity");
   }
   /**
    * Create a new activity for the authenticated user. (activities.insert)
@@ -475,20 +475,20 @@ class Google_Service_PlusDomains_Activities_Resource extends Google_Service_Reso
    * @param string $userId
    * The ID of the user to create the activity on behalf of. Its value should be "me", to indicate
     * the authenticated user.
-   * @param Google_Activity $postBody
+   * @param GoogleGAL_Activity $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool preview
    * If "true", extract the potential media attachments for a URL. The response will include all
     * possible attachments for a URL, including video, photos, and articles based on the content of
     * the page.
-   * @return Google_Service_PlusDomains_Activity
+   * @return GoogleGAL_Service_PlusDomains_Activity
    */
-  public function insert($userId, Google_Service_PlusDomains_Activity $postBody, $optParams = array())
+  public function insert($userId, GoogleGAL_Service_PlusDomains_Activity $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_PlusDomains_Activity");
+    return $this->call('insert', array($params), "GoogleGAL_Service_PlusDomains_Activity");
   }
   /**
    * List all of the activities in the specified collection for a particular user.
@@ -507,13 +507,13 @@ class Google_Service_PlusDomains_Activities_Resource extends Google_Service_Reso
    * @opt_param string maxResults
    * The maximum number of activities to include in the response, which is used for paging. For any
     * response, the actual number returned might be less than the specified maxResults.
-   * @return Google_Service_PlusDomains_ActivityFeed
+   * @return GoogleGAL_Service_PlusDomains_ActivityFeed
    */
   public function listActivities($userId, $collection, $optParams = array())
   {
     $params = array('userId' => $userId, 'collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_PlusDomains_ActivityFeed");
+    return $this->call('list', array($params), "GoogleGAL_Service_PlusDomains_ActivityFeed");
   }
 }
 
@@ -521,11 +521,11 @@ class Google_Service_PlusDomains_Activities_Resource extends Google_Service_Reso
  * The "audiences" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new GoogleGAL_Service_PlusDomains(...);
  *   $audiences = $plusDomainsService->audiences;
  *  </code>
  */
-class Google_Service_PlusDomains_Audiences_Resource extends Google_Service_Resource
+class GoogleGAL_Service_PlusDomains_Audiences_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -543,13 +543,13 @@ class Google_Service_PlusDomains_Audiences_Resource extends Google_Service_Resou
    * @opt_param string maxResults
    * The maximum number of circles to include in the response, which is used for paging. For any
     * response, the actual number returned might be less than the specified maxResults.
-   * @return Google_Service_PlusDomains_AudiencesFeed
+   * @return GoogleGAL_Service_PlusDomains_AudiencesFeed
    */
   public function listAudiences($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_PlusDomains_AudiencesFeed");
+    return $this->call('list', array($params), "GoogleGAL_Service_PlusDomains_AudiencesFeed");
   }
 }
 
@@ -557,11 +557,11 @@ class Google_Service_PlusDomains_Audiences_Resource extends Google_Service_Resou
  * The "circles" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new GoogleGAL_Service_PlusDomains(...);
  *   $circles = $plusDomainsService->circles;
  *  </code>
  */
-class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resource
+class GoogleGAL_Service_PlusDomains_Circles_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -576,13 +576,13 @@ class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resourc
    * IDs of the people to add to the circle. Optional, can be repeated.
    * @opt_param string email
    * Email of the people to add to the circle. Optional, can be repeated.
-   * @return Google_Service_PlusDomains_Circle
+   * @return GoogleGAL_Service_PlusDomains_Circle
    */
   public function addPeople($circleId, $optParams = array())
   {
     $params = array('circleId' => $circleId);
     $params = array_merge($params, $optParams);
-    return $this->call('addPeople', array($params), "Google_Service_PlusDomains_Circle");
+    return $this->call('addPeople', array($params), "GoogleGAL_Service_PlusDomains_Circle");
   }
   /**
    * Get a circle. (circles.get)
@@ -590,13 +590,13 @@ class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resourc
    * @param string $circleId
    * The ID of the circle to get.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Circle
+   * @return GoogleGAL_Service_PlusDomains_Circle
    */
   public function get($circleId, $optParams = array())
   {
     $params = array('circleId' => $circleId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_PlusDomains_Circle");
+    return $this->call('get', array($params), "GoogleGAL_Service_PlusDomains_Circle");
   }
   /**
    * Create a new circle for the authenticated user. (circles.insert)
@@ -604,15 +604,15 @@ class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resourc
    * @param string $userId
    * The ID of the user to create the circle on behalf of. The value "me" can be used to indicate the
     * authenticated user.
-   * @param Google_Circle $postBody
+   * @param GoogleGAL_Circle $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Circle
+   * @return GoogleGAL_Service_PlusDomains_Circle
    */
-  public function insert($userId, Google_Service_PlusDomains_Circle $postBody, $optParams = array())
+  public function insert($userId, GoogleGAL_Service_PlusDomains_Circle $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_PlusDomains_Circle");
+    return $this->call('insert', array($params), "GoogleGAL_Service_PlusDomains_Circle");
   }
   /**
    * List all of the circles for a user. (circles.listCircles)
@@ -628,13 +628,13 @@ class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resourc
    * @opt_param string maxResults
    * The maximum number of circles to include in the response, which is used for paging. For any
     * response, the actual number returned might be less than the specified maxResults.
-   * @return Google_Service_PlusDomains_CircleFeed
+   * @return GoogleGAL_Service_PlusDomains_CircleFeed
    */
   public function listCircles($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_PlusDomains_CircleFeed");
+    return $this->call('list', array($params), "GoogleGAL_Service_PlusDomains_CircleFeed");
   }
   /**
    * Update a circle's description. This method supports patch semantics.
@@ -642,15 +642,15 @@ class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resourc
    *
    * @param string $circleId
    * The ID of the circle to update.
-   * @param Google_Circle $postBody
+   * @param GoogleGAL_Circle $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Circle
+   * @return GoogleGAL_Service_PlusDomains_Circle
    */
-  public function patch($circleId, Google_Service_PlusDomains_Circle $postBody, $optParams = array())
+  public function patch($circleId, GoogleGAL_Service_PlusDomains_Circle $postBody, $optParams = array())
   {
     $params = array('circleId' => $circleId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_PlusDomains_Circle");
+    return $this->call('patch', array($params), "GoogleGAL_Service_PlusDomains_Circle");
   }
   /**
    * Delete a circle. (circles.remove)
@@ -688,15 +688,15 @@ class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resourc
    *
    * @param string $circleId
    * The ID of the circle to update.
-   * @param Google_Circle $postBody
+   * @param GoogleGAL_Circle $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Circle
+   * @return GoogleGAL_Service_PlusDomains_Circle
    */
-  public function update($circleId, Google_Service_PlusDomains_Circle $postBody, $optParams = array())
+  public function update($circleId, GoogleGAL_Service_PlusDomains_Circle $postBody, $optParams = array())
   {
     $params = array('circleId' => $circleId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_PlusDomains_Circle");
+    return $this->call('update', array($params), "GoogleGAL_Service_PlusDomains_Circle");
   }
 }
 
@@ -704,11 +704,11 @@ class Google_Service_PlusDomains_Circles_Resource extends Google_Service_Resourc
  * The "comments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new GoogleGAL_Service_PlusDomains(...);
  *   $comments = $plusDomainsService->comments;
  *  </code>
  */
-class Google_Service_PlusDomains_Comments_Resource extends Google_Service_Resource
+class GoogleGAL_Service_PlusDomains_Comments_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -717,28 +717,28 @@ class Google_Service_PlusDomains_Comments_Resource extends Google_Service_Resour
    * @param string $commentId
    * The ID of the comment to get.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Comment
+   * @return GoogleGAL_Service_PlusDomains_Comment
    */
   public function get($commentId, $optParams = array())
   {
     $params = array('commentId' => $commentId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_PlusDomains_Comment");
+    return $this->call('get', array($params), "GoogleGAL_Service_PlusDomains_Comment");
   }
   /**
    * Create a new comment in reply to an activity. (comments.insert)
    *
    * @param string $activityId
    * The ID of the activity to reply to.
-   * @param Google_Comment $postBody
+   * @param GoogleGAL_Comment $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Comment
+   * @return GoogleGAL_Service_PlusDomains_Comment
    */
-  public function insert($activityId, Google_Service_PlusDomains_Comment $postBody, $optParams = array())
+  public function insert($activityId, GoogleGAL_Service_PlusDomains_Comment $postBody, $optParams = array())
   {
     $params = array('activityId' => $activityId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_PlusDomains_Comment");
+    return $this->call('insert', array($params), "GoogleGAL_Service_PlusDomains_Comment");
   }
   /**
    * List all of the comments for an activity. (comments.listComments)
@@ -755,13 +755,13 @@ class Google_Service_PlusDomains_Comments_Resource extends Google_Service_Resour
    * @opt_param string maxResults
    * The maximum number of comments to include in the response, which is used for paging. For any
     * response, the actual number returned might be less than the specified maxResults.
-   * @return Google_Service_PlusDomains_CommentFeed
+   * @return GoogleGAL_Service_PlusDomains_CommentFeed
    */
   public function listComments($activityId, $optParams = array())
   {
     $params = array('activityId' => $activityId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_PlusDomains_CommentFeed");
+    return $this->call('list', array($params), "GoogleGAL_Service_PlusDomains_CommentFeed");
   }
 }
 
@@ -769,11 +769,11 @@ class Google_Service_PlusDomains_Comments_Resource extends Google_Service_Resour
  * The "media" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new GoogleGAL_Service_PlusDomains(...);
  *   $media = $plusDomainsService->media;
  *  </code>
  */
-class Google_Service_PlusDomains_Media_Resource extends Google_Service_Resource
+class GoogleGAL_Service_PlusDomains_Media_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -786,15 +786,15 @@ class Google_Service_PlusDomains_Media_Resource extends Google_Service_Resource
    * The ID of the user to create the activity on behalf of.
    * @param string $collection
    *
-   * @param Google_Media $postBody
+   * @param GoogleGAL_Media $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Media
+   * @return GoogleGAL_Service_PlusDomains_Media
    */
-  public function insert($userId, $collection, Google_Service_PlusDomains_Media $postBody, $optParams = array())
+  public function insert($userId, $collection, GoogleGAL_Service_PlusDomains_Media $postBody, $optParams = array())
   {
     $params = array('userId' => $userId, 'collection' => $collection, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_PlusDomains_Media");
+    return $this->call('insert', array($params), "GoogleGAL_Service_PlusDomains_Media");
   }
 }
 
@@ -802,11 +802,11 @@ class Google_Service_PlusDomains_Media_Resource extends Google_Service_Resource
  * The "people" collection of methods.
  * Typical usage is:
  *  <code>
- *   $plusDomainsService = new Google_Service_PlusDomains(...);
+ *   $plusDomainsService = new GoogleGAL_Service_PlusDomains(...);
  *   $people = $plusDomainsService->people;
  *  </code>
  */
-class Google_Service_PlusDomains_People_Resource extends Google_Service_Resource
+class GoogleGAL_Service_PlusDomains_People_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -816,13 +816,13 @@ class Google_Service_PlusDomains_People_Resource extends Google_Service_Resource
    * The ID of the person to get the profile for. The special value "me" can be used to indicate the
     * authenticated user.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_PlusDomains_Person
+   * @return GoogleGAL_Service_PlusDomains_Person
    */
   public function get($userId, $optParams = array())
   {
     $params = array('userId' => $userId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_PlusDomains_Person");
+    return $this->call('get', array($params), "GoogleGAL_Service_PlusDomains_Person");
   }
   /**
    * List all of the people in the specified collection. (people.listPeople)
@@ -842,13 +842,13 @@ class Google_Service_PlusDomains_People_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * The maximum number of people to include in the response, which is used for paging. For any
     * response, the actual number returned might be less than the specified maxResults.
-   * @return Google_Service_PlusDomains_PeopleFeed
+   * @return GoogleGAL_Service_PlusDomains_PeopleFeed
    */
   public function listPeople($userId, $collection, $optParams = array())
   {
     $params = array('userId' => $userId, 'collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_PlusDomains_PeopleFeed");
+    return $this->call('list', array($params), "GoogleGAL_Service_PlusDomains_PeopleFeed");
   }
   /**
    * List all of the people in the specified collection for a particular activity.
@@ -866,13 +866,13 @@ class Google_Service_PlusDomains_People_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * The maximum number of people to include in the response, which is used for paging. For any
     * response, the actual number returned might be less than the specified maxResults.
-   * @return Google_Service_PlusDomains_PeopleFeed
+   * @return GoogleGAL_Service_PlusDomains_PeopleFeed
    */
   public function listByActivity($activityId, $collection, $optParams = array())
   {
     $params = array('activityId' => $activityId, 'collection' => $collection);
     $params = array_merge($params, $optParams);
-    return $this->call('listByActivity', array($params), "Google_Service_PlusDomains_PeopleFeed");
+    return $this->call('listByActivity', array($params), "GoogleGAL_Service_PlusDomains_PeopleFeed");
   }
   /**
    * List all of the people who are members of a circle. (people.listByCircle)
@@ -887,24 +887,24 @@ class Google_Service_PlusDomains_People_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * The maximum number of people to include in the response, which is used for paging. For any
     * response, the actual number returned might be less than the specified maxResults.
-   * @return Google_Service_PlusDomains_PeopleFeed
+   * @return GoogleGAL_Service_PlusDomains_PeopleFeed
    */
   public function listByCircle($circleId, $optParams = array())
   {
     $params = array('circleId' => $circleId);
     $params = array_merge($params, $optParams);
-    return $this->call('listByCircle', array($params), "Google_Service_PlusDomains_PeopleFeed");
+    return $this->call('listByCircle', array($params), "GoogleGAL_Service_PlusDomains_PeopleFeed");
   }
 }
 
 
 
 
-class Google_Service_PlusDomains_Acl extends Google_Collection
+class GoogleGAL_Service_PlusDomains_Acl extends GoogleGAL_Collection
 {
   public $description;
   public $domainRestricted;
-  protected $itemsType = 'Google_Service_PlusDomains_PlusDomainsAclentryResource';
+  protected $itemsType = 'GoogleGAL_Service_PlusDomains_PlusDomainsAclentryResource';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -949,11 +949,11 @@ class Google_Service_PlusDomains_Acl extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_Activity extends Google_Model
+class GoogleGAL_Service_PlusDomains_Activity extends GoogleGAL_Model
 {
-  protected $accessType = 'Google_Service_PlusDomains_Acl';
+  protected $accessType = 'GoogleGAL_Service_PlusDomains_Acl';
   protected $accessDataType = '';
-  protected $actorType = 'Google_Service_PlusDomains_ActivityActor';
+  protected $actorType = 'GoogleGAL_Service_PlusDomains_ActivityActor';
   protected $actorDataType = '';
   public $address;
   public $annotation;
@@ -962,13 +962,13 @@ class Google_Service_PlusDomains_Activity extends Google_Model
   public $geocode;
   public $id;
   public $kind;
-  protected $locationType = 'Google_Service_PlusDomains_Place';
+  protected $locationType = 'GoogleGAL_Service_PlusDomains_Place';
   protected $locationDataType = '';
-  protected $objectType = 'Google_Service_PlusDomains_ActivityObject';
+  protected $objectType = 'GoogleGAL_Service_PlusDomains_ActivityObject';
   protected $objectDataType = '';
   public $placeId;
   public $placeName;
-  protected $providerType = 'Google_Service_PlusDomains_ActivityProvider';
+  protected $providerType = 'GoogleGAL_Service_PlusDomains_ActivityProvider';
   protected $providerDataType = '';
   public $published;
   public $radius;
@@ -977,7 +977,7 @@ class Google_Service_PlusDomains_Activity extends Google_Model
   public $url;
   public $verb;
 
-  public function setAccess(Google_Service_PlusDomains_Acl $access)
+  public function setAccess(GoogleGAL_Service_PlusDomains_Acl $access)
   {
     $this->access = $access;
   }
@@ -987,7 +987,7 @@ class Google_Service_PlusDomains_Activity extends Google_Model
     return $this->access;
   }
 
-  public function setActor(Google_Service_PlusDomains_ActivityActor $actor)
+  public function setActor(GoogleGAL_Service_PlusDomains_ActivityActor $actor)
   {
     $this->actor = $actor;
   }
@@ -1067,7 +1067,7 @@ class Google_Service_PlusDomains_Activity extends Google_Model
     return $this->kind;
   }
 
-  public function setLocation(Google_Service_PlusDomains_Place $location)
+  public function setLocation(GoogleGAL_Service_PlusDomains_Place $location)
   {
     $this->location = $location;
   }
@@ -1077,7 +1077,7 @@ class Google_Service_PlusDomains_Activity extends Google_Model
     return $this->location;
   }
 
-  public function setObject(Google_Service_PlusDomains_ActivityObject $object)
+  public function setObject(GoogleGAL_Service_PlusDomains_ActivityObject $object)
   {
     $this->object = $object;
   }
@@ -1107,7 +1107,7 @@ class Google_Service_PlusDomains_Activity extends Google_Model
     return $this->placeName;
   }
 
-  public function setProvider(Google_Service_PlusDomains_ActivityProvider $provider)
+  public function setProvider(GoogleGAL_Service_PlusDomains_ActivityProvider $provider)
   {
     $this->provider = $provider;
   }
@@ -1178,13 +1178,13 @@ class Google_Service_PlusDomains_Activity extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityActor extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityActor extends GoogleGAL_Model
 {
   public $displayName;
   public $id;
-  protected $imageType = 'Google_Service_PlusDomains_ActivityActorImage';
+  protected $imageType = 'GoogleGAL_Service_PlusDomains_ActivityActorImage';
   protected $imageDataType = '';
-  protected $nameType = 'Google_Service_PlusDomains_ActivityActorName';
+  protected $nameType = 'GoogleGAL_Service_PlusDomains_ActivityActorName';
   protected $nameDataType = '';
   public $url;
 
@@ -1208,7 +1208,7 @@ class Google_Service_PlusDomains_ActivityActor extends Google_Model
     return $this->id;
   }
 
-  public function setImage(Google_Service_PlusDomains_ActivityActorImage $image)
+  public function setImage(GoogleGAL_Service_PlusDomains_ActivityActorImage $image)
   {
     $this->image = $image;
   }
@@ -1218,7 +1218,7 @@ class Google_Service_PlusDomains_ActivityActor extends Google_Model
     return $this->image;
   }
 
-  public function setName(Google_Service_PlusDomains_ActivityActorName $name)
+  public function setName(GoogleGAL_Service_PlusDomains_ActivityActorName $name)
   {
     $this->name = $name;
   }
@@ -1239,7 +1239,7 @@ class Google_Service_PlusDomains_ActivityActor extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityActorImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityActorImage extends GoogleGAL_Model
 {
   public $url;
 
@@ -1254,7 +1254,7 @@ class Google_Service_PlusDomains_ActivityActorImage extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityActorName extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityActorName extends GoogleGAL_Model
 {
   public $familyName;
   public $givenName;
@@ -1280,11 +1280,11 @@ class Google_Service_PlusDomains_ActivityActorName extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityFeed extends Google_Collection
+class GoogleGAL_Service_PlusDomains_ActivityFeed extends GoogleGAL_Collection
 {
   public $etag;
   public $id;
-  protected $itemsType = 'Google_Service_PlusDomains_Activity';
+  protected $itemsType = 'GoogleGAL_Service_PlusDomains_Activity';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextLink;
@@ -1384,27 +1384,27 @@ class Google_Service_PlusDomains_ActivityFeed extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_ActivityObject extends Google_Collection
+class GoogleGAL_Service_PlusDomains_ActivityObject extends GoogleGAL_Collection
 {
-  protected $actorType = 'Google_Service_PlusDomains_ActivityObjectActor';
+  protected $actorType = 'GoogleGAL_Service_PlusDomains_ActivityObjectActor';
   protected $actorDataType = '';
-  protected $attachmentsType = 'Google_Service_PlusDomains_ActivityObjectAttachments';
+  protected $attachmentsType = 'GoogleGAL_Service_PlusDomains_ActivityObjectAttachments';
   protected $attachmentsDataType = 'array';
   public $content;
   public $id;
   public $objectType;
   public $originalContent;
-  protected $plusonersType = 'Google_Service_PlusDomains_ActivityObjectPlusoners';
+  protected $plusonersType = 'GoogleGAL_Service_PlusDomains_ActivityObjectPlusoners';
   protected $plusonersDataType = '';
-  protected $repliesType = 'Google_Service_PlusDomains_ActivityObjectReplies';
+  protected $repliesType = 'GoogleGAL_Service_PlusDomains_ActivityObjectReplies';
   protected $repliesDataType = '';
-  protected $resharersType = 'Google_Service_PlusDomains_ActivityObjectResharers';
+  protected $resharersType = 'GoogleGAL_Service_PlusDomains_ActivityObjectResharers';
   protected $resharersDataType = '';
-  protected $statusForViewerType = 'Google_Service_PlusDomains_ActivityObjectStatusForViewer';
+  protected $statusForViewerType = 'GoogleGAL_Service_PlusDomains_ActivityObjectStatusForViewer';
   protected $statusForViewerDataType = '';
   public $url;
 
-  public function setActor(Google_Service_PlusDomains_ActivityObjectActor $actor)
+  public function setActor(GoogleGAL_Service_PlusDomains_ActivityObjectActor $actor)
   {
     $this->actor = $actor;
   }
@@ -1464,7 +1464,7 @@ class Google_Service_PlusDomains_ActivityObject extends Google_Collection
     return $this->originalContent;
   }
 
-  public function setPlusoners(Google_Service_PlusDomains_ActivityObjectPlusoners $plusoners)
+  public function setPlusoners(GoogleGAL_Service_PlusDomains_ActivityObjectPlusoners $plusoners)
   {
     $this->plusoners = $plusoners;
   }
@@ -1474,7 +1474,7 @@ class Google_Service_PlusDomains_ActivityObject extends Google_Collection
     return $this->plusoners;
   }
 
-  public function setReplies(Google_Service_PlusDomains_ActivityObjectReplies $replies)
+  public function setReplies(GoogleGAL_Service_PlusDomains_ActivityObjectReplies $replies)
   {
     $this->replies = $replies;
   }
@@ -1484,7 +1484,7 @@ class Google_Service_PlusDomains_ActivityObject extends Google_Collection
     return $this->replies;
   }
 
-  public function setResharers(Google_Service_PlusDomains_ActivityObjectResharers $resharers)
+  public function setResharers(GoogleGAL_Service_PlusDomains_ActivityObjectResharers $resharers)
   {
     $this->resharers = $resharers;
   }
@@ -1494,7 +1494,7 @@ class Google_Service_PlusDomains_ActivityObject extends Google_Collection
     return $this->resharers;
   }
 
-  public function setStatusForViewer(Google_Service_PlusDomains_ActivityObjectStatusForViewer $statusForViewer)
+  public function setStatusForViewer(GoogleGAL_Service_PlusDomains_ActivityObjectStatusForViewer $statusForViewer)
   {
     $this->statusForViewer = $statusForViewer;
   }
@@ -1515,11 +1515,11 @@ class Google_Service_PlusDomains_ActivityObject extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectActor extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectActor extends GoogleGAL_Model
 {
   public $displayName;
   public $id;
-  protected $imageType = 'Google_Service_PlusDomains_ActivityObjectActorImage';
+  protected $imageType = 'GoogleGAL_Service_PlusDomains_ActivityObjectActorImage';
   protected $imageDataType = '';
   public $url;
 
@@ -1543,7 +1543,7 @@ class Google_Service_PlusDomains_ActivityObjectActor extends Google_Model
     return $this->id;
   }
 
-  public function setImage(Google_Service_PlusDomains_ActivityObjectActorImage $image)
+  public function setImage(GoogleGAL_Service_PlusDomains_ActivityObjectActorImage $image)
   {
     $this->image = $image;
   }
@@ -1564,7 +1564,7 @@ class Google_Service_PlusDomains_ActivityObjectActor extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectActorImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectActorImage extends GoogleGAL_Model
 {
   public $url;
 
@@ -1579,21 +1579,21 @@ class Google_Service_PlusDomains_ActivityObjectActorImage extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectAttachments extends Google_Collection
+class GoogleGAL_Service_PlusDomains_ActivityObjectAttachments extends GoogleGAL_Collection
 {
   public $content;
   public $displayName;
-  protected $embedType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed';
+  protected $embedType = 'GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsEmbed';
   protected $embedDataType = '';
-  protected $fullImageType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage';
+  protected $fullImageType = 'GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsFullImage';
   protected $fullImageDataType = '';
   public $id;
-  protected $imageType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsImage';
+  protected $imageType = 'GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsImage';
   protected $imageDataType = '';
   public $objectType;
-  protected $previewThumbnailsType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails';
+  protected $previewThumbnailsType = 'GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails';
   protected $previewThumbnailsDataType = 'array';
-  protected $thumbnailsType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails';
+  protected $thumbnailsType = 'GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsThumbnails';
   protected $thumbnailsDataType = 'array';
   public $url;
 
@@ -1617,7 +1617,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachments extends Google_Collec
     return $this->displayName;
   }
 
-  public function setEmbed(Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed $embed)
+  public function setEmbed(GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsEmbed $embed)
   {
     $this->embed = $embed;
   }
@@ -1627,7 +1627,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachments extends Google_Collec
     return $this->embed;
   }
 
-  public function setFullImage(Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage $fullImage)
+  public function setFullImage(GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsFullImage $fullImage)
   {
     $this->fullImage = $fullImage;
   }
@@ -1647,7 +1647,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachments extends Google_Collec
     return $this->id;
   }
 
-  public function setImage(Google_Service_PlusDomains_ActivityObjectAttachmentsImage $image)
+  public function setImage(GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsImage $image)
   {
     $this->image = $image;
   }
@@ -1698,7 +1698,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachments extends Google_Collec
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsEmbed extends GoogleGAL_Model
 {
   public $type;
   public $url;
@@ -1724,7 +1724,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachmentsEmbed extends Google_M
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsFullImage extends GoogleGAL_Model
 {
   public $height;
   public $type;
@@ -1772,7 +1772,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachmentsFullImage extends Goog
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectAttachmentsImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsImage extends GoogleGAL_Model
 {
   public $height;
   public $type;
@@ -1820,7 +1820,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachmentsImage extends Google_M
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails extends GoogleGAL_Model
 {
   public $url;
 
@@ -1835,10 +1835,10 @@ class Google_Service_PlusDomains_ActivityObjectAttachmentsPreviewThumbnails exte
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsThumbnails extends GoogleGAL_Model
 {
   public $description;
-  protected $imageType = 'Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage';
+  protected $imageType = 'GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage';
   protected $imageDataType = '';
   public $url;
 
@@ -1852,7 +1852,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails extends Goo
     return $this->description;
   }
 
-  public function setImage(Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage $image)
+  public function setImage(GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage $image)
   {
     $this->image = $image;
   }
@@ -1873,7 +1873,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnails extends Goo
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage extends GoogleGAL_Model
 {
   public $height;
   public $type;
@@ -1921,7 +1921,7 @@ class Google_Service_PlusDomains_ActivityObjectAttachmentsThumbnailsImage extend
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectPlusoners extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectPlusoners extends GoogleGAL_Model
 {
   public $selfLink;
   public $totalItems;
@@ -1947,7 +1947,7 @@ class Google_Service_PlusDomains_ActivityObjectPlusoners extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectReplies extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectReplies extends GoogleGAL_Model
 {
   public $selfLink;
   public $totalItems;
@@ -1973,7 +1973,7 @@ class Google_Service_PlusDomains_ActivityObjectReplies extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectResharers extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectResharers extends GoogleGAL_Model
 {
   public $selfLink;
   public $totalItems;
@@ -1999,7 +1999,7 @@ class Google_Service_PlusDomains_ActivityObjectResharers extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_ActivityObjectStatusForViewer extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityObjectStatusForViewer extends GoogleGAL_Model
 {
   public $canComment;
   public $canPlusone;
@@ -2058,7 +2058,7 @@ class Google_Service_PlusDomains_ActivityObjectStatusForViewer extends Google_Mo
   }
 }
 
-class Google_Service_PlusDomains_ActivityProvider extends Google_Model
+class GoogleGAL_Service_PlusDomains_ActivityProvider extends GoogleGAL_Model
 {
   public $title;
 
@@ -2073,10 +2073,10 @@ class Google_Service_PlusDomains_ActivityProvider extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_Audience extends Google_Model
+class GoogleGAL_Service_PlusDomains_Audience extends GoogleGAL_Model
 {
   public $etag;
-  protected $itemType = 'Google_Service_PlusDomains_PlusDomainsAclentryResource';
+  protected $itemType = 'GoogleGAL_Service_PlusDomains_PlusDomainsAclentryResource';
   protected $itemDataType = '';
   public $kind;
   public $memberCount;
@@ -2092,7 +2092,7 @@ class Google_Service_PlusDomains_Audience extends Google_Model
     return $this->etag;
   }
 
-  public function setItem(Google_Service_PlusDomains_PlusDomainsAclentryResource $item)
+  public function setItem(GoogleGAL_Service_PlusDomains_PlusDomainsAclentryResource $item)
   {
     $this->item = $item;
   }
@@ -2133,10 +2133,10 @@ class Google_Service_PlusDomains_Audience extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_AudiencesFeed extends Google_Collection
+class GoogleGAL_Service_PlusDomains_AudiencesFeed extends GoogleGAL_Collection
 {
   public $etag;
-  protected $itemsType = 'Google_Service_PlusDomains_Audience';
+  protected $itemsType = 'GoogleGAL_Service_PlusDomains_Audience';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -2193,14 +2193,14 @@ class Google_Service_PlusDomains_AudiencesFeed extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_Circle extends Google_Model
+class GoogleGAL_Service_PlusDomains_Circle extends GoogleGAL_Model
 {
   public $description;
   public $displayName;
   public $etag;
   public $id;
   public $kind;
-  protected $peopleType = 'Google_Service_PlusDomains_CirclePeople';
+  protected $peopleType = 'GoogleGAL_Service_PlusDomains_CirclePeople';
   protected $peopleDataType = '';
   public $selfLink;
 
@@ -2254,7 +2254,7 @@ class Google_Service_PlusDomains_Circle extends Google_Model
     return $this->kind;
   }
 
-  public function setPeople(Google_Service_PlusDomains_CirclePeople $people)
+  public function setPeople(GoogleGAL_Service_PlusDomains_CirclePeople $people)
   {
     $this->people = $people;
   }
@@ -2275,10 +2275,10 @@ class Google_Service_PlusDomains_Circle extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_CircleFeed extends Google_Collection
+class GoogleGAL_Service_PlusDomains_CircleFeed extends GoogleGAL_Collection
 {
   public $etag;
-  protected $itemsType = 'Google_Service_PlusDomains_Circle';
+  protected $itemsType = 'GoogleGAL_Service_PlusDomains_Circle';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextLink;
@@ -2368,7 +2368,7 @@ class Google_Service_PlusDomains_CircleFeed extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_CirclePeople extends Google_Model
+class GoogleGAL_Service_PlusDomains_CirclePeople extends GoogleGAL_Model
 {
   public $totalItems;
 
@@ -2383,25 +2383,25 @@ class Google_Service_PlusDomains_CirclePeople extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_Comment extends Google_Collection
+class GoogleGAL_Service_PlusDomains_Comment extends GoogleGAL_Collection
 {
-  protected $actorType = 'Google_Service_PlusDomains_CommentActor';
+  protected $actorType = 'GoogleGAL_Service_PlusDomains_CommentActor';
   protected $actorDataType = '';
   public $etag;
   public $id;
-  protected $inReplyToType = 'Google_Service_PlusDomains_CommentInReplyTo';
+  protected $inReplyToType = 'GoogleGAL_Service_PlusDomains_CommentInReplyTo';
   protected $inReplyToDataType = 'array';
   public $kind;
-  protected $objectType = 'Google_Service_PlusDomains_CommentObject';
+  protected $objectType = 'GoogleGAL_Service_PlusDomains_CommentObject';
   protected $objectDataType = '';
-  protected $plusonersType = 'Google_Service_PlusDomains_CommentPlusoners';
+  protected $plusonersType = 'GoogleGAL_Service_PlusDomains_CommentPlusoners';
   protected $plusonersDataType = '';
   public $published;
   public $selfLink;
   public $updated;
   public $verb;
 
-  public function setActor(Google_Service_PlusDomains_CommentActor $actor)
+  public function setActor(GoogleGAL_Service_PlusDomains_CommentActor $actor)
   {
     $this->actor = $actor;
   }
@@ -2451,7 +2451,7 @@ class Google_Service_PlusDomains_Comment extends Google_Collection
     return $this->kind;
   }
 
-  public function setObject(Google_Service_PlusDomains_CommentObject $object)
+  public function setObject(GoogleGAL_Service_PlusDomains_CommentObject $object)
   {
     $this->object = $object;
   }
@@ -2461,7 +2461,7 @@ class Google_Service_PlusDomains_Comment extends Google_Collection
     return $this->object;
   }
 
-  public function setPlusoners(Google_Service_PlusDomains_CommentPlusoners $plusoners)
+  public function setPlusoners(GoogleGAL_Service_PlusDomains_CommentPlusoners $plusoners)
   {
     $this->plusoners = $plusoners;
   }
@@ -2512,11 +2512,11 @@ class Google_Service_PlusDomains_Comment extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_CommentActor extends Google_Model
+class GoogleGAL_Service_PlusDomains_CommentActor extends GoogleGAL_Model
 {
   public $displayName;
   public $id;
-  protected $imageType = 'Google_Service_PlusDomains_CommentActorImage';
+  protected $imageType = 'GoogleGAL_Service_PlusDomains_CommentActorImage';
   protected $imageDataType = '';
   public $url;
 
@@ -2540,7 +2540,7 @@ class Google_Service_PlusDomains_CommentActor extends Google_Model
     return $this->id;
   }
 
-  public function setImage(Google_Service_PlusDomains_CommentActorImage $image)
+  public function setImage(GoogleGAL_Service_PlusDomains_CommentActorImage $image)
   {
     $this->image = $image;
   }
@@ -2561,7 +2561,7 @@ class Google_Service_PlusDomains_CommentActor extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_CommentActorImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_CommentActorImage extends GoogleGAL_Model
 {
   public $url;
 
@@ -2576,11 +2576,11 @@ class Google_Service_PlusDomains_CommentActorImage extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_CommentFeed extends Google_Collection
+class GoogleGAL_Service_PlusDomains_CommentFeed extends GoogleGAL_Collection
 {
   public $etag;
   public $id;
-  protected $itemsType = 'Google_Service_PlusDomains_Comment';
+  protected $itemsType = 'GoogleGAL_Service_PlusDomains_Comment';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextLink;
@@ -2669,7 +2669,7 @@ class Google_Service_PlusDomains_CommentFeed extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_CommentInReplyTo extends Google_Model
+class GoogleGAL_Service_PlusDomains_CommentInReplyTo extends GoogleGAL_Model
 {
   public $id;
   public $url;
@@ -2695,7 +2695,7 @@ class Google_Service_PlusDomains_CommentInReplyTo extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_CommentObject extends Google_Model
+class GoogleGAL_Service_PlusDomains_CommentObject extends GoogleGAL_Model
 {
   public $content;
   public $objectType;
@@ -2732,7 +2732,7 @@ class Google_Service_PlusDomains_CommentObject extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_CommentPlusoners extends Google_Model
+class GoogleGAL_Service_PlusDomains_CommentPlusoners extends GoogleGAL_Model
 {
   public $totalItems;
 
@@ -2747,13 +2747,13 @@ class Google_Service_PlusDomains_CommentPlusoners extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_Media extends Google_Collection
+class GoogleGAL_Service_PlusDomains_Media extends GoogleGAL_Collection
 {
-  protected $authorType = 'Google_Service_PlusDomains_MediaAuthor';
+  protected $authorType = 'GoogleGAL_Service_PlusDomains_MediaAuthor';
   protected $authorDataType = '';
   public $displayName;
   public $etag;
-  protected $exifType = 'Google_Service_PlusDomains_MediaExif';
+  protected $exifType = 'GoogleGAL_Service_PlusDomains_MediaExif';
   protected $exifDataType = '';
   public $height;
   public $id;
@@ -2762,7 +2762,7 @@ class Google_Service_PlusDomains_Media extends Google_Collection
   public $mediaUrl;
   public $published;
   public $sizeBytes;
-  protected $streamsType = 'Google_Service_PlusDomains_Videostream';
+  protected $streamsType = 'GoogleGAL_Service_PlusDomains_Videostream';
   protected $streamsDataType = 'array';
   public $summary;
   public $updated;
@@ -2771,7 +2771,7 @@ class Google_Service_PlusDomains_Media extends Google_Collection
   public $videoStatus;
   public $width;
 
-  public function setAuthor(Google_Service_PlusDomains_MediaAuthor $author)
+  public function setAuthor(GoogleGAL_Service_PlusDomains_MediaAuthor $author)
   {
     $this->author = $author;
   }
@@ -2801,7 +2801,7 @@ class Google_Service_PlusDomains_Media extends Google_Collection
     return $this->etag;
   }
 
-  public function setExif(Google_Service_PlusDomains_MediaExif $exif)
+  public function setExif(GoogleGAL_Service_PlusDomains_MediaExif $exif)
   {
     $this->exif = $exif;
   }
@@ -2952,11 +2952,11 @@ class Google_Service_PlusDomains_Media extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_MediaAuthor extends Google_Model
+class GoogleGAL_Service_PlusDomains_MediaAuthor extends GoogleGAL_Model
 {
   public $displayName;
   public $id;
-  protected $imageType = 'Google_Service_PlusDomains_MediaAuthorImage';
+  protected $imageType = 'GoogleGAL_Service_PlusDomains_MediaAuthorImage';
   protected $imageDataType = '';
   public $url;
 
@@ -2980,7 +2980,7 @@ class Google_Service_PlusDomains_MediaAuthor extends Google_Model
     return $this->id;
   }
 
-  public function setImage(Google_Service_PlusDomains_MediaAuthorImage $image)
+  public function setImage(GoogleGAL_Service_PlusDomains_MediaAuthorImage $image)
   {
     $this->image = $image;
   }
@@ -3001,7 +3001,7 @@ class Google_Service_PlusDomains_MediaAuthor extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_MediaAuthorImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_MediaAuthorImage extends GoogleGAL_Model
 {
   public $url;
 
@@ -3016,7 +3016,7 @@ class Google_Service_PlusDomains_MediaAuthorImage extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_MediaExif extends Google_Model
+class GoogleGAL_Service_PlusDomains_MediaExif extends GoogleGAL_Model
 {
   public $time;
 
@@ -3031,10 +3031,10 @@ class Google_Service_PlusDomains_MediaExif extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PeopleFeed extends Google_Collection
+class GoogleGAL_Service_PlusDomains_PeopleFeed extends GoogleGAL_Collection
 {
   public $etag;
-  protected $itemsType = 'Google_Service_PlusDomains_Person';
+  protected $itemsType = 'GoogleGAL_Service_PlusDomains_Person';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -3113,41 +3113,41 @@ class Google_Service_PlusDomains_PeopleFeed extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_Person extends Google_Collection
+class GoogleGAL_Service_PlusDomains_Person extends GoogleGAL_Collection
 {
   public $aboutMe;
   public $birthday;
   public $braggingRights;
   public $circledByCount;
-  protected $coverType = 'Google_Service_PlusDomains_PersonCover';
+  protected $coverType = 'GoogleGAL_Service_PlusDomains_PersonCover';
   protected $coverDataType = '';
   public $currentLocation;
   public $displayName;
   public $domain;
-  protected $emailsType = 'Google_Service_PlusDomains_PersonEmails';
+  protected $emailsType = 'GoogleGAL_Service_PlusDomains_PersonEmails';
   protected $emailsDataType = 'array';
   public $etag;
   public $gender;
   public $id;
-  protected $imageType = 'Google_Service_PlusDomains_PersonImage';
+  protected $imageType = 'GoogleGAL_Service_PlusDomains_PersonImage';
   protected $imageDataType = '';
   public $isPlusUser;
   public $kind;
-  protected $nameType = 'Google_Service_PlusDomains_PersonName';
+  protected $nameType = 'GoogleGAL_Service_PlusDomains_PersonName';
   protected $nameDataType = '';
   public $nickname;
   public $objectType;
   public $occupation;
-  protected $organizationsType = 'Google_Service_PlusDomains_PersonOrganizations';
+  protected $organizationsType = 'GoogleGAL_Service_PlusDomains_PersonOrganizations';
   protected $organizationsDataType = 'array';
-  protected $placesLivedType = 'Google_Service_PlusDomains_PersonPlacesLived';
+  protected $placesLivedType = 'GoogleGAL_Service_PlusDomains_PersonPlacesLived';
   protected $placesLivedDataType = 'array';
   public $plusOneCount;
   public $relationshipStatus;
   public $skills;
   public $tagline;
   public $url;
-  protected $urlsType = 'Google_Service_PlusDomains_PersonUrls';
+  protected $urlsType = 'GoogleGAL_Service_PlusDomains_PersonUrls';
   protected $urlsDataType = 'array';
   public $verified;
 
@@ -3191,7 +3191,7 @@ class Google_Service_PlusDomains_Person extends Google_Collection
     return $this->circledByCount;
   }
 
-  public function setCover(Google_Service_PlusDomains_PersonCover $cover)
+  public function setCover(GoogleGAL_Service_PlusDomains_PersonCover $cover)
   {
     $this->cover = $cover;
   }
@@ -3271,7 +3271,7 @@ class Google_Service_PlusDomains_Person extends Google_Collection
     return $this->id;
   }
 
-  public function setImage(Google_Service_PlusDomains_PersonImage $image)
+  public function setImage(GoogleGAL_Service_PlusDomains_PersonImage $image)
   {
     $this->image = $image;
   }
@@ -3301,7 +3301,7 @@ class Google_Service_PlusDomains_Person extends Google_Collection
     return $this->kind;
   }
 
-  public function setName(Google_Service_PlusDomains_PersonName $name)
+  public function setName(GoogleGAL_Service_PlusDomains_PersonName $name)
   {
     $this->name = $name;
   }
@@ -3432,15 +3432,15 @@ class Google_Service_PlusDomains_Person extends Google_Collection
   }
 }
 
-class Google_Service_PlusDomains_PersonCover extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonCover extends GoogleGAL_Model
 {
-  protected $coverInfoType = 'Google_Service_PlusDomains_PersonCoverCoverInfo';
+  protected $coverInfoType = 'GoogleGAL_Service_PlusDomains_PersonCoverCoverInfo';
   protected $coverInfoDataType = '';
-  protected $coverPhotoType = 'Google_Service_PlusDomains_PersonCoverCoverPhoto';
+  protected $coverPhotoType = 'GoogleGAL_Service_PlusDomains_PersonCoverCoverPhoto';
   protected $coverPhotoDataType = '';
   public $layout;
 
-  public function setCoverInfo(Google_Service_PlusDomains_PersonCoverCoverInfo $coverInfo)
+  public function setCoverInfo(GoogleGAL_Service_PlusDomains_PersonCoverCoverInfo $coverInfo)
   {
     $this->coverInfo = $coverInfo;
   }
@@ -3450,7 +3450,7 @@ class Google_Service_PlusDomains_PersonCover extends Google_Model
     return $this->coverInfo;
   }
 
-  public function setCoverPhoto(Google_Service_PlusDomains_PersonCoverCoverPhoto $coverPhoto)
+  public function setCoverPhoto(GoogleGAL_Service_PlusDomains_PersonCoverCoverPhoto $coverPhoto)
   {
     $this->coverPhoto = $coverPhoto;
   }
@@ -3471,7 +3471,7 @@ class Google_Service_PlusDomains_PersonCover extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonCoverCoverInfo extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonCoverCoverInfo extends GoogleGAL_Model
 {
   public $leftImageOffset;
   public $topImageOffset;
@@ -3497,7 +3497,7 @@ class Google_Service_PlusDomains_PersonCoverCoverInfo extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonCoverCoverPhoto extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonCoverCoverPhoto extends GoogleGAL_Model
 {
   public $height;
   public $url;
@@ -3534,7 +3534,7 @@ class Google_Service_PlusDomains_PersonCoverCoverPhoto extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonEmails extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonEmails extends GoogleGAL_Model
 {
   public $type;
   public $value;
@@ -3560,7 +3560,7 @@ class Google_Service_PlusDomains_PersonEmails extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonImage extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonImage extends GoogleGAL_Model
 {
   public $url;
 
@@ -3575,7 +3575,7 @@ class Google_Service_PlusDomains_PersonImage extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonName extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonName extends GoogleGAL_Model
 {
   public $familyName;
   public $formatted;
@@ -3645,7 +3645,7 @@ class Google_Service_PlusDomains_PersonName extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonOrganizations extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonOrganizations extends GoogleGAL_Model
 {
   public $department;
   public $description;
@@ -3748,7 +3748,7 @@ class Google_Service_PlusDomains_PersonOrganizations extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonPlacesLived extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonPlacesLived extends GoogleGAL_Model
 {
   public $primary;
   public $value;
@@ -3774,7 +3774,7 @@ class Google_Service_PlusDomains_PersonPlacesLived extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PersonUrls extends Google_Model
+class GoogleGAL_Service_PlusDomains_PersonUrls extends GoogleGAL_Model
 {
   public $label;
   public $type;
@@ -3811,16 +3811,16 @@ class Google_Service_PlusDomains_PersonUrls extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_Place extends Google_Model
+class GoogleGAL_Service_PlusDomains_Place extends GoogleGAL_Model
 {
-  protected $addressType = 'Google_Service_PlusDomains_PlaceAddress';
+  protected $addressType = 'GoogleGAL_Service_PlusDomains_PlaceAddress';
   protected $addressDataType = '';
   public $displayName;
   public $kind;
-  protected $positionType = 'Google_Service_PlusDomains_PlacePosition';
+  protected $positionType = 'GoogleGAL_Service_PlusDomains_PlacePosition';
   protected $positionDataType = '';
 
-  public function setAddress(Google_Service_PlusDomains_PlaceAddress $address)
+  public function setAddress(GoogleGAL_Service_PlusDomains_PlaceAddress $address)
   {
     $this->address = $address;
   }
@@ -3850,7 +3850,7 @@ class Google_Service_PlusDomains_Place extends Google_Model
     return $this->kind;
   }
 
-  public function setPosition(Google_Service_PlusDomains_PlacePosition $position)
+  public function setPosition(GoogleGAL_Service_PlusDomains_PlacePosition $position)
   {
     $this->position = $position;
   }
@@ -3861,7 +3861,7 @@ class Google_Service_PlusDomains_Place extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PlaceAddress extends Google_Model
+class GoogleGAL_Service_PlusDomains_PlaceAddress extends GoogleGAL_Model
 {
   public $formatted;
 
@@ -3876,7 +3876,7 @@ class Google_Service_PlusDomains_PlaceAddress extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PlacePosition extends Google_Model
+class GoogleGAL_Service_PlusDomains_PlacePosition extends GoogleGAL_Model
 {
   public $latitude;
   public $longitude;
@@ -3902,7 +3902,7 @@ class Google_Service_PlusDomains_PlacePosition extends Google_Model
   }
 }
 
-class Google_Service_PlusDomains_PlusDomainsAclentryResource extends Google_Model
+class GoogleGAL_Service_PlusDomains_PlusDomainsAclentryResource extends GoogleGAL_Model
 {
   public $displayName;
   public $id;
@@ -3939,7 +3939,7 @@ class Google_Service_PlusDomains_PlusDomainsAclentryResource extends Google_Mode
   }
 }
 
-class Google_Service_PlusDomains_Videostream extends Google_Model
+class GoogleGAL_Service_PlusDomains_Videostream extends GoogleGAL_Model
 {
   public $height;
   public $type;

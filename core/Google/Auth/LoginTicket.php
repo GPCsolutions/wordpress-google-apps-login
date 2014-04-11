@@ -22,7 +22,7 @@ require_once "Google/Auth/Exception.php";
  *
  * @author Brian Eaton <beaton@google.com>
  */
-class Google_Auth_LoginTicket
+class GoogleGAL_Auth_LoginTicket
 {
   const USER_ATTR = "sub";
 
@@ -46,7 +46,7 @@ class Google_Auth_LoginTicket
 
   /**
    * Returns the numeric identifier for the user.
-   * @throws Google_Auth_Exception
+   * @throws GoogleGAL_Auth_Exception
    * @return
    */
   public function getUserId()
@@ -54,7 +54,7 @@ class Google_Auth_LoginTicket
     if (array_key_exists(self::USER_ATTR, $this->payload)) {
       return $this->payload[self::USER_ATTR];
     }
-    throw new Google_Auth_Exception("No user_id in token");
+    throw new GoogleGAL_Auth_Exception("No user_id in token");
   }
 
   /**

@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_GamesManagement extends Google_Service
+class GoogleGAL_Service_GamesManagement extends GoogleGAL_Service
 {
   /** Share your Google+ profile information and view and manage your game activity. */
   const GAMES = "https://www.googleapis.com/auth/games";
@@ -47,16 +47,16 @@ class Google_Service_GamesManagement extends Google_Service
   /**
    * Constructs the internal representation of the GamesManagement service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'games/v1management/';
     $this->version = 'v1management';
     $this->serviceName = 'gamesManagement';
 
-    $this->achievements = new Google_Service_GamesManagement_Achievements_Resource(
+    $this->achievements = new GoogleGAL_Service_GamesManagement_Achievements_Resource(
         $this,
         $this->serviceName,
         'achievements',
@@ -90,7 +90,7 @@ class Google_Service_GamesManagement extends Google_Service
           )
         )
     );
-    $this->applications = new Google_Service_GamesManagement_Applications_Resource(
+    $this->applications = new GoogleGAL_Service_GamesManagement_Applications_Resource(
         $this,
         $this->serviceName,
         'applications',
@@ -118,7 +118,7 @@ class Google_Service_GamesManagement extends Google_Service
           )
         )
     );
-    $this->players = new Google_Service_GamesManagement_Players_Resource(
+    $this->players = new GoogleGAL_Service_GamesManagement_Players_Resource(
         $this,
         $this->serviceName,
         'players',
@@ -158,7 +158,7 @@ class Google_Service_GamesManagement extends Google_Service
           )
         )
     );
-    $this->rooms = new Google_Service_GamesManagement_Rooms_Resource(
+    $this->rooms = new GoogleGAL_Service_GamesManagement_Rooms_Resource(
         $this,
         $this->serviceName,
         'rooms',
@@ -172,7 +172,7 @@ class Google_Service_GamesManagement extends Google_Service
           )
         )
     );
-    $this->scores = new Google_Service_GamesManagement_Scores_Resource(
+    $this->scores = new GoogleGAL_Service_GamesManagement_Scores_Resource(
         $this,
         $this->serviceName,
         'scores',
@@ -202,7 +202,7 @@ class Google_Service_GamesManagement extends Google_Service
           )
         )
     );
-    $this->turnBasedMatches = new Google_Service_GamesManagement_TurnBasedMatches_Resource(
+    $this->turnBasedMatches = new GoogleGAL_Service_GamesManagement_TurnBasedMatches_Resource(
         $this,
         $this->serviceName,
         'turnBasedMatches',
@@ -224,11 +224,11 @@ class Google_Service_GamesManagement extends Google_Service
  * The "achievements" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesManagementService = new Google_Service_GamesManagement(...);
+ *   $gamesManagementService = new GoogleGAL_Service_GamesManagement(...);
  *   $achievements = $gamesManagementService->achievements;
  *  </code>
  */
-class Google_Service_GamesManagement_Achievements_Resource extends Google_Service_Resource
+class GoogleGAL_Service_GamesManagement_Achievements_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -239,13 +239,13 @@ class Google_Service_GamesManagement_Achievements_Resource extends Google_Servic
    * @param string $achievementId
    * The ID of the achievement used by this method.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_GamesManagement_AchievementResetResponse
+   * @return GoogleGAL_Service_GamesManagement_AchievementResetResponse
    */
   public function reset($achievementId, $optParams = array())
   {
     $params = array('achievementId' => $achievementId);
     $params = array_merge($params, $optParams);
-    return $this->call('reset', array($params), "Google_Service_GamesManagement_AchievementResetResponse");
+    return $this->call('reset', array($params), "GoogleGAL_Service_GamesManagement_AchievementResetResponse");
   }
   /**
    * Resets all achievements for the currently authenticated player for your
@@ -253,13 +253,13 @@ class Google_Service_GamesManagement_Achievements_Resource extends Google_Servic
    * for your application. (achievements.resetAll)
    *
    * @param array $optParams Optional parameters.
-   * @return Google_Service_GamesManagement_AchievementResetAllResponse
+   * @return GoogleGAL_Service_GamesManagement_AchievementResetAllResponse
    */
   public function resetAll($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('resetAll', array($params), "Google_Service_GamesManagement_AchievementResetAllResponse");
+    return $this->call('resetAll', array($params), "GoogleGAL_Service_GamesManagement_AchievementResetAllResponse");
   }
   /**
    * Resets the achievement with the given ID for the all players. This method is
@@ -282,11 +282,11 @@ class Google_Service_GamesManagement_Achievements_Resource extends Google_Servic
  * The "applications" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesManagementService = new Google_Service_GamesManagement(...);
+ *   $gamesManagementService = new GoogleGAL_Service_GamesManagement(...);
  *   $applications = $gamesManagementService->applications;
  *  </code>
  */
-class Google_Service_GamesManagement_Applications_Resource extends Google_Service_Resource
+class GoogleGAL_Service_GamesManagement_Applications_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -304,13 +304,13 @@ class Google_Service_GamesManagement_Applications_Resource extends Google_Servic
    * The maximum number of player resources to return in the response, used for paging. For any
     * response, the actual number of player resources returned may be less than the specified
     * maxResults.
-   * @return Google_Service_GamesManagement_HiddenPlayerList
+   * @return GoogleGAL_Service_GamesManagement_HiddenPlayerList
    */
   public function listHidden($applicationId, $optParams = array())
   {
     $params = array('applicationId' => $applicationId);
     $params = array_merge($params, $optParams);
-    return $this->call('listHidden', array($params), "Google_Service_GamesManagement_HiddenPlayerList");
+    return $this->call('listHidden', array($params), "GoogleGAL_Service_GamesManagement_HiddenPlayerList");
   }
 }
 
@@ -318,11 +318,11 @@ class Google_Service_GamesManagement_Applications_Resource extends Google_Servic
  * The "players" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesManagementService = new Google_Service_GamesManagement(...);
+ *   $gamesManagementService = new GoogleGAL_Service_GamesManagement(...);
  *   $players = $gamesManagementService->players;
  *  </code>
  */
-class Google_Service_GamesManagement_Players_Resource extends Google_Service_Resource
+class GoogleGAL_Service_GamesManagement_Players_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -365,11 +365,11 @@ class Google_Service_GamesManagement_Players_Resource extends Google_Service_Res
  * The "rooms" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesManagementService = new Google_Service_GamesManagement(...);
+ *   $gamesManagementService = new GoogleGAL_Service_GamesManagement(...);
  *   $rooms = $gamesManagementService->rooms;
  *  </code>
  */
-class Google_Service_GamesManagement_Rooms_Resource extends Google_Service_Resource
+class GoogleGAL_Service_GamesManagement_Rooms_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -391,11 +391,11 @@ class Google_Service_GamesManagement_Rooms_Resource extends Google_Service_Resou
  * The "scores" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesManagementService = new Google_Service_GamesManagement(...);
+ *   $gamesManagementService = new GoogleGAL_Service_GamesManagement(...);
  *   $scores = $gamesManagementService->scores;
  *  </code>
  */
-class Google_Service_GamesManagement_Scores_Resource extends Google_Service_Resource
+class GoogleGAL_Service_GamesManagement_Scores_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -406,13 +406,13 @@ class Google_Service_GamesManagement_Scores_Resource extends Google_Service_Reso
    * @param string $leaderboardId
    * The ID of the leaderboard.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_GamesManagement_PlayerScoreResetResponse
+   * @return GoogleGAL_Service_GamesManagement_PlayerScoreResetResponse
    */
   public function reset($leaderboardId, $optParams = array())
   {
     $params = array('leaderboardId' => $leaderboardId);
     $params = array_merge($params, $optParams);
-    return $this->call('reset', array($params), "Google_Service_GamesManagement_PlayerScoreResetResponse");
+    return $this->call('reset', array($params), "GoogleGAL_Service_GamesManagement_PlayerScoreResetResponse");
   }
   /**
    * Reset scores for the specified leaderboard for all players. This method is
@@ -435,11 +435,11 @@ class Google_Service_GamesManagement_Scores_Resource extends Google_Service_Reso
  * The "turnBasedMatches" collection of methods.
  * Typical usage is:
  *  <code>
- *   $gamesManagementService = new Google_Service_GamesManagement(...);
+ *   $gamesManagementService = new GoogleGAL_Service_GamesManagement(...);
  *   $turnBasedMatches = $gamesManagementService->turnBasedMatches;
  *  </code>
  */
-class Google_Service_GamesManagement_TurnBasedMatches_Resource extends Google_Service_Resource
+class GoogleGAL_Service_GamesManagement_TurnBasedMatches_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -459,10 +459,10 @@ class Google_Service_GamesManagement_TurnBasedMatches_Resource extends Google_Se
 
 
 
-class Google_Service_GamesManagement_AchievementResetAllResponse extends Google_Collection
+class GoogleGAL_Service_GamesManagement_AchievementResetAllResponse extends GoogleGAL_Collection
 {
   public $kind;
-  protected $resultsType = 'Google_Service_GamesManagement_AchievementResetResponse';
+  protected $resultsType = 'GoogleGAL_Service_GamesManagement_AchievementResetResponse';
   protected $resultsDataType = 'array';
 
   public function setKind($kind)
@@ -486,7 +486,7 @@ class Google_Service_GamesManagement_AchievementResetAllResponse extends Google_
   }
 }
 
-class Google_Service_GamesManagement_AchievementResetResponse extends Google_Model
+class GoogleGAL_Service_GamesManagement_AchievementResetResponse extends GoogleGAL_Model
 {
   public $currentState;
   public $definitionId;
@@ -534,7 +534,7 @@ class Google_Service_GamesManagement_AchievementResetResponse extends Google_Mod
   }
 }
 
-class Google_Service_GamesManagement_GamesPlayedResource extends Google_Model
+class GoogleGAL_Service_GamesManagement_GamesPlayedResource extends GoogleGAL_Model
 {
   public $autoMatched;
   public $timeMillis;
@@ -560,11 +560,11 @@ class Google_Service_GamesManagement_GamesPlayedResource extends Google_Model
   }
 }
 
-class Google_Service_GamesManagement_HiddenPlayer extends Google_Model
+class GoogleGAL_Service_GamesManagement_HiddenPlayer extends GoogleGAL_Model
 {
   public $hiddenTimeMillis;
   public $kind;
-  protected $playerType = 'Google_Service_GamesManagement_Player';
+  protected $playerType = 'GoogleGAL_Service_GamesManagement_Player';
   protected $playerDataType = '';
 
   public function setHiddenTimeMillis($hiddenTimeMillis)
@@ -587,7 +587,7 @@ class Google_Service_GamesManagement_HiddenPlayer extends Google_Model
     return $this->kind;
   }
 
-  public function setPlayer(Google_Service_GamesManagement_Player $player)
+  public function setPlayer(GoogleGAL_Service_GamesManagement_Player $player)
   {
     $this->player = $player;
   }
@@ -598,9 +598,9 @@ class Google_Service_GamesManagement_HiddenPlayer extends Google_Model
   }
 }
 
-class Google_Service_GamesManagement_HiddenPlayerList extends Google_Collection
+class GoogleGAL_Service_GamesManagement_HiddenPlayerList extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_GamesManagement_HiddenPlayer';
+  protected $itemsType = 'GoogleGAL_Service_GamesManagement_HiddenPlayer';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -636,14 +636,14 @@ class Google_Service_GamesManagement_HiddenPlayerList extends Google_Collection
   }
 }
 
-class Google_Service_GamesManagement_Player extends Google_Model
+class GoogleGAL_Service_GamesManagement_Player extends GoogleGAL_Model
 {
   public $avatarImageUrl;
   public $displayName;
   public $kind;
-  protected $lastPlayedWithType = 'Google_Service_GamesManagement_GamesPlayedResource';
+  protected $lastPlayedWithType = 'GoogleGAL_Service_GamesManagement_GamesPlayedResource';
   protected $lastPlayedWithDataType = '';
-  protected $nameType = 'Google_Service_GamesManagement_PlayerName';
+  protected $nameType = 'GoogleGAL_Service_GamesManagement_PlayerName';
   protected $nameDataType = '';
   public $playerId;
 
@@ -677,7 +677,7 @@ class Google_Service_GamesManagement_Player extends Google_Model
     return $this->kind;
   }
 
-  public function setLastPlayedWith(Google_Service_GamesManagement_GamesPlayedResource $lastPlayedWith)
+  public function setLastPlayedWith(GoogleGAL_Service_GamesManagement_GamesPlayedResource $lastPlayedWith)
   {
     $this->lastPlayedWith = $lastPlayedWith;
   }
@@ -687,7 +687,7 @@ class Google_Service_GamesManagement_Player extends Google_Model
     return $this->lastPlayedWith;
   }
 
-  public function setName(Google_Service_GamesManagement_PlayerName $name)
+  public function setName(GoogleGAL_Service_GamesManagement_PlayerName $name)
   {
     $this->name = $name;
   }
@@ -708,7 +708,7 @@ class Google_Service_GamesManagement_Player extends Google_Model
   }
 }
 
-class Google_Service_GamesManagement_PlayerName extends Google_Model
+class GoogleGAL_Service_GamesManagement_PlayerName extends GoogleGAL_Model
 {
   public $familyName;
   public $givenName;
@@ -734,7 +734,7 @@ class Google_Service_GamesManagement_PlayerName extends Google_Model
   }
 }
 
-class Google_Service_GamesManagement_PlayerScoreResetResponse extends Google_Collection
+class GoogleGAL_Service_GamesManagement_PlayerScoreResetResponse extends GoogleGAL_Collection
 {
   public $kind;
   public $resetScoreTimeSpans;

@@ -25,12 +25,12 @@ require_once "Google/Http/Request.php";
  * @author Chris Chabot <chabotc@google.com>
  * @author Chirag Shah <chirags@google.com>
  */
-class Google_Auth_Simple extends Google_Auth_Abstract
+class GoogleGAL_Auth_Simple extends GoogleGAL_Auth_Abstract
 {
   private $key = null;
   private $client;
 
-  public function __construct(Google_Client $client, $config = null)
+  public function __construct(GoogleGAL_Client $client, $config = null)
   {
     $this->client = $client;
   }
@@ -41,11 +41,11 @@ class Google_Auth_Simple extends Google_Auth_Abstract
    * (which can modify the request in what ever way fits the auth mechanism)
    * and then calls apiCurlIO::makeRequest on the signed request
    *
-   * @param Google_Http_Request $request
-   * @return Google_Http_Request The resulting HTTP response including the
+   * @param GoogleGAL_Http_Request $request
+   * @return GoogleGAL_Http_Request The resulting HTTP response including the
    * responseHttpCode, responseHeaders and responseBody.
    */
-  public function authenticatedRequest(Google_Http_Request $request)
+  public function authenticatedRequest(GoogleGAL_Http_Request $request)
   {
     $request = $this->sign($request);
     return $this->io->makeRequest($request);
@@ -53,7 +53,7 @@ class Google_Auth_Simple extends Google_Auth_Abstract
 
   public function authenticate($code)
   {
-    throw new Google_Auth_Exception("Simple auth does not exchange tokens.");
+    throw new GoogleGAL_Auth_Exception("Simple auth does not exchange tokens.");
   }
 
   public function setAccessToken($accessToken)
@@ -81,7 +81,7 @@ class Google_Auth_Simple extends Google_Auth_Abstract
     /* noop*/
   }
 
-  public function sign(Google_Http_Request $request)
+  public function sign(GoogleGAL_Http_Request $request)
   {
     $key = $this->client->getClassConfig($this, 'developer_key');
     if ($key) {

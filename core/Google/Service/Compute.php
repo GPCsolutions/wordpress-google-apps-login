@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Compute extends Google_Service
+class GoogleGAL_Service_Compute extends GoogleGAL_Service
 {
   /** View and manage your Google Compute Engine resources. */
   const COMPUTE = "https://www.googleapis.com/auth/compute";
@@ -66,16 +66,16 @@ class Google_Service_Compute extends Google_Service
   /**
    * Constructs the internal representation of the Compute service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'compute/v1/projects/';
     $this->version = 'v1';
     $this->serviceName = 'compute';
 
-    $this->addresses = new Google_Service_Compute_Addresses_Resource(
+    $this->addresses = new GoogleGAL_Service_Compute_Addresses_Resource(
         $this,
         $this->serviceName,
         'addresses',
@@ -189,7 +189,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->disks = new Google_Service_Compute_Disks_Resource(
+    $this->disks = new GoogleGAL_Service_Compute_Disks_Resource(
         $this,
         $this->serviceName,
         'disks',
@@ -327,7 +327,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->firewalls = new Google_Service_Compute_Firewalls_Resource(
+    $this->firewalls = new GoogleGAL_Service_Compute_Firewalls_Resource(
         $this,
         $this->serviceName,
         'firewalls',
@@ -429,7 +429,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->forwardingRules = new Google_Service_Compute_ForwardingRules_Resource(
+    $this->forwardingRules = new GoogleGAL_Service_Compute_ForwardingRules_Resource(
         $this,
         $this->serviceName,
         'forwardingRules',
@@ -563,7 +563,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->globalOperations = new Google_Service_Compute_GlobalOperations_Resource(
+    $this->globalOperations = new GoogleGAL_Service_Compute_GlobalOperations_Resource(
         $this,
         $this->serviceName,
         'globalOperations',
@@ -647,7 +647,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->httpHealthChecks = new Google_Service_Compute_HttpHealthChecks_Resource(
+    $this->httpHealthChecks = new GoogleGAL_Service_Compute_HttpHealthChecks_Resource(
         $this,
         $this->serviceName,
         'httpHealthChecks',
@@ -749,7 +749,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->images = new Google_Service_Compute_Images_Resource(
+    $this->images = new GoogleGAL_Service_Compute_Images_Resource(
         $this,
         $this->serviceName,
         'images',
@@ -836,7 +836,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->instances = new Google_Service_Compute_Instances_Resource(
+    $this->instances = new GoogleGAL_Service_Compute_Instances_Resource(
         $this,
         $this->serviceName,
         'instances',
@@ -1180,7 +1180,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->machineTypes = new Google_Service_Compute_MachineTypes_Resource(
+    $this->machineTypes = new GoogleGAL_Service_Compute_MachineTypes_Resource(
         $this,
         $this->serviceName,
         'machineTypes',
@@ -1259,7 +1259,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->networks = new Google_Service_Compute_Networks_Resource(
+    $this->networks = new GoogleGAL_Service_Compute_Networks_Resource(
         $this,
         $this->serviceName,
         'networks',
@@ -1331,7 +1331,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->projects = new Google_Service_Compute_Projects_Resource(
+    $this->projects = new GoogleGAL_Service_Compute_Projects_Resource(
         $this,
         $this->serviceName,
         'projects',
@@ -1361,7 +1361,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->regionOperations = new Google_Service_Compute_RegionOperations_Resource(
+    $this->regionOperations = new GoogleGAL_Service_Compute_RegionOperations_Resource(
         $this,
         $this->serviceName,
         'regionOperations',
@@ -1438,7 +1438,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->regions = new Google_Service_Compute_Regions_Resource(
+    $this->regions = new GoogleGAL_Service_Compute_Regions_Resource(
         $this,
         $this->serviceName,
         'regions',
@@ -1485,7 +1485,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->routes = new Google_Service_Compute_Routes_Resource(
+    $this->routes = new GoogleGAL_Service_Compute_Routes_Resource(
         $this,
         $this->serviceName,
         'routes',
@@ -1557,7 +1557,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->snapshots = new Google_Service_Compute_Snapshots_Resource(
+    $this->snapshots = new GoogleGAL_Service_Compute_Snapshots_Resource(
         $this,
         $this->serviceName,
         'snapshots',
@@ -1619,7 +1619,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->targetInstances = new Google_Service_Compute_TargetInstances_Resource(
+    $this->targetInstances = new GoogleGAL_Service_Compute_TargetInstances_Resource(
         $this,
         $this->serviceName,
         'targetInstances',
@@ -1733,7 +1733,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->targetPools = new Google_Service_Compute_TargetPools_Resource(
+    $this->targetPools = new GoogleGAL_Service_Compute_TargetPools_Resource(
         $this,
         $this->serviceName,
         'targetPools',
@@ -1971,7 +1971,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->zoneOperations = new Google_Service_Compute_ZoneOperations_Resource(
+    $this->zoneOperations = new GoogleGAL_Service_Compute_ZoneOperations_Resource(
         $this,
         $this->serviceName,
         'zoneOperations',
@@ -2048,7 +2048,7 @@ class Google_Service_Compute extends Google_Service
           )
         )
     );
-    $this->zones = new Google_Service_Compute_Zones_Resource(
+    $this->zones = new GoogleGAL_Service_Compute_Zones_Resource(
         $this,
         $this->serviceName,
         'zones',
@@ -2103,11 +2103,11 @@ class Google_Service_Compute extends Google_Service
  * The "addresses" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $addresses = $computeService->addresses;
  *  </code>
  */
-class Google_Service_Compute_Addresses_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Addresses_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2125,13 +2125,13 @@ class Google_Service_Compute_Addresses_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_AddressAggregatedList
+   * @return GoogleGAL_Service_Compute_AddressAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_AddressAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_AddressAggregatedList");
   }
   /**
    * Deletes the specified address resource. (addresses.delete)
@@ -2143,13 +2143,13 @@ class Google_Service_Compute_Addresses_Resource extends Google_Service_Resource
    * @param string $address
    * Name of the address resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $region, $address, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'address' => $address);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified address resource. (addresses.get)
@@ -2161,13 +2161,13 @@ class Google_Service_Compute_Addresses_Resource extends Google_Service_Resource
    * @param string $address
    * Name of the address resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Address
+   * @return GoogleGAL_Service_Compute_Address
    */
   public function get($project, $region, $address, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'address' => $address);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Address");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Address");
   }
   /**
    * Creates an address resource in the specified project using the data included
@@ -2177,15 +2177,15 @@ class Google_Service_Compute_Addresses_Resource extends Google_Service_Resource
    * Name of the project scoping this request.
    * @param string $region
    * Name of the region scoping this request.
-   * @param Google_Address $postBody
+   * @param GoogleGAL_Address $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, $region, Google_Service_Compute_Address $postBody, $optParams = array())
+  public function insert($project, $region, GoogleGAL_Service_Compute_Address $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of address resources contained within the specified
@@ -2205,13 +2205,13 @@ class Google_Service_Compute_Addresses_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_AddressList
+   * @return GoogleGAL_Service_Compute_AddressList
    */
   public function listAddresses($project, $region, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_AddressList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_AddressList");
   }
 }
 
@@ -2219,11 +2219,11 @@ class Google_Service_Compute_Addresses_Resource extends Google_Service_Resource
  * The "disks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $disks = $computeService->disks;
  *  </code>
  */
-class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Disks_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2241,13 +2241,13 @@ class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_DiskAggregatedList
+   * @return GoogleGAL_Service_Compute_DiskAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_DiskAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_DiskAggregatedList");
   }
   /**
    * (disks.createSnapshot)
@@ -2258,15 +2258,15 @@ class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
    * Name of the zone scoping this request.
    * @param string $disk
    * Name of the persistent disk resource to snapshot.
-   * @param Google_Snapshot $postBody
+   * @param GoogleGAL_Snapshot $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function createSnapshot($project, $zone, $disk, Google_Service_Compute_Snapshot $postBody, $optParams = array())
+  public function createSnapshot($project, $zone, $disk, GoogleGAL_Service_Compute_Snapshot $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'disk' => $disk, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('createSnapshot', array($params), "Google_Service_Compute_Operation");
+    return $this->call('createSnapshot', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Deletes the specified persistent disk resource. (disks.delete)
@@ -2278,13 +2278,13 @@ class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
    * @param string $disk
    * Name of the persistent disk resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $zone, $disk, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'disk' => $disk);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified persistent disk resource. (disks.get)
@@ -2296,13 +2296,13 @@ class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
    * @param string $disk
    * Name of the persistent disk resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Disk
+   * @return GoogleGAL_Service_Compute_Disk
    */
   public function get($project, $zone, $disk, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'disk' => $disk);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Disk");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Disk");
   }
   /**
    * Creates a persistent disk resource in the specified project using the data
@@ -2312,18 +2312,18 @@ class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
    * Name of the project scoping this request.
    * @param string $zone
    * Name of the zone scoping this request.
-   * @param Google_Disk $postBody
+   * @param GoogleGAL_Disk $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string sourceImage
    * Optional. Source image to restore onto a disk.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, $zone, Google_Service_Compute_Disk $postBody, $optParams = array())
+  public function insert($project, $zone, GoogleGAL_Service_Compute_Disk $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of persistent disk resources contained within the
@@ -2343,13 +2343,13 @@ class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_DiskList
+   * @return GoogleGAL_Service_Compute_DiskList
    */
   public function listDisks($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_DiskList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_DiskList");
   }
 }
 
@@ -2357,11 +2357,11 @@ class Google_Service_Compute_Disks_Resource extends Google_Service_Resource
  * The "firewalls" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $firewalls = $computeService->firewalls;
  *  </code>
  */
-class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Firewalls_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2372,13 +2372,13 @@ class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
    * @param string $firewall
    * Name of the firewall resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $firewall, $optParams = array())
   {
     $params = array('project' => $project, 'firewall' => $firewall);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified firewall resource. (firewalls.get)
@@ -2388,13 +2388,13 @@ class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
    * @param string $firewall
    * Name of the firewall resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Firewall
+   * @return GoogleGAL_Service_Compute_Firewall
    */
   public function get($project, $firewall, $optParams = array())
   {
     $params = array('project' => $project, 'firewall' => $firewall);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Firewall");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Firewall");
   }
   /**
    * Creates a firewall resource in the specified project using the data included
@@ -2402,15 +2402,15 @@ class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
    *
    * @param string $project
    * Name of the project scoping this request.
-   * @param Google_Firewall $postBody
+   * @param GoogleGAL_Firewall $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, Google_Service_Compute_Firewall $postBody, $optParams = array())
+  public function insert($project, GoogleGAL_Service_Compute_Firewall $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of firewall resources available to the specified project.
@@ -2428,13 +2428,13 @@ class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_FirewallList
+   * @return GoogleGAL_Service_Compute_FirewallList
    */
   public function listFirewalls($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_FirewallList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_FirewallList");
   }
   /**
    * Updates the specified firewall resource with the data included in the
@@ -2444,15 +2444,15 @@ class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
    * Name of the project scoping this request.
    * @param string $firewall
    * Name of the firewall resource to update.
-   * @param Google_Firewall $postBody
+   * @param GoogleGAL_Firewall $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function patch($project, $firewall, Google_Service_Compute_Firewall $postBody, $optParams = array())
+  public function patch($project, $firewall, GoogleGAL_Service_Compute_Firewall $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'firewall' => $firewall, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Compute_Operation");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Updates the specified firewall resource with the data included in the
@@ -2462,15 +2462,15 @@ class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
    * Name of the project scoping this request.
    * @param string $firewall
    * Name of the firewall resource to update.
-   * @param Google_Firewall $postBody
+   * @param GoogleGAL_Firewall $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function update($project, $firewall, Google_Service_Compute_Firewall $postBody, $optParams = array())
+  public function update($project, $firewall, GoogleGAL_Service_Compute_Firewall $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'firewall' => $firewall, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Compute_Operation");
+    return $this->call('update', array($params), "GoogleGAL_Service_Compute_Operation");
   }
 }
 
@@ -2478,11 +2478,11 @@ class Google_Service_Compute_Firewalls_Resource extends Google_Service_Resource
  * The "forwardingRules" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $forwardingRules = $computeService->forwardingRules;
  *  </code>
  */
-class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_ForwardingRules_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2501,13 +2501,13 @@ class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Res
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_ForwardingRuleAggregatedList
+   * @return GoogleGAL_Service_Compute_ForwardingRuleAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_ForwardingRuleAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_ForwardingRuleAggregatedList");
   }
   /**
    * Deletes the specified ForwardingRule resource. (forwardingRules.delete)
@@ -2519,13 +2519,13 @@ class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Res
    * @param string $forwardingRule
    * Name of the ForwardingRule resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $region, $forwardingRule, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'forwardingRule' => $forwardingRule);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified ForwardingRule resource. (forwardingRules.get)
@@ -2537,13 +2537,13 @@ class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Res
    * @param string $forwardingRule
    * Name of the ForwardingRule resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_ForwardingRule
+   * @return GoogleGAL_Service_Compute_ForwardingRule
    */
   public function get($project, $region, $forwardingRule, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'forwardingRule' => $forwardingRule);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_ForwardingRule");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_ForwardingRule");
   }
   /**
    * Creates a ForwardingRule resource in the specified project and region using
@@ -2553,15 +2553,15 @@ class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Res
    * Name of the project scoping this request.
    * @param string $region
    * Name of the region scoping this request.
-   * @param Google_ForwardingRule $postBody
+   * @param GoogleGAL_ForwardingRule $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, $region, Google_Service_Compute_ForwardingRule $postBody, $optParams = array())
+  public function insert($project, $region, GoogleGAL_Service_Compute_ForwardingRule $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of ForwardingRule resources available to the specified
@@ -2581,13 +2581,13 @@ class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Res
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_ForwardingRuleList
+   * @return GoogleGAL_Service_Compute_ForwardingRuleList
    */
   public function listForwardingRules($project, $region, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_ForwardingRuleList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_ForwardingRuleList");
   }
   /**
    * Changes target url for forwarding rule. (forwardingRules.setTarget)
@@ -2598,15 +2598,15 @@ class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Res
    * Name of the region scoping this request.
    * @param string $forwardingRule
    * Name of the ForwardingRule resource in which target is to be set.
-   * @param Google_TargetReference $postBody
+   * @param GoogleGAL_TargetReference $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function setTarget($project, $region, $forwardingRule, Google_Service_Compute_TargetReference $postBody, $optParams = array())
+  public function setTarget($project, $region, $forwardingRule, GoogleGAL_Service_Compute_TargetReference $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'forwardingRule' => $forwardingRule, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setTarget', array($params), "Google_Service_Compute_Operation");
+    return $this->call('setTarget', array($params), "GoogleGAL_Service_Compute_Operation");
   }
 }
 
@@ -2614,11 +2614,11 @@ class Google_Service_Compute_ForwardingRules_Resource extends Google_Service_Res
  * The "globalOperations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $globalOperations = $computeService->globalOperations;
  *  </code>
  */
-class Google_Service_Compute_GlobalOperations_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_GlobalOperations_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2637,13 +2637,13 @@ class Google_Service_Compute_GlobalOperations_Resource extends Google_Service_Re
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_OperationAggregatedList
+   * @return GoogleGAL_Service_Compute_OperationAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_OperationAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_OperationAggregatedList");
   }
   /**
    * Deletes the specified operation resource. (globalOperations.delete)
@@ -2668,13 +2668,13 @@ class Google_Service_Compute_GlobalOperations_Resource extends Google_Service_Re
    * @param string $operation
    * Name of the operation resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function get($project, $operation, $optParams = array())
   {
     $params = array('project' => $project, 'operation' => $operation);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Operation");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of operation resources contained within the specified
@@ -2692,13 +2692,13 @@ class Google_Service_Compute_GlobalOperations_Resource extends Google_Service_Re
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_OperationList
+   * @return GoogleGAL_Service_Compute_OperationList
    */
   public function listGlobalOperations($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_OperationList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_OperationList");
   }
 }
 
@@ -2706,11 +2706,11 @@ class Google_Service_Compute_GlobalOperations_Resource extends Google_Service_Re
  * The "httpHealthChecks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $httpHealthChecks = $computeService->httpHealthChecks;
  *  </code>
  */
-class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_HttpHealthChecks_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2721,13 +2721,13 @@ class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Re
    * @param string $httpHealthCheck
    * Name of the HttpHealthCheck resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $httpHealthCheck, $optParams = array())
   {
     $params = array('project' => $project, 'httpHealthCheck' => $httpHealthCheck);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified HttpHealthCheck resource. (httpHealthChecks.get)
@@ -2737,13 +2737,13 @@ class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Re
    * @param string $httpHealthCheck
    * Name of the HttpHealthCheck resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_HttpHealthCheck
+   * @return GoogleGAL_Service_Compute_HttpHealthCheck
    */
   public function get($project, $httpHealthCheck, $optParams = array())
   {
     $params = array('project' => $project, 'httpHealthCheck' => $httpHealthCheck);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_HttpHealthCheck");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_HttpHealthCheck");
   }
   /**
    * Creates a HttpHealthCheck resource in the specified project using the data
@@ -2751,15 +2751,15 @@ class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Re
    *
    * @param string $project
    * Name of the project scoping this request.
-   * @param Google_HttpHealthCheck $postBody
+   * @param GoogleGAL_HttpHealthCheck $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, Google_Service_Compute_HttpHealthCheck $postBody, $optParams = array())
+  public function insert($project, GoogleGAL_Service_Compute_HttpHealthCheck $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of HttpHealthCheck resources available to the specified
@@ -2777,13 +2777,13 @@ class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Re
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_HttpHealthCheckList
+   * @return GoogleGAL_Service_Compute_HttpHealthCheckList
    */
   public function listHttpHealthChecks($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_HttpHealthCheckList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_HttpHealthCheckList");
   }
   /**
    * Updates a HttpHealthCheck resource in the specified project using the data
@@ -2794,15 +2794,15 @@ class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Re
    * Name of the project scoping this request.
    * @param string $httpHealthCheck
    * Name of the HttpHealthCheck resource to update.
-   * @param Google_HttpHealthCheck $postBody
+   * @param GoogleGAL_HttpHealthCheck $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function patch($project, $httpHealthCheck, Google_Service_Compute_HttpHealthCheck $postBody, $optParams = array())
+  public function patch($project, $httpHealthCheck, GoogleGAL_Service_Compute_HttpHealthCheck $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'httpHealthCheck' => $httpHealthCheck, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Compute_Operation");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Updates a HttpHealthCheck resource in the specified project using the data
@@ -2812,15 +2812,15 @@ class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Re
    * Name of the project scoping this request.
    * @param string $httpHealthCheck
    * Name of the HttpHealthCheck resource to update.
-   * @param Google_HttpHealthCheck $postBody
+   * @param GoogleGAL_HttpHealthCheck $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function update($project, $httpHealthCheck, Google_Service_Compute_HttpHealthCheck $postBody, $optParams = array())
+  public function update($project, $httpHealthCheck, GoogleGAL_Service_Compute_HttpHealthCheck $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'httpHealthCheck' => $httpHealthCheck, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Compute_Operation");
+    return $this->call('update', array($params), "GoogleGAL_Service_Compute_Operation");
   }
 }
 
@@ -2828,11 +2828,11 @@ class Google_Service_Compute_HttpHealthChecks_Resource extends Google_Service_Re
  * The "images" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $images = $computeService->images;
  *  </code>
  */
-class Google_Service_Compute_Images_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Images_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2843,13 +2843,13 @@ class Google_Service_Compute_Images_Resource extends Google_Service_Resource
    * @param string $image
    * Name of the image resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $image, $optParams = array())
   {
     $params = array('project' => $project, 'image' => $image);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Sets the deprecation status of an image. If no message body is given, clears
@@ -2859,15 +2859,15 @@ class Google_Service_Compute_Images_Resource extends Google_Service_Resource
    * Name of the project scoping this request.
    * @param string $image
    * Image name.
-   * @param Google_DeprecationStatus $postBody
+   * @param GoogleGAL_DeprecationStatus $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function deprecate($project, $image, Google_Service_Compute_DeprecationStatus $postBody, $optParams = array())
+  public function deprecate($project, $image, GoogleGAL_Service_Compute_DeprecationStatus $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'image' => $image, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('deprecate', array($params), "Google_Service_Compute_Operation");
+    return $this->call('deprecate', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified image resource. (images.get)
@@ -2877,13 +2877,13 @@ class Google_Service_Compute_Images_Resource extends Google_Service_Resource
    * @param string $image
    * Name of the image resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Image
+   * @return GoogleGAL_Service_Compute_Image
    */
   public function get($project, $image, $optParams = array())
   {
     $params = array('project' => $project, 'image' => $image);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Image");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Image");
   }
   /**
    * Creates an image resource in the specified project using the data included in
@@ -2891,15 +2891,15 @@ class Google_Service_Compute_Images_Resource extends Google_Service_Resource
    *
    * @param string $project
    * Name of the project scoping this request.
-   * @param Google_Image $postBody
+   * @param GoogleGAL_Image $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, Google_Service_Compute_Image $postBody, $optParams = array())
+  public function insert($project, GoogleGAL_Service_Compute_Image $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of image resources available to the specified project.
@@ -2917,13 +2917,13 @@ class Google_Service_Compute_Images_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_ImageList
+   * @return GoogleGAL_Service_Compute_ImageList
    */
   public function listImages($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_ImageList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_ImageList");
   }
 }
 
@@ -2931,11 +2931,11 @@ class Google_Service_Compute_Images_Resource extends Google_Service_Resource
  * The "instances" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $instances = $computeService->instances;
  *  </code>
  */
-class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Instances_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -2950,15 +2950,15 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * Instance name.
    * @param string $networkInterface
    * Network interface name.
-   * @param Google_AccessConfig $postBody
+   * @param GoogleGAL_AccessConfig $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function addAccessConfig($project, $zone, $instance, $networkInterface, Google_Service_Compute_AccessConfig $postBody, $optParams = array())
+  public function addAccessConfig($project, $zone, $instance, $networkInterface, GoogleGAL_Service_Compute_AccessConfig $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'networkInterface' => $networkInterface, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('addAccessConfig', array($params), "Google_Service_Compute_Operation");
+    return $this->call('addAccessConfig', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * (instances.aggregatedList)
@@ -2975,13 +2975,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_InstanceAggregatedList
+   * @return GoogleGAL_Service_Compute_InstanceAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_InstanceAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_InstanceAggregatedList");
   }
   /**
    * Attaches a disk resource to an instance. (instances.attachDisk)
@@ -2992,15 +2992,15 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * Name of the zone scoping this request.
    * @param string $instance
    * Instance name.
-   * @param Google_AttachedDisk $postBody
+   * @param GoogleGAL_AttachedDisk $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function attachDisk($project, $zone, $instance, Google_Service_Compute_AttachedDisk $postBody, $optParams = array())
+  public function attachDisk($project, $zone, $instance, GoogleGAL_Service_Compute_AttachedDisk $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('attachDisk', array($params), "Google_Service_Compute_Operation");
+    return $this->call('attachDisk', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Deletes the specified instance resource. (instances.delete)
@@ -3012,13 +3012,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @param string $instance
    * Name of the instance resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $zone, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Deletes an access config from an instance's network interface.
@@ -3035,13 +3035,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @param string $networkInterface
    * Network interface name.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function deleteAccessConfig($project, $zone, $instance, $accessConfig, $networkInterface, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'accessConfig' => $accessConfig, 'networkInterface' => $networkInterface);
     $params = array_merge($params, $optParams);
-    return $this->call('deleteAccessConfig', array($params), "Google_Service_Compute_Operation");
+    return $this->call('deleteAccessConfig', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Detaches a disk from an instance. (instances.detachDisk)
@@ -3055,13 +3055,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @param string $deviceName
    * Disk device name to detach.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function detachDisk($project, $zone, $instance, $deviceName, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'deviceName' => $deviceName);
     $params = array_merge($params, $optParams);
-    return $this->call('detachDisk', array($params), "Google_Service_Compute_Operation");
+    return $this->call('detachDisk', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified instance resource. (instances.get)
@@ -3073,13 +3073,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @param string $instance
    * Name of the instance resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Instance
+   * @return GoogleGAL_Service_Compute_Instance
    */
   public function get($project, $zone, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Instance");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Instance");
   }
   /**
    * Returns the specified instance's serial port output.
@@ -3092,13 +3092,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @param string $instance
    * Name of the instance scoping this request.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_SerialPortOutput
+   * @return GoogleGAL_Service_Compute_SerialPortOutput
    */
   public function getSerialPortOutput($project, $zone, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('getSerialPortOutput', array($params), "Google_Service_Compute_SerialPortOutput");
+    return $this->call('getSerialPortOutput', array($params), "GoogleGAL_Service_Compute_SerialPortOutput");
   }
   /**
    * Creates an instance resource in the specified project using the data included
@@ -3108,15 +3108,15 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * Name of the project scoping this request.
    * @param string $zone
    * Name of the zone scoping this request.
-   * @param Google_Instance $postBody
+   * @param GoogleGAL_Instance $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, $zone, Google_Service_Compute_Instance $postBody, $optParams = array())
+  public function insert($project, $zone, GoogleGAL_Service_Compute_Instance $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of instance resources contained within the specified zone.
@@ -3136,13 +3136,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_InstanceList
+   * @return GoogleGAL_Service_Compute_InstanceList
    */
   public function listInstances($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_InstanceList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_InstanceList");
   }
   /**
    * Performs a hard reset on the instance. (instances.reset)
@@ -3154,13 +3154,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @param string $instance
    * Name of the instance scoping this request.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function reset($project, $zone, $instance, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance);
     $params = array_merge($params, $optParams);
-    return $this->call('reset', array($params), "Google_Service_Compute_Operation");
+    return $this->call('reset', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Sets the auto-delete flag for a disk attached to an instance
@@ -3177,13 +3177,13 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * @param string $deviceName
    * Disk device name to modify.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function setDiskAutoDelete($project, $zone, $instance, $autoDelete, $deviceName, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'autoDelete' => $autoDelete, 'deviceName' => $deviceName);
     $params = array_merge($params, $optParams);
-    return $this->call('setDiskAutoDelete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('setDiskAutoDelete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Sets metadata for the specified instance to the data included in the request.
@@ -3195,15 +3195,15 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * Name of the zone scoping this request.
    * @param string $instance
    * Name of the instance scoping this request.
-   * @param Google_Metadata $postBody
+   * @param GoogleGAL_Metadata $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function setMetadata($project, $zone, $instance, Google_Service_Compute_Metadata $postBody, $optParams = array())
+  public function setMetadata($project, $zone, $instance, GoogleGAL_Service_Compute_Metadata $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setMetadata', array($params), "Google_Service_Compute_Operation");
+    return $this->call('setMetadata', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Sets an instance's scheduling options. (instances.setScheduling)
@@ -3214,15 +3214,15 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * Name of the zone scoping this request.
    * @param string $instance
    * Instance name.
-   * @param Google_Scheduling $postBody
+   * @param GoogleGAL_Scheduling $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function setScheduling($project, $zone, $instance, Google_Service_Compute_Scheduling $postBody, $optParams = array())
+  public function setScheduling($project, $zone, $instance, GoogleGAL_Service_Compute_Scheduling $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setScheduling', array($params), "Google_Service_Compute_Operation");
+    return $this->call('setScheduling', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Sets tags for the specified instance to the data included in the request.
@@ -3234,15 +3234,15 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
    * Name of the zone scoping this request.
    * @param string $instance
    * Name of the instance scoping this request.
-   * @param Google_Tags $postBody
+   * @param GoogleGAL_Tags $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function setTags($project, $zone, $instance, Google_Service_Compute_Tags $postBody, $optParams = array())
+  public function setTags($project, $zone, $instance, GoogleGAL_Service_Compute_Tags $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'instance' => $instance, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setTags', array($params), "Google_Service_Compute_Operation");
+    return $this->call('setTags', array($params), "GoogleGAL_Service_Compute_Operation");
   }
 }
 
@@ -3250,11 +3250,11 @@ class Google_Service_Compute_Instances_Resource extends Google_Service_Resource
  * The "machineTypes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $machineTypes = $computeService->machineTypes;
  *  </code>
  */
-class Google_Service_Compute_MachineTypes_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_MachineTypes_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3273,13 +3273,13 @@ class Google_Service_Compute_MachineTypes_Resource extends Google_Service_Resour
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_MachineTypeAggregatedList
+   * @return GoogleGAL_Service_Compute_MachineTypeAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_MachineTypeAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_MachineTypeAggregatedList");
   }
   /**
    * Returns the specified machine type resource. (machineTypes.get)
@@ -3291,13 +3291,13 @@ class Google_Service_Compute_MachineTypes_Resource extends Google_Service_Resour
    * @param string $machineType
    * Name of the machine type resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_MachineType
+   * @return GoogleGAL_Service_Compute_MachineType
    */
   public function get($project, $zone, $machineType, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'machineType' => $machineType);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_MachineType");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_MachineType");
   }
   /**
    * Retrieves the list of machine type resources available to the specified
@@ -3317,13 +3317,13 @@ class Google_Service_Compute_MachineTypes_Resource extends Google_Service_Resour
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_MachineTypeList
+   * @return GoogleGAL_Service_Compute_MachineTypeList
    */
   public function listMachineTypes($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_MachineTypeList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_MachineTypeList");
   }
 }
 
@@ -3331,11 +3331,11 @@ class Google_Service_Compute_MachineTypes_Resource extends Google_Service_Resour
  * The "networks" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $networks = $computeService->networks;
  *  </code>
  */
-class Google_Service_Compute_Networks_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Networks_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3346,13 +3346,13 @@ class Google_Service_Compute_Networks_Resource extends Google_Service_Resource
    * @param string $network
    * Name of the network resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $network, $optParams = array())
   {
     $params = array('project' => $project, 'network' => $network);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified network resource. (networks.get)
@@ -3362,13 +3362,13 @@ class Google_Service_Compute_Networks_Resource extends Google_Service_Resource
    * @param string $network
    * Name of the network resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Network
+   * @return GoogleGAL_Service_Compute_Network
    */
   public function get($project, $network, $optParams = array())
   {
     $params = array('project' => $project, 'network' => $network);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Network");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Network");
   }
   /**
    * Creates a network resource in the specified project using the data included
@@ -3376,15 +3376,15 @@ class Google_Service_Compute_Networks_Resource extends Google_Service_Resource
    *
    * @param string $project
    * Name of the project scoping this request.
-   * @param Google_Network $postBody
+   * @param GoogleGAL_Network $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, Google_Service_Compute_Network $postBody, $optParams = array())
+  public function insert($project, GoogleGAL_Service_Compute_Network $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of network resources available to the specified project.
@@ -3402,13 +3402,13 @@ class Google_Service_Compute_Networks_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_NetworkList
+   * @return GoogleGAL_Service_Compute_NetworkList
    */
   public function listNetworks($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_NetworkList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_NetworkList");
   }
 }
 
@@ -3416,11 +3416,11 @@ class Google_Service_Compute_Networks_Resource extends Google_Service_Resource
  * The "projects" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $projects = $computeService->projects;
  *  </code>
  */
-class Google_Service_Compute_Projects_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Projects_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3429,13 +3429,13 @@ class Google_Service_Compute_Projects_Resource extends Google_Service_Resource
    * @param string $project
    * Name of the project resource to retrieve.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Project
+   * @return GoogleGAL_Service_Compute_Project
    */
   public function get($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Project");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Project");
   }
   /**
    * Sets metadata common to all instances within the specified project using the
@@ -3443,15 +3443,15 @@ class Google_Service_Compute_Projects_Resource extends Google_Service_Resource
    *
    * @param string $project
    * Name of the project scoping this request.
-   * @param Google_Metadata $postBody
+   * @param GoogleGAL_Metadata $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function setCommonInstanceMetadata($project, Google_Service_Compute_Metadata $postBody, $optParams = array())
+  public function setCommonInstanceMetadata($project, GoogleGAL_Service_Compute_Metadata $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setCommonInstanceMetadata', array($params), "Google_Service_Compute_Operation");
+    return $this->call('setCommonInstanceMetadata', array($params), "GoogleGAL_Service_Compute_Operation");
   }
 }
 
@@ -3459,11 +3459,11 @@ class Google_Service_Compute_Projects_Resource extends Google_Service_Resource
  * The "regionOperations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $regionOperations = $computeService->regionOperations;
  *  </code>
  */
-class Google_Service_Compute_RegionOperations_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_RegionOperations_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3495,13 +3495,13 @@ class Google_Service_Compute_RegionOperations_Resource extends Google_Service_Re
    * @param string $operation
    * Name of the operation resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function get($project, $region, $operation, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'operation' => $operation);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Operation");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of operation resources contained within the specified
@@ -3521,13 +3521,13 @@ class Google_Service_Compute_RegionOperations_Resource extends Google_Service_Re
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_OperationList
+   * @return GoogleGAL_Service_Compute_OperationList
    */
   public function listRegionOperations($project, $region, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_OperationList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_OperationList");
   }
 }
 
@@ -3535,11 +3535,11 @@ class Google_Service_Compute_RegionOperations_Resource extends Google_Service_Re
  * The "regions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $regions = $computeService->regions;
  *  </code>
  */
-class Google_Service_Compute_Regions_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Regions_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3550,13 +3550,13 @@ class Google_Service_Compute_Regions_Resource extends Google_Service_Resource
    * @param string $region
    * Name of the region resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Region
+   * @return GoogleGAL_Service_Compute_Region
    */
   public function get($project, $region, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Region");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Region");
   }
   /**
    * Retrieves the list of region resources available to the specified project.
@@ -3574,13 +3574,13 @@ class Google_Service_Compute_Regions_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_RegionList
+   * @return GoogleGAL_Service_Compute_RegionList
    */
   public function listRegions($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_RegionList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_RegionList");
   }
 }
 
@@ -3588,11 +3588,11 @@ class Google_Service_Compute_Regions_Resource extends Google_Service_Resource
  * The "routes" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $routes = $computeService->routes;
  *  </code>
  */
-class Google_Service_Compute_Routes_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Routes_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3603,13 +3603,13 @@ class Google_Service_Compute_Routes_Resource extends Google_Service_Resource
    * @param string $route
    * Name of the route resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $route, $optParams = array())
   {
     $params = array('project' => $project, 'route' => $route);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified route resource. (routes.get)
@@ -3619,13 +3619,13 @@ class Google_Service_Compute_Routes_Resource extends Google_Service_Resource
    * @param string $route
    * Name of the route resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Route
+   * @return GoogleGAL_Service_Compute_Route
    */
   public function get($project, $route, $optParams = array())
   {
     $params = array('project' => $project, 'route' => $route);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Route");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Route");
   }
   /**
    * Creates a route resource in the specified project using the data included in
@@ -3633,15 +3633,15 @@ class Google_Service_Compute_Routes_Resource extends Google_Service_Resource
    *
    * @param string $project
    * Name of the project scoping this request.
-   * @param Google_Route $postBody
+   * @param GoogleGAL_Route $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, Google_Service_Compute_Route $postBody, $optParams = array())
+  public function insert($project, GoogleGAL_Service_Compute_Route $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of route resources available to the specified project.
@@ -3659,13 +3659,13 @@ class Google_Service_Compute_Routes_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_RouteList
+   * @return GoogleGAL_Service_Compute_RouteList
    */
   public function listRoutes($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_RouteList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_RouteList");
   }
 }
 
@@ -3673,11 +3673,11 @@ class Google_Service_Compute_Routes_Resource extends Google_Service_Resource
  * The "snapshots" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $snapshots = $computeService->snapshots;
  *  </code>
  */
-class Google_Service_Compute_Snapshots_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Snapshots_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3688,13 +3688,13 @@ class Google_Service_Compute_Snapshots_Resource extends Google_Service_Resource
    * @param string $snapshot
    * Name of the persistent disk snapshot resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $snapshot, $optParams = array())
   {
     $params = array('project' => $project, 'snapshot' => $snapshot);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified persistent disk snapshot resource. (snapshots.get)
@@ -3704,13 +3704,13 @@ class Google_Service_Compute_Snapshots_Resource extends Google_Service_Resource
    * @param string $snapshot
    * Name of the persistent disk snapshot resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Snapshot
+   * @return GoogleGAL_Service_Compute_Snapshot
    */
   public function get($project, $snapshot, $optParams = array())
   {
     $params = array('project' => $project, 'snapshot' => $snapshot);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Snapshot");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Snapshot");
   }
   /**
    * Retrieves the list of persistent disk snapshot resources contained within the
@@ -3728,13 +3728,13 @@ class Google_Service_Compute_Snapshots_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_SnapshotList
+   * @return GoogleGAL_Service_Compute_SnapshotList
    */
   public function listSnapshots($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_SnapshotList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_SnapshotList");
   }
 }
 
@@ -3742,11 +3742,11 @@ class Google_Service_Compute_Snapshots_Resource extends Google_Service_Resource
  * The "targetInstances" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $targetInstances = $computeService->targetInstances;
  *  </code>
  */
-class Google_Service_Compute_TargetInstances_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_TargetInstances_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3765,13 +3765,13 @@ class Google_Service_Compute_TargetInstances_Resource extends Google_Service_Res
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_TargetInstanceAggregatedList
+   * @return GoogleGAL_Service_Compute_TargetInstanceAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_TargetInstanceAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_TargetInstanceAggregatedList");
   }
   /**
    * Deletes the specified TargetInstance resource. (targetInstances.delete)
@@ -3783,13 +3783,13 @@ class Google_Service_Compute_TargetInstances_Resource extends Google_Service_Res
    * @param string $targetInstance
    * Name of the TargetInstance resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $zone, $targetInstance, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'targetInstance' => $targetInstance);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified TargetInstance resource. (targetInstances.get)
@@ -3801,13 +3801,13 @@ class Google_Service_Compute_TargetInstances_Resource extends Google_Service_Res
    * @param string $targetInstance
    * Name of the TargetInstance resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_TargetInstance
+   * @return GoogleGAL_Service_Compute_TargetInstance
    */
   public function get($project, $zone, $targetInstance, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'targetInstance' => $targetInstance);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_TargetInstance");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_TargetInstance");
   }
   /**
    * Creates a TargetInstance resource in the specified project and zone using the
@@ -3817,15 +3817,15 @@ class Google_Service_Compute_TargetInstances_Resource extends Google_Service_Res
    * Name of the project scoping this request.
    * @param string $zone
    * Name of the zone scoping this request.
-   * @param Google_TargetInstance $postBody
+   * @param GoogleGAL_TargetInstance $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, $zone, Google_Service_Compute_TargetInstance $postBody, $optParams = array())
+  public function insert($project, $zone, GoogleGAL_Service_Compute_TargetInstance $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of TargetInstance resources available to the specified
@@ -3845,13 +3845,13 @@ class Google_Service_Compute_TargetInstances_Resource extends Google_Service_Res
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_TargetInstanceList
+   * @return GoogleGAL_Service_Compute_TargetInstanceList
    */
   public function listTargetInstances($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_TargetInstanceList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_TargetInstanceList");
   }
 }
 
@@ -3859,11 +3859,11 @@ class Google_Service_Compute_TargetInstances_Resource extends Google_Service_Res
  * The "targetPools" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $targetPools = $computeService->targetPools;
  *  </code>
  */
-class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_TargetPools_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -3875,15 +3875,15 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * Name of the region scoping this request.
    * @param string $targetPool
    * Name of the TargetPool resource to which health_check_url is to be added.
-   * @param Google_TargetPoolsAddHealthCheckRequest $postBody
+   * @param GoogleGAL_TargetPoolsAddHealthCheckRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function addHealthCheck($project, $region, $targetPool, Google_Service_Compute_TargetPoolsAddHealthCheckRequest $postBody, $optParams = array())
+  public function addHealthCheck($project, $region, $targetPool, GoogleGAL_Service_Compute_TargetPoolsAddHealthCheckRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('addHealthCheck', array($params), "Google_Service_Compute_Operation");
+    return $this->call('addHealthCheck', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Adds instance url to targetPool. (targetPools.addInstance)
@@ -3894,15 +3894,15 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * Name of the region scoping this request.
    * @param string $targetPool
    * Name of the TargetPool resource to which instance_url is to be added.
-   * @param Google_TargetPoolsAddInstanceRequest $postBody
+   * @param GoogleGAL_TargetPoolsAddInstanceRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function addInstance($project, $region, $targetPool, Google_Service_Compute_TargetPoolsAddInstanceRequest $postBody, $optParams = array())
+  public function addInstance($project, $region, $targetPool, GoogleGAL_Service_Compute_TargetPoolsAddInstanceRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('addInstance', array($params), "Google_Service_Compute_Operation");
+    return $this->call('addInstance', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of target pools grouped by scope.
@@ -3920,13 +3920,13 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_TargetPoolAggregatedList
+   * @return GoogleGAL_Service_Compute_TargetPoolAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('aggregatedList', array($params), "Google_Service_Compute_TargetPoolAggregatedList");
+    return $this->call('aggregatedList', array($params), "GoogleGAL_Service_Compute_TargetPoolAggregatedList");
   }
   /**
    * Deletes the specified TargetPool resource. (targetPools.delete)
@@ -3938,13 +3938,13 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * @param string $targetPool
    * Name of the TargetPool resource to delete.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function delete($project, $region, $targetPool, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool);
     $params = array_merge($params, $optParams);
-    return $this->call('delete', array($params), "Google_Service_Compute_Operation");
+    return $this->call('delete', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Returns the specified TargetPool resource. (targetPools.get)
@@ -3956,13 +3956,13 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * @param string $targetPool
    * Name of the TargetPool resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_TargetPool
+   * @return GoogleGAL_Service_Compute_TargetPool
    */
   public function get($project, $region, $targetPool, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_TargetPool");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_TargetPool");
   }
   /**
    * Gets the most recent health check results for each IP for the given instance
@@ -3974,15 +3974,15 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * Name of the region scoping this request.
    * @param string $targetPool
    * Name of the TargetPool resource to which the queried instance belongs.
-   * @param Google_InstanceReference $postBody
+   * @param GoogleGAL_InstanceReference $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_TargetPoolInstanceHealth
+   * @return GoogleGAL_Service_Compute_TargetPoolInstanceHealth
    */
-  public function getHealth($project, $region, $targetPool, Google_Service_Compute_InstanceReference $postBody, $optParams = array())
+  public function getHealth($project, $region, $targetPool, GoogleGAL_Service_Compute_InstanceReference $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('getHealth', array($params), "Google_Service_Compute_TargetPoolInstanceHealth");
+    return $this->call('getHealth', array($params), "GoogleGAL_Service_Compute_TargetPoolInstanceHealth");
   }
   /**
    * Creates a TargetPool resource in the specified project and region using the
@@ -3992,15 +3992,15 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * Name of the project scoping this request.
    * @param string $region
    * Name of the region scoping this request.
-   * @param Google_TargetPool $postBody
+   * @param GoogleGAL_TargetPool $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function insert($project, $region, Google_Service_Compute_TargetPool $postBody, $optParams = array())
+  public function insert($project, $region, GoogleGAL_Service_Compute_TargetPool $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Compute_Operation");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of TargetPool resources available to the specified project
@@ -4020,13 +4020,13 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_TargetPoolList
+   * @return GoogleGAL_Service_Compute_TargetPoolList
    */
   public function listTargetPools($project, $region, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_TargetPoolList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_TargetPoolList");
   }
   /**
    * Removes health check URL from targetPool. (targetPools.removeHealthCheck)
@@ -4037,15 +4037,15 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * Name of the region scoping this request.
    * @param string $targetPool
    * Name of the TargetPool resource to which health_check_url is to be removed.
-   * @param Google_TargetPoolsRemoveHealthCheckRequest $postBody
+   * @param GoogleGAL_TargetPoolsRemoveHealthCheckRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function removeHealthCheck($project, $region, $targetPool, Google_Service_Compute_TargetPoolsRemoveHealthCheckRequest $postBody, $optParams = array())
+  public function removeHealthCheck($project, $region, $targetPool, GoogleGAL_Service_Compute_TargetPoolsRemoveHealthCheckRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('removeHealthCheck', array($params), "Google_Service_Compute_Operation");
+    return $this->call('removeHealthCheck', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Removes instance URL from targetPool. (targetPools.removeInstance)
@@ -4056,15 +4056,15 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * Name of the region scoping this request.
    * @param string $targetPool
    * Name of the TargetPool resource to which instance_url is to be removed.
-   * @param Google_TargetPoolsRemoveInstanceRequest $postBody
+   * @param GoogleGAL_TargetPoolsRemoveInstanceRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function removeInstance($project, $region, $targetPool, Google_Service_Compute_TargetPoolsRemoveInstanceRequest $postBody, $optParams = array())
+  public function removeInstance($project, $region, $targetPool, GoogleGAL_Service_Compute_TargetPoolsRemoveInstanceRequest $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('removeInstance', array($params), "Google_Service_Compute_Operation");
+    return $this->call('removeInstance', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Changes backup pool configurations. (targetPools.setBackup)
@@ -4075,18 +4075,18 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
    * Name of the region scoping this request.
    * @param string $targetPool
    * Name of the TargetPool resource for which the backup is to be set.
-   * @param Google_TargetReference $postBody
+   * @param GoogleGAL_TargetReference $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param float failoverRatio
    * New failoverRatio value for the containing target pool.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
-  public function setBackup($project, $region, $targetPool, Google_Service_Compute_TargetReference $postBody, $optParams = array())
+  public function setBackup($project, $region, $targetPool, GoogleGAL_Service_Compute_TargetReference $postBody, $optParams = array())
   {
     $params = array('project' => $project, 'region' => $region, 'targetPool' => $targetPool, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('setBackup', array($params), "Google_Service_Compute_Operation");
+    return $this->call('setBackup', array($params), "GoogleGAL_Service_Compute_Operation");
   }
 }
 
@@ -4094,11 +4094,11 @@ class Google_Service_Compute_TargetPools_Resource extends Google_Service_Resourc
  * The "zoneOperations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $zoneOperations = $computeService->zoneOperations;
  *  </code>
  */
-class Google_Service_Compute_ZoneOperations_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_ZoneOperations_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -4130,13 +4130,13 @@ class Google_Service_Compute_ZoneOperations_Resource extends Google_Service_Reso
    * @param string $operation
    * Name of the operation resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Operation
+   * @return GoogleGAL_Service_Compute_Operation
    */
   public function get($project, $zone, $operation, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone, 'operation' => $operation);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Operation");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Operation");
   }
   /**
    * Retrieves the list of operation resources contained within the specified
@@ -4156,13 +4156,13 @@ class Google_Service_Compute_ZoneOperations_Resource extends Google_Service_Reso
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_OperationList
+   * @return GoogleGAL_Service_Compute_OperationList
    */
   public function listZoneOperations($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_OperationList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_OperationList");
   }
 }
 
@@ -4170,11 +4170,11 @@ class Google_Service_Compute_ZoneOperations_Resource extends Google_Service_Reso
  * The "zones" collection of methods.
  * Typical usage is:
  *  <code>
- *   $computeService = new Google_Service_Compute(...);
+ *   $computeService = new GoogleGAL_Service_Compute(...);
  *   $zones = $computeService->zones;
  *  </code>
  */
-class Google_Service_Compute_Zones_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Compute_Zones_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -4185,13 +4185,13 @@ class Google_Service_Compute_Zones_Resource extends Google_Service_Resource
    * @param string $zone
    * Name of the zone resource to return.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Compute_Zone
+   * @return GoogleGAL_Service_Compute_Zone
    */
   public function get($project, $zone, $optParams = array())
   {
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Compute_Zone");
+    return $this->call('get', array($params), "GoogleGAL_Service_Compute_Zone");
   }
   /**
    * Retrieves the list of zone resources available to the specified project.
@@ -4209,20 +4209,20 @@ class Google_Service_Compute_Zones_Resource extends Google_Service_Resource
    * @opt_param string maxResults
    * Optional. Maximum count of results to be returned. Maximum value is 500 and default value is
     * 500.
-   * @return Google_Service_Compute_ZoneList
+   * @return GoogleGAL_Service_Compute_ZoneList
    */
   public function listZones($project, $optParams = array())
   {
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Compute_ZoneList");
+    return $this->call('list', array($params), "GoogleGAL_Service_Compute_ZoneList");
   }
 }
 
 
 
 
-class Google_Service_Compute_AccessConfig extends Google_Model
+class GoogleGAL_Service_Compute_AccessConfig extends GoogleGAL_Model
 {
   public $kind;
   public $name;
@@ -4270,7 +4270,7 @@ class Google_Service_Compute_AccessConfig extends Google_Model
   }
 }
 
-class Google_Service_Compute_Address extends Google_Collection
+class GoogleGAL_Service_Compute_Address extends GoogleGAL_Collection
 {
   public $address;
   public $creationTimestamp;
@@ -4384,10 +4384,10 @@ class Google_Service_Compute_Address extends Google_Collection
   }
 }
 
-class Google_Service_Compute_AddressAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_AddressAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_AddressesScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_AddressesScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -4444,10 +4444,10 @@ class Google_Service_Compute_AddressAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_AddressList extends Google_Collection
+class GoogleGAL_Service_Compute_AddressList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Address';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Address';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -4504,11 +4504,11 @@ class Google_Service_Compute_AddressList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_AddressesScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_AddressesScopedList extends GoogleGAL_Collection
 {
-  protected $addressesType = 'Google_Service_Compute_Address';
+  protected $addressesType = 'GoogleGAL_Service_Compute_Address';
   protected $addressesDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_AddressesScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_AddressesScopedListWarning';
   protected $warningDataType = '';
 
   public function setAddresses($addresses)
@@ -4521,7 +4521,7 @@ class Google_Service_Compute_AddressesScopedList extends Google_Collection
     return $this->addresses;
   }
 
-  public function setWarning(Google_Service_Compute_AddressesScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_AddressesScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -4532,10 +4532,10 @@ class Google_Service_Compute_AddressesScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_AddressesScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_AddressesScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_AddressesScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_AddressesScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -4570,7 +4570,7 @@ class Google_Service_Compute_AddressesScopedListWarning extends Google_Collectio
   }
 }
 
-class Google_Service_Compute_AddressesScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_AddressesScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -4596,13 +4596,13 @@ class Google_Service_Compute_AddressesScopedListWarningData extends Google_Model
   }
 }
 
-class Google_Service_Compute_AttachedDisk extends Google_Model
+class GoogleGAL_Service_Compute_AttachedDisk extends GoogleGAL_Model
 {
   public $autoDelete;
   public $boot;
   public $deviceName;
   public $index;
-  protected $initializeParamsType = 'Google_Service_Compute_AttachedDiskInitializeParams';
+  protected $initializeParamsType = 'GoogleGAL_Service_Compute_AttachedDiskInitializeParams';
   protected $initializeParamsDataType = '';
   public $kind;
   public $mode;
@@ -4649,7 +4649,7 @@ class Google_Service_Compute_AttachedDisk extends Google_Model
     return $this->index;
   }
 
-  public function setInitializeParams(Google_Service_Compute_AttachedDiskInitializeParams $initializeParams)
+  public function setInitializeParams(GoogleGAL_Service_Compute_AttachedDiskInitializeParams $initializeParams)
   {
     $this->initializeParams = $initializeParams;
   }
@@ -4700,7 +4700,7 @@ class Google_Service_Compute_AttachedDisk extends Google_Model
   }
 }
 
-class Google_Service_Compute_AttachedDiskInitializeParams extends Google_Model
+class GoogleGAL_Service_Compute_AttachedDiskInitializeParams extends GoogleGAL_Model
 {
   public $diskName;
   public $diskSizeGb;
@@ -4737,7 +4737,7 @@ class Google_Service_Compute_AttachedDiskInitializeParams extends Google_Model
   }
 }
 
-class Google_Service_Compute_DeprecationStatus extends Google_Model
+class GoogleGAL_Service_Compute_DeprecationStatus extends GoogleGAL_Model
 {
   public $deleted;
   public $deprecated;
@@ -4796,7 +4796,7 @@ class Google_Service_Compute_DeprecationStatus extends Google_Model
   }
 }
 
-class Google_Service_Compute_Disk extends Google_Model
+class GoogleGAL_Service_Compute_Disk extends GoogleGAL_Model
 {
   public $creationTimestamp;
   public $description;
@@ -4954,10 +4954,10 @@ class Google_Service_Compute_Disk extends Google_Model
   }
 }
 
-class Google_Service_Compute_DiskAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_DiskAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_DisksScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_DisksScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -5014,10 +5014,10 @@ class Google_Service_Compute_DiskAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_DiskList extends Google_Collection
+class GoogleGAL_Service_Compute_DiskList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Disk';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Disk';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5074,11 +5074,11 @@ class Google_Service_Compute_DiskList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_DisksScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_DisksScopedList extends GoogleGAL_Collection
 {
-  protected $disksType = 'Google_Service_Compute_Disk';
+  protected $disksType = 'GoogleGAL_Service_Compute_Disk';
   protected $disksDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_DisksScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_DisksScopedListWarning';
   protected $warningDataType = '';
 
   public function setDisks($disks)
@@ -5091,7 +5091,7 @@ class Google_Service_Compute_DisksScopedList extends Google_Collection
     return $this->disks;
   }
 
-  public function setWarning(Google_Service_Compute_DisksScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_DisksScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -5102,10 +5102,10 @@ class Google_Service_Compute_DisksScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_DisksScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_DisksScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_DisksScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_DisksScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -5140,7 +5140,7 @@ class Google_Service_Compute_DisksScopedListWarning extends Google_Collection
   }
 }
 
-class Google_Service_Compute_DisksScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_DisksScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -5166,9 +5166,9 @@ class Google_Service_Compute_DisksScopedListWarningData extends Google_Model
   }
 }
 
-class Google_Service_Compute_Firewall extends Google_Collection
+class GoogleGAL_Service_Compute_Firewall extends GoogleGAL_Collection
 {
-  protected $allowedType = 'Google_Service_Compute_FirewallAllowed';
+  protected $allowedType = 'GoogleGAL_Service_Compute_FirewallAllowed';
   protected $allowedDataType = 'array';
   public $creationTimestamp;
   public $description;
@@ -5292,7 +5292,7 @@ class Google_Service_Compute_Firewall extends Google_Collection
   }
 }
 
-class Google_Service_Compute_FirewallAllowed extends Google_Collection
+class GoogleGAL_Service_Compute_FirewallAllowed extends GoogleGAL_Collection
 {
   public $iPProtocol;
   public $ports;
@@ -5318,10 +5318,10 @@ class Google_Service_Compute_FirewallAllowed extends Google_Collection
   }
 }
 
-class Google_Service_Compute_FirewallList extends Google_Collection
+class GoogleGAL_Service_Compute_FirewallList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Firewall';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Firewall';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5378,7 +5378,7 @@ class Google_Service_Compute_FirewallList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_ForwardingRule extends Google_Model
+class GoogleGAL_Service_Compute_ForwardingRule extends GoogleGAL_Model
 {
   public $iPAddress;
   public $iPProtocol;
@@ -5503,10 +5503,10 @@ class Google_Service_Compute_ForwardingRule extends Google_Model
   }
 }
 
-class Google_Service_Compute_ForwardingRuleAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_ForwardingRuleAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_ForwardingRulesScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_ForwardingRulesScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -5563,10 +5563,10 @@ class Google_Service_Compute_ForwardingRuleAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_ForwardingRuleList extends Google_Collection
+class GoogleGAL_Service_Compute_ForwardingRuleList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_ForwardingRule';
+  protected $itemsType = 'GoogleGAL_Service_Compute_ForwardingRule';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5623,11 +5623,11 @@ class Google_Service_Compute_ForwardingRuleList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_ForwardingRulesScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_ForwardingRulesScopedList extends GoogleGAL_Collection
 {
-  protected $forwardingRulesType = 'Google_Service_Compute_ForwardingRule';
+  protected $forwardingRulesType = 'GoogleGAL_Service_Compute_ForwardingRule';
   protected $forwardingRulesDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_ForwardingRulesScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_ForwardingRulesScopedListWarning';
   protected $warningDataType = '';
 
   public function setForwardingRules($forwardingRules)
@@ -5640,7 +5640,7 @@ class Google_Service_Compute_ForwardingRulesScopedList extends Google_Collection
     return $this->forwardingRules;
   }
 
-  public function setWarning(Google_Service_Compute_ForwardingRulesScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_ForwardingRulesScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -5651,10 +5651,10 @@ class Google_Service_Compute_ForwardingRulesScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_ForwardingRulesScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_ForwardingRulesScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_ForwardingRulesScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_ForwardingRulesScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -5689,7 +5689,7 @@ class Google_Service_Compute_ForwardingRulesScopedListWarning extends Google_Col
   }
 }
 
-class Google_Service_Compute_ForwardingRulesScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_ForwardingRulesScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -5715,7 +5715,7 @@ class Google_Service_Compute_ForwardingRulesScopedListWarningData extends Google
   }
 }
 
-class Google_Service_Compute_HealthCheckReference extends Google_Model
+class GoogleGAL_Service_Compute_HealthCheckReference extends GoogleGAL_Model
 {
   public $healthCheck;
 
@@ -5730,7 +5730,7 @@ class Google_Service_Compute_HealthCheckReference extends Google_Model
   }
 }
 
-class Google_Service_Compute_HealthStatus extends Google_Model
+class GoogleGAL_Service_Compute_HealthStatus extends GoogleGAL_Model
 {
   public $healthState;
   public $instance;
@@ -5767,7 +5767,7 @@ class Google_Service_Compute_HealthStatus extends Google_Model
   }
 }
 
-class Google_Service_Compute_HttpHealthCheck extends Google_Model
+class GoogleGAL_Service_Compute_HttpHealthCheck extends GoogleGAL_Model
 {
   public $checkIntervalSec;
   public $creationTimestamp;
@@ -5914,10 +5914,10 @@ class Google_Service_Compute_HttpHealthCheck extends Google_Model
   }
 }
 
-class Google_Service_Compute_HttpHealthCheckList extends Google_Collection
+class GoogleGAL_Service_Compute_HttpHealthCheckList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_HttpHealthCheck';
+  protected $itemsType = 'GoogleGAL_Service_Compute_HttpHealthCheck';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -5974,17 +5974,17 @@ class Google_Service_Compute_HttpHealthCheckList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_Image extends Google_Model
+class GoogleGAL_Service_Compute_Image extends GoogleGAL_Model
 {
   public $archiveSizeBytes;
   public $creationTimestamp;
-  protected $deprecatedType = 'Google_Service_Compute_DeprecationStatus';
+  protected $deprecatedType = 'GoogleGAL_Service_Compute_DeprecationStatus';
   protected $deprecatedDataType = '';
   public $description;
   public $id;
   public $kind;
   public $name;
-  protected $rawDiskType = 'Google_Service_Compute_ImageRawDisk';
+  protected $rawDiskType = 'GoogleGAL_Service_Compute_ImageRawDisk';
   protected $rawDiskDataType = '';
   public $selfLink;
   public $sourceType;
@@ -6010,7 +6010,7 @@ class Google_Service_Compute_Image extends Google_Model
     return $this->creationTimestamp;
   }
 
-  public function setDeprecated(Google_Service_Compute_DeprecationStatus $deprecated)
+  public function setDeprecated(GoogleGAL_Service_Compute_DeprecationStatus $deprecated)
   {
     $this->deprecated = $deprecated;
   }
@@ -6060,7 +6060,7 @@ class Google_Service_Compute_Image extends Google_Model
     return $this->name;
   }
 
-  public function setRawDisk(Google_Service_Compute_ImageRawDisk $rawDisk)
+  public function setRawDisk(GoogleGAL_Service_Compute_ImageRawDisk $rawDisk)
   {
     $this->rawDisk = $rawDisk;
   }
@@ -6101,10 +6101,10 @@ class Google_Service_Compute_Image extends Google_Model
   }
 }
 
-class Google_Service_Compute_ImageList extends Google_Collection
+class GoogleGAL_Service_Compute_ImageList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Image';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Image';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -6161,7 +6161,7 @@ class Google_Service_Compute_ImageList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_ImageRawDisk extends Google_Model
+class GoogleGAL_Service_Compute_ImageRawDisk extends GoogleGAL_Model
 {
   public $containerType;
   public $sha1Checksum;
@@ -6198,29 +6198,29 @@ class Google_Service_Compute_ImageRawDisk extends Google_Model
   }
 }
 
-class Google_Service_Compute_Instance extends Google_Collection
+class GoogleGAL_Service_Compute_Instance extends GoogleGAL_Collection
 {
   public $canIpForward;
   public $creationTimestamp;
   public $description;
-  protected $disksType = 'Google_Service_Compute_AttachedDisk';
+  protected $disksType = 'GoogleGAL_Service_Compute_AttachedDisk';
   protected $disksDataType = 'array';
   public $id;
   public $kind;
   public $machineType;
-  protected $metadataType = 'Google_Service_Compute_Metadata';
+  protected $metadataType = 'GoogleGAL_Service_Compute_Metadata';
   protected $metadataDataType = '';
   public $name;
-  protected $networkInterfacesType = 'Google_Service_Compute_NetworkInterface';
+  protected $networkInterfacesType = 'GoogleGAL_Service_Compute_NetworkInterface';
   protected $networkInterfacesDataType = 'array';
-  protected $schedulingType = 'Google_Service_Compute_Scheduling';
+  protected $schedulingType = 'GoogleGAL_Service_Compute_Scheduling';
   protected $schedulingDataType = '';
   public $selfLink;
-  protected $serviceAccountsType = 'Google_Service_Compute_ServiceAccount';
+  protected $serviceAccountsType = 'GoogleGAL_Service_Compute_ServiceAccount';
   protected $serviceAccountsDataType = 'array';
   public $status;
   public $statusMessage;
-  protected $tagsType = 'Google_Service_Compute_Tags';
+  protected $tagsType = 'GoogleGAL_Service_Compute_Tags';
   protected $tagsDataType = '';
   public $zone;
 
@@ -6294,7 +6294,7 @@ class Google_Service_Compute_Instance extends Google_Collection
     return $this->machineType;
   }
 
-  public function setMetadata(Google_Service_Compute_Metadata $metadata)
+  public function setMetadata(GoogleGAL_Service_Compute_Metadata $metadata)
   {
     $this->metadata = $metadata;
   }
@@ -6324,7 +6324,7 @@ class Google_Service_Compute_Instance extends Google_Collection
     return $this->networkInterfaces;
   }
 
-  public function setScheduling(Google_Service_Compute_Scheduling $scheduling)
+  public function setScheduling(GoogleGAL_Service_Compute_Scheduling $scheduling)
   {
     $this->scheduling = $scheduling;
   }
@@ -6374,7 +6374,7 @@ class Google_Service_Compute_Instance extends Google_Collection
     return $this->statusMessage;
   }
 
-  public function setTags(Google_Service_Compute_Tags $tags)
+  public function setTags(GoogleGAL_Service_Compute_Tags $tags)
   {
     $this->tags = $tags;
   }
@@ -6395,10 +6395,10 @@ class Google_Service_Compute_Instance extends Google_Collection
   }
 }
 
-class Google_Service_Compute_InstanceAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_InstanceAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_InstancesScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_InstancesScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -6455,10 +6455,10 @@ class Google_Service_Compute_InstanceAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_InstanceList extends Google_Collection
+class GoogleGAL_Service_Compute_InstanceList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Instance';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Instance';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -6515,7 +6515,7 @@ class Google_Service_Compute_InstanceList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_InstanceReference extends Google_Model
+class GoogleGAL_Service_Compute_InstanceReference extends GoogleGAL_Model
 {
   public $instance;
 
@@ -6530,11 +6530,11 @@ class Google_Service_Compute_InstanceReference extends Google_Model
   }
 }
 
-class Google_Service_Compute_InstancesScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_InstancesScopedList extends GoogleGAL_Collection
 {
-  protected $instancesType = 'Google_Service_Compute_Instance';
+  protected $instancesType = 'GoogleGAL_Service_Compute_Instance';
   protected $instancesDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_InstancesScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_InstancesScopedListWarning';
   protected $warningDataType = '';
 
   public function setInstances($instances)
@@ -6547,7 +6547,7 @@ class Google_Service_Compute_InstancesScopedList extends Google_Collection
     return $this->instances;
   }
 
-  public function setWarning(Google_Service_Compute_InstancesScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_InstancesScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -6558,10 +6558,10 @@ class Google_Service_Compute_InstancesScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_InstancesScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_InstancesScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_InstancesScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_InstancesScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -6596,7 +6596,7 @@ class Google_Service_Compute_InstancesScopedListWarning extends Google_Collectio
   }
 }
 
-class Google_Service_Compute_InstancesScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_InstancesScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -6622,10 +6622,10 @@ class Google_Service_Compute_InstancesScopedListWarningData extends Google_Model
   }
 }
 
-class Google_Service_Compute_MachineType extends Google_Collection
+class GoogleGAL_Service_Compute_MachineType extends GoogleGAL_Collection
 {
   public $creationTimestamp;
-  protected $deprecatedType = 'Google_Service_Compute_DeprecationStatus';
+  protected $deprecatedType = 'GoogleGAL_Service_Compute_DeprecationStatus';
   protected $deprecatedDataType = '';
   public $description;
   public $guestCpus;
@@ -6636,7 +6636,7 @@ class Google_Service_Compute_MachineType extends Google_Collection
   public $maximumPersistentDisksSizeGb;
   public $memoryMb;
   public $name;
-  protected $scratchDisksType = 'Google_Service_Compute_MachineTypeScratchDisks';
+  protected $scratchDisksType = 'GoogleGAL_Service_Compute_MachineTypeScratchDisks';
   protected $scratchDisksDataType = 'array';
   public $selfLink;
   public $zone;
@@ -6651,7 +6651,7 @@ class Google_Service_Compute_MachineType extends Google_Collection
     return $this->creationTimestamp;
   }
 
-  public function setDeprecated(Google_Service_Compute_DeprecationStatus $deprecated)
+  public function setDeprecated(GoogleGAL_Service_Compute_DeprecationStatus $deprecated)
   {
     $this->deprecated = $deprecated;
   }
@@ -6782,10 +6782,10 @@ class Google_Service_Compute_MachineType extends Google_Collection
   }
 }
 
-class Google_Service_Compute_MachineTypeAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_MachineTypeAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_MachineTypesScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_MachineTypesScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -6842,10 +6842,10 @@ class Google_Service_Compute_MachineTypeAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_MachineTypeList extends Google_Collection
+class GoogleGAL_Service_Compute_MachineTypeList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_MachineType';
+  protected $itemsType = 'GoogleGAL_Service_Compute_MachineType';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -6902,7 +6902,7 @@ class Google_Service_Compute_MachineTypeList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_MachineTypeScratchDisks extends Google_Model
+class GoogleGAL_Service_Compute_MachineTypeScratchDisks extends GoogleGAL_Model
 {
   public $diskGb;
 
@@ -6917,11 +6917,11 @@ class Google_Service_Compute_MachineTypeScratchDisks extends Google_Model
   }
 }
 
-class Google_Service_Compute_MachineTypesScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_MachineTypesScopedList extends GoogleGAL_Collection
 {
-  protected $machineTypesType = 'Google_Service_Compute_MachineType';
+  protected $machineTypesType = 'GoogleGAL_Service_Compute_MachineType';
   protected $machineTypesDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_MachineTypesScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_MachineTypesScopedListWarning';
   protected $warningDataType = '';
 
   public function setMachineTypes($machineTypes)
@@ -6934,7 +6934,7 @@ class Google_Service_Compute_MachineTypesScopedList extends Google_Collection
     return $this->machineTypes;
   }
 
-  public function setWarning(Google_Service_Compute_MachineTypesScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_MachineTypesScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -6945,10 +6945,10 @@ class Google_Service_Compute_MachineTypesScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_MachineTypesScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_MachineTypesScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_MachineTypesScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_MachineTypesScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -6983,7 +6983,7 @@ class Google_Service_Compute_MachineTypesScopedListWarning extends Google_Collec
   }
 }
 
-class Google_Service_Compute_MachineTypesScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_MachineTypesScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -7009,10 +7009,10 @@ class Google_Service_Compute_MachineTypesScopedListWarningData extends Google_Mo
   }
 }
 
-class Google_Service_Compute_Metadata extends Google_Collection
+class GoogleGAL_Service_Compute_Metadata extends GoogleGAL_Collection
 {
   public $fingerprint;
-  protected $itemsType = 'Google_Service_Compute_MetadataItems';
+  protected $itemsType = 'GoogleGAL_Service_Compute_MetadataItems';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -7047,7 +7047,7 @@ class Google_Service_Compute_Metadata extends Google_Collection
   }
 }
 
-class Google_Service_Compute_MetadataItems extends Google_Model
+class GoogleGAL_Service_Compute_MetadataItems extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -7073,7 +7073,7 @@ class Google_Service_Compute_MetadataItems extends Google_Model
   }
 }
 
-class Google_Service_Compute_Network extends Google_Model
+class GoogleGAL_Service_Compute_Network extends GoogleGAL_Model
 {
   public $iPv4Range;
   public $creationTimestamp;
@@ -7165,9 +7165,9 @@ class Google_Service_Compute_Network extends Google_Model
   }
 }
 
-class Google_Service_Compute_NetworkInterface extends Google_Collection
+class GoogleGAL_Service_Compute_NetworkInterface extends GoogleGAL_Collection
 {
-  protected $accessConfigsType = 'Google_Service_Compute_AccessConfig';
+  protected $accessConfigsType = 'GoogleGAL_Service_Compute_AccessConfig';
   protected $accessConfigsDataType = 'array';
   public $name;
   public $network;
@@ -7214,10 +7214,10 @@ class Google_Service_Compute_NetworkInterface extends Google_Collection
   }
 }
 
-class Google_Service_Compute_NetworkList extends Google_Collection
+class GoogleGAL_Service_Compute_NetworkList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Network';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Network';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -7274,12 +7274,12 @@ class Google_Service_Compute_NetworkList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_Operation extends Google_Collection
+class GoogleGAL_Service_Compute_Operation extends GoogleGAL_Collection
 {
   public $clientOperationId;
   public $creationTimestamp;
   public $endTime;
-  protected $errorType = 'Google_Service_Compute_OperationError';
+  protected $errorType = 'GoogleGAL_Service_Compute_OperationError';
   protected $errorDataType = '';
   public $httpErrorMessage;
   public $httpErrorStatusCode;
@@ -7297,7 +7297,7 @@ class Google_Service_Compute_Operation extends Google_Collection
   public $targetId;
   public $targetLink;
   public $user;
-  protected $warningsType = 'Google_Service_Compute_OperationWarnings';
+  protected $warningsType = 'GoogleGAL_Service_Compute_OperationWarnings';
   protected $warningsDataType = 'array';
   public $zone;
 
@@ -7331,7 +7331,7 @@ class Google_Service_Compute_Operation extends Google_Collection
     return $this->endTime;
   }
 
-  public function setError(Google_Service_Compute_OperationError $error)
+  public function setError(GoogleGAL_Service_Compute_OperationError $error)
   {
     $this->error = $error;
   }
@@ -7522,10 +7522,10 @@ class Google_Service_Compute_Operation extends Google_Collection
   }
 }
 
-class Google_Service_Compute_OperationAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_OperationAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_OperationsScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_OperationsScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -7582,9 +7582,9 @@ class Google_Service_Compute_OperationAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_OperationError extends Google_Collection
+class GoogleGAL_Service_Compute_OperationError extends GoogleGAL_Collection
 {
-  protected $errorsType = 'Google_Service_Compute_OperationErrorErrors';
+  protected $errorsType = 'GoogleGAL_Service_Compute_OperationErrorErrors';
   protected $errorsDataType = 'array';
 
   public function setErrors($errors)
@@ -7598,7 +7598,7 @@ class Google_Service_Compute_OperationError extends Google_Collection
   }
 }
 
-class Google_Service_Compute_OperationErrorErrors extends Google_Model
+class GoogleGAL_Service_Compute_OperationErrorErrors extends GoogleGAL_Model
 {
   public $code;
   public $location;
@@ -7635,10 +7635,10 @@ class Google_Service_Compute_OperationErrorErrors extends Google_Model
   }
 }
 
-class Google_Service_Compute_OperationList extends Google_Collection
+class GoogleGAL_Service_Compute_OperationList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Operation';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Operation';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -7695,10 +7695,10 @@ class Google_Service_Compute_OperationList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_OperationWarnings extends Google_Collection
+class GoogleGAL_Service_Compute_OperationWarnings extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_OperationWarningsData';
+  protected $dataType = 'GoogleGAL_Service_Compute_OperationWarningsData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -7733,7 +7733,7 @@ class Google_Service_Compute_OperationWarnings extends Google_Collection
   }
 }
 
-class Google_Service_Compute_OperationWarningsData extends Google_Model
+class GoogleGAL_Service_Compute_OperationWarningsData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -7759,11 +7759,11 @@ class Google_Service_Compute_OperationWarningsData extends Google_Model
   }
 }
 
-class Google_Service_Compute_OperationsScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_OperationsScopedList extends GoogleGAL_Collection
 {
-  protected $operationsType = 'Google_Service_Compute_Operation';
+  protected $operationsType = 'GoogleGAL_Service_Compute_Operation';
   protected $operationsDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_OperationsScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_OperationsScopedListWarning';
   protected $warningDataType = '';
 
   public function setOperations($operations)
@@ -7776,7 +7776,7 @@ class Google_Service_Compute_OperationsScopedList extends Google_Collection
     return $this->operations;
   }
 
-  public function setWarning(Google_Service_Compute_OperationsScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_OperationsScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -7787,10 +7787,10 @@ class Google_Service_Compute_OperationsScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_OperationsScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_OperationsScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_OperationsScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_OperationsScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -7825,7 +7825,7 @@ class Google_Service_Compute_OperationsScopedListWarning extends Google_Collecti
   }
 }
 
-class Google_Service_Compute_OperationsScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_OperationsScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -7851,20 +7851,20 @@ class Google_Service_Compute_OperationsScopedListWarningData extends Google_Mode
   }
 }
 
-class Google_Service_Compute_Project extends Google_Collection
+class GoogleGAL_Service_Compute_Project extends GoogleGAL_Collection
 {
-  protected $commonInstanceMetadataType = 'Google_Service_Compute_Metadata';
+  protected $commonInstanceMetadataType = 'GoogleGAL_Service_Compute_Metadata';
   protected $commonInstanceMetadataDataType = '';
   public $creationTimestamp;
   public $description;
   public $id;
   public $kind;
   public $name;
-  protected $quotasType = 'Google_Service_Compute_Quota';
+  protected $quotasType = 'GoogleGAL_Service_Compute_Quota';
   protected $quotasDataType = 'array';
   public $selfLink;
 
-  public function setCommonInstanceMetadata(Google_Service_Compute_Metadata $commonInstanceMetadata)
+  public function setCommonInstanceMetadata(GoogleGAL_Service_Compute_Metadata $commonInstanceMetadata)
   {
     $this->commonInstanceMetadata = $commonInstanceMetadata;
   }
@@ -7945,7 +7945,7 @@ class Google_Service_Compute_Project extends Google_Collection
   }
 }
 
-class Google_Service_Compute_Quota extends Google_Model
+class GoogleGAL_Service_Compute_Quota extends GoogleGAL_Model
 {
   public $limit;
   public $metric;
@@ -7982,16 +7982,16 @@ class Google_Service_Compute_Quota extends Google_Model
   }
 }
 
-class Google_Service_Compute_Region extends Google_Collection
+class GoogleGAL_Service_Compute_Region extends GoogleGAL_Collection
 {
   public $creationTimestamp;
-  protected $deprecatedType = 'Google_Service_Compute_DeprecationStatus';
+  protected $deprecatedType = 'GoogleGAL_Service_Compute_DeprecationStatus';
   protected $deprecatedDataType = '';
   public $description;
   public $id;
   public $kind;
   public $name;
-  protected $quotasType = 'Google_Service_Compute_Quota';
+  protected $quotasType = 'GoogleGAL_Service_Compute_Quota';
   protected $quotasDataType = 'array';
   public $selfLink;
   public $status;
@@ -8007,7 +8007,7 @@ class Google_Service_Compute_Region extends Google_Collection
     return $this->creationTimestamp;
   }
 
-  public function setDeprecated(Google_Service_Compute_DeprecationStatus $deprecated)
+  public function setDeprecated(GoogleGAL_Service_Compute_DeprecationStatus $deprecated)
   {
     $this->deprecated = $deprecated;
   }
@@ -8098,10 +8098,10 @@ class Google_Service_Compute_Region extends Google_Collection
   }
 }
 
-class Google_Service_Compute_RegionList extends Google_Collection
+class GoogleGAL_Service_Compute_RegionList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Region';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Region';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -8158,7 +8158,7 @@ class Google_Service_Compute_RegionList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_Route extends Google_Collection
+class GoogleGAL_Service_Compute_Route extends GoogleGAL_Collection
 {
   public $creationTimestamp;
   public $description;
@@ -8174,7 +8174,7 @@ class Google_Service_Compute_Route extends Google_Collection
   public $priority;
   public $selfLink;
   public $tags;
-  protected $warningsType = 'Google_Service_Compute_RouteWarnings';
+  protected $warningsType = 'GoogleGAL_Service_Compute_RouteWarnings';
   protected $warningsDataType = 'array';
 
   public function setCreationTimestamp($creationTimestamp)
@@ -8328,10 +8328,10 @@ class Google_Service_Compute_Route extends Google_Collection
   }
 }
 
-class Google_Service_Compute_RouteList extends Google_Collection
+class GoogleGAL_Service_Compute_RouteList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Route';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Route';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -8388,10 +8388,10 @@ class Google_Service_Compute_RouteList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_RouteWarnings extends Google_Collection
+class GoogleGAL_Service_Compute_RouteWarnings extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_RouteWarningsData';
+  protected $dataType = 'GoogleGAL_Service_Compute_RouteWarningsData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -8426,7 +8426,7 @@ class Google_Service_Compute_RouteWarnings extends Google_Collection
   }
 }
 
-class Google_Service_Compute_RouteWarningsData extends Google_Model
+class GoogleGAL_Service_Compute_RouteWarningsData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -8452,7 +8452,7 @@ class Google_Service_Compute_RouteWarningsData extends Google_Model
   }
 }
 
-class Google_Service_Compute_Scheduling extends Google_Model
+class GoogleGAL_Service_Compute_Scheduling extends GoogleGAL_Model
 {
   public $automaticRestart;
   public $onHostMaintenance;
@@ -8478,7 +8478,7 @@ class Google_Service_Compute_Scheduling extends Google_Model
   }
 }
 
-class Google_Service_Compute_SerialPortOutput extends Google_Model
+class GoogleGAL_Service_Compute_SerialPortOutput extends GoogleGAL_Model
 {
   public $contents;
   public $kind;
@@ -8515,7 +8515,7 @@ class Google_Service_Compute_SerialPortOutput extends Google_Model
   }
 }
 
-class Google_Service_Compute_ServiceAccount extends Google_Collection
+class GoogleGAL_Service_Compute_ServiceAccount extends GoogleGAL_Collection
 {
   public $email;
   public $scopes;
@@ -8541,7 +8541,7 @@ class Google_Service_Compute_ServiceAccount extends Google_Collection
   }
 }
 
-class Google_Service_Compute_Snapshot extends Google_Model
+class GoogleGAL_Service_Compute_Snapshot extends GoogleGAL_Model
 {
   public $creationTimestamp;
   public $description;
@@ -8677,10 +8677,10 @@ class Google_Service_Compute_Snapshot extends Google_Model
   }
 }
 
-class Google_Service_Compute_SnapshotList extends Google_Collection
+class GoogleGAL_Service_Compute_SnapshotList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Snapshot';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Snapshot';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -8737,7 +8737,7 @@ class Google_Service_Compute_SnapshotList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_Tags extends Google_Collection
+class GoogleGAL_Service_Compute_Tags extends GoogleGAL_Collection
 {
   public $fingerprint;
   public $items;
@@ -8763,7 +8763,7 @@ class Google_Service_Compute_Tags extends Google_Collection
   }
 }
 
-class Google_Service_Compute_TargetInstance extends Google_Model
+class GoogleGAL_Service_Compute_TargetInstance extends GoogleGAL_Model
 {
   public $creationTimestamp;
   public $description;
@@ -8866,10 +8866,10 @@ class Google_Service_Compute_TargetInstance extends Google_Model
   }
 }
 
-class Google_Service_Compute_TargetInstanceAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_TargetInstanceAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_TargetInstancesScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_TargetInstancesScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -8926,10 +8926,10 @@ class Google_Service_Compute_TargetInstanceAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_TargetInstanceList extends Google_Collection
+class GoogleGAL_Service_Compute_TargetInstanceList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_TargetInstance';
+  protected $itemsType = 'GoogleGAL_Service_Compute_TargetInstance';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -8986,11 +8986,11 @@ class Google_Service_Compute_TargetInstanceList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_TargetInstancesScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_TargetInstancesScopedList extends GoogleGAL_Collection
 {
-  protected $targetInstancesType = 'Google_Service_Compute_TargetInstance';
+  protected $targetInstancesType = 'GoogleGAL_Service_Compute_TargetInstance';
   protected $targetInstancesDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_TargetInstancesScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_TargetInstancesScopedListWarning';
   protected $warningDataType = '';
 
   public function setTargetInstances($targetInstances)
@@ -9003,7 +9003,7 @@ class Google_Service_Compute_TargetInstancesScopedList extends Google_Collection
     return $this->targetInstances;
   }
 
-  public function setWarning(Google_Service_Compute_TargetInstancesScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_TargetInstancesScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -9014,10 +9014,10 @@ class Google_Service_Compute_TargetInstancesScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_TargetInstancesScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_TargetInstancesScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_TargetInstancesScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_TargetInstancesScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -9052,7 +9052,7 @@ class Google_Service_Compute_TargetInstancesScopedListWarning extends Google_Col
   }
 }
 
-class Google_Service_Compute_TargetInstancesScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_TargetInstancesScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -9078,7 +9078,7 @@ class Google_Service_Compute_TargetInstancesScopedListWarningData extends Google
   }
 }
 
-class Google_Service_Compute_TargetPool extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPool extends GoogleGAL_Collection
 {
   public $backupPool;
   public $creationTimestamp;
@@ -9214,10 +9214,10 @@ class Google_Service_Compute_TargetPool extends Google_Collection
   }
 }
 
-class Google_Service_Compute_TargetPoolAggregatedList extends Google_Model
+class GoogleGAL_Service_Compute_TargetPoolAggregatedList extends GoogleGAL_Model
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_TargetPoolsScopedList';
+  protected $itemsType = 'GoogleGAL_Service_Compute_TargetPoolsScopedList';
   protected $itemsDataType = 'map';
   public $kind;
   public $nextPageToken;
@@ -9274,9 +9274,9 @@ class Google_Service_Compute_TargetPoolAggregatedList extends Google_Model
   }
 }
 
-class Google_Service_Compute_TargetPoolInstanceHealth extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolInstanceHealth extends GoogleGAL_Collection
 {
-  protected $healthStatusType = 'Google_Service_Compute_HealthStatus';
+  protected $healthStatusType = 'GoogleGAL_Service_Compute_HealthStatus';
   protected $healthStatusDataType = 'array';
   public $kind;
 
@@ -9301,10 +9301,10 @@ class Google_Service_Compute_TargetPoolInstanceHealth extends Google_Collection
   }
 }
 
-class Google_Service_Compute_TargetPoolList extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_TargetPool';
+  protected $itemsType = 'GoogleGAL_Service_Compute_TargetPool';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -9361,9 +9361,9 @@ class Google_Service_Compute_TargetPoolList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_TargetPoolsAddHealthCheckRequest extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolsAddHealthCheckRequest extends GoogleGAL_Collection
 {
-  protected $healthChecksType = 'Google_Service_Compute_HealthCheckReference';
+  protected $healthChecksType = 'GoogleGAL_Service_Compute_HealthCheckReference';
   protected $healthChecksDataType = 'array';
 
   public function setHealthChecks($healthChecks)
@@ -9377,9 +9377,9 @@ class Google_Service_Compute_TargetPoolsAddHealthCheckRequest extends Google_Col
   }
 }
 
-class Google_Service_Compute_TargetPoolsAddInstanceRequest extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolsAddInstanceRequest extends GoogleGAL_Collection
 {
-  protected $instancesType = 'Google_Service_Compute_InstanceReference';
+  protected $instancesType = 'GoogleGAL_Service_Compute_InstanceReference';
   protected $instancesDataType = 'array';
 
   public function setInstances($instances)
@@ -9393,9 +9393,9 @@ class Google_Service_Compute_TargetPoolsAddInstanceRequest extends Google_Collec
   }
 }
 
-class Google_Service_Compute_TargetPoolsRemoveHealthCheckRequest extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolsRemoveHealthCheckRequest extends GoogleGAL_Collection
 {
-  protected $healthChecksType = 'Google_Service_Compute_HealthCheckReference';
+  protected $healthChecksType = 'GoogleGAL_Service_Compute_HealthCheckReference';
   protected $healthChecksDataType = 'array';
 
   public function setHealthChecks($healthChecks)
@@ -9409,9 +9409,9 @@ class Google_Service_Compute_TargetPoolsRemoveHealthCheckRequest extends Google_
   }
 }
 
-class Google_Service_Compute_TargetPoolsRemoveInstanceRequest extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolsRemoveInstanceRequest extends GoogleGAL_Collection
 {
-  protected $instancesType = 'Google_Service_Compute_InstanceReference';
+  protected $instancesType = 'GoogleGAL_Service_Compute_InstanceReference';
   protected $instancesDataType = 'array';
 
   public function setInstances($instances)
@@ -9425,11 +9425,11 @@ class Google_Service_Compute_TargetPoolsRemoveInstanceRequest extends Google_Col
   }
 }
 
-class Google_Service_Compute_TargetPoolsScopedList extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolsScopedList extends GoogleGAL_Collection
 {
-  protected $targetPoolsType = 'Google_Service_Compute_TargetPool';
+  protected $targetPoolsType = 'GoogleGAL_Service_Compute_TargetPool';
   protected $targetPoolsDataType = 'array';
-  protected $warningType = 'Google_Service_Compute_TargetPoolsScopedListWarning';
+  protected $warningType = 'GoogleGAL_Service_Compute_TargetPoolsScopedListWarning';
   protected $warningDataType = '';
 
   public function setTargetPools($targetPools)
@@ -9442,7 +9442,7 @@ class Google_Service_Compute_TargetPoolsScopedList extends Google_Collection
     return $this->targetPools;
   }
 
-  public function setWarning(Google_Service_Compute_TargetPoolsScopedListWarning $warning)
+  public function setWarning(GoogleGAL_Service_Compute_TargetPoolsScopedListWarning $warning)
   {
     $this->warning = $warning;
   }
@@ -9453,10 +9453,10 @@ class Google_Service_Compute_TargetPoolsScopedList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_TargetPoolsScopedListWarning extends Google_Collection
+class GoogleGAL_Service_Compute_TargetPoolsScopedListWarning extends GoogleGAL_Collection
 {
   public $code;
-  protected $dataType = 'Google_Service_Compute_TargetPoolsScopedListWarningData';
+  protected $dataType = 'GoogleGAL_Service_Compute_TargetPoolsScopedListWarningData';
   protected $dataDataType = 'array';
   public $message;
 
@@ -9491,7 +9491,7 @@ class Google_Service_Compute_TargetPoolsScopedListWarning extends Google_Collect
   }
 }
 
-class Google_Service_Compute_TargetPoolsScopedListWarningData extends Google_Model
+class GoogleGAL_Service_Compute_TargetPoolsScopedListWarningData extends GoogleGAL_Model
 {
   public $key;
   public $value;
@@ -9517,7 +9517,7 @@ class Google_Service_Compute_TargetPoolsScopedListWarningData extends Google_Mod
   }
 }
 
-class Google_Service_Compute_TargetReference extends Google_Model
+class GoogleGAL_Service_Compute_TargetReference extends GoogleGAL_Model
 {
   public $target;
 
@@ -9532,15 +9532,15 @@ class Google_Service_Compute_TargetReference extends Google_Model
   }
 }
 
-class Google_Service_Compute_Zone extends Google_Collection
+class GoogleGAL_Service_Compute_Zone extends GoogleGAL_Collection
 {
   public $creationTimestamp;
-  protected $deprecatedType = 'Google_Service_Compute_DeprecationStatus';
+  protected $deprecatedType = 'GoogleGAL_Service_Compute_DeprecationStatus';
   protected $deprecatedDataType = '';
   public $description;
   public $id;
   public $kind;
-  protected $maintenanceWindowsType = 'Google_Service_Compute_ZoneMaintenanceWindows';
+  protected $maintenanceWindowsType = 'GoogleGAL_Service_Compute_ZoneMaintenanceWindows';
   protected $maintenanceWindowsDataType = 'array';
   public $name;
   public $region;
@@ -9557,7 +9557,7 @@ class Google_Service_Compute_Zone extends Google_Collection
     return $this->creationTimestamp;
   }
 
-  public function setDeprecated(Google_Service_Compute_DeprecationStatus $deprecated)
+  public function setDeprecated(GoogleGAL_Service_Compute_DeprecationStatus $deprecated)
   {
     $this->deprecated = $deprecated;
   }
@@ -9648,10 +9648,10 @@ class Google_Service_Compute_Zone extends Google_Collection
   }
 }
 
-class Google_Service_Compute_ZoneList extends Google_Collection
+class GoogleGAL_Service_Compute_ZoneList extends GoogleGAL_Collection
 {
   public $id;
-  protected $itemsType = 'Google_Service_Compute_Zone';
+  protected $itemsType = 'GoogleGAL_Service_Compute_Zone';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -9708,7 +9708,7 @@ class Google_Service_Compute_ZoneList extends Google_Collection
   }
 }
 
-class Google_Service_Compute_ZoneMaintenanceWindows extends Google_Model
+class GoogleGAL_Service_Compute_ZoneMaintenanceWindows extends GoogleGAL_Model
 {
   public $beginTime;
   public $description;

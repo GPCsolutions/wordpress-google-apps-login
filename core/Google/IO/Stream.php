@@ -16,14 +16,14 @@
  */
 
 /**
- * Http Streams based implementation of Google_IO.
+ * Http Streams based implementation of GoogleGAL_IO.
  *
  * @author Stuart Langley <slangley@google.com>
  */
 
 require_once 'Google/IO/Abstract.php';
 
-class Google_IO_Stream extends Google_IO_Abstract
+class GoogleGAL_IO_Stream extends GoogleGAL_IO_Abstract
 {
   const TIMEOUT = "timeout";
   const ZLIB = "compress.zlib://";
@@ -41,12 +41,12 @@ class Google_IO_Stream extends Google_IO_Abstract
   /**
    * Execute an HTTP Request
    *
-   * @param Google_HttpRequest $request the http request to be executed
-   * @return Google_HttpRequest http request with the response http code,
+   * @param GoogleGAL_HttpRequest $request the http request to be executed
+   * @return GoogleGAL_HttpRequest http request with the response http code,
    * response headers and response body filled in
-   * @throws Google_IO_Exception on curl or IO error
+   * @throws GoogleGAL_IO_Exception on curl or IO error
    */
-  public function executeRequest(Google_Http_Request $request)
+  public function executeRequest(GoogleGAL_Http_Request $request)
   {
     $default_options = stream_context_get_options(stream_context_get_default());
 
@@ -115,7 +115,7 @@ class Google_IO_Stream extends Google_IO_Abstract
     }
 
     if (false === $response_data) {
-      throw new Google_IO_Exception(
+      throw new GoogleGAL_IO_Exception(
           sprintf(
               "HTTP Error: Unable to connect: '%s'",
               $respHttpCode

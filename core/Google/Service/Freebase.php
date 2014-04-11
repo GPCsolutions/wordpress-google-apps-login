@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Freebase extends Google_Service
+class GoogleGAL_Service_Freebase extends GoogleGAL_Service
 {
 
 
@@ -39,16 +39,16 @@ class Google_Service_Freebase extends Google_Service
   /**
    * Constructs the internal representation of the Freebase service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'freebase/v1/';
     $this->version = 'v1';
     $this->serviceName = 'freebase';
 
-    $this->base_methods = new Google_Service_Resource(
+    $this->base_methods = new GoogleGAL_Service_Resource(
         $this,
         $this->serviceName,
         '',
@@ -213,13 +213,13 @@ class Google_Service_Freebase extends Google_Service
   :
    * @opt_param int limit
    * Maximum number of candidates to return.
-   * @return Google_Service_Freebase_ReconcileGet
+   * @return GoogleGAL_Service_Freebase_ReconcileGet
    */
   public function reconcile($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->base_methods->call('reconcile', array($params), "Google_Service_Freebase_ReconcileGet");
+    return $this->base_methods->call('reconcile', array($params), "GoogleGAL_Service_Freebase_ReconcileGet");
   }
   /**
    * Search Freebase open data. (search)
@@ -285,13 +285,13 @@ class Google_Service_Freebase extends Google_Service
 
 
 
-class Google_Service_Freebase_ReconcileCandidate extends Google_Model
+class GoogleGAL_Service_Freebase_ReconcileCandidate extends GoogleGAL_Model
 {
   public $confidence;
   public $lang;
   public $mid;
   public $name;
-  protected $notableType = 'Google_Service_Freebase_ReconcileCandidateNotable';
+  protected $notableType = 'GoogleGAL_Service_Freebase_ReconcileCandidateNotable';
   protected $notableDataType = '';
 
   public function setConfidence($confidence)
@@ -334,7 +334,7 @@ class Google_Service_Freebase_ReconcileCandidate extends Google_Model
     return $this->name;
   }
 
-  public function setNotable(Google_Service_Freebase_ReconcileCandidateNotable $notable)
+  public function setNotable(GoogleGAL_Service_Freebase_ReconcileCandidateNotable $notable)
   {
     $this->notable = $notable;
   }
@@ -345,7 +345,7 @@ class Google_Service_Freebase_ReconcileCandidate extends Google_Model
   }
 }
 
-class Google_Service_Freebase_ReconcileCandidateNotable extends Google_Model
+class GoogleGAL_Service_Freebase_ReconcileCandidateNotable extends GoogleGAL_Model
 {
   public $id;
   public $name;
@@ -371,15 +371,15 @@ class Google_Service_Freebase_ReconcileCandidateNotable extends Google_Model
   }
 }
 
-class Google_Service_Freebase_ReconcileGet extends Google_Collection
+class GoogleGAL_Service_Freebase_ReconcileGet extends GoogleGAL_Collection
 {
-  protected $candidateType = 'Google_Service_Freebase_ReconcileCandidate';
+  protected $candidateType = 'GoogleGAL_Service_Freebase_ReconcileCandidate';
   protected $candidateDataType = 'array';
-  protected $costsType = 'Google_Service_Freebase_ReconcileGetCosts';
+  protected $costsType = 'GoogleGAL_Service_Freebase_ReconcileGetCosts';
   protected $costsDataType = '';
-  protected $matchType = 'Google_Service_Freebase_ReconcileCandidate';
+  protected $matchType = 'GoogleGAL_Service_Freebase_ReconcileCandidate';
   protected $matchDataType = '';
-  protected $warningType = 'Google_Service_Freebase_ReconcileGetWarning';
+  protected $warningType = 'GoogleGAL_Service_Freebase_ReconcileGetWarning';
   protected $warningDataType = 'array';
 
   public function setCandidate($candidate)
@@ -392,7 +392,7 @@ class Google_Service_Freebase_ReconcileGet extends Google_Collection
     return $this->candidate;
   }
 
-  public function setCosts(Google_Service_Freebase_ReconcileGetCosts $costs)
+  public function setCosts(GoogleGAL_Service_Freebase_ReconcileGetCosts $costs)
   {
     $this->costs = $costs;
   }
@@ -402,7 +402,7 @@ class Google_Service_Freebase_ReconcileGet extends Google_Collection
     return $this->costs;
   }
 
-  public function setMatch(Google_Service_Freebase_ReconcileCandidate $match)
+  public function setMatch(GoogleGAL_Service_Freebase_ReconcileCandidate $match)
   {
     $this->match = $match;
   }
@@ -423,7 +423,7 @@ class Google_Service_Freebase_ReconcileGet extends Google_Collection
   }
 }
 
-class Google_Service_Freebase_ReconcileGetCosts extends Google_Model
+class GoogleGAL_Service_Freebase_ReconcileGetCosts extends GoogleGAL_Model
 {
   public $hits;
   public $ms;
@@ -449,7 +449,7 @@ class Google_Service_Freebase_ReconcileGetCosts extends Google_Model
   }
 }
 
-class Google_Service_Freebase_ReconcileGetWarning extends Google_Model
+class GoogleGAL_Service_Freebase_ReconcileGetWarning extends GoogleGAL_Model
 {
   public $location;
   public $message;

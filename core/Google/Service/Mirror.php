@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Mirror extends Google_Service
+class GoogleGAL_Service_Mirror extends GoogleGAL_Service
 {
   /** View your location. */
   const GLASS_LOCATION = "https://www.googleapis.com/auth/glass.location";
@@ -46,16 +46,16 @@ class Google_Service_Mirror extends Google_Service
   /**
    * Constructs the internal representation of the Mirror service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'mirror/v1/';
     $this->version = 'v1';
     $this->serviceName = 'mirror';
 
-    $this->contacts = new Google_Service_Mirror_Contacts_Resource(
+    $this->contacts = new GoogleGAL_Service_Mirror_Contacts_Resource(
         $this,
         $this->serviceName,
         'contacts',
@@ -113,7 +113,7 @@ class Google_Service_Mirror extends Google_Service
           )
         )
     );
-    $this->locations = new Google_Service_Mirror_Locations_Resource(
+    $this->locations = new GoogleGAL_Service_Mirror_Locations_Resource(
         $this,
         $this->serviceName,
         'locations',
@@ -137,7 +137,7 @@ class Google_Service_Mirror extends Google_Service
           )
         )
     );
-    $this->subscriptions = new Google_Service_Mirror_Subscriptions_Resource(
+    $this->subscriptions = new GoogleGAL_Service_Mirror_Subscriptions_Resource(
         $this,
         $this->serviceName,
         'subscriptions',
@@ -175,7 +175,7 @@ class Google_Service_Mirror extends Google_Service
           )
         )
     );
-    $this->timeline = new Google_Service_Mirror_Timeline_Resource(
+    $this->timeline = new GoogleGAL_Service_Mirror_Timeline_Resource(
         $this,
         $this->serviceName,
         'timeline',
@@ -262,7 +262,7 @@ class Google_Service_Mirror extends Google_Service
           )
         )
     );
-    $this->timeline_attachments = new Google_Service_Mirror_TimelineAttachments_Resource(
+    $this->timeline_attachments = new GoogleGAL_Service_Mirror_TimelineAttachments_Resource(
         $this,
         $this->serviceName,
         'attachments',
@@ -330,11 +330,11 @@ class Google_Service_Mirror extends Google_Service
  * The "contacts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Google_Service_Mirror(...);
+ *   $mirrorService = new GoogleGAL_Service_Mirror(...);
  *   $contacts = $mirrorService->contacts;
  *  </code>
  */
-class Google_Service_Mirror_Contacts_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Mirror_Contacts_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -356,39 +356,39 @@ class Google_Service_Mirror_Contacts_Resource extends Google_Service_Resource
    * @param string $id
    * The ID of the contact.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Contact
+   * @return GoogleGAL_Service_Mirror_Contact
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Mirror_Contact");
+    return $this->call('get', array($params), "GoogleGAL_Service_Mirror_Contact");
   }
   /**
    * Inserts a new contact. (contacts.insert)
    *
-   * @param Google_Contact $postBody
+   * @param GoogleGAL_Contact $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Contact
+   * @return GoogleGAL_Service_Mirror_Contact
    */
-  public function insert(Google_Service_Mirror_Contact $postBody, $optParams = array())
+  public function insert(GoogleGAL_Service_Mirror_Contact $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Mirror_Contact");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Mirror_Contact");
   }
   /**
    * Retrieves a list of contacts for the authenticated user.
    * (contacts.listContacts)
    *
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_ContactsListResponse
+   * @return GoogleGAL_Service_Mirror_ContactsListResponse
    */
   public function listContacts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Mirror_ContactsListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Mirror_ContactsListResponse");
   }
   /**
    * Updates a contact in place. This method supports patch semantics.
@@ -396,30 +396,30 @@ class Google_Service_Mirror_Contacts_Resource extends Google_Service_Resource
    *
    * @param string $id
    * The ID of the contact.
-   * @param Google_Contact $postBody
+   * @param GoogleGAL_Contact $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Contact
+   * @return GoogleGAL_Service_Mirror_Contact
    */
-  public function patch($id, Google_Service_Mirror_Contact $postBody, $optParams = array())
+  public function patch($id, GoogleGAL_Service_Mirror_Contact $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Mirror_Contact");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Mirror_Contact");
   }
   /**
    * Updates a contact in place. (contacts.update)
    *
    * @param string $id
    * The ID of the contact.
-   * @param Google_Contact $postBody
+   * @param GoogleGAL_Contact $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Contact
+   * @return GoogleGAL_Service_Mirror_Contact
    */
-  public function update($id, Google_Service_Mirror_Contact $postBody, $optParams = array())
+  public function update($id, GoogleGAL_Service_Mirror_Contact $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Mirror_Contact");
+    return $this->call('update', array($params), "GoogleGAL_Service_Mirror_Contact");
   }
 }
 
@@ -427,11 +427,11 @@ class Google_Service_Mirror_Contacts_Resource extends Google_Service_Resource
  * The "locations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Google_Service_Mirror(...);
+ *   $mirrorService = new GoogleGAL_Service_Mirror(...);
  *   $locations = $mirrorService->locations;
  *  </code>
  */
-class Google_Service_Mirror_Locations_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Mirror_Locations_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -440,25 +440,25 @@ class Google_Service_Mirror_Locations_Resource extends Google_Service_Resource
    * @param string $id
    * The ID of the location or latest for the last known location.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Location
+   * @return GoogleGAL_Service_Mirror_Location
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Mirror_Location");
+    return $this->call('get', array($params), "GoogleGAL_Service_Mirror_Location");
   }
   /**
    * Retrieves a list of locations for the user. (locations.listLocations)
    *
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_LocationsListResponse
+   * @return GoogleGAL_Service_Mirror_LocationsListResponse
    */
   public function listLocations($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Mirror_LocationsListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Mirror_LocationsListResponse");
   }
 }
 
@@ -466,11 +466,11 @@ class Google_Service_Mirror_Locations_Resource extends Google_Service_Resource
  * The "subscriptions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Google_Service_Mirror(...);
+ *   $mirrorService = new GoogleGAL_Service_Mirror(...);
  *   $subscriptions = $mirrorService->subscriptions;
  *  </code>
  */
-class Google_Service_Mirror_Subscriptions_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Mirror_Subscriptions_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -489,43 +489,43 @@ class Google_Service_Mirror_Subscriptions_Resource extends Google_Service_Resour
   /**
    * Creates a new subscription. (subscriptions.insert)
    *
-   * @param Google_Subscription $postBody
+   * @param GoogleGAL_Subscription $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Subscription
+   * @return GoogleGAL_Service_Mirror_Subscription
    */
-  public function insert(Google_Service_Mirror_Subscription $postBody, $optParams = array())
+  public function insert(GoogleGAL_Service_Mirror_Subscription $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Mirror_Subscription");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Mirror_Subscription");
   }
   /**
    * Retrieves a list of subscriptions for the authenticated user and service.
    * (subscriptions.listSubscriptions)
    *
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_SubscriptionsListResponse
+   * @return GoogleGAL_Service_Mirror_SubscriptionsListResponse
    */
   public function listSubscriptions($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Mirror_SubscriptionsListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Mirror_SubscriptionsListResponse");
   }
   /**
    * Updates an existing subscription in place. (subscriptions.update)
    *
    * @param string $id
    * The ID of the subscription.
-   * @param Google_Subscription $postBody
+   * @param GoogleGAL_Subscription $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Subscription
+   * @return GoogleGAL_Service_Mirror_Subscription
    */
-  public function update($id, Google_Service_Mirror_Subscription $postBody, $optParams = array())
+  public function update($id, GoogleGAL_Service_Mirror_Subscription $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Mirror_Subscription");
+    return $this->call('update', array($params), "GoogleGAL_Service_Mirror_Subscription");
   }
 }
 
@@ -533,11 +533,11 @@ class Google_Service_Mirror_Subscriptions_Resource extends Google_Service_Resour
  * The "timeline" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Google_Service_Mirror(...);
+ *   $mirrorService = new GoogleGAL_Service_Mirror(...);
  *   $timeline = $mirrorService->timeline;
  *  </code>
  */
-class Google_Service_Mirror_Timeline_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Mirror_Timeline_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -559,26 +559,26 @@ class Google_Service_Mirror_Timeline_Resource extends Google_Service_Resource
    * @param string $id
    * The ID of the timeline item.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_TimelineItem
+   * @return GoogleGAL_Service_Mirror_TimelineItem
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Mirror_TimelineItem");
+    return $this->call('get', array($params), "GoogleGAL_Service_Mirror_TimelineItem");
   }
   /**
    * Inserts a new item into the timeline. (timeline.insert)
    *
-   * @param Google_TimelineItem $postBody
+   * @param GoogleGAL_TimelineItem $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_TimelineItem
+   * @return GoogleGAL_Service_Mirror_TimelineItem
    */
-  public function insert(Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
+  public function insert(GoogleGAL_Service_Mirror_TimelineItem $postBody, $optParams = array())
   {
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Mirror_TimelineItem");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Mirror_TimelineItem");
   }
   /**
    * Retrieves a list of timeline items for the authenticated user.
@@ -600,13 +600,13 @@ class Google_Service_Mirror_Timeline_Resource extends Google_Service_Resource
    * If true, only pinned items will be returned.
    * @opt_param string bundleId
    * If provided, only items with the given bundleId will be returned.
-   * @return Google_Service_Mirror_TimelineListResponse
+   * @return GoogleGAL_Service_Mirror_TimelineListResponse
    */
   public function listTimeline($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Mirror_TimelineListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Mirror_TimelineListResponse");
   }
   /**
    * Updates a timeline item in place. This method supports patch semantics.
@@ -614,30 +614,30 @@ class Google_Service_Mirror_Timeline_Resource extends Google_Service_Resource
    *
    * @param string $id
    * The ID of the timeline item.
-   * @param Google_TimelineItem $postBody
+   * @param GoogleGAL_TimelineItem $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_TimelineItem
+   * @return GoogleGAL_Service_Mirror_TimelineItem
    */
-  public function patch($id, Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
+  public function patch($id, GoogleGAL_Service_Mirror_TimelineItem $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Mirror_TimelineItem");
+    return $this->call('patch', array($params), "GoogleGAL_Service_Mirror_TimelineItem");
   }
   /**
    * Updates a timeline item in place. (timeline.update)
    *
    * @param string $id
    * The ID of the timeline item.
-   * @param Google_TimelineItem $postBody
+   * @param GoogleGAL_TimelineItem $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_TimelineItem
+   * @return GoogleGAL_Service_Mirror_TimelineItem
    */
-  public function update($id, Google_Service_Mirror_TimelineItem $postBody, $optParams = array())
+  public function update($id, GoogleGAL_Service_Mirror_TimelineItem $postBody, $optParams = array())
   {
     $params = array('id' => $id, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Mirror_TimelineItem");
+    return $this->call('update', array($params), "GoogleGAL_Service_Mirror_TimelineItem");
   }
 }
 
@@ -645,11 +645,11 @@ class Google_Service_Mirror_Timeline_Resource extends Google_Service_Resource
  * The "attachments" collection of methods.
  * Typical usage is:
  *  <code>
- *   $mirrorService = new Google_Service_Mirror(...);
+ *   $mirrorService = new GoogleGAL_Service_Mirror(...);
  *   $attachments = $mirrorService->attachments;
  *  </code>
  */
-class Google_Service_Mirror_TimelineAttachments_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Mirror_TimelineAttachments_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -676,13 +676,13 @@ class Google_Service_Mirror_TimelineAttachments_Resource extends Google_Service_
    * @param string $attachmentId
    * The ID of the attachment.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Attachment
+   * @return GoogleGAL_Service_Mirror_Attachment
    */
   public function get($itemId, $attachmentId, $optParams = array())
   {
     $params = array('itemId' => $itemId, 'attachmentId' => $attachmentId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Mirror_Attachment");
+    return $this->call('get', array($params), "GoogleGAL_Service_Mirror_Attachment");
   }
   /**
    * Adds a new attachment to a timeline item. (attachments.insert)
@@ -690,13 +690,13 @@ class Google_Service_Mirror_TimelineAttachments_Resource extends Google_Service_
    * @param string $itemId
    * The ID of the timeline item the attachment belongs to.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_Attachment
+   * @return GoogleGAL_Service_Mirror_Attachment
    */
   public function insert($itemId, $optParams = array())
   {
     $params = array('itemId' => $itemId);
     $params = array_merge($params, $optParams);
-    return $this->call('insert', array($params), "Google_Service_Mirror_Attachment");
+    return $this->call('insert', array($params), "GoogleGAL_Service_Mirror_Attachment");
   }
   /**
    * Returns a list of attachments for a timeline item.
@@ -705,20 +705,20 @@ class Google_Service_Mirror_TimelineAttachments_Resource extends Google_Service_
    * @param string $itemId
    * The ID of the timeline item whose attachments should be listed.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Mirror_AttachmentsListResponse
+   * @return GoogleGAL_Service_Mirror_AttachmentsListResponse
    */
   public function listTimelineAttachments($itemId, $optParams = array())
   {
     $params = array('itemId' => $itemId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Mirror_AttachmentsListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_Mirror_AttachmentsListResponse");
   }
 }
 
 
 
 
-class Google_Service_Mirror_Attachment extends Google_Model
+class GoogleGAL_Service_Mirror_Attachment extends GoogleGAL_Model
 {
   public $contentType;
   public $contentUrl;
@@ -766,9 +766,9 @@ class Google_Service_Mirror_Attachment extends Google_Model
   }
 }
 
-class Google_Service_Mirror_AttachmentsListResponse extends Google_Collection
+class GoogleGAL_Service_Mirror_AttachmentsListResponse extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Mirror_Attachment';
+  protected $itemsType = 'GoogleGAL_Service_Mirror_Attachment';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -793,7 +793,7 @@ class Google_Service_Mirror_AttachmentsListResponse extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_Command extends Google_Model
+class GoogleGAL_Service_Mirror_Command extends GoogleGAL_Model
 {
   public $type;
 
@@ -808,9 +808,9 @@ class Google_Service_Mirror_Command extends Google_Model
   }
 }
 
-class Google_Service_Mirror_Contact extends Google_Collection
+class GoogleGAL_Service_Mirror_Contact extends GoogleGAL_Collection
 {
-  protected $acceptCommandsType = 'Google_Service_Mirror_Command';
+  protected $acceptCommandsType = 'GoogleGAL_Service_Mirror_Command';
   protected $acceptCommandsDataType = 'array';
   public $acceptTypes;
   public $displayName;
@@ -945,9 +945,9 @@ class Google_Service_Mirror_Contact extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_ContactsListResponse extends Google_Collection
+class GoogleGAL_Service_Mirror_ContactsListResponse extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Mirror_Contact';
+  protected $itemsType = 'GoogleGAL_Service_Mirror_Contact';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -972,7 +972,7 @@ class Google_Service_Mirror_ContactsListResponse extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_Location extends Google_Model
+class GoogleGAL_Service_Mirror_Location extends GoogleGAL_Model
 {
   public $accuracy;
   public $address;
@@ -1064,9 +1064,9 @@ class Google_Service_Mirror_Location extends Google_Model
   }
 }
 
-class Google_Service_Mirror_LocationsListResponse extends Google_Collection
+class GoogleGAL_Service_Mirror_LocationsListResponse extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Mirror_Location';
+  protected $itemsType = 'GoogleGAL_Service_Mirror_Location';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1091,13 +1091,13 @@ class Google_Service_Mirror_LocationsListResponse extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_MenuItem extends Google_Collection
+class GoogleGAL_Service_Mirror_MenuItem extends GoogleGAL_Collection
 {
   public $action;
   public $id;
   public $payload;
   public $removeWhenSelected;
-  protected $valuesType = 'Google_Service_Mirror_MenuValue';
+  protected $valuesType = 'GoogleGAL_Service_Mirror_MenuValue';
   protected $valuesDataType = 'array';
 
   public function setAction($action)
@@ -1151,7 +1151,7 @@ class Google_Service_Mirror_MenuItem extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_MenuValue extends Google_Model
+class GoogleGAL_Service_Mirror_MenuValue extends GoogleGAL_Model
 {
   public $displayName;
   public $iconUrl;
@@ -1188,12 +1188,12 @@ class Google_Service_Mirror_MenuValue extends Google_Model
   }
 }
 
-class Google_Service_Mirror_Notification extends Google_Collection
+class GoogleGAL_Service_Mirror_Notification extends GoogleGAL_Collection
 {
   public $collection;
   public $itemId;
   public $operation;
-  protected $userActionsType = 'Google_Service_Mirror_UserAction';
+  protected $userActionsType = 'GoogleGAL_Service_Mirror_UserAction';
   protected $userActionsDataType = 'array';
   public $userToken;
   public $verifyToken;
@@ -1259,7 +1259,7 @@ class Google_Service_Mirror_Notification extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_NotificationConfig extends Google_Model
+class GoogleGAL_Service_Mirror_NotificationConfig extends GoogleGAL_Model
 {
   public $deliveryTime;
   public $level;
@@ -1285,13 +1285,13 @@ class Google_Service_Mirror_NotificationConfig extends Google_Model
   }
 }
 
-class Google_Service_Mirror_Subscription extends Google_Collection
+class GoogleGAL_Service_Mirror_Subscription extends GoogleGAL_Collection
 {
   public $callbackUrl;
   public $collection;
   public $id;
   public $kind;
-  protected $notificationType = 'Google_Service_Mirror_Notification';
+  protected $notificationType = 'GoogleGAL_Service_Mirror_Notification';
   protected $notificationDataType = '';
   public $operation;
   public $updated;
@@ -1338,7 +1338,7 @@ class Google_Service_Mirror_Subscription extends Google_Collection
     return $this->kind;
   }
 
-  public function setNotification(Google_Service_Mirror_Notification $notification)
+  public function setNotification(GoogleGAL_Service_Mirror_Notification $notification)
   {
     $this->notification = $notification;
   }
@@ -1389,9 +1389,9 @@ class Google_Service_Mirror_Subscription extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_SubscriptionsListResponse extends Google_Collection
+class GoogleGAL_Service_Mirror_SubscriptionsListResponse extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Mirror_Subscription';
+  protected $itemsType = 'GoogleGAL_Service_Mirror_Subscription';
   protected $itemsDataType = 'array';
   public $kind;
 
@@ -1416,14 +1416,14 @@ class Google_Service_Mirror_SubscriptionsListResponse extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_TimelineItem extends Google_Collection
+class GoogleGAL_Service_Mirror_TimelineItem extends GoogleGAL_Collection
 {
-  protected $attachmentsType = 'Google_Service_Mirror_Attachment';
+  protected $attachmentsType = 'GoogleGAL_Service_Mirror_Attachment';
   protected $attachmentsDataType = 'array';
   public $bundleId;
   public $canonicalUrl;
   public $created;
-  protected $creatorType = 'Google_Service_Mirror_Contact';
+  protected $creatorType = 'GoogleGAL_Service_Mirror_Contact';
   protected $creatorDataType = '';
   public $displayTime;
   public $etag;
@@ -1434,14 +1434,14 @@ class Google_Service_Mirror_TimelineItem extends Google_Collection
   public $isDeleted;
   public $isPinned;
   public $kind;
-  protected $locationType = 'Google_Service_Mirror_Location';
+  protected $locationType = 'GoogleGAL_Service_Mirror_Location';
   protected $locationDataType = '';
-  protected $menuItemsType = 'Google_Service_Mirror_MenuItem';
+  protected $menuItemsType = 'GoogleGAL_Service_Mirror_MenuItem';
   protected $menuItemsDataType = 'array';
-  protected $notificationType = 'Google_Service_Mirror_NotificationConfig';
+  protected $notificationType = 'GoogleGAL_Service_Mirror_NotificationConfig';
   protected $notificationDataType = '';
   public $pinScore;
-  protected $recipientsType = 'Google_Service_Mirror_Contact';
+  protected $recipientsType = 'GoogleGAL_Service_Mirror_Contact';
   protected $recipientsDataType = 'array';
   public $selfLink;
   public $sourceItemId;
@@ -1491,7 +1491,7 @@ class Google_Service_Mirror_TimelineItem extends Google_Collection
     return $this->created;
   }
 
-  public function setCreator(Google_Service_Mirror_Contact $creator)
+  public function setCreator(GoogleGAL_Service_Mirror_Contact $creator)
   {
     $this->creator = $creator;
   }
@@ -1591,7 +1591,7 @@ class Google_Service_Mirror_TimelineItem extends Google_Collection
     return $this->kind;
   }
 
-  public function setLocation(Google_Service_Mirror_Location $location)
+  public function setLocation(GoogleGAL_Service_Mirror_Location $location)
   {
     $this->location = $location;
   }
@@ -1611,7 +1611,7 @@ class Google_Service_Mirror_TimelineItem extends Google_Collection
     return $this->menuItems;
   }
 
-  public function setNotification(Google_Service_Mirror_NotificationConfig $notification)
+  public function setNotification(GoogleGAL_Service_Mirror_NotificationConfig $notification)
   {
     $this->notification = $notification;
   }
@@ -1712,9 +1712,9 @@ class Google_Service_Mirror_TimelineItem extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_TimelineListResponse extends Google_Collection
+class GoogleGAL_Service_Mirror_TimelineListResponse extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Mirror_TimelineItem';
+  protected $itemsType = 'GoogleGAL_Service_Mirror_TimelineItem';
   protected $itemsDataType = 'array';
   public $kind;
   public $nextPageToken;
@@ -1750,7 +1750,7 @@ class Google_Service_Mirror_TimelineListResponse extends Google_Collection
   }
 }
 
-class Google_Service_Mirror_UserAction extends Google_Model
+class GoogleGAL_Service_Mirror_UserAction extends GoogleGAL_Model
 {
   public $payload;
   public $type;

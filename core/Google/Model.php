@@ -23,7 +23,7 @@
  * @author Chirag Shah <chirags@google.com>
  *
  */
-class Google_Model implements ArrayAccess
+class GoogleGAL_Model implements ArrayAccess
 {
   protected $modelData = array();
   protected $processed = array();
@@ -89,7 +89,7 @@ class Google_Model implements ArrayAccess
         property_exists($this, $key)) {
           $this->$key = $val;
           unset($array[$key]);
-      } elseif (property_exists($this, $camelKey = Google_Utils::camelCase($key))) {
+      } elseif (property_exists($this, $camelKey = GoogleGAL_Utils::camelCase($key))) {
           // This checks if property exists as camelCase, leaving it in array as snake_case
           // in case of backwards compatibility issues.
           $this->$camelKey = $val;
@@ -136,7 +136,7 @@ class Google_Model implements ArrayAccess
    */
   private function getSimpleValue($value)
   {
-    if ($value instanceof Google_Model) {
+    if ($value instanceof GoogleGAL_Model) {
       return $value->toSimpleObject();
     } else if (is_array($value)) {
       $return = array();
@@ -185,14 +185,14 @@ class Google_Model implements ArrayAccess
 
   /**
    * Verify if $obj is an array.
-   * @throws Google_Exception Thrown if $obj isn't an array.
+   * @throws GoogleGAL_Exception Thrown if $obj isn't an array.
    * @param array $obj Items that should be validated.
    * @param string $method Method expecting an array as an argument.
    */
   public function assertIsArray($obj, $method)
   {
     if ($obj && !is_array($obj)) {
-      throw new Google_Exception(
+      throw new GoogleGAL_Exception(
           "Incorrect parameter type passed to $method(). Expected an array."
       );
     }

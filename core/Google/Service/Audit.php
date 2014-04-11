@@ -29,7 +29,7 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Audit extends Google_Service
+class GoogleGAL_Service_Audit extends GoogleGAL_Service
 {
 
 
@@ -39,16 +39,16 @@ class Google_Service_Audit extends Google_Service
   /**
    * Constructs the internal representation of the Audit service.
    *
-   * @param Google_Client $client
+   * @param GoogleGAL_Client $client
    */
-  public function __construct(Google_Client $client)
+  public function __construct(GoogleGAL_Client $client)
   {
     parent::__construct($client);
     $this->servicePath = 'apps/reporting/audit/v1/';
     $this->version = 'v1';
     $this->serviceName = 'audit';
 
-    $this->activities = new Google_Service_Audit_Activities_Resource(
+    $this->activities = new GoogleGAL_Service_Audit_Activities_Resource(
         $this,
         $this->serviceName,
         'activities',
@@ -117,11 +117,11 @@ class Google_Service_Audit extends Google_Service
  * The "activities" collection of methods.
  * Typical usage is:
  *  <code>
- *   $auditService = new Google_Service_Audit(...);
+ *   $auditService = new GoogleGAL_Service_Audit(...);
  *   $activities = $auditService->activities;
  *  </code>
  */
-class Google_Service_Audit_Activities_Resource extends Google_Service_Resource
+class GoogleGAL_Service_Audit_Activities_Resource extends GoogleGAL_Service_Resource
 {
 
   /**
@@ -153,22 +153,22 @@ class Google_Service_Audit_Activities_Resource extends Google_Service_Resource
    * Return events which occured at or before this time.
    * @opt_param string continuationToken
    * Next page URL.
-   * @return Google_Service_Audit_Activities
+   * @return GoogleGAL_Service_Audit_Activities
    */
   public function listActivities($customerId, $applicationId, $optParams = array())
   {
     $params = array('customerId' => $customerId, 'applicationId' => $applicationId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Audit_Activities");
+    return $this->call('list', array($params), "GoogleGAL_Service_Audit_Activities");
   }
 }
 
 
 
 
-class Google_Service_Audit_Activities extends Google_Collection
+class GoogleGAL_Service_Audit_Activities extends GoogleGAL_Collection
 {
-  protected $itemsType = 'Google_Service_Audit_Activity';
+  protected $itemsType = 'GoogleGAL_Service_Audit_Activity';
   protected $itemsDataType = 'array';
   public $kind;
   public $next;
@@ -204,19 +204,19 @@ class Google_Service_Audit_Activities extends Google_Collection
   }
 }
 
-class Google_Service_Audit_Activity extends Google_Collection
+class GoogleGAL_Service_Audit_Activity extends GoogleGAL_Collection
 {
-  protected $actorType = 'Google_Service_Audit_ActivityActor';
+  protected $actorType = 'GoogleGAL_Service_Audit_ActivityActor';
   protected $actorDataType = '';
-  protected $eventsType = 'Google_Service_Audit_ActivityEvents';
+  protected $eventsType = 'GoogleGAL_Service_Audit_ActivityEvents';
   protected $eventsDataType = 'array';
-  protected $idType = 'Google_Service_Audit_ActivityId';
+  protected $idType = 'GoogleGAL_Service_Audit_ActivityId';
   protected $idDataType = '';
   public $ipAddress;
   public $kind;
   public $ownerDomain;
 
-  public function setActor(Google_Service_Audit_ActivityActor $actor)
+  public function setActor(GoogleGAL_Service_Audit_ActivityActor $actor)
   {
     $this->actor = $actor;
   }
@@ -236,7 +236,7 @@ class Google_Service_Audit_Activity extends Google_Collection
     return $this->events;
   }
 
-  public function setId(Google_Service_Audit_ActivityId $id)
+  public function setId(GoogleGAL_Service_Audit_ActivityId $id)
   {
     $this->id = $id;
   }
@@ -277,7 +277,7 @@ class Google_Service_Audit_Activity extends Google_Collection
   }
 }
 
-class Google_Service_Audit_ActivityActor extends Google_Model
+class GoogleGAL_Service_Audit_ActivityActor extends GoogleGAL_Model
 {
   public $applicationId;
   public $callerType;
@@ -325,11 +325,11 @@ class Google_Service_Audit_ActivityActor extends Google_Model
   }
 }
 
-class Google_Service_Audit_ActivityEvents extends Google_Collection
+class GoogleGAL_Service_Audit_ActivityEvents extends GoogleGAL_Collection
 {
   public $eventType;
   public $name;
-  protected $parametersType = 'Google_Service_Audit_ActivityEventsParameters';
+  protected $parametersType = 'GoogleGAL_Service_Audit_ActivityEventsParameters';
   protected $parametersDataType = 'array';
 
   public function setEventType($eventType)
@@ -363,7 +363,7 @@ class Google_Service_Audit_ActivityEvents extends Google_Collection
   }
 }
 
-class Google_Service_Audit_ActivityEventsParameters extends Google_Model
+class GoogleGAL_Service_Audit_ActivityEventsParameters extends GoogleGAL_Model
 {
   public $name;
   public $value;
@@ -389,7 +389,7 @@ class Google_Service_Audit_ActivityEventsParameters extends Google_Model
   }
 }
 
-class Google_Service_Audit_ActivityId extends Google_Model
+class GoogleGAL_Service_Audit_ActivityId extends GoogleGAL_Model
 {
   public $applicationId;
   public $customerId;
