@@ -12,8 +12,7 @@ Simple secure login and user management for Wordpress through your Google Apps d
 
 == Description ==
 
-Google Apps Login allows existing Wordpress user accounts to login to your website using Google to securely authenticate their account. This means that if they are already logged into Gmail for example, they can simply click their way
-through the Wordpress login screen - no username or password is explicitly required!
+Google Apps Login allows existing Wordpress user accounts to login to your website using Google to securely authenticate their account. This means that if they are already logged into Gmail for example, they can simply click their way through the Wordpress login screen - no username or password is explicitly required!
 
 Google Apps Login uses the latest **secure OAuth2 authentication recommended by Google**, including 2-factor Auth if enabled for your Google Apps accounts.
 
