@@ -140,6 +140,14 @@ and it is your responsibility to ensure that your site is secure in the way you 
 In particular, other plugins may conflict with each other, and different WordPress versions and configurations
 may render your site insecure.
 
+= Does it conflict with any other plugins? =
+
+Yes, sometimes conflicts can arise. We have built workarounds for some problems, and would always appreciate your feedback 
+to resolve any issues you might encounter yourself.
+
+One known issue is with iThemes Security: the settings 'filter suspicious query strings' and 'filter long URL strings' can 
+both cause intermittent conflicts and should be turned off if you are happy with the implications.
+
 = How does it compare to other 3rd party auth plugins? =
 
 Google Apps Login uses the latest secure OAuth2 authentication recommended by Google. Other 3rd party authentication plugins 
