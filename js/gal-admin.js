@@ -1,5 +1,10 @@
 
 jQuery(document).ready(function() {
+	
+	function galSetActionToTab(id) {
+		var frm = jQuery('#gal_form');
+		frm.attr('action', frm.attr('action').replace(/(#.+)?$/, '#'+id) );
+	}
 
 	jQuery('#gal-tabs').find('a').click(function() {
 			jQuery('#gal-tabs').find('a').removeClass('nav-tab-active');
@@ -7,23 +12,25 @@ jQuery(document).ready(function() {
 			var id = jQuery(this).attr('id').replace('-tab','');
 			jQuery('#' + id + '-section').addClass('active');
 			jQuery(this).addClass('nav-tab-active');
+			
+			// Set submit URL to this tab
+			galSetActionToTab(id);
 	});
 	
+	// Did page load with a tab active?
 	var active_tab = window.location.hash.replace('#','');
+	if ( active_tab != '') {
+		var activeSection = jQuery('#' + active_tab + '-section');
+		var activeTab = jQuery('#' + active_tab + '-tab');
 	
-	if ( active_tab == '' || active_tab == '#_=_') {
-		active_tab = jQuery('.galtab').attr('id');
-	}
-
-	var activeSection = jQuery('#' + active_tab + '-section');
-	var activeTab = jQuery('#' + active_tab + '-tab');
-
-	if (activeSection.length && activeTab.length) {
-		jQuery('#gal-tabs').find('a').removeClass('nav-tab-active');
-		jQuery('.galtab').removeClass('active');
-
-		activeSection.addClass('active');
-		activeTab.addClass('nav-tab-active');
+		if (activeSection && activeTab) {
+			jQuery('#gal-tabs').find('a').removeClass('nav-tab-active');
+			jQuery('.galtab').removeClass('active');
+	
+			activeSection.addClass('active');
+			activeTab.addClass('nav-tab-active');
+			galSetActionToTab(active_tab);
+		}
 	}
 	
 	// Dependent fields in premium

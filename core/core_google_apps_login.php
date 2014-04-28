@@ -52,8 +52,7 @@ class core_google_apps_login {
 		$client->setClientSecret($options['ga_clientsecret']);
 		$client->setRedirectUri($this->get_login_url());
 				
-		$scopes = array_unique(apply_filters('gal_gather_scopes',
-				Array('openid', 'email', 'https://www.googleapis.com/auth/userinfo.profile')));
+		$scopes = array_unique(apply_filters('gal_gather_scopes', $this->get_default_scopes()));
 		$client->setScopes($scopes);
 		$client->setApprovalPrompt($options['ga_force_permissions'] ? 'force' : 'auto');
 		
@@ -64,10 +63,12 @@ class core_google_apps_login {
 			}
 			$oauthservice = new GoogleGAL_Service_Oauth2($client);
 		}
-		
-
-		
+				
 		return Array($client, $oauthservice);
+	}
+	
+	protected function get_default_scopes() {
+		return Array('openid', 'email', 'https://www.googleapis.com/auth/userinfo.profile');
 	}
 	
 	public function ga_login_styles() {
@@ -288,14 +289,18 @@ class core_google_apps_login {
 					else {
 						$user = get_user_by('email', $google_email);
 						
+						$userdidnotexist = false;
 						if (!$user) {
+							$userdidnotexist = true;
 							$user = $this->createUserOrError($userinfo, $options);
 						}
 						
 						if ($user && !is_wp_error($user)) {
+							// In some versions, check group membership
+							$this->check_groups($client, $userinfo, $user, $userdidnotexist);
+
 							// Set redirect for wp-login to receive via our own login_redirect callback
 							$this->setFinalRedirect($retredirectto);
-							// Would reset client-side login cookie but won't work on redirect
 						}
 					}
 				}
@@ -329,6 +334,10 @@ class core_google_apps_login {
 	
 	// Has content in Premium
 	protected function checkRegularWPError($user, $username, $password) {
+	}
+	
+	// Has content in Enterprise
+	protected function check_groups($client, $userinfo, $user, $userdidnotexist) {
 	}
 		
 	protected function displayAndReturnError($user) {
@@ -477,16 +486,18 @@ class core_google_apps_login {
 			<a href="#main" id="main-tab" class="nav-tab nav-tab-active">Main Setup</a>
 			<a href="#domain" id="domain-tab" class="nav-tab">Domain Control</a>
 			<a href="#advanced" id="advanced-tab" class="nav-tab">Advanced Options</a>
+			<?php $this->draw_more_tabs(); ?>
 		</h2>
 				
 		
-		<form action="<?php echo $submit_page; ?>" method="post">
+		<form action="<?php echo $submit_page; ?>" method="post" id="gal_form">
 		
 		<?php 
 		settings_fields($this->get_options_pagename());
 		$this->ga_mainsection_text();
 		$this->ga_domainsection_text();
 		$this->ga_advancedsection_text();
+		$this->ga_moresection_text();
 		?>
 		
 		<p class="submit">
@@ -500,6 +511,14 @@ class core_google_apps_login {
 		</div>
 		
 		</div>  <?php
+	}
+	
+	// Extended in premium
+	protected function draw_more_tabs() {
+	}
+	
+	// Extended in premium
+	protected function ga_moresection_text() {
 	}
 	
 	// Has content in Basic
@@ -544,13 +563,13 @@ class core_google_apps_login {
 		
 		$options = $this->get_option_galogin();
 		echo '<label for="input_ga_clientid" class="textinput big">'.__('Client ID', 'google-apps-login').'</label>';
-		echo "<input id='input_ga_clientid' class='textinput' name='".$this->get_options_name()."[ga_clientid]' size='68' type='text' value='{$options['ga_clientid']}' />";
+		echo "<input id='input_ga_clientid' class='textinput' name='".$this->get_options_name()."[ga_clientid]' size='68' type='text' value='".esc_attr($options['ga_clientid'])."' />";
 		echo '<br class="clear"/><p class="desc big">';
 		printf( __('Normally something like %s', 'google-apps-login'), '1234567890123-w1dwn5pfgjeo96c73821dfbof6n4kdhw.apps.googleusercontent.com' );
 		echo '</p>';
 		
 		echo '<label for="input_ga_clientsecret" class="textinput big">'.__('Client Secret', 'google-apps-login').'</label>';
-		echo "<input id='input_ga_clientsecret' class='textinput' name='".$this->get_options_name()."[ga_clientsecret]' size='40' type='text' value='{$options['ga_clientsecret']}' />";
+		echo "<input id='input_ga_clientsecret' class='textinput' name='".$this->get_options_name()."[ga_clientsecret]' size='40' type='text' value='".esc_attr($options['ga_clientsecret'])."' />";
 		echo '<br class="clear" /><p class="desc big">';
 		printf( __('Normally something like %s', 'google-apps-login'), 'sHSfR4_jf_2jsy-kjPjgf2dT' );
 		echo '</p>';
@@ -765,12 +784,12 @@ class core_google_apps_login {
 		
 		add_action('login_enqueue_scripts', array($this, 'ga_login_styles'));
 		add_action('login_form', array($this, 'ga_login_form'));
-		add_action('authenticate', array($this, 'ga_authenticate'), 5, 3);
+		add_filter('authenticate', array($this, 'ga_authenticate'), 5, 3);
 		
 		add_filter('login_redirect', array($this, 'ga_login_redirect'), 5, 3 );
 		add_action('init', array($this, 'ga_init'), 1);
 		
-		add_action('admin_init', array($this, 'ga_admin_init'));
+		add_action('admin_init', array($this, 'ga_admin_init'), 5, 0);
 				
 		add_action(is_multisite() ? 'network_admin_menu' : 'admin_menu', array($this, 'ga_admin_menu'));
 		

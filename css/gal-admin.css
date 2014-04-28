@@ -91,3 +91,19 @@ a#gal-personalinstrlink {
     padding: 0;
     vertical-align: top;
 }
+
+div#logs-section table tr td {
+	padding-right: 10px;
+}
+
+div#logs-section table tr.gal_log_level6 {
+	color: blue;
+}
+
+div#logs-section table tr.gal_log_level4 {
+	color: orange;
+}
+
+div#logs-section table tr.gal_log_level3 {
+	color: red;
+}
