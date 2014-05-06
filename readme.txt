@@ -148,6 +148,10 @@ to resolve any issues you might encounter yourself.
 One known issue is with iThemes Security: the settings 'filter suspicious query strings' and 'filter long URL strings' can 
 both cause intermittent conflicts and should be turned off if you are happy with the implications.
 
+Jonradio Private Site - does not interact well with any Single-Sign-On plugins including Google Apps Login
+
+WP Email Login - incompatible with Google Apps Login
+
 = How does it compare to other 3rd party auth plugins? =
 
 Google Apps Login uses the latest secure OAuth2 authentication recommended by Google. Other 3rd party authentication plugins 
