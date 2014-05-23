@@ -1889,6 +1889,7 @@ class GoogleGAL_Service_Bigquery_JobConfigurationQuery extends GoogleGAL_Model
   protected $defaultDatasetDataType = '';
   protected $destinationTableType = 'GoogleGAL_Service_Bigquery_TableReference';
   protected $destinationTableDataType = '';
+  public $flattenResults;
   public $preserveNulls;
   public $priority;
   public $query;
@@ -1933,6 +1934,16 @@ class GoogleGAL_Service_Bigquery_JobConfigurationQuery extends GoogleGAL_Model
   public function getDestinationTable()
   {
     return $this->destinationTable;
+  }
+
+  public function setFlattenResults($flattenResults)
+  {
+    $this->flattenResults = $flattenResults;
+  }
+
+  public function getFlattenResults()
+  {
+    return $this->flattenResults;
   }
 
   public function setPreserveNulls($preserveNulls)

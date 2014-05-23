@@ -38,6 +38,7 @@ class core_google_apps_login {
 		
 		set_include_path(get_include_path() . PATH_SEPARATOR . plugin_dir_path(__FILE__));
 		
+		// Google PHP Client obtained from https://github.com/google/google-api-php-client
 		// Using modified Google Client to avoid name clashes - rename process:
 		// find . -type f -exec sed -i '' -e 's/Google_/GoogleGAL_/g' {} +
 		
@@ -46,7 +47,7 @@ class core_google_apps_login {
 		}
 		
 		$client = new GoogleGAL_Client();
-		$client->setApplicationName("Wordpress Blog");
+		$client->setApplicationName("Wordpress Site");
 		
 		$client->setClientId($options['ga_clientid']);
 		$client->setClientSecret($options['ga_clientsecret']);
@@ -236,9 +237,6 @@ class core_google_apps_login {
 		}
 		
 		$options = $this->get_option_galogin();
-		$clients = $this->createGoogleClient($options, true);
-		$client = $clients[0]; 
-		$oauthservice = $clients[1];
 		
 		if (isset($_GET['code'])) {
 			if (!isset($_REQUEST['state'])) {
@@ -260,6 +258,10 @@ class core_google_apps_login {
 			}
 
 			try {
+				$clients = $this->createGoogleClient($options, true);
+				$client = $clients[0];
+				$oauthservice = $clients[1];
+				
 				$client->authenticate($_GET['code']);
 							
 				/*  userinfo example:
@@ -301,6 +303,9 @@ class core_google_apps_login {
 
 							// Set redirect for wp-login to receive via our own login_redirect callback
 							$this->setFinalRedirect($retredirectto);
+							
+							// Call hook in case another plugin wants to use the user's data
+							do_action('gal_user_loggedin', $user, $userinfo, $userdidnotexist, $client, $oauthservice);
 						}
 					}
 				}
@@ -432,6 +437,26 @@ class core_google_apps_login {
 		}
 		else {
 			$this->set_other_admin_notices();
+		}
+		
+		add_action('show_user_profile', Array($this, 'ga_personal_options'));
+	}
+	
+	public function ga_personal_options($wp_user) {
+		if (is_object($wp_user)) {
+		// Display avatar in profile
+		$purchase_url = 'http://wp-glogin.com/avatars/?utm_source=Profile%20Page&utm_medium=freemium&utm_campaign=Avatars';
+		$source_text = 'Install <a href="'.$purchase_url.'">Google Profile Avatars</a> to use your Google account\'s profile photo here automatically.';
+		?>
+		<table class="form-table">
+			<tbody><tr>
+				<th>Profile Photo</label></th>
+				<td><?php echo get_avatar($wp_user->ID, '48'); ?></td>
+				<td><?php echo apply_filters('gal_avatar_source_desc', $source_text, $wp_user); ?></td>
+			</tr>
+			</tbody>
+		</table>
+		<?php
 		}
 	}
 	

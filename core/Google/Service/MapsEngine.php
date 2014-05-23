@@ -287,7 +287,11 @@ class GoogleGAL_Service_MapsEngine extends GoogleGAL_Service
         'maps',
         array(
           'methods' => array(
-            'get' => array(
+            'create' => array(
+              'path' => 'maps',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
+            ),'get' => array(
               'path' => 'maps/{id}',
               'httpMethod' => 'GET',
               'parameters' => array(
@@ -340,6 +344,16 @@ class GoogleGAL_Service_MapsEngine extends GoogleGAL_Service
                 'createdBefore' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+              ),
+            ),'publish' => array(
+              'path' => 'maps/{id}/publish',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),
@@ -421,6 +435,16 @@ class GoogleGAL_Service_MapsEngine extends GoogleGAL_Service
                   'type' => 'string',
                 ),
               ),
+            ),'process' => array(
+              'path' => 'rasterCollections/{id}/process',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),
           )
         )
@@ -459,7 +483,27 @@ class GoogleGAL_Service_MapsEngine extends GoogleGAL_Service
         'rasters',
         array(
           'methods' => array(
-            'list' => array(
+            'batchDelete' => array(
+              'path' => 'rasterCollections/{id}/rasters/batchDelete',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'batchInsert' => array(
+              'path' => 'rasterCollections/{id}/rasters/batchInsert',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'list' => array(
               'path' => 'rasterCollections/{id}/rasters',
               'httpMethod' => 'GET',
               'parameters' => array(
@@ -838,13 +882,13 @@ class GoogleGAL_Service_MapsEngine_Assets_Resource extends GoogleGAL_Service_Res
    * @param string $id
    * The ID of the asset.
    * @param array $optParams Optional parameters.
-   * @return GoogleGAL_Service_MapsEngine_MapsengineResource
+   * @return GoogleGAL_Service_MapsEngine_Asset
    */
   public function get($id, $optParams = array())
   {
     $params = array('id' => $id);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "GoogleGAL_Service_MapsEngine_MapsengineResource");
+    return $this->call('get', array($params), "GoogleGAL_Service_MapsEngine_Asset");
   }
   /**
    * Return all assets readable by the current user. (assets.listAssets)
@@ -881,13 +925,13 @@ class GoogleGAL_Service_MapsEngine_Assets_Resource extends GoogleGAL_Service_Res
     * been created at or before this time.
    * @opt_param string type
    * An asset type restriction. If set, only resources of this type will be returned.
-   * @return GoogleGAL_Service_MapsEngine_ResourcesListResponse
+   * @return GoogleGAL_Service_MapsEngine_AssetsListResponse
    */
   public function listAssets($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "GoogleGAL_Service_MapsEngine_ResourcesListResponse");
+    return $this->call('list', array($params), "GoogleGAL_Service_MapsEngine_AssetsListResponse");
   }
 }
 
@@ -1086,6 +1130,19 @@ class GoogleGAL_Service_MapsEngine_Maps_Resource extends GoogleGAL_Service_Resou
 {
 
   /**
+   * Create a map asset. (maps.create)
+   *
+   * @param GoogleGAL_Map $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_MapsEngine_Map
+   */
+  public function create(GoogleGAL_Service_MapsEngine_Map $postBody, $optParams = array())
+  {
+    $params = array('postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('create', array($params), "GoogleGAL_Service_MapsEngine_Map");
+  }
+  /**
    * Return metadata for a particular map. (maps.get)
    *
    * @param string $id
@@ -1142,6 +1199,20 @@ class GoogleGAL_Service_MapsEngine_Maps_Resource extends GoogleGAL_Service_Resou
     $params = array();
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "GoogleGAL_Service_MapsEngine_MapsListResponse");
+  }
+  /**
+   * Publish a map asset. (maps.publish)
+   *
+   * @param string $id
+   * The ID of the map.
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_MapsEngine_PublishResponse
+   */
+  public function publish($id, $optParams = array())
+  {
+    $params = array('id' => $id);
+    $params = array_merge($params, $optParams);
+    return $this->call('publish', array($params), "GoogleGAL_Service_MapsEngine_PublishResponse");
   }
 }
 
@@ -1250,6 +1321,20 @@ class GoogleGAL_Service_MapsEngine_RasterCollections_Resource extends GoogleGAL_
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "GoogleGAL_Service_MapsEngine_RastercollectionsListResponse");
   }
+  /**
+   * Process a raster collection asset. (rasterCollections.process)
+   *
+   * @param string $id
+   * The ID of the raster collection.
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_MapsEngine_ProcessResponse
+   */
+  public function process($id, $optParams = array())
+  {
+    $params = array('id' => $id);
+    $params = array_merge($params, $optParams);
+    return $this->call('process', array($params), "GoogleGAL_Service_MapsEngine_ProcessResponse");
+  }
 }
 
 /**
@@ -1297,6 +1382,43 @@ class GoogleGAL_Service_MapsEngine_RasterCollectionsParents_Resource extends Goo
 class GoogleGAL_Service_MapsEngine_RasterCollectionsRasters_Resource extends GoogleGAL_Service_Resource
 {
 
+  /**
+   * Remove rasters from an existing raster collection.
+   *
+   * Up to 50 rasters can be included in a single batchDelete request. Each
+   * batchDelete request is atomic. (rasters.batchDelete)
+   *
+   * @param string $id
+   * The ID of the raster collection to which these rasters belong.
+   * @param GoogleGAL_RasterCollectionsRasterBatchDeleteRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchDeleteResponse
+   */
+  public function batchDelete($id, GoogleGAL_Service_MapsEngine_RasterCollectionsRasterBatchDeleteRequest $postBody, $optParams = array())
+  {
+    $params = array('id' => $id, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('batchDelete', array($params), "GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchDeleteResponse");
+  }
+  /**
+   * Add rasters to an existing raster collection. Rasters must be successfully
+   * processed in order to be added to a raster collection.
+   *
+   * Up to 50 rasters can be included in a single batchInsert request. Each
+   * batchInsert request is atomic. (rasters.batchInsert)
+   *
+   * @param string $id
+   * The ID of the raster collection to which these rasters belong.
+   * @param GoogleGAL_RasterCollectionsRastersBatchInsertRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchInsertResponse
+   */
+  public function batchInsert($id, GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchInsertRequest $postBody, $optParams = array())
+  {
+    $params = array('id' => $id, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('batchInsert', array($params), "GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchInsertResponse");
+  }
   /**
    * Return all rasters within a raster collection.
    * (rasters.listRasterCollectionsRasters)
@@ -1782,6 +1904,147 @@ class GoogleGAL_Service_MapsEngine_AcquisitionTime extends GoogleGAL_Model
   public function getStart()
   {
     return $this->start;
+  }
+}
+
+class GoogleGAL_Service_MapsEngine_Asset extends GoogleGAL_Collection
+{
+  public $bbox;
+  public $creationTime;
+  public $description;
+  public $id;
+  public $lastModifiedTime;
+  public $name;
+  public $projectId;
+  public $resource;
+  public $tags;
+  public $type;
+
+  public function setBbox($bbox)
+  {
+    $this->bbox = $bbox;
+  }
+
+  public function getBbox()
+  {
+    return $this->bbox;
+  }
+
+  public function setCreationTime($creationTime)
+  {
+    $this->creationTime = $creationTime;
+  }
+
+  public function getCreationTime()
+  {
+    return $this->creationTime;
+  }
+
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+
+  public function getDescription()
+  {
+    return $this->description;
+  }
+
+  public function setId($id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  public function setLastModifiedTime($lastModifiedTime)
+  {
+    $this->lastModifiedTime = $lastModifiedTime;
+  }
+
+  public function getLastModifiedTime()
+  {
+    return $this->lastModifiedTime;
+  }
+
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  public function setProjectId($projectId)
+  {
+    $this->projectId = $projectId;
+  }
+
+  public function getProjectId()
+  {
+    return $this->projectId;
+  }
+
+  public function setResource($resource)
+  {
+    $this->resource = $resource;
+  }
+
+  public function getResource()
+  {
+    return $this->resource;
+  }
+
+  public function setTags($tags)
+  {
+    $this->tags = $tags;
+  }
+
+  public function getTags()
+  {
+    return $this->tags;
+  }
+
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+
+  public function getType()
+  {
+    return $this->type;
+  }
+}
+
+class GoogleGAL_Service_MapsEngine_AssetsListResponse extends GoogleGAL_Collection
+{
+  protected $assetsType = 'GoogleGAL_Service_MapsEngine_Asset';
+  protected $assetsDataType = 'array';
+  public $nextPageToken;
+
+  public function setAssets($assets)
+  {
+    $this->assets = $assets;
+  }
+
+  public function getAssets()
+  {
+    return $this->assets;
+  }
+
+  public function setNextPageToken($nextPageToken)
+  {
+    $this->nextPageToken = $nextPageToken;
+  }
+
+  public function getNextPageToken()
+  {
+    return $this->nextPageToken;
   }
 }
 
@@ -2830,6 +3093,7 @@ class GoogleGAL_Service_MapsEngine_Map extends GoogleGAL_Collection
   public $creationTime;
   public $defaultViewport;
   public $description;
+  public $draftAccessList;
   public $id;
   public $lastModifiedTime;
   public $name;
@@ -2885,6 +3149,16 @@ class GoogleGAL_Service_MapsEngine_Map extends GoogleGAL_Collection
   public function getDescription()
   {
     return $this->description;
+  }
+
+  public function setDraftAccessList($draftAccessList)
+  {
+    $this->draftAccessList = $draftAccessList;
+  }
+
+  public function getDraftAccessList()
+  {
+    return $this->draftAccessList;
   }
 
   public function setId($id)
@@ -3023,7 +3297,7 @@ class GoogleGAL_Service_MapsEngine_MapItem extends GoogleGAL_Model
   }
 }
 
-class GoogleGAL_Service_MapsEngine_MapKmlLink extends GoogleGAL_Model
+class GoogleGAL_Service_MapsEngine_MapKmlLink extends GoogleGAL_Collection
 {
   public $defaultViewport;
   public $kmlUrl;
@@ -3191,120 +3465,6 @@ class GoogleGAL_Service_MapsEngine_MapsengineFile extends GoogleGAL_Model
   public function getUploadStatus()
   {
     return $this->uploadStatus;
-  }
-}
-
-class GoogleGAL_Service_MapsEngine_MapsengineResource extends GoogleGAL_Collection
-{
-  public $bbox;
-  public $creationTime;
-  public $description;
-  public $id;
-  public $lastModifiedTime;
-  public $name;
-  public $projectId;
-  public $resource;
-  public $tags;
-  public $type;
-
-  public function setBbox($bbox)
-  {
-    $this->bbox = $bbox;
-  }
-
-  public function getBbox()
-  {
-    return $this->bbox;
-  }
-
-  public function setCreationTime($creationTime)
-  {
-    $this->creationTime = $creationTime;
-  }
-
-  public function getCreationTime()
-  {
-    return $this->creationTime;
-  }
-
-  public function setDescription($description)
-  {
-    $this->description = $description;
-  }
-
-  public function getDescription()
-  {
-    return $this->description;
-  }
-
-  public function setId($id)
-  {
-    $this->id = $id;
-  }
-
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  public function setLastModifiedTime($lastModifiedTime)
-  {
-    $this->lastModifiedTime = $lastModifiedTime;
-  }
-
-  public function getLastModifiedTime()
-  {
-    return $this->lastModifiedTime;
-  }
-
-  public function setName($name)
-  {
-    $this->name = $name;
-  }
-
-  public function getName()
-  {
-    return $this->name;
-  }
-
-  public function setProjectId($projectId)
-  {
-    $this->projectId = $projectId;
-  }
-
-  public function getProjectId()
-  {
-    return $this->projectId;
-  }
-
-  public function setResource($resource)
-  {
-    $this->resource = $resource;
-  }
-
-  public function getResource()
-  {
-    return $this->resource;
-  }
-
-  public function setTags($tags)
-  {
-    $this->tags = $tags;
-  }
-
-  public function getTags()
-  {
-    return $this->tags;
-  }
-
-  public function setType($type)
-  {
-    $this->type = $type;
-  }
-
-  public function getType()
-  {
-    return $this->type;
   }
 }
 
@@ -3572,6 +3732,7 @@ class GoogleGAL_Service_MapsEngine_RasterCollection extends GoogleGAL_Collection
   public $lastModifiedTime;
   public $mosaic;
   public $name;
+  public $processingStatus;
   public $projectId;
   public $rasterType;
   public $tags;
@@ -3666,6 +3827,16 @@ class GoogleGAL_Service_MapsEngine_RasterCollection extends GoogleGAL_Collection
     return $this->name;
   }
 
+  public function setProcessingStatus($processingStatus)
+  {
+    $this->processingStatus = $processingStatus;
+  }
+
+  public function getProcessingStatus()
+  {
+    return $this->processingStatus;
+  }
+
   public function setProjectId($projectId)
   {
     $this->projectId = $projectId;
@@ -3695,6 +3866,46 @@ class GoogleGAL_Service_MapsEngine_RasterCollection extends GoogleGAL_Collection
   {
     return $this->tags;
   }
+}
+
+class GoogleGAL_Service_MapsEngine_RasterCollectionsRasterBatchDeleteRequest extends GoogleGAL_Collection
+{
+  public $ids;
+
+  public function setIds($ids)
+  {
+    $this->ids = $ids;
+  }
+
+  public function getIds()
+  {
+    return $this->ids;
+  }
+}
+
+class GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchDeleteResponse extends GoogleGAL_Model
+{
+
+}
+
+class GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchInsertRequest extends GoogleGAL_Collection
+{
+  public $ids;
+
+  public function setIds($ids)
+  {
+    $this->ids = $ids;
+  }
+
+  public function getIds()
+  {
+    return $this->ids;
+  }
+}
+
+class GoogleGAL_Service_MapsEngine_RasterCollectionsRastersBatchInsertResponse extends GoogleGAL_Model
+{
+
 }
 
 class GoogleGAL_Service_MapsEngine_RastercollectionsListResponse extends GoogleGAL_Collection
@@ -3751,36 +3962,9 @@ class GoogleGAL_Service_MapsEngine_RastersListResponse extends GoogleGAL_Collect
   }
 }
 
-class GoogleGAL_Service_MapsEngine_ResourcesListResponse extends GoogleGAL_Collection
-{
-  protected $assetsType = 'GoogleGAL_Service_MapsEngine_MapsengineResource';
-  protected $assetsDataType = 'array';
-  public $nextPageToken;
-
-  public function setAssets($assets)
-  {
-    $this->assets = $assets;
-  }
-
-  public function getAssets()
-  {
-    return $this->assets;
-  }
-
-  public function setNextPageToken($nextPageToken)
-  {
-    $this->nextPageToken = $nextPageToken;
-  }
-
-  public function getNextPageToken()
-  {
-    return $this->nextPageToken;
-  }
-}
-
 class GoogleGAL_Service_MapsEngine_Schema extends GoogleGAL_Collection
 {
-  protected $columnsType = 'GoogleGAL_Service_MapsEngine_SchemaColumns';
+  protected $columnsType = 'GoogleGAL_Service_MapsEngine_TableColumn';
   protected $columnsDataType = 'array';
   public $primaryGeometry;
   public $primaryKey;
@@ -3813,32 +3997,6 @@ class GoogleGAL_Service_MapsEngine_Schema extends GoogleGAL_Collection
   public function getPrimaryKey()
   {
     return $this->primaryKey;
-  }
-}
-
-class GoogleGAL_Service_MapsEngine_SchemaColumns extends GoogleGAL_Model
-{
-  public $name;
-  public $type;
-
-  public function setName($name)
-  {
-    $this->name = $name;
-  }
-
-  public function getName()
-  {
-    return $this->name;
-  }
-
-  public function setType($type)
-  {
-    $this->type = $type;
-  }
-
-  public function getType()
-  {
-    return $this->type;
   }
 }
 
@@ -3999,6 +4157,32 @@ class GoogleGAL_Service_MapsEngine_Table extends GoogleGAL_Collection
   public function getTags()
   {
     return $this->tags;
+  }
+}
+
+class GoogleGAL_Service_MapsEngine_TableColumn extends GoogleGAL_Model
+{
+  public $name;
+  public $type;
+
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+
+  public function getType()
+  {
+    return $this->type;
   }
 }
 

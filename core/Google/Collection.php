@@ -13,7 +13,7 @@ class GoogleGAL_Collection extends GoogleGAL_Model implements Iterator, Countabl
 
   public function rewind()
   {
-    if (is_array($this->modelData[$this->collection_key])) {
+    if (isset($this->modelData[$this->collection_key]) && is_array($this->modelData[$this->collection_key])) {
       reset($this->modelData[$this->collection_key]);
     }
   }
@@ -28,7 +28,7 @@ class GoogleGAL_Collection extends GoogleGAL_Model implements Iterator, Countabl
 
   public function key()
   {
-    if (is_array($this->modelData[$this->collection_key])) {
+    if (isset($this->modelData[$this->collection_key]) && is_array($this->modelData[$this->collection_key])) {
       return key($this->modelData[$this->collection_key]);
     }
   }

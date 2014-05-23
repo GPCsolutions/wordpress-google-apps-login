@@ -93,7 +93,8 @@ a#gal-personalinstrlink {
 }
 
 div#logs-section table tr td {
-	padding-right: 10px;
+	padding-right: 15px;
+	min-width: 150px;
 }
 
 div#logs-section table tr.gal_log_level6 {

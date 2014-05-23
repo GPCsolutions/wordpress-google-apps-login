@@ -48,7 +48,7 @@ class GoogleGAL_Cache_File extends GoogleGAL_Cache_Abstract
 
     if ($expiration) {
       $mtime = filemtime($storageFile);
-      if (($now - $mtime) >= $expiration) {
+      if ((time() - $mtime) >= $expiration) {
         $this->delete($key);
         return false;
       }

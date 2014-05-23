@@ -102,10 +102,10 @@ class GoogleGAL_Client
     }
     
     if ($config->getIoClass() == GoogleGAL_Config::USE_AUTO_IO_SELECTION) {
-      if (function_exists('curl_version')) {
-        $config->setIoClass("GoogleGAL_Io_Curl");
+      if (function_exists('curl_version') && function_exists('curl_exec')) {
+        $config->setIoClass("GoogleGAL_IO_Curl");
       } else {
-        $config->setIoClass("GoogleGAL_Io_Stream");
+        $config->setIoClass("GoogleGAL_IO_Stream");
       }
     }
 
@@ -250,7 +250,7 @@ class GoogleGAL_Client
     // The response is json encoded, so could be the string null.
     // It is arguable whether this check should be here or lower
     // in the library.
-    return (null == $token || 'null' == $token) ? null : $token;
+    return (null == $token || 'null' == $token || '[]' == $token) ? null : $token;
   }
 
   /**

@@ -370,7 +370,7 @@ class GoogleGAL_Auth_OAuth2 extends GoogleGAL_Auth_Abstract
    */
   public function isAccessTokenExpired()
   {
-    if (!$this->token) {
+    if (!$this->token || !isset($this->token['created'])) {
       return true;
     }
 

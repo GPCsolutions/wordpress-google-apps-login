@@ -45,6 +45,7 @@ class GoogleGAL_Service_Books extends GoogleGAL_Service
   public $mylibrary_bookshelves;
   public $mylibrary_bookshelves_volumes;
   public $mylibrary_readingpositions;
+  public $promooffer;
   public $volumes;
   public $volumes_associated;
   public $volumes_mybooks;
@@ -928,6 +929,115 @@ class GoogleGAL_Service_Books extends GoogleGAL_Service
                   'type' => 'string',
                 ),
                 'action' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->promooffer = new GoogleGAL_Service_Books_Promooffer_Resource(
+        $this,
+        $this->serviceName,
+        'promooffer',
+        array(
+          'methods' => array(
+            'accept' => array(
+              'path' => 'promooffer/accept',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'product' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'volumeId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'offerId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'androidId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'device' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'model' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'serial' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'manufacturer' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'dismiss' => array(
+              'path' => 'promooffer/dismiss',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'product' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'offerId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'androidId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'device' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'model' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'serial' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'manufacturer' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'get' => array(
+              'path' => 'promooffer/get',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'product' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'androidId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'device' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'model' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'serial' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'manufacturer' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -2025,6 +2135,98 @@ class GoogleGAL_Service_Books_MylibraryReadingpositions_Resource extends GoogleG
     $params = array('volumeId' => $volumeId, 'timestamp' => $timestamp, 'position' => $position);
     $params = array_merge($params, $optParams);
     return $this->call('setPosition', array($params));
+  }
+}
+
+/**
+ * The "promooffer" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $booksService = new GoogleGAL_Service_Books(...);
+ *   $promooffer = $booksService->promooffer;
+ *  </code>
+ */
+class GoogleGAL_Service_Books_Promooffer_Resource extends GoogleGAL_Service_Resource
+{
+
+  /**
+   * (promooffer.accept)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string product
+   * device product
+   * @opt_param string volumeId
+   * Volume id to exercise the offer
+   * @opt_param string offerId
+   *
+   * @opt_param string androidId
+   * device android_id
+   * @opt_param string device
+   * device device
+   * @opt_param string model
+   * device model
+   * @opt_param string serial
+   * device serial
+   * @opt_param string manufacturer
+   * device manufacturer
+   */
+  public function accept($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('accept', array($params));
+  }
+  /**
+   * (promooffer.dismiss)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string product
+   * device product
+   * @opt_param string offerId
+   * Offer to dimiss
+   * @opt_param string androidId
+   * device android_id
+   * @opt_param string device
+   * device device
+   * @opt_param string model
+   * device model
+   * @opt_param string serial
+   * device serial
+   * @opt_param string manufacturer
+   * device manufacturer
+   */
+  public function dismiss($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('dismiss', array($params));
+  }
+  /**
+   * Returns a list of promo offers available to the user (promooffer.get)
+   *
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string product
+   * device product
+   * @opt_param string androidId
+   * device android_id
+   * @opt_param string device
+   * device device
+   * @opt_param string model
+   * device model
+   * @opt_param string serial
+   * device serial
+   * @opt_param string manufacturer
+   * device manufacturer
+   * @return GoogleGAL_Service_Books_Offers
+   */
+  public function get($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "GoogleGAL_Service_Books_Offers");
   }
 }
 
@@ -4512,6 +4714,141 @@ class GoogleGAL_Service_Books_Layersummary extends GoogleGAL_Collection
   }
 }
 
+class GoogleGAL_Service_Books_Offers extends GoogleGAL_Collection
+{
+  protected $itemsType = 'GoogleGAL_Service_Books_OffersItems';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+
+  public function getItems()
+  {
+    return $this->items;
+  }
+
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+}
+
+class GoogleGAL_Service_Books_OffersItems extends GoogleGAL_Collection
+{
+  public $artUrl;
+  public $id;
+  protected $itemsType = 'GoogleGAL_Service_Books_OffersItemsItems';
+  protected $itemsDataType = 'array';
+
+  public function setArtUrl($artUrl)
+  {
+    $this->artUrl = $artUrl;
+  }
+
+  public function getArtUrl()
+  {
+    return $this->artUrl;
+  }
+
+  public function setId($id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+
+  public function getItems()
+  {
+    return $this->items;
+  }
+}
+
+class GoogleGAL_Service_Books_OffersItemsItems extends GoogleGAL_Model
+{
+  public $author;
+  public $canonicalVolumeLink;
+  public $coverUrl;
+  public $description;
+  public $title;
+  public $volumeId;
+
+  public function setAuthor($author)
+  {
+    $this->author = $author;
+  }
+
+  public function getAuthor()
+  {
+    return $this->author;
+  }
+
+  public function setCanonicalVolumeLink($canonicalVolumeLink)
+  {
+    $this->canonicalVolumeLink = $canonicalVolumeLink;
+  }
+
+  public function getCanonicalVolumeLink()
+  {
+    return $this->canonicalVolumeLink;
+  }
+
+  public function setCoverUrl($coverUrl)
+  {
+    $this->coverUrl = $coverUrl;
+  }
+
+  public function getCoverUrl()
+  {
+    return $this->coverUrl;
+  }
+
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+
+  public function getDescription()
+  {
+    return $this->description;
+  }
+
+  public function setTitle($title)
+  {
+    $this->title = $title;
+  }
+
+  public function getTitle()
+  {
+    return $this->title;
+  }
+
+  public function setVolumeId($volumeId)
+  {
+    $this->volumeId = $volumeId;
+  }
+
+  public function getVolumeId()
+  {
+    return $this->volumeId;
+  }
+}
+
 class GoogleGAL_Service_Books_ReadingPosition extends GoogleGAL_Model
 {
   public $epubCfiPosition;
@@ -5758,6 +6095,7 @@ class GoogleGAL_Service_Books_VolumeVolumeInfo extends GoogleGAL_Collection
   public $publishedDate;
   public $publisher;
   public $ratingsCount;
+  public $readingModes;
   public $subtitle;
   public $title;
 
@@ -5949,6 +6287,16 @@ class GoogleGAL_Service_Books_VolumeVolumeInfo extends GoogleGAL_Collection
   public function getRatingsCount()
   {
     return $this->ratingsCount;
+  }
+
+  public function setReadingModes($readingModes)
+  {
+    $this->readingModes = $readingModes;
+  }
+
+  public function getReadingModes()
+  {
+    return $this->readingModes;
   }
 
   public function setSubtitle($subtitle)

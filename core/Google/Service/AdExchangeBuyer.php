@@ -137,6 +137,16 @@ class GoogleGAL_Service_AdExchangeBuyer extends GoogleGAL_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
+                'buyerCreativeId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ),
+                'accountId' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                  'repeated' => true,
+                ),
               ),
             ),
           )
@@ -332,6 +342,10 @@ class GoogleGAL_Service_AdExchangeBuyer_Creatives_Resource extends GoogleGAL_Ser
     * parameter to the value of "nextPageToken" from the previous response. Optional.
    * @opt_param string maxResults
    * Maximum number of entries returned on one result page. If not set, the default is 100. Optional.
+   * @opt_param string buyerCreativeId
+   * When specified, only creatives for the given buyer creative ids are returned.
+   * @opt_param int accountId
+   * When specified, only creatives for the given account ids are returned.
    * @return GoogleGAL_Service_AdExchangeBuyer_CreativesList
    */
   public function listCreatives($optParams = array())

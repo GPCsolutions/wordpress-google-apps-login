@@ -36,8 +36,10 @@ class GoogleGAL_Service_Mirror extends GoogleGAL_Service
   /** View and manage your Glass timeline. */
   const GLASS_TIMELINE = "https://www.googleapis.com/auth/glass.timeline";
 
+  public $accounts;
   public $contacts;
   public $locations;
+  public $settings;
   public $subscriptions;
   public $timeline;
   public $timeline_attachments;
@@ -55,6 +57,36 @@ class GoogleGAL_Service_Mirror extends GoogleGAL_Service
     $this->version = 'v1';
     $this->serviceName = 'mirror';
 
+    $this->accounts = new GoogleGAL_Service_Mirror_Accounts_Resource(
+        $this,
+        $this->serviceName,
+        'accounts',
+        array(
+          'methods' => array(
+            'insert' => array(
+              'path' => 'accounts/{userToken}/{accountType}/{accountName}',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'userToken' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'accountType' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'accountName' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
     $this->contacts = new GoogleGAL_Service_Mirror_Contacts_Resource(
         $this,
         $this->serviceName,
@@ -133,6 +165,26 @@ class GoogleGAL_Service_Mirror extends GoogleGAL_Service
               'path' => 'locations',
               'httpMethod' => 'GET',
               'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->settings = new GoogleGAL_Service_Mirror_Settings_Resource(
+        $this,
+        $this->serviceName,
+        'settings',
+        array(
+          'methods' => array(
+            'get' => array(
+              'path' => 'settings/{id}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'id' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),
           )
         )
@@ -327,6 +379,38 @@ class GoogleGAL_Service_Mirror extends GoogleGAL_Service
 
 
 /**
+ * The "accounts" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $mirrorService = new GoogleGAL_Service_Mirror(...);
+ *   $accounts = $mirrorService->accounts;
+ *  </code>
+ */
+class GoogleGAL_Service_Mirror_Accounts_Resource extends GoogleGAL_Service_Resource
+{
+
+  /**
+   * Inserts a new account for a user (accounts.insert)
+   *
+   * @param string $userToken
+   * The ID for the user.
+   * @param string $accountType
+   * Account type to be passed to Android Account Manager.
+   * @param string $accountName
+   * The name of the account to be passed to the Android Account Manager.
+   * @param GoogleGAL_Account $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_Mirror_Account
+   */
+  public function insert($userToken, $accountType, $accountName, GoogleGAL_Service_Mirror_Account $postBody, $optParams = array())
+  {
+    $params = array('userToken' => $userToken, 'accountType' => $accountType, 'accountName' => $accountName, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('insert', array($params), "GoogleGAL_Service_Mirror_Account");
+  }
+}
+
+/**
  * The "contacts" collection of methods.
  * Typical usage is:
  *  <code>
@@ -459,6 +543,33 @@ class GoogleGAL_Service_Mirror_Locations_Resource extends GoogleGAL_Service_Reso
     $params = array();
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "GoogleGAL_Service_Mirror_LocationsListResponse");
+  }
+}
+
+/**
+ * The "settings" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $mirrorService = new GoogleGAL_Service_Mirror(...);
+ *   $settings = $mirrorService->settings;
+ *  </code>
+ */
+class GoogleGAL_Service_Mirror_Settings_Resource extends GoogleGAL_Service_Resource
+{
+
+  /**
+   * Gets a single setting by ID. (settings.get)
+   *
+   * @param string $id
+   * The ID of the setting.
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_Mirror_Setting
+   */
+  public function get($id, $optParams = array())
+  {
+    $params = array('id' => $id);
+    $params = array_merge($params, $optParams);
+    return $this->call('get', array($params), "GoogleGAL_Service_Mirror_Setting");
   }
 }
 
@@ -718,6 +829,56 @@ class GoogleGAL_Service_Mirror_TimelineAttachments_Resource extends GoogleGAL_Se
 
 
 
+class GoogleGAL_Service_Mirror_Account extends GoogleGAL_Collection
+{
+  protected $authTokensType = 'GoogleGAL_Service_Mirror_AuthToken';
+  protected $authTokensDataType = 'array';
+  public $features;
+  public $password;
+  protected $userDataType = 'GoogleGAL_Service_Mirror_UserData';
+  protected $userDataDataType = 'array';
+
+  public function setAuthTokens($authTokens)
+  {
+    $this->authTokens = $authTokens;
+  }
+
+  public function getAuthTokens()
+  {
+    return $this->authTokens;
+  }
+
+  public function setFeatures($features)
+  {
+    $this->features = $features;
+  }
+
+  public function getFeatures()
+  {
+    return $this->features;
+  }
+
+  public function setPassword($password)
+  {
+    $this->password = $password;
+  }
+
+  public function getPassword()
+  {
+    return $this->password;
+  }
+
+  public function setUserData($userData)
+  {
+    $this->userData = $userData;
+  }
+
+  public function getUserData()
+  {
+    return $this->userData;
+  }
+}
+
 class GoogleGAL_Service_Mirror_Attachment extends GoogleGAL_Model
 {
   public $contentType;
@@ -790,6 +951,32 @@ class GoogleGAL_Service_Mirror_AttachmentsListResponse extends GoogleGAL_Collect
   public function getKind()
   {
     return $this->kind;
+  }
+}
+
+class GoogleGAL_Service_Mirror_AuthToken extends GoogleGAL_Model
+{
+  public $authToken;
+  public $type;
+
+  public function setAuthToken($authToken)
+  {
+    $this->authToken = $authToken;
+  }
+
+  public function getAuthToken()
+  {
+    return $this->authToken;
+  }
+
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+
+  public function getType()
+  {
+    return $this->type;
   }
 }
 
@@ -1285,6 +1472,43 @@ class GoogleGAL_Service_Mirror_NotificationConfig extends GoogleGAL_Model
   }
 }
 
+class GoogleGAL_Service_Mirror_Setting extends GoogleGAL_Model
+{
+  public $id;
+  public $kind;
+  public $value;
+
+  public function setId($id)
+  {
+    $this->id = $id;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+
+  public function setValue($value)
+  {
+    $this->value = $value;
+  }
+
+  public function getValue()
+  {
+    return $this->value;
+  }
+}
+
 class GoogleGAL_Service_Mirror_Subscription extends GoogleGAL_Collection
 {
   public $callbackUrl;
@@ -1773,5 +1997,31 @@ class GoogleGAL_Service_Mirror_UserAction extends GoogleGAL_Model
   public function getType()
   {
     return $this->type;
+  }
+}
+
+class GoogleGAL_Service_Mirror_UserData extends GoogleGAL_Model
+{
+  public $key;
+  public $value;
+
+  public function setKey($key)
+  {
+    $this->key = $key;
+  }
+
+  public function getKey()
+  {
+    return $this->key;
+  }
+
+  public function setValue($value)
+  {
+    $this->value = $value;
+  }
+
+  public function getValue()
+  {
+    return $this->value;
   }
 }

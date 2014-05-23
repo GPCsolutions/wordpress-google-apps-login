@@ -74,6 +74,10 @@ class GoogleGAL_Service_IdentityToolkit extends GoogleGAL_Service
               'path' => 'getOobConfirmationCode',
               'httpMethod' => 'POST',
               'parameters' => array(),
+            ),'getPublicKeys' => array(
+              'path' => 'publicKeys',
+              'httpMethod' => 'GET',
+              'parameters' => array(),
             ),'resetPassword' => array(
               'path' => 'resetPassword',
               'httpMethod' => 'POST',
@@ -179,6 +183,18 @@ class GoogleGAL_Service_IdentityToolkit_Relyingparty_Resource extends GoogleGAL_
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('getOobConfirmationCode', array($params), "GoogleGAL_Service_IdentityToolkit_GetOobConfirmationCodeResponse");
+  }
+  /**
+   * Get token signing public key. (relyingparty.getPublicKeys)
+   *
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_IdentityToolkit_IdentitytoolkitRelyingpartyGetPublicKeysResponse
+   */
+  public function getPublicKeys($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('getPublicKeys', array($params), "GoogleGAL_Service_IdentityToolkit_IdentitytoolkitRelyingpartyGetPublicKeysResponse");
   }
   /**
    * Set account info for a user. (relyingparty.resetPassword)

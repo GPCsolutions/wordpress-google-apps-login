@@ -119,7 +119,20 @@ class GoogleGAL_Service_Drive extends GoogleGAL_Service
             ),'list' => array(
               'path' => 'apps',
               'httpMethod' => 'GET',
-              'parameters' => array(),
+              'parameters' => array(
+                'languageCode' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'appFilterExtensions' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'appFilterMimeTypes' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
             ),
           )
         )
@@ -444,6 +457,10 @@ class GoogleGAL_Service_Drive extends GoogleGAL_Service
                   'required' => true,
                 ),
               ),
+            ),'emptyTrash' => array(
+              'path' => 'files/trash',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(),
             ),'get' => array(
               'path' => 'files/{fileId}',
               'httpMethod' => 'GET',
@@ -529,15 +546,23 @@ class GoogleGAL_Service_Drive extends GoogleGAL_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'convert' => array(
+                'addParents' => array(
                   'location' => 'query',
-                  'type' => 'boolean',
+                  'type' => 'string',
                 ),
                 'updateViewedDate' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'removeParents' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'setModifiedDate' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'convert' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
@@ -609,15 +634,23 @@ class GoogleGAL_Service_Drive extends GoogleGAL_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'convert' => array(
+                'addParents' => array(
                   'location' => 'query',
-                  'type' => 'boolean',
+                  'type' => 'string',
                 ),
                 'updateViewedDate' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
+                'removeParents' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'setModifiedDate' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'convert' => array(
                   'location' => 'query',
                   'type' => 'boolean',
                 ),
@@ -969,6 +1002,10 @@ class GoogleGAL_Service_Drive extends GoogleGAL_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'revision' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
               ),
             ),'update' => array(
               'path' => 'files/{fileId}/realtime',
@@ -1226,9 +1263,9 @@ class GoogleGAL_Service_Drive_About_Resource extends GoogleGAL_Service_Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool includeSubscribed
-   * When calculating the number of remaining change IDs, whether to include shared files and public
-    * files the user has opened. When set to false, this counts only change IDs for owned files and
-    * any shared or public files that the user has explictly added to a folder in Drive.
+   * When calculating the number of remaining change IDs, whether to include public files the user
+    * has opened and shared files. When set to false, this counts only change IDs for owned files and
+    * any shared or public files that the user has explicitly added to a folder they own.
    * @opt_param string maxChangeIdCount
    * Maximum number of remaining change IDs to count
    * @opt_param string startChangeId
@@ -1272,6 +1309,18 @@ class GoogleGAL_Service_Drive_Apps_Resource extends GoogleGAL_Service_Resource
    * Lists a user's installed apps. (apps.listApps)
    *
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string languageCode
+   * A language or locale code, as defined by BCP 47, with some extensions from Unicode's LDML format
+    * (http://www.unicode.org/reports/tr35/).
+   * @opt_param string appFilterExtensions
+   * A comma-separated list of file extensions for open with filtering. All apps within the given app
+    * query scope which can open any of the given file extensions will be included in the response. If
+    * appFilterMimeTypes are provided as well, the result is a union of the two resulting app lists.
+   * @opt_param string appFilterMimeTypes
+   * A comma-separated list of MIME types for open with filtering. All apps within the given app
+    * query scope which can open any of the given MIME types will be included in the response. If
+    * appFilterExtensions are provided as well, the result is a union of the two resulting app lists.
    * @return GoogleGAL_Service_Drive_AppList
    */
   public function listApps($optParams = array())
@@ -1313,9 +1362,9 @@ class GoogleGAL_Service_Drive_Changes_Resource extends GoogleGAL_Service_Resourc
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool includeSubscribed
-   * Whether to include shared files and public files the user has opened. When set to false, the
-    * list will include owned files plus any shared or public files the user has explictly added to a
-    * folder in Drive.
+   * Whether to include public files the user has opened and shared files. When set to false, the
+    * list only includes owned files plus any shared or public files the user has explicitly added to
+    * a folder they own.
    * @opt_param string startChangeId
    * Change ID to start listing changes from.
    * @opt_param bool includeDeleted
@@ -1339,9 +1388,9 @@ class GoogleGAL_Service_Drive_Changes_Resource extends GoogleGAL_Service_Resourc
    * @param array $optParams Optional parameters.
    *
    * @opt_param bool includeSubscribed
-   * Whether to include shared files and public files the user has opened. When set to false, the
-    * list will include owned files plus any shared or public files the user has explictly added to a
-    * folder in Drive.
+   * Whether to include public files the user has opened and shared files. When set to false, the
+    * list only includes owned files plus any shared or public files the user has explicitly added to
+    * a folder they own.
    * @opt_param string startChangeId
    * Change ID to start listing changes from.
    * @opt_param bool includeDeleted
@@ -1645,6 +1694,17 @@ class GoogleGAL_Service_Drive_Files_Resource extends GoogleGAL_Service_Resource
     return $this->call('delete', array($params));
   }
   /**
+   * Permanently deletes all of the user's trashed files. (files.emptyTrash)
+   *
+   * @param array $optParams Optional parameters.
+   */
+  public function emptyTrash($optParams = array())
+  {
+    $params = array();
+    $params = array_merge($params, $optParams);
+    return $this->call('emptyTrash', array($params));
+  }
+  /**
    * Gets a file's metadata by ID. (files.get)
    *
    * @param string $fileId
@@ -1723,12 +1783,16 @@ class GoogleGAL_Service_Drive_Files_Resource extends GoogleGAL_Service_Resource
    * @param GoogleGAL_DriveFile $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool convert
-   * Whether to convert this file to the corresponding Google Docs format.
+   * @opt_param string addParents
+   * Comma-separated list of parent IDs to add.
    * @opt_param bool updateViewedDate
    * Whether to update the view date after successfully updating the file.
+   * @opt_param string removeParents
+   * Comma-separated list of parent IDs to remove.
    * @opt_param bool setModifiedDate
    * Whether to set the modified date with the supplied modified date.
+   * @opt_param bool convert
+   * Whether to convert this file to the corresponding Google Docs format.
    * @opt_param bool useContentAsIndexableText
    * Whether to use the content as indexable text.
    * @opt_param string ocrLanguage
@@ -1803,12 +1867,16 @@ class GoogleGAL_Service_Drive_Files_Resource extends GoogleGAL_Service_Resource
    * @param GoogleGAL_DriveFile $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool convert
-   * Whether to convert this file to the corresponding Google Docs format.
+   * @opt_param string addParents
+   * Comma-separated list of parent IDs to add.
    * @opt_param bool updateViewedDate
    * Whether to update the view date after successfully updating the file.
+   * @opt_param string removeParents
+   * Comma-separated list of parent IDs to remove.
    * @opt_param bool setModifiedDate
    * Whether to set the modified date with the supplied modified date.
+   * @opt_param bool convert
+   * Whether to convert this file to the corresponding Google Docs format.
    * @opt_param bool useContentAsIndexableText
    * Whether to use the content as indexable text.
    * @opt_param string ocrLanguage
@@ -2198,6 +2266,11 @@ class GoogleGAL_Service_Drive_Realtime_Resource extends GoogleGAL_Service_Resour
    * @param string $fileId
    * The ID of the file that the Realtime API data model is associated with.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param int revision
+   * The revision of the Realtime API data model to export. Revisions start at 1 (the initial empty
+    * data model) and are incremented with each change. If this parameter is excluded, the most recent
+    * data model will be returned.
    */
   public function get($fileId, $optParams = array())
   {
@@ -2467,11 +2540,14 @@ class GoogleGAL_Service_Drive_About extends GoogleGAL_Collection
   protected $importFormatsDataType = 'array';
   public $isCurrentAppInstalled;
   public $kind;
+  public $languageCode;
   public $largestChangeId;
   protected $maxUploadSizesType = 'GoogleGAL_Service_Drive_AboutMaxUploadSizes';
   protected $maxUploadSizesDataType = 'array';
   public $name;
   public $permissionId;
+  protected $quotaBytesByServiceType = 'GoogleGAL_Service_Drive_AboutQuotaBytesByService';
+  protected $quotaBytesByServiceDataType = 'array';
   public $quotaBytesTotal;
   public $quotaBytesUsed;
   public $quotaBytesUsedAggregate;
@@ -2562,6 +2638,16 @@ class GoogleGAL_Service_Drive_About extends GoogleGAL_Collection
     return $this->kind;
   }
 
+  public function setLanguageCode($languageCode)
+  {
+    $this->languageCode = $languageCode;
+  }
+
+  public function getLanguageCode()
+  {
+    return $this->languageCode;
+  }
+
   public function setLargestChangeId($largestChangeId)
   {
     $this->largestChangeId = $largestChangeId;
@@ -2600,6 +2686,16 @@ class GoogleGAL_Service_Drive_About extends GoogleGAL_Collection
   public function getPermissionId()
   {
     return $this->permissionId;
+  }
+
+  public function setQuotaBytesByService($quotaBytesByService)
+  {
+    $this->quotaBytesByService = $quotaBytesByService;
+  }
+
+  public function getQuotaBytesByService()
+  {
+    return $this->quotaBytesByService;
   }
 
   public function setQuotaBytesTotal($quotaBytesTotal)
@@ -2840,11 +2936,38 @@ class GoogleGAL_Service_Drive_AboutMaxUploadSizes extends GoogleGAL_Model
   }
 }
 
+class GoogleGAL_Service_Drive_AboutQuotaBytesByService extends GoogleGAL_Model
+{
+  public $bytesUsed;
+  public $serviceName;
+
+  public function setBytesUsed($bytesUsed)
+  {
+    $this->bytesUsed = $bytesUsed;
+  }
+
+  public function getBytesUsed()
+  {
+    return $this->bytesUsed;
+  }
+
+  public function setServiceName($serviceName)
+  {
+    $this->serviceName = $serviceName;
+  }
+
+  public function getServiceName()
+  {
+    return $this->serviceName;
+  }
+}
+
 class GoogleGAL_Service_Drive_App extends GoogleGAL_Collection
 {
   public $authorized;
   public $createInFolderTemplate;
   public $createUrl;
+  public $hasDriveWideScope;
   protected $iconsType = 'GoogleGAL_Service_Drive_AppIcons';
   protected $iconsDataType = 'array';
   public $id;
@@ -2864,6 +2987,7 @@ class GoogleGAL_Service_Drive_App extends GoogleGAL_Collection
   public $supportsCreate;
   public $supportsImport;
   public $supportsMultiOpen;
+  public $supportsOfflineCreate;
   public $useByDefault;
 
   public function setAuthorized($authorized)
@@ -2894,6 +3018,16 @@ class GoogleGAL_Service_Drive_App extends GoogleGAL_Collection
   public function getCreateUrl()
   {
     return $this->createUrl;
+  }
+
+  public function setHasDriveWideScope($hasDriveWideScope)
+  {
+    $this->hasDriveWideScope = $hasDriveWideScope;
+  }
+
+  public function getHasDriveWideScope()
+  {
+    return $this->hasDriveWideScope;
   }
 
   public function setIcons($icons)
@@ -3076,6 +3210,16 @@ class GoogleGAL_Service_Drive_App extends GoogleGAL_Collection
     return $this->supportsMultiOpen;
   }
 
+  public function setSupportsOfflineCreate($supportsOfflineCreate)
+  {
+    $this->supportsOfflineCreate = $supportsOfflineCreate;
+  }
+
+  public function getSupportsOfflineCreate()
+  {
+    return $this->supportsOfflineCreate;
+  }
+
   public function setUseByDefault($useByDefault)
   {
     $this->useByDefault = $useByDefault;
@@ -3126,11 +3270,22 @@ class GoogleGAL_Service_Drive_AppIcons extends GoogleGAL_Model
 
 class GoogleGAL_Service_Drive_AppList extends GoogleGAL_Collection
 {
+  public $defaultAppIds;
   public $etag;
   protected $itemsType = 'GoogleGAL_Service_Drive_App';
   protected $itemsDataType = 'array';
   public $kind;
   public $selfLink;
+
+  public function setDefaultAppIds($defaultAppIds)
+  {
+    $this->defaultAppIds = $defaultAppIds;
+  }
+
+  public function getDefaultAppIds()
+  {
+    return $this->defaultAppIds;
+  }
 
   public function setEtag($etag)
   {
@@ -4022,6 +4177,7 @@ class GoogleGAL_Service_Drive_DriveFile extends GoogleGAL_Collection
   protected $lastModifyingUserDataType = '';
   public $lastModifyingUserName;
   public $lastViewedByMeDate;
+  public $markedViewedByMeDate;
   public $md5Checksum;
   public $mimeType;
   public $modifiedByMeDate;
@@ -4033,18 +4189,23 @@ class GoogleGAL_Service_Drive_DriveFile extends GoogleGAL_Collection
   protected $ownersDataType = 'array';
   protected $parentsType = 'GoogleGAL_Service_Drive_ParentReference';
   protected $parentsDataType = 'array';
+  protected $permissionsType = 'GoogleGAL_Service_Drive_Permission';
+  protected $permissionsDataType = 'array';
   protected $propertiesType = 'GoogleGAL_Service_Drive_Property';
   protected $propertiesDataType = 'array';
   public $quotaBytesUsed;
   public $selfLink;
   public $shared;
   public $sharedWithMeDate;
+  protected $sharingUserType = 'GoogleGAL_Service_Drive_User';
+  protected $sharingUserDataType = '';
   protected $thumbnailType = 'GoogleGAL_Service_Drive_DriveFileThumbnail';
   protected $thumbnailDataType = '';
   public $thumbnailLink;
   public $title;
   protected $userPermissionType = 'GoogleGAL_Service_Drive_Permission';
   protected $userPermissionDataType = '';
+  public $version;
   public $webContentLink;
   public $webViewLink;
   public $writersCanShare;
@@ -4289,6 +4450,16 @@ class GoogleGAL_Service_Drive_DriveFile extends GoogleGAL_Collection
     return $this->lastViewedByMeDate;
   }
 
+  public function setMarkedViewedByMeDate($markedViewedByMeDate)
+  {
+    $this->markedViewedByMeDate = $markedViewedByMeDate;
+  }
+
+  public function getMarkedViewedByMeDate()
+  {
+    return $this->markedViewedByMeDate;
+  }
+
   public function setMd5Checksum($md5Checksum)
   {
     $this->md5Checksum = $md5Checksum;
@@ -4379,6 +4550,16 @@ class GoogleGAL_Service_Drive_DriveFile extends GoogleGAL_Collection
     return $this->parents;
   }
 
+  public function setPermissions($permissions)
+  {
+    $this->permissions = $permissions;
+  }
+
+  public function getPermissions()
+  {
+    return $this->permissions;
+  }
+
   public function setProperties($properties)
   {
     $this->properties = $properties;
@@ -4429,6 +4610,16 @@ class GoogleGAL_Service_Drive_DriveFile extends GoogleGAL_Collection
     return $this->sharedWithMeDate;
   }
 
+  public function setSharingUser(GoogleGAL_Service_Drive_User $sharingUser)
+  {
+    $this->sharingUser = $sharingUser;
+  }
+
+  public function getSharingUser()
+  {
+    return $this->sharingUser;
+  }
+
   public function setThumbnail(GoogleGAL_Service_Drive_DriveFileThumbnail $thumbnail)
   {
     $this->thumbnail = $thumbnail;
@@ -4467,6 +4658,16 @@ class GoogleGAL_Service_Drive_DriveFile extends GoogleGAL_Collection
   public function getUserPermission()
   {
     return $this->userPermission;
+  }
+
+  public function setVersion($version)
+  {
+    $this->version = $version;
+  }
+
+  public function getVersion()
+  {
+    return $this->version;
   }
 
   public function setWebContentLink($webContentLink)
@@ -5659,6 +5860,7 @@ class GoogleGAL_Service_Drive_RevisionList extends GoogleGAL_Collection
 class GoogleGAL_Service_Drive_User extends GoogleGAL_Model
 {
   public $displayName;
+  public $emailAddress;
   public $isAuthenticatedUser;
   public $kind;
   public $permissionId;
@@ -5673,6 +5875,16 @@ class GoogleGAL_Service_Drive_User extends GoogleGAL_Model
   public function getDisplayName()
   {
     return $this->displayName;
+  }
+
+  public function setEmailAddress($emailAddress)
+  {
+    $this->emailAddress = $emailAddress;
+  }
+
+  public function getEmailAddress()
+  {
+    return $this->emailAddress;
   }
 
   public function setIsAuthenticatedUser($isAuthenticatedUser)

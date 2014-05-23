@@ -1388,8 +1388,8 @@ class GoogleGAL_Service_Analytics_DataGa_Resource extends GoogleGAL_Service_Reso
     * MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is
     * yesterday.
    * @param string $metrics
-   * A comma-separated list of Analytics metrics. E.g., 'ga:visits,ga:pageviews'. At least one metric
-    * must be specified.
+   * A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'. At least one
+    * metric must be specified.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int max-results
@@ -1403,7 +1403,7 @@ class GoogleGAL_Service_Analytics_DataGa_Resource extends GoogleGAL_Service_Reso
    * An index of the first entity to retrieve. Use this parameter as a pagination mechanism along
     * with the max-results parameter.
    * @opt_param string segment
-   * An Analytics advanced segment to be applied to data.
+   * An Analytics segment to be applied to data.
    * @opt_param string samplingLevel
    * The desired sampling level.
    * @opt_param string filters
@@ -1488,8 +1488,8 @@ class GoogleGAL_Service_Analytics_DataRealtime_Resource extends GoogleGAL_Servic
    * Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is
     * the Analytics view (profile) ID.
    * @param string $metrics
-   * A comma-separated list of real time metrics. E.g., 'rt:activeVisitors'. At least one metric must
-    * be specified.
+   * A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least one metric must be
+    * specified.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int max-results
@@ -2289,16 +2289,16 @@ class GoogleGAL_Service_Analytics_ManagementSegments_Resource extends GoogleGAL_
 {
 
   /**
-   * Lists advanced segments to which the user has access.
+   * Lists segments to which the user has access.
    * (segments.listManagementSegments)
    *
    * @param array $optParams Optional parameters.
    *
    * @opt_param int max-results
-   * The maximum number of advanced segments to include in this response.
+   * The maximum number of segments to include in this response.
    * @opt_param int start-index
-   * An index of the first advanced segment to retrieve. Use this parameter as a pagination mechanism
-    * along with the max-results parameter.
+   * An index of the first segment to retrieve. Use this parameter as a pagination mechanism along
+    * with the max-results parameter.
    * @return GoogleGAL_Service_Analytics_Segments
    */
   public function listManagementSegments($optParams = array())

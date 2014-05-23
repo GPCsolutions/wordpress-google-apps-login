@@ -36,6 +36,7 @@ class GoogleGAL_Service_Doubleclicksearch extends GoogleGAL_Service
 
   public $conversion;
   public $reports;
+  public $savedColumns;
   
 
   /**
@@ -207,6 +208,31 @@ class GoogleGAL_Service_Doubleclicksearch extends GoogleGAL_Service
               'path' => 'reports',
               'httpMethod' => 'POST',
               'parameters' => array(),
+            ),
+          )
+        )
+    );
+    $this->savedColumns = new GoogleGAL_Service_Doubleclicksearch_SavedColumns_Resource(
+        $this,
+        $this->serviceName,
+        'savedColumns',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'agency/{agencyId}/advertiser/{advertiserId}/savedcolumns',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'agencyId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'advertiserId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),
           )
         )
@@ -398,6 +424,36 @@ class GoogleGAL_Service_Doubleclicksearch_Reports_Resource extends GoogleGAL_Ser
     $params = array('postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('request', array($params), "GoogleGAL_Service_Doubleclicksearch_Report");
+  }
+}
+
+/**
+ * The "savedColumns" collection of methods.
+ * Typical usage is:
+ *  <code>
+ *   $doubleclicksearchService = new GoogleGAL_Service_Doubleclicksearch(...);
+ *   $savedColumns = $doubleclicksearchService->savedColumns;
+ *  </code>
+ */
+class GoogleGAL_Service_Doubleclicksearch_SavedColumns_Resource extends GoogleGAL_Service_Resource
+{
+
+  /**
+   * Retrieve the list of saved columns for a specified advertiser.
+   * (savedColumns.listSavedColumns)
+   *
+   * @param string $agencyId
+   * DS ID of the agency.
+   * @param string $advertiserId
+   * DS ID of the advertiser.
+   * @param array $optParams Optional parameters.
+   * @return GoogleGAL_Service_Doubleclicksearch_SavedColumnList
+   */
+  public function listSavedColumns($agencyId, $advertiserId, $optParams = array())
+  {
+    $params = array('agencyId' => $agencyId, 'advertiserId' => $advertiserId);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "GoogleGAL_Service_Doubleclicksearch_SavedColumnList");
   }
 }
 
@@ -1419,6 +1475,70 @@ class GoogleGAL_Service_Doubleclicksearch_ReportRequestTimeRange extends GoogleG
   public function getStartDate()
   {
     return $this->startDate;
+  }
+}
+
+class GoogleGAL_Service_Doubleclicksearch_SavedColumn extends GoogleGAL_Model
+{
+  public $kind;
+  public $savedColumnName;
+  public $type;
+
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
+  }
+
+  public function setSavedColumnName($savedColumnName)
+  {
+    $this->savedColumnName = $savedColumnName;
+  }
+
+  public function getSavedColumnName()
+  {
+    return $this->savedColumnName;
+  }
+
+  public function setType($type)
+  {
+    $this->type = $type;
+  }
+
+  public function getType()
+  {
+    return $this->type;
+  }
+}
+
+class GoogleGAL_Service_Doubleclicksearch_SavedColumnList extends GoogleGAL_Collection
+{
+  protected $itemsType = 'GoogleGAL_Service_Doubleclicksearch_SavedColumn';
+  protected $itemsDataType = 'array';
+  public $kind;
+
+  public function setItems($items)
+  {
+    $this->items = $items;
+  }
+
+  public function getItems()
+  {
+    return $this->items;
+  }
+
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+
+  public function getKind()
+  {
+    return $this->kind;
   }
 }
 
