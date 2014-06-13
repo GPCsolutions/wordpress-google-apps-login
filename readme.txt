@@ -3,7 +3,7 @@ Contributors: danlester
 Tags: login, google, authentication, oauth2, oauth, admin, google apps, sso, single-sign-on, auth, intranet
 Requires at least: 3.3
 Tested up to: 3.9
-Stable tag: 2.4.3
+Stable tag: 2.4.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,7 +25,8 @@ Full support and premium features are also available for purchase:
 Eliminate the need for Google Apps domain admins to  separately manage WordPress user accounts, and get piece 
 of mind that only authorized employees have access to the organizations's websites and intranet.
 
-See [http://wp-glogin.com/](http://wp-glogin.com/?utm_source=Login%20Readme%20Top&utm_medium=freemium&utm_campaign=Freemium)
+See [http://wp-glogin.com/google-apps-login-premium/](http://wp-glogin.com/google-apps-login-premium/?utm_source=Login%20Readme%20Top&utm_medium=freemium&utm_campaign=Freemium)
+
 
 = Extensible Platform =
 
@@ -38,6 +39,9 @@ and easier to manage.
 
 [Google Drive Embedder](http://wp-glogin.com/wpgoogledriveembedder) is our free extension plugin allowing 
 users to browse for Google Drive documents to embed directly in their posts or pages.
+
+[Google Profile Avatars](http://wp-glogin.com/avatars/?utm_source=Login%20Readme%20Avatars&utm_medium=freemium&utm_campaign=Freemium) 
+is available on our website. It displays users' Google profile photos in place of their avatars throughout your site.
 
 Google Apps Login works on single or multisite WordPress websites or private intranets.
 
@@ -69,8 +73,8 @@ Please ask if you need instructions on how to produce those files.
 = Website =
 
 Please see our website [http://wp-glogin.com/](http://wp-glogin.com/?utm_source=Login%20Readme%20Website&utm_medium=freemium&utm_campaign=Freemium) for more information about this free plugin 
-and extra features available in our Premium upgrade, plus support details and useful guides for admins of WordPress 
-sites and Google Apps.
+and extra features available in our Premium upgrade, plus support details, other plugins, and useful guides for admins of  
+WordPress sites and Google Apps.
 
 == Screenshots ==
 
@@ -209,6 +213,10 @@ the WordPress admin panel once you have activated the plugin. For a (non-persona
 please [click here](http://wp-glogin.com/installing-google-apps-login/basic-setup/).
 
 == Changelog ==
+
+= 2.4.4 =
+
+Readme updates and tidied settings page.
 
 = 2.4.3 =
 

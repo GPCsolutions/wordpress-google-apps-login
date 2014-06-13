@@ -114,6 +114,14 @@ class core_google_apps_login {
 			    text-align: right;
 	        }
 	        
+	        p.galogin-logout {
+	          	background-color: #FFFFFF;
+    			border: 4px solid #CCCCCC;
+    			box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    			padding: 12px;
+    			margin: 12px 0px;
+	        }
+	        
 	     </style>
 	<?php }
 	
@@ -154,7 +162,7 @@ class core_google_apps_login {
 				$do_autologin = true;
 			}
 		}
-
+		
 		if ($do_autologin && $options['ga_clientid'] != '' && $options['ga_clientsecret'] != '') {
 			if (!headers_sent()) {
 				wp_redirect($authUrl);
@@ -171,7 +179,7 @@ class core_google_apps_login {
 		
 ?>
 		<p class="galogin"> 
-			<a href="<?php echo $authUrl; ?>"><?php _e( 'Login with Google' , 'google-apps-login'); ?></a>
+			<a href="<?php echo $authUrl; ?>"><?php echo esc_html($this->get_login_button_text()); ?></a>
 		</p>
 		
 		<?php if ($options['ga_poweredby']) { ?>
@@ -180,6 +188,8 @@ class core_google_apps_login {
 		
 		<script>
 		jQuery(document).ready(function(){
+			<?php ob_start(); /* Buffer javascript contents so we can run it through a filter */ ?>
+			
 	        var loginform = jQuery('#loginform,#front-login-form');
 	        var googlelink = jQuery('p.galogin');
 	        var poweredby = jQuery('p.galogin-powered');
@@ -196,9 +206,18 @@ class core_google_apps_login {
 	        	loginform.prepend(poweredby);
 	        }
 	        loginform.prepend(googlelink);
+
+	        <?php 
+	        	$fntxt = ob_get_clean(); 
+	        	echo apply_filters('gal_login_form_readyjs', $fntxt);
+			?>
 		});
 		</script>
 <?php 	
+	}
+	
+	protected function get_login_button_text() {
+		return __( 'Login with Google' , 'google-apps-login');
 	}
 	
 	protected function should_hidewplogin($options) {
@@ -641,6 +660,8 @@ class core_google_apps_login {
 		_e( 'Display \'Powered By wp-glogin.com\' on Login form' , 'google-apps-login' );
 		echo '</label>';
 		
+		$this->ga_advancedsection_extra();
+		
 		echo '<br class="clear" />';
 		
 		if (is_multisite()) {
@@ -659,6 +680,10 @@ class core_google_apps_login {
 		}
 		
 		echo '</div>';
+	}
+	
+	// Overridden in Commercial
+	protected function ga_advancedsection_extra() {
 	}
 
 	public function ga_options_validate($input) {
