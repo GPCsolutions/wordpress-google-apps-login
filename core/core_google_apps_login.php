@@ -834,6 +834,7 @@ class core_google_apps_login {
 		
 		add_action('login_enqueue_scripts', array($this, 'ga_login_styles'));
 		add_action('login_form', array($this, 'ga_login_form'));
+		add_action('woocommerce_login_form', array($this, 'ga_login_form'));
 		add_filter('authenticate', array($this, 'ga_authenticate'), 5, 3);
 		
 		add_filter('login_redirect', array($this, 'ga_login_redirect'), 5, 3 );
